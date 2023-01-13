@@ -109,6 +109,10 @@ class Sanitize {
 
     _parse(node) {
         while (node) {
+            const closestProtected = closestElement(node, '[data-oe-protected="true"]');
+            if (closestProtected && node !== closestProtected) {
+                return;
+            }
             // Merge identical elements together.
             while (
                 areSimilarElements(node, node.previousSibling) &&
@@ -227,7 +231,7 @@ class Sanitize {
             if (node.nodeName === 'A' && anchorEl === node) {
                 const linkLabel = node.textContent;
                 const match = linkLabel.match(URL_REGEX);
-                if (match && match[0] === node.textContent) {
+                if (match && match[0] === node.textContent && !node.href.startsWith('mailto:')) {
                     const urlInfo = getUrlsInfosInString(linkLabel)[0];
                     node.setAttribute('href', urlInfo.url);
                 }

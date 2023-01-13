@@ -323,7 +323,7 @@ export class FormCompiler extends ViewCompiler {
                     ? child.getAttribute("nolabel") !== "1"
                     : true;
                 slotContent = this.compileNode(child, { ...params, currentSlot: mainSlot }, false);
-                if (addLabel && !isOuterGroup && !isTextNode(slotContent)) {
+                if (slotContent && addLabel && !isOuterGroup && !isTextNode(slotContent)) {
                     itemSpan = itemSpan === 1 ? itemSpan + 1 : itemSpan;
                     const fieldName = child.getAttribute("name");
                     const fieldId = slotContent.getAttribute("id") || fieldName;
@@ -608,7 +608,7 @@ export class FormCompiler extends ViewCompiler {
         sheetBG.className = "o_form_sheet_bg";
 
         const sheetFG = createElement("div");
-        sheetFG.className = "o_form_sheet position-relative";
+        sheetFG.className = "o_form_sheet position-relative clearfix";
 
         append(sheetBG, sheetFG);
         for (const child of el.childNodes) {
