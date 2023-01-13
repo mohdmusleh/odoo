@@ -20,12 +20,13 @@ export class AccountFileUploader extends Component {
     setup() {
         this.orm = useService("orm");
         this.action = useService("action");
+        this.notification = useService("notification");
         this.attachmentIdsToProcess = [];
         const rec = this.props.record ? this.props.record.data : false;
         this.extraContext = rec ? {
             default_journal_id: rec.id,
             default_move_type: (rec.type === 'sale' && 'out_invoice') || (rec.type === 'purchase' && 'in_invoice') || 'entry',
-        } : {};
+        } : this.props.extraContext || {}; //TODO remove this.props.extraContext
     }
 
     async onFileUploaded(file) {
@@ -45,6 +46,18 @@ export class AccountFileUploader extends Component {
             context: { ...this.extraContext, ...this.env.searchModel.context },
         });
         this.attachmentIdsToProcess = [];
+        if (action.context && action.context.notifications) {
+            for (let [file, msg] of Object.entries(action.context.notifications)) {
+                this.notification.add(
+                    msg,
+                    {
+                        title: file,
+                        type: "info",
+                        sticky: true,
+                    });
+            }
+            delete action.context.notifications;
+        }
         this.action.doAction(action);
     }
 }
@@ -64,6 +77,7 @@ AccountFileUploader.props = {
     btnClass: { type: String, optional: true },
     linkText: { type: String, optional: true },
     slots: { type: Object, optional: true },
+    extraContext: { type: Object, optional: true }, //this prop is only for stable databases with the old journal dashboard view, it should be deleted in master as it is not used
 }
 //when file uploader is used on account.journal (with a record)
 AccountFileUploader.fieldDependencies = {

@@ -1511,7 +1511,7 @@ class Orderline extends PosModel {
         var pack_lot_lines = json.pack_lot_ids;
         for (var i = 0; i < pack_lot_lines.length; i++) {
             var packlotline = pack_lot_lines[i][2];
-            var pack_lot_line = Packlotline.create({}, {'json': _.extend(packlotline, {'order_line':this})});
+            var pack_lot_line = Packlotline.create({}, {'json': _.extend({...packlotline}, {'order_line':this})});
             this.pack_lot_lines.add(pack_lot_line);
         }
         this.tax_ids = json.tax_ids && json.tax_ids.length !== 0 ? json.tax_ids[0][2] : undefined;
@@ -2743,7 +2743,7 @@ class Order extends PosModel {
             to_merge_orderline.merge(line);
             this.select_orderline(to_merge_orderline);
         } else {
-            this.orderlines.add(line);
+            this.add_orderline(line);
             this.select_orderline(this.get_last_orderline());
         }
 
@@ -3086,28 +3086,33 @@ class Order extends PosModel {
             const last_line = paymentlines ? paymentlines[paymentlines.length-1]: false;
             const last_line_is_cash = last_line ? last_line.payment_method.is_cash_count == true: false;
             if (!only_cash || (only_cash && last_line_is_cash)) {
+                var rounding_method = this.pos.cash_rounding[0].rounding_method;
                 var remaining = this.get_total_with_tax() - this.get_total_paid();
-                var total = round_pr(remaining, this.pos.cash_rounding[0].rounding);
-                var sign = remaining > 0 ? 1.0 : -1.0;
+                var sign = this.get_total_with_tax() > 0 ? 1.0 : -1.0;
+                if(this.get_total_with_tax() < 0 && remaining > 0 || this.get_total_with_tax() > 0 && remaining < 0) {
+                    rounding_method = rounding_method === "UP" ? "DOWN" : "UP";
+                }
 
+                remaining *= sign;
+                var total = round_pr(remaining, this.pos.cash_rounding[0].rounding);
                 var rounding_applied = total - remaining;
-                rounding_applied *= sign;
+
                 // because floor and ceil doesn't include decimals in calculation, we reuse the value of the half-up and adapt it.
                 if (utils.float_is_zero(rounding_applied, this.pos.currency.decimal_places)){
                     // https://xkcd.com/217/
                     return 0;
                 } else if(Math.abs(this.get_total_with_tax()) < this.pos.cash_rounding[0].rounding) {
                     return 0;
-                } else if(this.pos.cash_rounding[0].rounding_method === "UP" && rounding_applied < 0 && remaining > 0) {
+                } else if(rounding_method === "UP" && rounding_applied < 0 && remaining > 0) {
                     rounding_applied += this.pos.cash_rounding[0].rounding;
                 }
-                else if(this.pos.cash_rounding[0].rounding_method === "UP" && rounding_applied > 0 && remaining < 0) {
+                else if(rounding_method === "UP" && rounding_applied > 0 && remaining < 0) {
                     rounding_applied -= this.pos.cash_rounding[0].rounding;
                 }
-                else if(this.pos.cash_rounding[0].rounding_method === "DOWN" && rounding_applied > 0 && remaining > 0){
+                else if(rounding_method === "DOWN" && rounding_applied > 0 && remaining > 0){
                     rounding_applied -= this.pos.cash_rounding[0].rounding;
                 }
-                else if(this.pos.cash_rounding[0].rounding_method === "DOWN" && rounding_applied < 0 && remaining < 0){
+                else if(rounding_method === "DOWN" && rounding_applied < 0 && remaining < 0){
                     rounding_applied += this.pos.cash_rounding[0].rounding;
                 }
                 return sign * rounding_applied;

@@ -96,9 +96,9 @@ class AccountEdiFormat(models.Model):
             errors.append(_("%s must have a country", seller.display_name))
 
         # <1.1.1.2>
-        if not seller.vat:
+        if not invoice.company_id.vat:
             errors.append(_("%s must have a VAT number", seller.display_name))
-        elif len(seller.vat) > 30:
+        if seller.vat and len(seller.vat) > 30:
             errors.append(_("The maximum length for VAT number is 30. %s have a VAT number too long: %s.", seller.display_name, seller.vat))
 
         # <1.2.1.2>
@@ -228,41 +228,52 @@ class AccountEdiFormat(models.Model):
         return bool(invoice_lines_tags & vj3_lines_tags)
 
     def _l10n_it_document_type_mapping(self):
+        """ Returns a dictionary with the required features for every TDxx FatturaPA document type """
         return {
-            'TD01': dict(move_types=['out_invoice'], import_type='in_invoice', downpayment=False),
-            'TD02': dict(move_types=['out_invoice'], import_type='in_invoice', downpayment=True),
-            'TD04': dict(move_types=['out_refund'], import_type='in_refund'),
-            'TD07': dict(move_types=['out_invoice'], import_type='in_invoice', simplified=True),
-            'TD08': dict(move_types=['out_refund'], import_type='in_refund', simplified=True),
-            'TD09': dict(move_types=['out_invoice'], import_type='in_invoice', simplified=True),
-            'TD17': dict(move_types=['in_invoice', 'in_refund'], import_type='in_invoice', self_invoice=True, services_or_goods="service"),
-            'TD18': dict(move_types=['in_invoice', 'in_refund'], import_type='in_invoice', self_invoice=True, services_or_goods="consu", partner_in_eu=True),
-            'TD19': dict(move_types=['in_invoice', 'in_refund'], import_type='in_invoice', self_invoice=True, services_or_goods="consu", goods_in_italy=True),
+            'TD01': dict(move_types=['out_invoice'], import_type='in_invoice', self_invoice=False, simplified=False, downpayment=False),
+            'TD02': dict(move_types=['out_invoice'], import_type='in_invoice', self_invoice=False, simplified=False, downpayment=True),
+            'TD04': dict(move_types=['out_refund'], import_type='in_refund', self_invoice=False, simplified=False),
+            'TD07': dict(move_types=['out_invoice'], import_type='in_invoice', self_invoice=False, simplified=True),
+            'TD08': dict(move_types=['out_refund'], import_type='in_refund', self_invoice=False, simplified=True),
+            'TD09': dict(move_types=['out_invoice'], import_type='in_invoice', self_invoice=False, simplified=True),
+            'TD28': dict(move_types=['in_invoice', 'in_refund'], import_type='in_invoice', simplified=False, self_invoice=True, partner_country_code="SM"),
+            'TD17': dict(move_types=['in_invoice', 'in_refund'], import_type='in_invoice', simplified=False, self_invoice=True, services_or_goods="service"),
+            'TD18': dict(move_types=['in_invoice', 'in_refund'], import_type='in_invoice', simplified=False, self_invoice=True, services_or_goods="consu", goods_in_italy=False, partner_in_eu=True),
+            'TD19': dict(move_types=['in_invoice', 'in_refund'], import_type='in_invoice', simplified=False, self_invoice=True, services_or_goods="consu", goods_in_italy=True),
+        }
+
+    def _l10n_it_get_invoice_features_for_document_type_selection(self, invoice):
+        """ Returns a dictionary of features to be compared with the TDxx FatturaPA
+            document type requirements. """
+        services_or_goods = self._l10n_it_edi_services_or_goods(invoice)
+        return {
+            'move_types': invoice.move_type,
+            'partner_in_eu': self._l10n_it_edi_partner_in_eu(invoice.commercial_partner_id),
+            'partner_country_code': invoice.commercial_partner_id.country_id.code,
+            'simplified': self._l10n_it_edi_is_simplified(invoice),
+            'self_invoice': self._l10n_it_edi_is_self_invoice(invoice),
+            'downpayment': invoice._is_downpayment(),
+            'services_or_goods': services_or_goods,
+            'goods_in_italy': services_or_goods == 'consu' and self._l10n_it_goods_in_italy(invoice),
         }
 
     def _l10n_it_get_document_type(self, invoice):
-        is_simplified = self._l10n_it_edi_is_simplified(invoice)
-        is_self_invoice = self._l10n_it_edi_is_self_invoice(invoice)
-        services_or_goods = self._l10n_it_edi_services_or_goods(invoice)
-        goods_in_italy = services_or_goods == 'consu' and self._l10n_it_goods_in_italy(invoice)
-        partner_in_eu = self._l10n_it_edi_partner_in_eu(invoice.commercial_partner_id)
-        for code, infos in self._l10n_it_document_type_mapping().items():
-            info_services_or_goods = infos.get('services_or_goods', "both")
-            info_partner_in_eu = infos.get('partner_in_eu', False)
-            if all([
-                invoice.move_type in infos.get('move_types', False),
-                # Only check downpayment if the key is specified in the document_type_mapping entry
-                # If it's not specified, the get() will return None and the condition will be True
-                infos.get('downpayment') in (None, invoice._is_downpayment()),
-                is_self_invoice == infos.get('self_invoice', False),
-                is_simplified == infos.get('simplified', False),
-                info_services_or_goods in ("both", services_or_goods),
-                info_partner_in_eu in (False, partner_in_eu),
-                goods_in_italy == infos.get('goods_in_italy', False),
-            ]):
+        """ Compare the features of the invoice to the requirements of each TDxx FatturaPA
+            document type until you find a valid one. """
+        invoice_features = self._l10n_it_get_invoice_features_for_document_type_selection(invoice)
+        for code, document_type_features in self._l10n_it_document_type_mapping().items():
+            comparisons = []
+            for key, invoice_feature in invoice_features.items():
+                if key not in document_type_features:
+                    continue
+                document_type_feature = document_type_features.get(key)
+                if isinstance(document_type_feature, (tuple, list)):
+                    comparisons.append(invoice_feature in document_type_feature)
+                else:
+                    comparisons.append(invoice_feature == document_type_feature)
+            if all(comparisons):
                 return code
-
-        return None
+        return False
 
     def _l10n_it_is_simplified_document_type(self, document_type):
         return self._l10n_it_document_type_mapping().get(document_type, {}).get('simplified', False)
@@ -415,6 +426,17 @@ class AccountEdiFormat(models.Model):
 
         return partner
 
+    def _convert_date_from_xml(self, xsdate_str):
+        """ Dates in FatturaPA are ISO 8601 date format, pattern '[-]CCYY-MM-DD[Z|(+|-)hh:mm]' """
+        xsdate_str = xsdate_str.strip()
+        xsdate_pattern = r"^-?(?P<date>-?\d{4}-\d{2}-\d{2})(?P<tz>[zZ]|[+-]\d{2}:\d{2})?$"
+        try:
+            match = re.match(xsdate_pattern, xsdate_str)
+            converted_date = datetime.strptime(match.group("date"), DEFAULT_FACTUR_ITALIAN_DATE_FORMAT).date()
+        except Exception:
+            converted_date = False
+        return converted_date
+
     def _import_fattura_pa(self, tree, invoice):
         """ Decodes a fattura_pa invoice into an invoice.
 
@@ -502,9 +524,14 @@ class AccountEdiFormat(models.Model):
                 # Date. <2.1.1.3>
                 elements = body_tree.xpath('.//DatiGeneraliDocumento/Data')
                 if elements:
-                    date_str = elements[0].text
-                    date_obj = datetime.strptime(date_str, DEFAULT_FACTUR_ITALIAN_DATE_FORMAT)
-                    invoice_form.invoice_date = date_obj
+                    document_date = self._convert_date_from_xml(elements[0].text)
+                    if document_date:
+                        invoice_form.invoice_date = document_date
+                    else:
+                        message_to_log.append("%s<br/>%s" % (
+                            _("Document date invalid in XML file:"),
+                            invoice._compose_info_message(elements[0], '.')
+                        ))
 
                 #  Dati Bollo. <2.1.1.6>
                 elements = body_tree.xpath('.//DatiGeneraliDocumento/DatiBollo/ImportoBollo')
@@ -537,9 +564,16 @@ class AccountEdiFormat(models.Model):
                 # Due date. <2.4.2.5>
                 elements = body_tree.xpath('.//DatiPagamento/DettaglioPagamento/DataScadenzaPagamento')
                 if elements:
-                    date_str = elements[0].text
-                    date_obj = datetime.strptime(date_str, DEFAULT_FACTUR_ITALIAN_DATE_FORMAT)
-                    invoice_form.invoice_date_due = fields.Date.to_string(date_obj)
+                    date_str = elements[0].text.strip()
+                    if date_str:
+                        due_date = self._convert_date_from_xml(date_str)
+                        if due_date:
+                            invoice_form.invoice_date_due = fields.Date.to_string(due_date)
+                        else:
+                            message_to_log.append("%s<br/>%s" % (
+                                _("Payment due date invalid in XML file:"),
+                                invoice._compose_info_message(elements[0], '.')
+                            ))
 
                 # Total amount. <2.4.2.6>
                 elements = body_tree.xpath('.//ImportoPagamento')
@@ -1012,8 +1046,7 @@ class AccountEdiFormat(models.Model):
         return to_return
 
     def _post_fattura_pa(self, invoice):
-        # OVERRIDE
-        if not invoice.l10n_it_edi_transaction:
+        if not invoice[0].l10n_it_edi_transaction:
             return self._l10n_it_post_invoices_step_1(invoice)
         else:
             return self._l10n_it_post_invoices_step_2(invoice)

@@ -33,12 +33,19 @@ import { SelectCreateDialog } from "@web/views/view_dialogs/select_create_dialog
  * @property {Function | null} onDelete
  */
 
-import { Component, useComponent, useEffect, useEnv, useSubEnv, onWillUpdateProps } from "@odoo/owl";
+import {
+    Component,
+    useComponent,
+    useEffect,
+    useEnv,
+    useSubEnv,
+    onWillUpdateProps,
+} from "@odoo/owl";
 
 //
 // Commons
 //
-export function useSelectCreate({ resModel, activeActions, onSelected, onCreateEdit }) {
+export function useSelectCreate({ resModel, activeActions, onSelected, onCreateEdit, onUnselect }) {
     const env = useEnv();
     const addDialog = useOwnedDialogs();
 
@@ -53,6 +60,7 @@ export function useSelectCreate({ resModel, activeActions, onSelected, onCreateE
             onSelected,
             onCreateEdit: () => onCreateEdit({ context }),
             dynamicFilters: filters,
+            onUnselect,
         });
     }
     return selectCreate;
@@ -172,6 +180,7 @@ export class Many2XAutocomplete extends Component {
                 return update(values);
             },
             onCreateEdit: ({ context }) => this.openMany2X({ context }),
+            onUnselect: isToMany ? false : () => update(),
         });
     }
 
@@ -285,7 +294,7 @@ export class Many2XAutocomplete extends Component {
         return options;
     }
 
-    async onSearchMoreSmall() {
+    async onBarcodeSearch() {
         const autoCompleteInput = this.autoCompleteContainer.el.querySelector("input");
         return this.onSearchMore(autoCompleteInput.value);
     }

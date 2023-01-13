@@ -160,7 +160,7 @@ export class FormController extends Component {
 
         // select footers that are not in subviews and move them to another arch
         // that will be moved to the dialog's footer (if we are in a dialog)
-        const footers = [...this.archInfo.xmlDoc.querySelectorAll("footer:not(field footer")];
+        const footers = [...this.archInfo.xmlDoc.querySelectorAll("footer:not(field footer)")];
         if (footers.length) {
             this.footerArchInfo = Object.assign({}, this.archInfo);
             this.footerArchInfo.xmlDoc = createElement("t");
@@ -180,7 +180,9 @@ export class FormController extends Component {
         this.fieldsToTranslate = useState(fieldsToTranslate || {});
         const activeNotebookPages = { ...state.activeNotebookPages };
         this.onNotebookPageChange = (notebookId, page) => {
-            activeNotebookPages[notebookId] = page;
+            if (page) {
+                activeNotebookPages[notebookId] = page;
+            }
         };
 
         useSetupView({
