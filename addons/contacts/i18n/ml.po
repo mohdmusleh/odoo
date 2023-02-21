@@ -33,7 +33,7 @@ msgstr ""
 #. module: contacts
 #: model:ir.ui.menu,name:contacts.res_partner_menu_config
 msgid "Configuration"
-msgstr ""
+msgstr "കോൺഫിഗറേഷൻ"
 
 #. module: contacts
 #: model:ir.ui.menu,name:contacts.menu_partner_category_form
@@ -90,4 +90,4 @@ msgstr ""
 #. module: contacts
 #: model:ir.model,name:contacts.model_res_users
 msgid "User"
-msgstr "ഉപയോക്താവ്"
+msgstr "യൂസർ"

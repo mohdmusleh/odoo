@@ -48,6 +48,7 @@ class FormatAddressMixin(models.AbstractModel):
     def _view_get_address(self, arch):
         # consider the country of the user, not the country of the partner we want to display
         address_view_id = self.env.company.country_id.address_view_id.sudo()
+        address_format = self.env.company.country_id.address_format
         if address_view_id and not self._context.get('no_address_format') and (not address_view_id.model or address_view_id.model == self._name):
             #render the partner address accordingly to address_view_id
             for address_node in arch.xpath("//div[hasclass('o_address_format')]"):
@@ -61,6 +62,31 @@ class FormatAddressMixin(models.AbstractModel):
                     except ValueError:
                         return arch
                 address_node.getparent().replace(address_node, sub_arch)
+        elif address_format and not self._context.get('no_address_format'):
+            # For the zip, city and state fields we need to move them around in order to follow the country address format.
+            # The purpose of this is to help the user by following a format he is used to.
+            city_line = [line.split(' ') for line in address_format.split('\n') if 'city' in line]
+            if city_line:
+                field_order = [field.replace('%(', '').replace(')s', '') for field in city_line[0]]
+                for address_node in arch.xpath("//div[hasclass('o_address_format')]"):
+                    concerned_fields = {'zip', 'city', 'state_id'} - {field_order[0]}
+                    current_field = address_node.find(f".//field[@name='{field_order[0]}']")
+                    # First loop into the fields displayed in the address_format, and order them.
+                    for field in field_order[1:]:
+                        if field in ('state_code', 'state_name'):
+                            field = 'state_id'
+                        previous_field = current_field
+                        current_field = address_node.find(f".//field[@name='{field}']")
+                        if previous_field is not None and current_field is not None:
+                            previous_field.addnext(current_field)
+                        concerned_fields -= {field}
+                    # Add the remaining fields in 'concerned_fields' at the end, after the others
+                    for field in concerned_fields:
+                        previous_field = current_field
+                        current_field = address_node.find(f".//field[@name='{field}']")
+                        if previous_field is not None and current_field is not None:
+                            previous_field.addnext(current_field)
+
         return arch
 
     @api.model
@@ -192,7 +218,7 @@ class Partner(models.Model):
         precompute=True,  # avoid queries post-create
         readonly=False, store=True,
         help='The internal user in charge of this contact.')
-    vat = fields.Char(string='Tax ID', index=True, help="The Tax Identification Number. Complete it if the contact is subjected to government taxes. Used in some legal statements.")
+    vat = fields.Char(string='Tax ID', index=True, help="The Tax Identification Number. Values here will be validated based on the country format. You can use '/' to indicate that the partner is not subject to tax.")
     same_vat_partner_id = fields.Many2one('res.partner', string='Partner with same Tax ID', compute='_compute_same_vat_partner_id', store=False)
     same_company_registry_partner_id = fields.Many2one('res.partner', string='Partner with same Company Registry', compute='_compute_same_vat_partner_id', store=False)
     company_registry = fields.Char(string="Company ID", compute='_compute_company_registry', store=True, readonly=False,
@@ -397,6 +423,10 @@ class Partner(models.Model):
         if (not view_id) and (view_type == 'form') and self._context.get('force_email'):
             view_id = self.env.ref('base.view_partner_simple_form').id
         arch, view = super()._get_view(view_id, view_type, **options)
+        company = self.env.company
+        if company.country_id.vat_label:
+            for node in arch.xpath("//field[@name='vat']"):
+                node.attrib["string"] = company.country_id.vat_label
         return arch, view
 
     @api.constrains('parent_id')
@@ -570,10 +600,10 @@ class Partner(models.Model):
         if self.commercial_partner_id == self:
             commercial_fields = self._commercial_fields()
             if any(field in values for field in commercial_fields):
-                self._commercial_sync_to_children()
+                self.sudo()._commercial_sync_to_children()
         for child in self.child_ids.filtered(lambda c: not c.is_company):
             if child.commercial_partner_id != self.commercial_partner_id:
-                self._commercial_sync_to_children()
+                self.sudo()._commercial_sync_to_children()
                 break
         # 2b. Address fields: sync if address changed
         address_fields = self._address_fields()
@@ -788,8 +818,7 @@ class Partner(models.Model):
             name = partner._display_address(without_company=True)
         if self._context.get('show_address'):
             name = name + "\n" + partner._display_address(without_company=True)
-        name = name.replace('\n\n', '\n')
-        name = name.replace('\n\n', '\n')
+        name = re.sub(r'\s+\n', '\n', name)
         if self._context.get('partner_show_db_id'):
             name = "%s (%s)" % (name, partner.id)
         if self._context.get('address_inline'):
@@ -801,7 +830,7 @@ class Partner(models.Model):
             name = name.replace('\n', '<br/>')
         if self._context.get('show_vat') and partner.vat:
             name = "%s ‒ %s" % (name, partner.vat)
-        return name
+        return name.strip()
 
     def name_get(self):
         res = []

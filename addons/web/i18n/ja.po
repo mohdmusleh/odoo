@@ -9,14 +9,14 @@
 # Noma Yuki, 2022
 # Martin Trigaux, 2022
 # Yoshi Tashiro (Quartile) <tashiro@roomsfor.hk>, 2022
-# Ryoko Tsuda <ryoko@quartile.co>, 2022
+# Ryoko Tsuda <ryoko@quartile.co>, 2023
 # Andy Yiu, 2023
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0+e\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 12:44+0000\n"
+"POT-Creation-Date: 2023-02-02 10:35+0000\n"
 "PO-Revision-Date: 2022-09-22 05:55+0000\n"
 "Last-Translator: Andy Yiu, 2023\n"
 "Language-Team: Japanese (https://www.transifex.com/odoo/teams/41243/ja/)\n"
@@ -462,13 +462,6 @@ msgstr "すべて"
 
 #. module: web
 #. odoo-javascript
-#: code:addons/web/static/src/webclient/user_menu/user_menu_items.xml:0
-#, python-format
-msgid "ALT"
-msgstr ""
-
-#. module: web
-#. odoo-javascript
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #, python-format
 msgid "ANY"
@@ -708,7 +701,7 @@ msgstr "追加: "
 #: code:addons/web/static/src/views/fields/x2many/x2many_field.js:0
 #, python-format
 msgid "Add: %s"
-msgstr ""
+msgstr "追加: %s"
 
 #. module: web
 #. odoo-javascript
@@ -959,7 +952,7 @@ msgstr ""
 #: code:addons/web/static/src/views/graph/graph_controller.xml:0
 #, python-format
 msgid "Ascending"
-msgstr "上昇"
+msgstr "昇順"
 
 #. module: web
 #. odoo-javascript
@@ -1264,6 +1257,7 @@ msgstr ""
 #: code:addons/web/static/src/views/fields/binary/binary_field.xml:0
 #: code:addons/web/static/src/views/fields/image/image_field.xml:0
 #: code:addons/web/static/src/views/fields/pdf_viewer/pdf_viewer_field.xml:0
+#: code:addons/web/static/src/views/view_dialogs/select_create_dialog.xml:0
 #, python-format
 msgid "Clear"
 msgstr "クリア"
@@ -1937,7 +1931,7 @@ msgstr "破棄"
 #: code:addons/web/static/src/views/form/form_status_indicator/form_status_indicator.xml:0
 #, python-format
 msgid "Discard changes"
-msgstr ""
+msgstr "変更を破棄"
 
 #. module: web
 #. odoo-javascript
@@ -2188,7 +2182,7 @@ msgstr "プロファイリング有効化"
 #: code:addons/web/static/src/webclient/settings_form_view/widgets/res_config_invite_users.xml:0
 #, python-format
 msgid "Enter e-mail address"
-msgstr "Eメールアドレスを入力"
+msgstr "メールアドレスを入力してください"
 
 #. module: web
 #. odoo-javascript
@@ -3039,7 +3033,7 @@ msgstr ""
 #: code:addons/web/static/src/views/pivot/pivot_controller.xml:0
 #, python-format
 msgid "Main actions"
-msgstr ""
+msgstr "メインアクション"
 
 #. module: web
 #. odoo-javascript
@@ -3756,7 +3750,7 @@ msgstr "オープン:"
 #: code:addons/web/static/src/views/fields/relational_utils.js:0
 #, python-format
 msgid "Open: %s"
-msgstr ""
+msgstr "オープン: %s"
 
 #. module: web
 #. odoo-javascript
@@ -4153,7 +4147,7 @@ msgstr ""
 #: code:addons/web/static/src/views/fields/progress_bar/progress_bar_field.js:0
 #, python-format
 msgid "Progress Bar"
-msgstr ""
+msgstr "進捗バー"
 
 #. module: web
 #. odoo-javascript
@@ -4605,7 +4599,7 @@ msgstr "デフォルト値保存"
 #: code:addons/web/static/src/views/form/form_status_indicator/form_status_indicator.xml:0
 #, python-format
 msgid "Save manually"
-msgstr ""
+msgstr "手動で保存"
 
 #. module: web
 #. odoo-javascript
@@ -4913,7 +4907,7 @@ msgstr "全ユーザと共有"
 #. odoo-javascript
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/legacy/xml/base.xml:0
-#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.js:0
+#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
 #: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
 #, python-format
 msgid "Show sub-fields"
@@ -5017,7 +5011,7 @@ msgstr "このページに留まる"
 #: code:addons/web/static/src/views/form/form_error_dialog/form_error_dialog.xml:0
 #, python-format
 msgid "Stay here"
-msgstr ""
+msgstr "このページに留まる"
 
 #. module: web
 #. odoo-javascript
@@ -5076,7 +5070,7 @@ msgstr "構文エラー"
 #: code:addons/web/static/src/webclient/user_menu/user_menu_items.xml:0
 #, python-format
 msgid "TIP"
-msgstr ""
+msgstr "ヒント"
 
 #. module: web
 #. odoo-javascript
@@ -5127,9 +5121,12 @@ msgstr "テキスト"
 #. module: web
 #: model:ir.model.fields,help:web.field_base_document_layout__vat
 msgid ""
-"The Tax Identification Number. Complete it if the contact is subjected to "
-"government taxes. Used in some legal statements."
-msgstr "納税者番号。連絡が政府の税金の対象となる場合は、記入してください。一部の法的明細で使用されます。"
+"The Tax Identification Number. Values here will be validated based on the "
+"country format. You can use '/' to indicate that the partner is not subject "
+"to tax."
+msgstr ""
+"Tax Identification Number "
+"(納税者番号)。ここでの値は、国の形式に基づいて検証されます。パートナーに税金がかからないことを示すには、'/' を使用します。"
 
 #. module: web
 #. odoo-python
@@ -5371,7 +5368,7 @@ msgstr "合計"
 #: code:addons/web/static/src/views/fields/translation_dialog.js:0
 #, python-format
 msgid "Translate: %s"
-msgstr ""
+msgstr "翻訳: %s"
 
 #. module: web
 #. odoo-javascript
@@ -5440,7 +5437,7 @@ msgstr "システムにWkhtmltopdfが見つかりません。レポートはHTML
 #: code:addons/web/static/src/views/form/form_status_indicator/form_status_indicator.xml:0
 #, python-format
 msgid "Unable to save"
-msgstr ""
+msgstr "保存できません"
 
 #. module: web
 #. odoo-javascript
@@ -6142,7 +6139,7 @@ msgstr "日"
 #: code:addons/web/static/src/views/fields/remaining_days/remaining_days_field.xml:0
 #, python-format
 msgid "days ago"
-msgstr ""
+msgstr "日前"
 
 #. module: web
 #. odoo-javascript
@@ -6171,13 +6168,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:web.view_base_document_layout
 msgid "e.g. Global Business Solutions"
 msgstr "例 国際商業解決会社"
-
-#. module: web
-#. odoo-javascript
-#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
-#, python-format
-msgid "expandText"
-msgstr ""
 
 #. module: web
 #. odoo-javascript

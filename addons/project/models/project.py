@@ -10,6 +10,7 @@ from random import randint
 
 from odoo import api, Command, fields, models, tools, SUPERUSER_ID, _, _lt
 from odoo.addons.rating.models import rating_data
+from odoo.addons.web_editor.controllers.main import handle_history_divergence
 from odoo.exceptions import UserError, ValidationError, AccessError
 from odoo.osv import expression
 from odoo.tools.misc import get_lang
@@ -1110,7 +1111,7 @@ class Task(models.Model):
         ('normal', 'In Progress'),
         ('done', 'Ready'),
         ('blocked', 'Blocked')], string='Status',
-        copy=False, default='normal', required=True)
+        copy=False, default='normal', required=True, compute='_compute_kanban_state', readonly=False, store=True)
     kanban_state_label = fields.Char(compute='_compute_kanban_state_label', string='Kanban State Label', tracking=True, task_dependency_tracking=True)
     create_date = fields.Datetime("Created On", readonly=True)
     write_date = fields.Datetime("Last Updated On", readonly=True)
@@ -1192,7 +1193,7 @@ class Task(models.Model):
     allow_subtasks = fields.Boolean(string="Allow Sub-tasks", related="project_id.allow_subtasks", readonly=True)
     subtask_count = fields.Integer("Sub-task Count", compute='_compute_subtask_count')
     email_from = fields.Char(string='Email From', help="These people will receive email.", index='trigram',
-        compute='_compute_email_from', recursive=True, store=True, readonly=False)
+        compute='_compute_email_from', recursive=True, store=True, readonly=False, copy=False)
     project_privacy_visibility = fields.Selection(related='project_id.privacy_visibility', string="Project Visibility")
     # Computed field about working time elapsed between record creation and assignation/closing.
     working_hours_open = fields.Float(compute='_compute_elapsed', string='Working Hours to Assign', digits=(16, 2), store=True, group_operator="avg")
@@ -1368,6 +1369,10 @@ class Task(models.Model):
             for node in arch.xpath("//filter[@name='message_needaction']"):
                 node.set('invisible', '1')
         return arch, view
+
+    @api.depends('stage_id', 'project_id')
+    def _compute_kanban_state(self):
+        self.kanban_state = 'normal'
 
     @api.depends('parent_id.ancestor_id')
     def _compute_ancestor_id(self):
@@ -1857,7 +1862,7 @@ class Task(models.Model):
             project = self.env['project.project'].browse(project_id)
             if project.analytic_account_id:
                 vals['analytic_account_id'] = project.analytic_account_id.id
-        else:
+        elif 'default_user_ids' not in self.env.context:
             user_ids = vals.get('user_ids', [])
             user_ids.append(Command.link(self.env.user.id))
             vals['user_ids'] = user_ids
@@ -2012,6 +2017,7 @@ class Task(models.Model):
             ctx = {
                 key: value for key, value in self.env.context.items()
                 if key == 'default_project_id' \
+                    or key == 'default_user_ids' and value is False \
                     or not key.startswith('default_') \
                     or key[8:] in self.SELF_WRITABLE_FIELDS
             }
@@ -2034,6 +2040,8 @@ class Task(models.Model):
         return tasks
 
     def write(self, vals):
+        if len(self) == 1:
+            handle_history_divergence(self, 'description', vals)
         portal_can_write = False
         if self.env.user.has_group('base.group_portal') and not self.env.su:
             # Check if all fields in vals are in SELF_WRITABLE_FIELDS
@@ -2056,9 +2064,6 @@ class Task(models.Model):
 
             vals.update(self.update_date_end(vals['stage_id']))
             vals['date_last_stage_update'] = now
-            # reset kanban state when changing stage
-            if 'kanban_state' not in vals:
-                vals['kanban_state'] = 'normal'
         task_ids_without_user_set = set()
         if 'user_ids' in vals and 'date_assign' not in vals:
             # prepare update of date_assign after super call
@@ -2160,6 +2165,8 @@ class Task(models.Model):
 
     @api.depends('parent_id.project_id', 'display_project_id')
     def _compute_project_id(self):
+        # Avoid recomputing kanban_state
+        self.env.remove_to_compute(self._fields['kanban_state'], self)
         for task in self:
             if task.parent_id:
                 task.project_id = task.display_project_id or task.parent_id.project_id
@@ -2240,6 +2247,7 @@ class Task(models.Model):
                     record_name=task.display_name,
                     email_layout_xmlid='mail.mail_notification_layout',
                     model_description=task_model_description,
+                    mail_auto_delete=False,
                 )
 
     def _message_auto_subscribe_followers(self, updated_values, default_subtype_ids):

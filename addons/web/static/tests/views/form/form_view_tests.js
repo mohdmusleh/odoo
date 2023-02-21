@@ -4021,6 +4021,30 @@ QUnit.module("Views", (hooks) => {
         assert.containsNone(target, ".o_cp_action_menus span:contains(Unarchive)");
     });
 
+    QUnit.test("archive action not shown with readonly active field", async function (assert) {
+        // add active field on partner model in readonly mode to do not have Archive option
+        serverData.models.partner.fields.active = {
+            string: "Active",
+            type: "char",
+            default: true,
+            readonly: true,
+        };
+        await makeView({
+            type: "form",
+            resModel: "partner",
+            resId: 1,
+            serverData,
+            arch: `<form><field name="active"/><field name="foo"/></form>`,
+            actionMenus: {},
+        });
+        await click(target, ".o_cp_action_menus .dropdown-toggle");
+        assert.deepEqual(
+            [...target.querySelectorAll(".o_menu_item")].map((el) => el.textContent),
+            ["Duplicate", "Delete"],
+            "Should not contain an Archive action",
+        );
+    });
+
     QUnit.test("can duplicate a record", async function (assert) {
         await makeView({
             type: "form",
@@ -11766,6 +11790,35 @@ QUnit.module("Views", (hooks) => {
     });
 
     QUnit.test(
+        "Auto save: save on closing tab/browser (not dirty but trailing spaces)",
+        async function (assert) {
+            serverData.models.partner.fields.foo.trim = true;
+            serverData.models.partner.records[0].foo = "name with trailing spaces   ";
+
+            await makeView({
+                type: "form",
+                resModel: "partner",
+                serverData,
+                arch: `<form><field name="foo"/></form>`,
+                resId: 1,
+                mockRPC(route, { args, method, model }) {
+                    if (method === "write" && model === "partner") {
+                        throw new Error("no write should be done");
+                    }
+                },
+            });
+
+            assert.strictEqual(
+                target.querySelector(".o_field_widget[name=foo] input").value,
+                "name with trailing spaces   "
+            );
+
+            window.dispatchEvent(new Event("beforeunload"));
+            await nextTick();
+        }
+    );
+
+    QUnit.test(
         "Auto save: save on closing tab/browser (not dirty) with text field",
         async function (assert) {
             serverData.models.partner.fields.bloup = {
@@ -12543,6 +12596,28 @@ QUnit.module("Views", (hooks) => {
         assert.verifySteps(["get_views", "onchange", "create", "read"]);
     });
 
+    QUnit.test("save a form view with a duplicated invisible required field", async function (assert) {
+        serverData.models.partner.fields.text = { string: "Text", type: "char", required: 1 };
+
+        await makeView({
+            type: "form",
+            resModel: "partner",
+            serverData,
+            arch: `
+                <form>
+                    <group>
+                        <field name="text"/>
+                        <field name="text" invisible="1"/>
+                    </group>
+                </form>`,
+        });
+
+        await clickSave(target);
+
+        assert.containsOnce(target, ".o_form_label.o_field_invalid");
+        assert.containsOnce(target, ".o_field_char.o_field_invalid");
+    });
+
     QUnit.test(
         "save a form view with an invisible required field in a x2many",
         async function (assert) {
@@ -12706,6 +12781,63 @@ QUnit.module("Views", (hooks) => {
 
         assert.containsOnce(target, ".o_form_status_indicator_buttons.invisible");
         await editInput(target, ".o_field_widget input", "dirty");
+        assert.containsNone(target, ".o_form_status_indicator_buttons.invisible");
+    });
+
+    QUnit.test("status indicator: field dirty state", async (assert) => {
+        // this test check that the indicator don't need the onchange to be displayed
+        await makeView({
+            type: "form",
+            resModel: "partner",
+            resId: 1,
+            serverData,
+            arch: `<form><field name="foo"/></form>`,
+        });
+
+        assert.containsOnce(target, ".o_form_status_indicator_buttons.invisible");
+
+        const input = target.querySelector(".o_field_widget input");
+        input.value = "dirty";
+        await triggerEvent(input, null, "input");
+
+        assert.containsNone(target, ".o_form_status_indicator_buttons.invisible");
+    });
+
+    QUnit.test("status indicator: field dirty state (date)", async (assert) => {
+        // this test check that the indicator don't need the onchange to be displayed
+        await makeView({
+            type: "form",
+            resModel: "partner",
+            resId: 1,
+            serverData,
+            arch: `<form><field name="date"/></form>`,
+        });
+
+        assert.containsOnce(target, ".o_form_status_indicator_buttons.invisible");
+
+        const input = target.querySelector(".o_field_widget input");
+        input.value = "03/26/2019";
+        await triggerEvent(input, null, "input");
+
+        assert.containsNone(target, ".o_form_status_indicator_buttons.invisible");
+    });
+
+    QUnit.test("status indicator: field dirty state (datetime)", async (assert) => {
+        // this test check that the indicator don't need the onchange to be displayed
+        await makeView({
+            type: "form",
+            resModel: "partner",
+            resId: 1,
+            serverData,
+            arch: `<form><field name="datetime"/></form>`,
+        });
+
+        assert.containsOnce(target, ".o_form_status_indicator_buttons.invisible");
+
+        const input = target.querySelector(".o_field_widget input");
+        input.value = "12/12/2012 11:55:05";
+        await triggerEvent(input, null, "input");
+
         assert.containsNone(target, ".o_form_status_indicator_buttons.invisible");
     });
 

@@ -295,6 +295,14 @@ class Website(models.Model):
             raise UserError(_('You must keep at least one website.'))
 
     def unlink(self):
+        self._remove_attachments_on_website_unlink()
+
+        companies = self.company_id
+        res = super().unlink()
+        companies._compute_website_id()
+        return res
+
+    def _remove_attachments_on_website_unlink(self):
         # Do not delete invoices, delete what's strictly necessary
         attachments_to_unlink = self.env['ir.attachment'].search([
             ('website_id', 'in', self.ids),
@@ -304,10 +312,6 @@ class Website(models.Model):
             ('url', 'ilike', '.assets\\_'),
         ])
         attachments_to_unlink.unlink()
-        companies = self.company_id
-        res = super(Website, self).unlink()
-        companies._compute_website_id()
-        return res
 
     def create_and_redirect_configurator(self):
         self._force()
@@ -848,9 +852,10 @@ class Website(models.Model):
                 dependency_records = _handle_views_and_pages(dependency_records)
             if dependency_records:
                 model_name = self.env['ir.model']._display_name_for([model])[0]['display_name']
+                field_name = Model.fields_get()[column]['string']
                 dependencies.setdefault(model_name, [])
                 dependencies[model_name] += [{
-                    'field_name': Model.fields_get()[column]['string'],
+                    'field_name': field_name,
                     'record_name': rec.display_name,
                     'link': 'website_url' in rec and rec.website_url or f'/web#id={rec.id}&view_type=form&model={model}',
                     'model_name': model_name,
@@ -1188,6 +1193,7 @@ class Website(models.Model):
             domain = []
         domain += self.get_current_website().website_domain()
         pages = self.env['website.page'].sudo().search(domain, order=order, limit=limit)
+        pages = pages._get_most_specific_pages()
         return pages
 
     def search_pages(self, needle=None, limit=None):

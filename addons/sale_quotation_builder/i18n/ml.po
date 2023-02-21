@@ -72,7 +72,7 @@ msgstr ""
 #. module: sale_quotation_builder
 #: model_terms:ir.ui.view,arch_db:sale_quotation_builder.sale_order_portal_content_inherit_sale_quotation_builder
 msgid "Close"
-msgstr ""
+msgstr "അടയ്ക്കുക"
 
 #. module: sale_quotation_builder
 #: model:ir.model,name:sale_quotation_builder.model_res_company
@@ -131,12 +131,12 @@ msgstr ""
 #. module: sale_quotation_builder
 #: model_terms:sale.order.template,website_description:sale_quotation_builder.sale_order_template_default
 msgid "Price"
-msgstr ""
+msgstr "പ്രൈസ്"
 
 #. module: sale_quotation_builder
 #: model:ir.model,name:sale_quotation_builder.model_product_template
 msgid "Product"
-msgstr "ഉൽപ്പന്നം"
+msgstr "പ്രോഡക്റ്റ്"
 
 #. module: sale_quotation_builder
 #: model_terms:sale.order.template,website_description:sale_quotation_builder.sale_order_template_default
@@ -187,7 +187,7 @@ msgstr ""
 #. module: sale_quotation_builder
 #: model:ir.model,name:sale_quotation_builder.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "സെയിൽസ് ഓർഡർ"
 
 #. module: sale_quotation_builder
 #: model:ir.model,name:sale_quotation_builder.model_sale_order_line

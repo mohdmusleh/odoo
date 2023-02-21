@@ -48,6 +48,9 @@ class IrBinary(models.AbstractModel):
 
         if record._name == 'ir.attachment':
             record = record.validate_access(access_token)
+        else:
+            record.check_access_rights('read')
+            record.check_access_rule('read')
 
         return record
 
@@ -66,6 +69,7 @@ class IrBinary(models.AbstractModel):
         if record._name == 'ir.attachment' and field_name in ('raw', 'datas', 'db_datas'):
             return Stream.from_attachment(record)
 
+        record.check_field_access_rights('read', [field_name])
         field_def = record._fields[field_name]
 
         # fields.Binary(attachment=False) or compute/related
@@ -139,6 +143,7 @@ class IrBinary(models.AbstractModel):
             if not stream.download_name:
                 stream.download_name = f'{record._table}-{record.id}-{field_name}'
 
+            stream.download_name = stream.download_name.replace('\n', '_').replace('\r', '_')
             if (not get_extension(stream.download_name)
                 and stream.mimetype != 'application/octet-stream'):
                 stream.download_name += guess_extension(stream.mimetype) or ''

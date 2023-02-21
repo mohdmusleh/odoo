@@ -64,4 +64,4 @@ msgstr ""
 #. module: microsoft_account
 #: model:ir.model,name:microsoft_account.model_res_users
 msgid "User"
-msgstr "ഉപയോക്താവ്"
+msgstr "യൂസർ"

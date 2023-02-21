@@ -719,6 +719,7 @@ class WebsiteSale(http.Controller):
         # empty promo code is used to reset/remove pricelist (see `sale_get_order()`)
         if promo:
             pricelist_sudo = request.env['product.pricelist'].sudo().search([('code', '=', promo)], limit=1)
+            request.session['website_sale_current_pl'] = pricelist_sudo.id
             if not (pricelist_sudo and request.website.is_pricelist_available(pricelist_sudo.id)):
                 return request.redirect("%s?code_not_available=1" % redirect)
 
@@ -1175,13 +1176,14 @@ class WebsiteSale(http.Controller):
         _express_checkout_route, type='json', methods=['POST'], auth="public", website=True,
         sitemap=False
     )
-    def process_express_checkout(self, billing_address):
+    def process_express_checkout(self, billing_address, **kwargs):
         """ Records the partner information on the order when using express checkout flow.
 
         Depending on whether the partner is registered and logged in, either creates a new partner
         or uses an existing one that matches all received data.
 
-        :param dict billing_address: billing information sent by the express payment form.
+        :param dict billing_address: Billing information sent by the express payment form.
+        :param dict kwargs: Optional data. This parameter is not used here.
         :return int: The order's partner id.
         """
         order_sudo = request.website.sale_get_order()

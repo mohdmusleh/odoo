@@ -94,4 +94,4 @@ msgstr ""
 #. module: auth_totp_portal
 #: model:ir.model,name:auth_totp_portal.model_res_users
 msgid "User"
-msgstr "ഉപയോക്താവ്"
+msgstr "യൂസർ"

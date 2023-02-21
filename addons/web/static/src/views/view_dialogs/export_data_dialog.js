@@ -109,14 +109,14 @@ export class ExportDataDialog extends Component {
 
         onWillStart(async () => {
             this.availableFormats = await this.rpc("/web/export/formats");
-            this.templates = await this.rpc("/web/dataset/call_kw", {
-                args: [],
-                kwargs: {
+            this.templates = await this.orm.searchRead(
+                "ir.exports",
+                [["resource", "=", this.props.root.resModel]],
+                [],
+                {
                     context: this.props.context,
-                },
-                model: "ir.exports",
-                method: "search_read",
-            });
+                }
+            );
             await this.fetchFields();
         });
 
@@ -364,4 +364,12 @@ export class ExportDataDialog extends Component {
     }
 }
 ExportDataDialog.components = { CheckBox, Dialog, ExportDataItem };
+ExportDataDialog.props = {
+    close: { type: Function },
+    context: { type: Object, optional: true },
+    defaultExportList: { type: Array },
+    download: { type: Function },
+    getExportedFields: { type: Function },
+    root: { type: Object },
+};
 ExportDataDialog.template = "web.ExportDataDialog";

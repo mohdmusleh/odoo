@@ -140,7 +140,7 @@ export class ListRenderer extends Component {
 
         if (this.env.searchModel) {
             useBus(this.env.searchModel, "focus-view", () => {
-                if (this.props.list.model.useSampleModel || !this.showTable) {
+                if (this.props.list.model.useSampleModel) {
                     return;
                 }
 
@@ -180,7 +180,7 @@ export class ListRenderer extends Component {
             () => {
                 this.freezeColumnWidths();
             },
-            () => [this.state.columns, this.isEmpty, this.showTable]
+            () => [this.state.columns, this.isEmpty]
         );
         useExternalListener(window, "resize", () => {
             this.columnWidths = null;
@@ -210,9 +210,6 @@ export class ListRenderer extends Component {
     // The following code manipulates the DOM directly to avoid having to wait for a
     // render + patch which would occur on the next frame and cause flickering.
     freezeColumnWidths() {
-        if (!this.showTable) {
-            return;
-        }
         if (!this.keepColumnWidths) {
             this.columnWidths = null;
         }
@@ -333,7 +330,7 @@ export class ListRenderer extends Component {
     }
 
     get canResequenceRows() {
-        if (!this.props.list.canResequence()) {
+        if (!this.props.list.canResequence() || this.props.readonly) {
             return false;
         }
         const orderBy = this.props.list.orderBy;
@@ -1512,11 +1509,6 @@ export class ListRenderer extends Component {
         return !group.isFolded && group.list.limit < group.list.count;
     }
 
-    get showTable() {
-        const { model } = this.props.list;
-        return model.hasData() || !this.props.noContentHelp;
-    }
-
     toggleGroup(group) {
         group.toggle();
     }
@@ -1770,6 +1762,20 @@ export class ListRenderer extends Component {
      */
     sortStart({ element }) {
         element.classList.add("o_dragged");
+        const table = this.tableRef.el;
+        const headers = [...table.querySelectorAll("thead th")];
+        const cells = [...element.querySelectorAll("td")];
+        let headerIndex = 0;
+        for (const cell of cells) {
+            let width = 0;
+            for (let i = 0; i < cell.colSpan; i++) {
+                const header = headers[headerIndex + i];
+                const style = getComputedStyle(header);
+                width += parseFloat(style.width);
+            }
+            cell.style.width = `${width}px`;
+            headerIndex += cell.colSpan;
+        }
     }
 
     /**
@@ -1779,6 +1785,9 @@ export class ListRenderer extends Component {
      */
     sortStop({ element }) {
         element.classList.remove("o_dragged");
+        for (const cell of element.querySelectorAll("td")) {
+            cell.style.width = null;
+        }
     }
 
     ignoreEventInSelectionMode(ev) {
@@ -1818,6 +1827,7 @@ ListRenderer.props = [
     "editable?",
     "noContentHelp?",
     "nestedKeyOptionalFieldsData?",
+    "readonly?",
 ];
 ListRenderer.defaultProps = { hasSelectors: false, cycleOnTab: true };
 

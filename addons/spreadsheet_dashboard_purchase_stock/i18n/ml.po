@@ -37,7 +37,7 @@ msgstr ""
 #: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Amount"
-msgstr ""
+msgstr "തുക"
 
 #. module: spreadsheet_dashboard_purchase_stock
 #. openerp-web
@@ -68,14 +68,14 @@ msgstr ""
 #: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Buyer"
-msgstr ""
+msgstr "വാങ്ങുന്നയാൾ"
 
 #. module: spreadsheet_dashboard_purchase_stock
 #. openerp-web
 #: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Category"
-msgstr ""
+msgstr "കാറ്റഗറി"
 
 #. module: spreadsheet_dashboard_purchase_stock
 #. openerp-web
@@ -83,7 +83,7 @@ msgstr ""
 #: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Country"
-msgstr ""
+msgstr "രാജ്യം"
 
 #. module: spreadsheet_dashboard_purchase_stock
 #. openerp-web
@@ -140,7 +140,7 @@ msgstr ""
 #: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Order"
-msgstr ""
+msgstr "ഓർഡർ"
 
 #. module: spreadsheet_dashboard_purchase_stock
 #. openerp-web
@@ -159,14 +159,14 @@ msgstr ""
 #: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Orders"
-msgstr ""
+msgstr "ഓർഡർ "
 
 #. module: spreadsheet_dashboard_purchase_stock
 #. openerp-web
 #: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Period"
-msgstr ""
+msgstr "പീരീഡ്"
 
 #. module: spreadsheet_dashboard_purchase_stock
 #. openerp-web
@@ -182,7 +182,7 @@ msgstr ""
 #: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Product"
-msgstr "ഉൽപ്പന്നം"
+msgstr "പ്രോഡക്റ്റ്"
 
 #. module: spreadsheet_dashboard_purchase_stock
 #. openerp-web
@@ -346,7 +346,7 @@ msgstr ""
 #: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Transfer"
-msgstr ""
+msgstr "ട്രാൻസ്ഫെർ"
 
 #. module: spreadsheet_dashboard_purchase_stock
 #. openerp-web

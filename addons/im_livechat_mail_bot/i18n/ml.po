@@ -63,4 +63,4 @@ msgstr ""
 #. module: im_livechat_mail_bot
 #: model:ir.model,name:im_livechat_mail_bot.model_res_users
 msgid "User"
-msgstr "ഉപയോക്താവ്"
+msgstr "യൂസർ"
