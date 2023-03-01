@@ -220,6 +220,7 @@ const Wysiwyg = Widget.extend({
             direction: options.direction || localization.direction || 'ltr',
             collaborationClientAvatarUrl: `${browser.location.origin}/web/image?model=res.users&field=avatar_128&id=${this.getSession().uid}`,
             renderingClasses: ['o_dirty', 'o_transform_removal', 'oe_edited_link', 'o_menu_loading'],
+            foldSnippets: !!options.foldSnippets,
         }, editorCollaborationOptions));
 
         this.odooEditor.addEventListener('contentChanged', function () {
@@ -2510,7 +2511,7 @@ const Wysiwyg = Widget.extend({
         }
     },
     _getInitialHistoryId: function (value) {
-        const matchId = value.match(/data-last-history-steps="([0-9,]*?)"/);
+        const matchId = value.match(/data-last-history-steps="([0-9,]+)"/);
         return matchId && matchId[1];
     },
     /**

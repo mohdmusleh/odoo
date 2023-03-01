@@ -691,7 +691,8 @@ export class OdooEditor extends EventTarget {
         this._columnUi.remove();
     }
 
-    resetContent(value = '<p><br></p>') {
+    resetContent(value) {
+        value = value || '<p><br></p>';
         this.editable.innerHTML = value;
         this.sanitize();
         this.historyStep(true);
@@ -699,6 +700,10 @@ export class OdooEditor extends EventTarget {
         // to trigger a rollback when the content is reset using `innerHTML`.
         // Prevent this rollback as it would otherwise revert the new content.
         this._toRollback = false;
+        // Placeholder hint.
+        if (this.editable.textContent === '' && this.options.placeholder) {
+            this._makeHint(this.editable.firstChild, this.options.placeholder, true);
+        }
     }
 
     sanitize() {
@@ -2246,7 +2251,7 @@ export class OdooEditor extends EventTarget {
     _handleSelectionInTable(ev=undefined) {
         const selection = this.document.getSelection();
         // Selection could be gone if the document comes from an iframe that has been removed.
-        const anchorNode = selection && selection.getRangeAt(0) && selection.anchorNode;
+        const anchorNode = selection && selection.rangeCount && selection.getRangeAt(0) && selection.anchorNode;
         if (anchorNode && (closestElement(anchorNode, '[data-oe-protected="true"]') || !ancestors(anchorNode).includes(this.editable))) {
             return false;
         }
@@ -3527,6 +3532,12 @@ export class OdooEditor extends EventTarget {
      */
     _onSelectionChange() {
         const selection = this.document.getSelection();
+        if (!selection) {
+            // Because the `selectionchange` event is async, the selection can
+            // be null if the node has been removed between the moment the
+            // selection was moved and the moment the event is triggered.
+            return;
+        }
         const anchorNode = selection.anchorNode;
         if (anchorNode && closestElement(anchorNode, '[data-oe-protected="true"]')) {
             return;
