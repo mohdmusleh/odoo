@@ -12,7 +12,6 @@ var core = require('web.core');
 const dom = require('web.dom');
 var mixins = require('web.mixins');
 var publicWidget = require('web.public.widget');
-var utils = require('web.utils');
 const wUtils = require('website.utils');
 
 var qweb = core.qweb;
@@ -686,7 +685,10 @@ registry.mediaVideo = publicWidget.Widget.extend(MobileYoutubeAutoplayMixin, {
             iframeEl = this._generateIframe();
         }
 
-        if (!iframeEl) {
+        // We don't want to cause an error that would prevent entering edit mode
+        // if there is an iframe that doesn't have a src (this was possible for
+        // a while with the media dialog).
+        if (!iframeEl || !iframeEl.getAttribute('src')) {
             // Something went wrong: no iframe is present in the DOM and the
             // widget was unable to create one on the fly.
             return Promise.all(proms);
@@ -984,13 +986,25 @@ registry.anchorSlide = publicWidget.Widget.extend({
      * @private
      */
     _onAnimateClick: function (ev) {
-        if (this.$target[0].pathname !== window.location.pathname) {
-            return;
-        }
         var hash = this.$target[0].hash;
-        if (!utils.isValidAnchor(hash)) {
+        if (hash === '#top' || hash === '#bottom') {
+            // If the anchor targets #top or #bottom, directly call the
+            // "scrollTo" function. The reason is that the header or the footer
+            // could have been removed from the DOM. By receiving a string as
+            // parameter, the "scrollTo" function handles the scroll to the top
+            // or to the bottom of the document even if the header or the
+            // footer is removed from the DOM.
+            dom.scrollTo(hash, {
+                duration: 500,
+                extraOffset: this._computeExtraOffset(),
+            });
             return;
         }
+        if (!hash.length) {
+            return;
+        }
+        // Escape special characters to make the jQuery selector to work.
+        hash = '#' + $.escapeSelector(hash.substring(1));
         var $anchor = $(hash);
         const scrollValue = $anchor.attr('data-anchor');
         if (!$anchor.length || !scrollValue) {
@@ -1118,6 +1132,42 @@ registry.FooterSlideout = publicWidget.Widget.extend({
     },
 });
 
+registry.TopMenuCollapse = publicWidget.Widget.extend({
+    selector: "header #top_menu_collapse",
+
+    /**
+     * @override
+     */
+    async start() {
+        this.throttledResize = _.throttle(() => this._onResize(), 25);
+        window.addEventListener("resize", this.throttledResize);
+        return this._super(...arguments);
+    },
+    /**
+     * @override
+     */
+    destroy() {
+        this._super(...arguments);
+        window.removeEventListener("resize", this.throttledResize);
+    },
+
+    //--------------------------------------------------------------------------
+    // Handlers
+    //--------------------------------------------------------------------------
+
+    /**
+     * @private
+     */
+    _onResize() {
+        if (this.el.classList.contains("show")) {
+            const togglerEl = this.el.closest("nav").querySelector(".navbar-toggler");
+            if (getComputedStyle(togglerEl).display === "none") {
+                this.$el.collapse("hide");
+            }
+        }
+    },
+});
+
 registry.HeaderHamburgerFull = publicWidget.Widget.extend({
     selector: 'header:has(.o_header_hamburger_full_toggler):not(:has(.o_offcanvas_menu_toggler))',
     events: {
@@ -1179,6 +1229,20 @@ registry.BottomFixedElement = publicWidget.Widget.extend({
             return;
         }
 
+        // The bottom fixed elements are always hidden when a modal is open
+        // thanks to the CSS that is based on the 'modal-open' class added to
+        // the body. However, when the modal does not have a backdrop (e.g.
+        // cookies bar), this 'modal-open' class is not added. That's why we
+        // handle it here. Note that the popup widget code triggers a 'scroll'
+        // event when the modal is hidden to make the bottom fixed elements
+        // reappear.
+        if (this.el.querySelector('.s_popup_no_backdrop.show')) {
+            for (const el of $bottomFixedElements) {
+                el.classList.add('o_bottom_fixed_element_hidden');
+            }
+            return;
+        }
+
         this._restoreBottomFixedElements($bottomFixedElements);
         if ((this.$scrollingElement[0].offsetHeight + this.$scrollingElement[0].scrollTop) >= (this.$scrollingElement[0].scrollHeight - 2)) {
             const buttonEls = [...this.$('a:visible, .btn:visible')];
@@ -1217,9 +1281,25 @@ registry.WebsiteAnimate = publicWidget.Widget.extend({
     start() {
         this.lastScroll = 0;
         this.$scrollingElement = $().getScrollingElement();
+        this.$animatedElements = this.$('.o_animate');
+
+        // Fix for "transform: none" not overriding keyframe transforms on
+        // some iPhone using Safari. Note that all animated elements are checked
+        // (not only one) as the bug is not systematic and may depend on some
+        // other conditions (for example: an animated image in a block which is
+        // hidden on mobile would not have the issue).
+        const couldOverflowBecauseOfSafariBug = [...this.$animatedElements].some(el => {
+            return window.getComputedStyle(el).transform !== 'none';
+        });
+        this.forceOverflowXYHidden = false;
+        if (couldOverflowBecauseOfSafariBug) {
+            this._toggleOverflowXYHidden(true);
+            // Now prevent any call to _toggleOverflowXYHidden to have an effect
+            this.forceOverflowXYHidden = true;
+        }
+
         // By default, elements are hidden by the css of o_animate.
         // Render elements and trigger the animation then pause it in state 0.
-        this.$animatedElements = this.$target.find('.o_animate');
         _.each(this.$animatedElements, el => {
             if (el.closest('.dropdown')) {
                 el.classList.add('o_animate_in_dropdown');
@@ -1310,6 +1390,9 @@ registry.WebsiteAnimate = publicWidget.Widget.extend({
      * @param {Boolean} add
      */
     _toggleOverflowXYHidden(add) {
+        if (this.forceOverflowXYHidden) {
+            return;
+        }
         if (add) {
             this.$scrollingElement[0].classList.add('o_wanim_overflow_xy_hidden');
         } else if (!this.$scrollingElement.find('.o_animating').length) {
@@ -1353,9 +1436,9 @@ registry.WebsiteAnimate = publicWidget.Widget.extend({
             // Cookies bar might be opened and considered as a modal but it is
             // not really one (eg 'discrete' layout), and should not be used as
             // scrollTop value.
-            const scrollTop = document.body.classList.contains('modal-open') ?
-                this.$target.find('.modal:visible').scrollTop() :
-                this.$scrollingElement.scrollTop();
+            const $closestModal = $el.closest(".modal:visible");
+            const scrollTop = $closestModal[0] ?
+                $closestModal.scrollTop() : this.$scrollingElement.scrollTop();
             const elTop = this._getElementOffsetTop(el) - scrollTop;
             let visible;
             const footerEl = el.closest('.o_footer_slideout');

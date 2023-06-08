@@ -95,6 +95,18 @@ class Currency(models.Model):
         if group_user and group_mc:
             group_user.sudo()._remove_group(group_mc.sudo())
 
+    @api.constrains('active')
+    def _check_company_currency_stays_active(self):
+        if self._context.get('install_mode') or self._context.get('force_deactivate'):
+            # install_mode : At install, when this check is run, the "active" field of a currency added to a company will
+            #                still be evaluated as False, despite it's automatically set at True when added to the company.
+            # force_deactivate : Allows deactivation of a currency in tests to enable non multi_currency behaviors
+            return
+
+        currencies = self.filtered(lambda c: not c.active)
+        if self.env['res.company'].search([('currency_id', 'in', currencies.ids)]):
+            raise UserError(_("This currency is set on a company and therefore cannot be deactivated."))
+
     def _get_rates(self, company, date):
         if not self.ids:
             return {}
@@ -175,6 +187,17 @@ class Currency(models.Model):
                         amt_word=self.currency_subunit_label,
                         )
         return amount_words
+
+    def format(self, amount):
+        """Return ``amount`` formatted according to ``self``'s rounding rules, symbols and positions.
+
+           Also take care of removing the minus sign when 0.0 is negative
+
+           :param float amount: the amount to round
+           :return: formatted str
+        """
+        self.ensure_one()
+        return tools.format_amount(self.env, amount + 0.0, self)
 
     def round(self, amount):
         """Return ``amount`` rounded  according to ``self``'s rounding rules.

@@ -3,19 +3,19 @@
 # 	* hr_holidays
 # 
 # Translators:
-# Yoshi Tashiro (Quartile) <tashiro@roomsfor.hk>, 2022
 # Noma Yuki, 2022
 # Martin Trigaux, 2023
 # Andy Yiu, 2023
+# Ryoko Tsuda <ryoko@quartile.co>, 2023
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 10:33+0000\n"
+"POT-Creation-Date: 2023-04-14 05:51+0000\n"
 "PO-Revision-Date: 2022-09-22 05:46+0000\n"
-"Last-Translator: Andy Yiu, 2023\n"
-"Language-Team: Japanese (https://www.transifex.com/odoo/teams/41243/ja/)\n"
+"Last-Translator: Ryoko Tsuda <ryoko@quartile.co>, 2023\n"
+"Language-Team: Japanese (https://app.transifex.com/odoo/teams/41243/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -161,7 +161,7 @@ msgstr "%sオンタイムオフ:%。2f時間(複数の可能性あり)"
 #: code:addons/hr_holidays/models/hr_leave.py:0
 #, python-format
 msgid "%s: Time Off"
-msgstr ""
+msgstr "%s: 休暇"
 
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.report_holidayssummary
@@ -207,7 +207,7 @@ msgstr "(労働時間に基づく)"
 #: code:addons/hr_holidays/static/src/dashboard/time_off_card.xml:0
 #, python-format
 msgid "(valid until"
-msgstr ""
+msgstr "(有効期限"
 
 #. module: hr_holidays
 #: model:ir.model.fields.selection,name:hr_holidays.selection__hr_leave__request_hour_from__10
@@ -633,6 +633,9 @@ msgid ""
 "                           Time Off\n"
 "                        </span>"
 msgstr ""
+"<span class=\"o_stat_text\">\n"
+"                           休暇\n"
+"                        </span>"
 
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.edit_holiday_status_form
@@ -1079,7 +1082,7 @@ msgstr "割当"
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.edit_holiday_status_form
 msgid "Allow To Attach Supporting Document"
-msgstr ""
+msgstr "参考資料の添付を許可"
 
 #. module: hr_holidays
 #: model:ir.model.fields,help:hr_holidays.field_hr_leave_allocation__holiday_type
@@ -1212,7 +1215,7 @@ msgstr "暦年の終わりの未使用分"
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.hr_accrual_plan_view_form
 msgid "At the end of the year, unused accruals will be"
-msgstr ""
+msgstr "年の終わりの未使用分は"
 
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave__supported_attachment_ids
@@ -1396,7 +1399,7 @@ msgstr "取消済"
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.view_hr_holidays_filter
 msgid "Cancelled Time Off"
-msgstr ""
+msgstr "キャンセル済休暇"
 
 #. module: hr_holidays
 #: model:ir.model.fields,help:hr_holidays.field_hr_leave__category_id
@@ -2080,8 +2083,8 @@ msgid "Hour to"
 msgstr "時間から"
 
 #. module: hr_holidays
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/hr_holidays/models/hr_leave.py:0
 #: code:addons/hr_holidays/static/src/dashboard/time_off_card.xml:0
 #: code:addons/hr_holidays/static/src/dashboard/time_off_card.xml:0
@@ -2255,7 +2258,7 @@ msgstr "PTOを追跡します。"
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave_type__time_type
 msgid "Kind of Time Off"
-msgstr ""
+msgstr "休暇の種類"
 
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_holidays_cancel_leave____last_update
@@ -2449,7 +2452,7 @@ msgstr "上限"
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave_accrual_level__maximum_leave
 msgid "Limit to"
-msgstr ""
+msgstr "上限"
 
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave__linked_request_ids
@@ -2526,7 +2529,7 @@ msgstr "許可される最大休暇-すでに取得された休暇-承認待ち�
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave_accrual_level__postpone_max_days
 msgid "Maximum amount of accruals to transfer"
-msgstr ""
+msgstr "繰越上限"
 
 #. module: hr_holidays
 #: model:ir.model.fields.selection,name:hr_holidays.selection__hr_leave_accrual_level__first_month__may
@@ -2599,7 +2602,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave__my_activity_date_deadline
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave_allocation__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "活動の締切"
 
 #. module: hr_holidays
 #: model:ir.actions.act_window,name:hr_holidays.hr_leave_allocation_action_my
@@ -2694,7 +2697,7 @@ msgstr "新しい休暇"
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave__activity_calendar_event_id
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave_allocation__activity_calendar_event_id
 msgid "Next Activity Calendar Event"
-msgstr ""
+msgstr "次の活動カレンダーイベント"
 
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave__activity_date_deadline
@@ -2724,7 +2727,7 @@ msgstr "制限なし"
 #. module: hr_holidays
 #: model:ir.model.fields.selection,name:hr_holidays.selection__hr_leave_type__leave_validation_type__no_validation
 msgid "No Validation"
-msgstr "検証不要"
+msgstr "承認不要"
 
 #. module: hr_holidays
 #: model_terms:ir.actions.act_window,help:hr_holidays.action_hr_available_holidays_report
@@ -2848,7 +2851,7 @@ msgstr "オフティル"
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.hr_leave_report_calendar_view_search
 msgid "Off Today"
-msgstr ""
+msgstr "本日の休暇"
 
 #. module: hr_holidays
 #: model:res.groups,name:hr_holidays.group_hr_holidays_user
@@ -3108,7 +3111,7 @@ msgstr ""
 #. module: hr_holidays
 #: model:ir.ui.menu,name:hr_holidays.menu_hr_holidays_report
 msgid "Reporting"
-msgstr "レポート作成"
+msgstr "レポーティング"
 
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.res_users_view_form
@@ -3450,14 +3453,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave_type__support_document
 #: model_terms:ir.ui.view,arch_db:hr_holidays.hr_leave_view_form
 msgid "Supporting Document"
-msgstr ""
+msgstr "参考資料"
 
 #. module: hr_holidays
 #. odoo-python
 #: code:addons/hr_holidays/models/hr_leave.py:0
 #, python-format
 msgid "Supporting Documents"
-msgstr "サポートドキュメント"
+msgstr "参考資料"
 
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave__leave_type_request_unit
@@ -3482,9 +3485,9 @@ msgstr ""
 #. module: hr_holidays
 #: model:ir.model.fields,help:hr_holidays.field_hr_leave_accrual_level__start_count
 msgid ""
-"The accrual starts after a defined period from the employee start date. This"
-" field defines the number of days, months or years after which accrual is "
-"used."
+"The accrual starts after a defined period from the allocation start date. "
+"This field defines the number of days, months or years after which accrual "
+"is used."
 msgstr ""
 
 #. module: hr_holidays
@@ -3533,7 +3536,7 @@ msgstr "次の従業員は、その期間中は働くことになっていない
 msgid ""
 "The number of hours/days that will be incremented in the specified Time Off "
 "Type for every period"
-msgstr ""
+msgstr "指定された休暇タイプで期間ごとに増分される時間/日数"
 
 #. module: hr_holidays
 #. odoo-python
@@ -3935,7 +3938,7 @@ msgstr ""
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.view_hr_holidays_filter
 msgid "To Approve or Need Second Approval or Approved Time Off"
-msgstr ""
+msgstr "未承認 / 第2の承認待ち / 承認済"
 
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_employee__leave_date_to
@@ -3994,7 +3997,7 @@ msgstr ""
 #. module: hr_holidays
 #: model:hr.leave.type,name:hr_holidays.holiday_status_training
 msgid "Training Time Off"
-msgstr ""
+msgstr "研修休暇"
 
 #. module: hr_holidays
 #: model:ir.model.fields.selection,name:hr_holidays.selection__hr_leave_accrual_level__action_with_unused_accruals__postponed
@@ -4158,7 +4161,7 @@ msgstr "2番目の承認待ち"
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.hr_leave_report_calendar_view_search
 msgid "Waiting for Approval"
-msgstr ""
+msgstr "承認待ち"
 
 #. module: hr_holidays
 #: model:ir.model.fields.selection,name:hr_holidays.selection__hr_leave_accrual_level__week_day__wed
@@ -4288,6 +4291,14 @@ msgstr ""
 #: code:addons/hr_holidays/models/hr_leave.py:0
 #, python-format
 msgid "You can't manually archive/unarchive a time off."
+msgstr ""
+
+#. module: hr_holidays
+#. odoo-python
+#: code:addons/hr_holidays/models/hr_leave_allocation.py:0
+#, python-format
+msgid ""
+"You cannot archive an allocation which is in confirm or validate state."
 msgstr ""
 
 #. module: hr_holidays
@@ -4430,7 +4441,7 @@ msgstr ""
 #: code:addons/hr_holidays/static/src/dashboard/time_off_card.xml:0
 #, python-format
 msgid "available"
-msgstr "お買上可能"
+msgstr "取得可能"
 
 #. module: hr_holidays
 #: model:ir.ui.menu,name:hr_holidays.menu_hr_available_holidays_report_tree
@@ -4457,8 +4468,8 @@ msgid "day(s)"
 msgstr "日"
 
 #. module: hr_holidays
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/hr_holidays/models/hr_leave.py:0
 #: code:addons/hr_holidays/models/hr_leave_allocation.py:0
 #: code:addons/hr_holidays/models/hr_leave_allocation.py:0
@@ -4484,8 +4495,8 @@ msgid "e.g. Time Off type (From validity start to validity end / no limit)"
 msgstr ""
 
 #. module: hr_holidays
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/hr_holidays/models/hr_leave.py:0
 #: code:addons/hr_holidays/models/hr_leave_allocation.py:0
 #: code:addons/hr_holidays/models/hr_leave_allocation.py:0
@@ -4507,7 +4518,7 @@ msgstr "に"
 #: code:addons/hr_holidays/models/hr_leave_accrual_plan_level.py:0
 #, python-format
 msgid "last day"
-msgstr ""
+msgstr "末日"
 
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.hr_accrual_plan_view_form
@@ -4549,7 +4560,7 @@ msgstr ""
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.hr_accrual_plan_view_form
 msgid "postponed"
-msgstr "延期されます"
+msgstr "繰り越しされます"
 
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.hr_leave_allocation_view_kanban
@@ -4579,7 +4590,7 @@ msgstr "to"
 #: code:addons/hr_holidays/static/src/dashboard/time_off_card.xml:0
 #, python-format
 msgid "valid until"
-msgstr ""
+msgstr "有効期限"
 
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.hr_leave_report_calendar_view_search

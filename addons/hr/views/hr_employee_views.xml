@@ -112,7 +112,7 @@
                                                 options='{"always_reload": True, "highlight_first_line": True}'/>
                                             <field name="work_location_id" context="{'default_address_id': address_id}" />
                                         </group>
-                                        <group name="managers" string="Approvers" class="hide-group-if-empty">
+                                        <group name="managers" string="Approvers" class="hide-group-if-empty" invisible="1">
                                             <!-- is overridden in other hr related modules -->
                                         </group>
                                         <group name="departure" string="Departure" attrs="{'invisible': [('active', '=', True)]}">
@@ -138,7 +138,7 @@
                                                 'form_view_ref': 'base.res_partner_view_form_private'}"
                                             options='{"always_reload": True, "highlight_first_line": True}'/>
                                         <field name="private_email" string="Email"/>
-                                        <field name="phone" class="o_force_ltr" string="Phone" readonly="True"/>
+                                        <field name="phone" string="Phone" readonly="True"/>
                                         <field name="bank_account_id" context="{'default_partner_id': address_home_id}"/>
                                         <field name="lang" string="Language"/>
                                         <label for="km_home_work"/>
@@ -196,7 +196,7 @@
                                     <group string='Payroll' name="payroll_group">
                                         <field name="job_id"/>
                                     </group>
-                                    <group name="application_group"/>
+                                    <group name="application_group" string="Application Settings" invisible="1"/>
                                 </group>
                             </page>
                         </notebook>
@@ -225,7 +225,7 @@
                         class="oe_stat_button"
                         icon="fa-address-card-o"
                         type="object"
-                        attrs="{'invisible': [('related_contacts_count', '=', 0)]}">
+                        attrs="{'invisible': ['|', ('id', '=', False), ('related_contacts_count', '=', 0)]}">
                         <div class="o_field_widget o_stat_info">
                             <span class="o_stat_value"><field name="related_contacts_count"/></span>
                             <span class="o_stat_text">Contacts</span>

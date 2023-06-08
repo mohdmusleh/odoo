@@ -277,6 +277,25 @@ class TestWebsitePriceList(TransactionCase):
         self.assertEqual(sol.price_reduce, 10.0, 'Pricelist price should be applied')
         self.assertEqual(sol.price_total, 60.0)
 
+    def test_get_right_discount(self):
+        """ Test that `_get_sales_prices` from `product_template`
+        returns a dict with just `price_reduce` (no discount) as key
+        when the product is tax included.
+        """
+        tax = self.env['account.tax'].create({
+            'name': "Tax 10",
+            'amount': 10,
+        })
+
+        product = self.env['product.template'].create({
+            'name': 'Event Product',
+            'list_price': 10.0,
+            'taxes_id': tax,
+        })
+
+        prices = product._get_sales_prices(self.list_christmas)
+        self.assertFalse('base_price' in prices[product.id])
+
 
 def simulate_frontend_context(self, website_id=1):
     # Mock this method will be enough to simulate frontend context in most methods
@@ -583,3 +602,25 @@ class TestWebsitePriceListMultiCompany(TransactionCaseWithUserDemo):
         # The test is here: while having access only to self.company2 records,
         # archive should not raise an error
         self.c2_pl.with_user(self.demo_user).with_context(allowed_company_ids=self.company2.ids).write({'active': False})
+
+@tagged('post_install', '-at_install')
+class TestWebsiteSaleSession(HttpCaseWithUserPortal):
+
+    def test_update_pricelist_user_session(self):
+        """
+            The objective is to verify that the pricelist
+            changes correctly according to the user.
+        """
+        website = self.env.ref('website.default_website')
+        test_user = self.env['res.users'].create({
+            'name': 'Toto',
+            'login': 'toto',
+            'password': 'long_enough_password',
+        })
+        user_pricelist = self.env['product.pricelist'].create({
+            'name': 'User Pricelist',
+            'website_id': website.id,
+            'code': 'User_pricelist',
+        })
+        test_user.partner_id.property_product_pricelist = user_pricelist
+        self.start_tour("/shop", 'website_sale_shop_pricelist_tour', login="")

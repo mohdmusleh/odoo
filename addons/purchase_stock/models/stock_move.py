@@ -36,7 +36,7 @@ class StockMove(models.Model):
         order = line.order_id
         received_qty = line.qty_received
         if self.state == 'done':
-            received_qty -= self.product_uom._compute_quantity(self.quantity_done, line.product_uom)
+            received_qty -= self.product_uom._compute_quantity(self.quantity_done, line.product_uom, rounding_method='HALF-UP')
         if float_compare(line.qty_invoiced, received_qty, precision_rounding=line.product_uom.rounding) > 0:
             move_layer = line.move_ids.stock_valuation_layer_ids
             invoiced_layer = line.invoice_lines.stock_valuation_layer_ids
@@ -146,13 +146,6 @@ class StockMove(models.Model):
         vals['purchase_line_id'] = self.purchase_line_id.id
         return vals
 
-    def _prepare_procurement_values(self):
-        proc_values = super()._prepare_procurement_values()
-        if self.restrict_partner_id:
-            proc_values['supplierinfo_name'] = self.restrict_partner_id
-            self.restrict_partner_id = False
-        return proc_values
-
     def _clean_merged(self):
         super(StockMove, self)._clean_merged()
         self.write({'created_purchase_line_id': False})
@@ -207,4 +200,10 @@ class StockMove(models.Model):
         )
 
     def _get_all_related_aml(self):
-        return super()._get_all_related_aml() | self.purchase_line_id.invoice_lines.move_id.line_ids
+        # The back and for between account_move and account_move_line is necessary to catch the
+        # additional lines from a cogs correction
+        return super()._get_all_related_aml() | self.purchase_line_id.invoice_lines.move_id.line_ids.filtered(
+            lambda aml: aml.product_id == self.purchase_line_id.product_id)
+
+    def _get_all_related_sm(self, product):
+        return super()._get_all_related_sm(product) | self.filtered(lambda m: m.purchase_line_id.product_id == product)

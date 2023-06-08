@@ -115,7 +115,7 @@ class PricelistItem(models.Model):
     price_surcharge = fields.Float(
         string="Price Surcharge",
         digits='Product Price',
-        help="Specify the fixed amount to add or substract(if negative) to the amount calculated with the discount.")
+        help="Specify the fixed amount to add or subtract (if negative) to the amount calculated with the discount.")
 
     price_min_margin = fields.Float(
         string="Min. Price Margin",
@@ -262,6 +262,11 @@ class PricelistItem(models.Model):
             variants_rules.update({'applied_on': '0_product_variant'})
             template_rules.update({'applied_on': '1_product'})
             (self-variants_rules-template_rules).update({'applied_on': '3_global'})
+
+    @api.onchange('price_round')
+    def _onchange_price_round(self):
+        if any(item.price_round and item.price_round < 0.0 for item in self):
+            raise ValidationError(_("The rounding method must be strictly positive."))
 
     #=== CRUD METHODS ===#
 

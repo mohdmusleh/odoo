@@ -13,11 +13,12 @@
 # Filip Brenčič <brencicf5@gmail.com>, 2022
 # Matus Krnac <matus.krnac@gmail.com>, 2022
 # Jaroslav Bosansky <jaro.bosansky@ekoenergo.sk>, 2022
-# Jan Prokop, 2022
 # Martin Trigaux, 2022
 # SAKodoo <sak@odoo.com>, 2022
-# Damian Brencic <brencicdamian12313@gmail.com>, 2022
+# Damian Brencic <brencicdamian12313@gmail.com>, 2023
+# dominikkertys <dominik.kertys@26house.com>, 2023
 # Rastislav Brencic <rastislav.brencic@azet.sk>, 2023
+# Jan Prokop, 2023
 # 
 msgid ""
 msgstr ""
@@ -25,8 +26,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-02 10:35+0000\n"
 "PO-Revision-Date: 2022-09-22 05:55+0000\n"
-"Last-Translator: Rastislav Brencic <rastislav.brencic@azet.sk>, 2023\n"
-"Language-Team: Slovak (https://www.transifex.com/odoo/teams/41243/sk/)\n"
+"Last-Translator: Jan Prokop, 2023\n"
+"Language-Team: Slovak (https://app.transifex.com/odoo/teams/41243/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -100,7 +101,7 @@ msgstr ""
 #: code:addons/web/static/src/legacy/js/fields/basic_fields.js:0
 #, python-format
 msgid "%s days ago"
-msgstr ""
+msgstr "%s pred dňami"
 
 #. module: web
 #. odoo-javascript
@@ -367,7 +368,7 @@ msgstr ""
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
 msgid "<span>Payment terms: 30 Days</span>"
-msgstr ""
+msgstr "<span>Platobné podmienky: 30 dní</span>"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
@@ -878,6 +879,7 @@ msgstr ""
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/form/form_controller.js:0
 #: code:addons/web/static/src/legacy/js/views/form/form_controller.js:0
 #, python-format
 msgid "Are you sure that you want to archive this record?"
@@ -3842,7 +3844,7 @@ msgid ""
 "                    of\n"
 "                    <span class=\"topage\"/>"
 msgstr ""
-"Stránka:\n"
+"Strana:\n"
 "                    <span class=\"page\"/>\n"
 "                    z\n"
 "                    <span class=\"topage\"/>"
@@ -3851,7 +3853,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:web.external_layout_boxed
 #: model_terms:ir.ui.view,arch_db:web.external_layout_standard
 msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
-msgstr "Stránka: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr "Strana: <span class=\"page\"/> / <span class=\"topage\"/>"
 
 #. module: web
 #. odoo-javascript
@@ -4937,6 +4939,13 @@ msgstr "Zdielať so všetkými používateľmi"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/webclient/user_menu/user_menu_items.js:0
+#, python-format
+msgid "Shortcuts"
+msgstr "Skratky"
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
@@ -5989,6 +5998,21 @@ msgstr "Možno tomu neuveríte,<br />ale aplikácia sa v skutočnosti načítava
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/property_tags.js:0
+#, python-format
+msgid "You need to be able to edit parent first to add property tags"
+msgstr ""
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/properties_field.js:0
+#: code:addons/web/static/src/views/fields/properties/properties_field.js:0
+#, python-format
+msgid "You need to be able to edit parent first to configure property fields"
+msgstr ""
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/legacy/js/views/basic/basic_controller.js:0
 #: code:addons/web/static/src/views/fields/translation_button.js:0
 #, python-format
@@ -6187,7 +6211,7 @@ msgstr "dni"
 #: code:addons/web/static/src/views/fields/remaining_days/remaining_days_field.xml:0
 #, python-format
 msgid "days ago"
-msgstr ""
+msgstr "pred dňami"
 
 #. module: web
 #. odoo-javascript
@@ -6531,7 +6555,7 @@ msgstr ""
 #: code:addons/web/static/src/core/domain_selector/domain_selector_branch_operator.xml:0
 #, python-format
 msgid "none"
-msgstr ""
+msgstr "žiadny"
 
 #. module: web
 #. odoo-javascript

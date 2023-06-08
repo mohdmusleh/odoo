@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 10:33+0000\n"
+"POT-Creation-Date: 2023-05-23 08:22+0000\n"
 "PO-Revision-Date: 2022-09-22 05:55+0000\n"
 "Last-Translator: Sarah Park, 2023\n"
-"Language-Team: Korean (https://www.transifex.com/odoo/teams/41243/ko/)\n"
+"Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -341,71 +341,38 @@ msgstr "<br><b>%s</b>에서 품목을 사용할 수 없는 경우 이 위치로 
 msgid ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
 "    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
-"        Hello <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,<br/><br/>\n"
+"        Hello <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,<br><br>\n"
 "        We are glad to inform you that your order has been shipped.\n"
 "        <t t-if=\"hasattr(object, 'carrier_tracking_ref') and object.carrier_tracking_ref\">\n"
 "            Your tracking reference is\n"
 "            <strong>\n"
 "            <t t-if=\"object.carrier_tracking_url\">\n"
-"                <t t-set=\"multiple_carrier_tracking\" t-value=\"object.get_multiple_carrier_tracking()\"/>\n"
+"                <t t-set=\"multiple_carrier_tracking\" t-value=\"object.get_multiple_carrier_tracking()\"></t>\n"
 "                <t t-if=\"multiple_carrier_tracking\">\n"
 "                    <t t-foreach=\"multiple_carrier_tracking\" t-as=\"line\">\n"
-"                        <br/><a t-att-href=\"line[1]\" target=\"_blank\" t-out=\"line[0] or ''\"/>\n"
+"                        <br><a t-att-href=\"line[1]\" target=\"_blank\" t-out=\"line[0] or ''\"></a>\n"
 "                    </t>\n"
 "                </t>\n"
 "                <t t-else=\"\">\n"
-"                    <a t-attf-href=\"{{ object.carrier_tracking_url }}\" target=\"_blank\" t-out=\"object.carrier_tracking_ref or ''\"/>.\n"
+"                    <a t-attf-href=\"{{ object.carrier_tracking_url }}\" target=\"_blank\" t-out=\"object.carrier_tracking_ref or ''\"></a>.\n"
 "                </t>\n"
 "            </t>\n"
 "            <t t-else=\"\">\n"
-"                <t t-out=\"object.carrier_tracking_ref or ''\"/>.\n"
+"                <t t-out=\"object.carrier_tracking_ref or ''\"></t>.\n"
 "            </t>\n"
 "            </strong>\n"
 "        </t>\n"
-"        <br/><br/>\n"
-"        Please find your delivery order attached for more details.<br/><br/>\n"
+"        <br><br>\n"
+"        Please find your delivery order attached for more details.<br><br>\n"
 "        Thank you,\n"
 "        <t t-if=\"user.signature\">\n"
-"            <br/>\n"
-"            <t t-out=\"user.signature or ''\">--<br/>Mitchell Admin</t>\n"
+"            <br>\n"
+"            <t t-out=\"user.signature or ''\">--<br>Mitchell Admin</t>\n"
 "        </t>\n"
 "    </p>\n"
 "</div>\n"
 "        "
 msgstr ""
-"<div style=\"margin: 0px; padding: 0px;\">\n"
-"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
-"        안녕하세요 <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>님,<br/><br/>\n"
-"        고객님이 주문하신 상품이 발송되었음을 알려드립니다.\n"
-"        <t t-if=\"hasattr(object, 'carrier_tracking_ref') and object.carrier_tracking_ref\">\n"
-"            배송 조회 번호는 다음과 같습니다.\n"
-"            <strong>\n"
-"            <t t-if=\"object.carrier_tracking_url\">\n"
-"                <t t-set=\"multiple_carrier_tracking\" t-value=\"object.get_multiple_carrier_tracking()\"/>\n"
-"                <t t-if=\"multiple_carrier_tracking\">\n"
-"                    <t t-foreach=\"multiple_carrier_tracking\" t-as=\"line\">\n"
-"                        <br/><a t-att-href=\"line[1]\" target=\"_blank\" t-out=\"line[0] or ''\"/>\n"
-"                    </t>\n"
-"                </t>\n"
-"                <t t-else=\"\">\n"
-"                    <a t-attf-href=\"{{ object.carrier_tracking_url }}\" target=\"_blank\" t-out=\"object.carrier_tracking_ref or ''\"/>.\n"
-"                </t>\n"
-"            </t>\n"
-"            <t t-else=\"\">\n"
-"                <t t-out=\"object.carrier_tracking_ref or ''\"/>.\n"
-"            </t>\n"
-"            </strong>\n"
-"        </t>\n"
-"        <br/><br/>\n"
-"        자세한 내용은 첨부된 배송주문서를 확인하십시오.<br/><br/>\n"
-"        감사합니다.\n"
-"        <t t-if=\"user.signature\">\n"
-"            <br/>\n"
-"            <t t-out=\"user.signature or ''\">--<br/>Mitchell Admin</t>\n"
-"        </t>\n"
-"    </p>\n"
-"</div>\n"
-"        "
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.stock_scrap_view_kanban
@@ -559,11 +526,6 @@ msgstr "<span>패키지가 할당되지 않은 품목</span>"
 #: model_terms:ir.ui.view,arch_db:stock.report_delivery_document
 msgid "<span>Remaining quantities not yet delivered:</span>"
 msgstr "<span>아직 배송 되지 않은 잔여 수량:</span>"
-
-#. module: stock
-#: model_terms:ir.ui.view,arch_db:stock.stock_storage_category_form
-msgid "<span>kg</span>"
-msgstr "<span>kg</span>"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.stock_package_type_form
@@ -1162,8 +1124,8 @@ msgid "Automatic No Step Added"
 msgstr "추가 단계없이 자동화"
 
 #. module: stock
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/stock/models/stock_picking.py:0
 #: code:addons/stock/static/src/widgets/forecast_widget.xml:0
 #: model:ir.model.fields.selection,name:stock.selection__stock_move__state__assigned
@@ -1273,7 +1235,7 @@ msgstr ""
 msgid ""
 "Below text serves as a suggestion and doesn’t engage Odoo S.A. "
 "responsibility."
-msgstr ""
+msgstr "아래의 내용은 참고용으로만 제시되는 내용이며 Odoo S.A.는 해당 내용에 대한 책임을 지지 않습니다."
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__res_partner__picking_warn__block
@@ -2949,7 +2911,7 @@ msgstr "예상 설명"
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
 #: model_terms:ir.ui.view,arch_db:stock.view_warehouse_orderpoint_tree_editable
 msgid "Forecast Report"
-msgstr ""
+msgstr "예측 보고서"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_product_product__virtual_available
@@ -3027,6 +2989,7 @@ msgstr "예상 입고"
 
 #. module: stock
 #. odoo-javascript
+#: code:addons/stock/static/src/stock_forecasted/stock_forecasted.js:0
 #: code:addons/stock/static/src/widgets/forecast_widget.xml:0
 #: model:ir.actions.client,name:stock.stock_replenishment_product_product_action
 #: model:ir.actions.client,name:stock.stock_replenishment_product_template_action
@@ -3347,6 +3310,8 @@ msgid ""
 "services of a debt recovery company. All legal expenses will be payable by "
 "the client."
 msgstr ""
+"지급기일로부터 미결제 상태로 육십(60)일이 경과한 경우 당사 (시카고)는 해당 건에 대해 추심전문업체에 요청할 수 있는 권리를 "
+"가집니다. 관련된 모든 법적인 비용은 고객이 부담합니다."
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_storage_category__allow_new_product__same
@@ -3432,12 +3397,12 @@ msgstr "이 확인란을 선택하면 Odoo는 해당 품목, 공간 및 일련�
 msgid ""
 "If this checkbox is ticked, Odoo will automatically show the reception "
 "report (if there are moves to allocate to) when validating."
-msgstr ""
+msgstr "이 체크박스를 선택하면, Odoo에서 유효성 검사 시 수신된 보고서 (할당된 이동 내역이 있는 경우)를 자동으로 표시합니다."
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_picking_type__print_label
 msgid "If this checkbox is ticked, label will be print in this operation."
-msgstr ""
+msgstr "이 체크박스를 선택하면, 해당 작업에 대한 라벨을 인쇄합니다."
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_move__show_operations
@@ -3880,6 +3845,15 @@ msgstr "완료된 수량 편집 가능 여부"
 
 #. module: stock
 #. odoo-python
+#: code:addons/stock/models/stock_move_line.py:0
+#, python-format
+msgid ""
+"It is not allowed to import reserved quantity, you have to use the quantity "
+"directly."
+msgstr ""
+
+#. module: stock
+#. odoo-python
 #: code:addons/stock/models/stock_quant.py:0
 #, python-format
 msgid ""
@@ -3958,11 +3932,6 @@ msgid ""
 "Keep the <strong>Difference</strong> (the Counted Quantity will be updated "
 "to reflect the same difference as when you counted)"
 msgstr ""
-
-#. module: stock
-#: model_terms:ir.ui.view,arch_db:stock.report_lot_label
-msgid "LN/SN:"
-msgstr "LN/SN :"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_picking_label_type__label_type
@@ -4543,13 +4512,9 @@ msgstr "최대 수량"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_package_type__max_weight
 #: model:ir.model.fields,field_description:stock.field_stock_storage_category__max_weight
+#: model_terms:ir.ui.view,arch_db:stock.stock_storage_category_tree
 msgid "Max Weight"
 msgstr "최대 중량"
-
-#. module: stock
-#: model_terms:ir.ui.view,arch_db:stock.stock_storage_category_tree
-msgid "Max Weight (kg)"
-msgstr ""
 
 #. module: stock
 #: model:ir.model.constraint,message:stock.constraint_stock_package_type_positive_max_weight
@@ -4626,7 +4591,6 @@ msgid "Minimum Stock Rules"
 msgstr "최소 재고 규칙"
 
 #. module: stock
-#: model:ir.model.fields,field_description:stock.field_report_stock_quantity__move_ids
 #: model:ir.model.fields,field_description:stock.field_stock_assign_serial__move_id
 #: model:ir.model.fields,field_description:stock.field_stock_package_level__move_ids
 #: model:ir.model.fields,field_description:stock.field_stock_return_picking_line__move_id
@@ -4979,8 +4943,8 @@ msgid "Normal"
 msgstr "일반"
 
 #. module: stock
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/stock/models/stock_picking.py:0
 #: code:addons/stock/static/src/stock_forecasted/forecasted_details.xml:0
 #: code:addons/stock/static/src/widgets/forecast_widget.xml:0
@@ -6418,6 +6382,15 @@ msgstr "수량"
 #. odoo-python
 #: code:addons/stock/models/stock_quant.py:0
 #, python-format
+msgid ""
+"Quants are auto-deleted when appropriate. If you must manually delete them, "
+"please ask a stock manager to do it."
+msgstr ""
+
+#. module: stock
+#. odoo-python
+#: code:addons/stock/models/stock_quant.py:0
+#, python-format
 msgid "Quants cannot be created for consumables or services."
 msgstr "소비재 또는 서비스에 대해 퀀트를 생성할 수 없습니다."
 
@@ -7008,7 +6981,7 @@ msgstr ""
 #. module: stock
 #: model_terms:res.company,invoice_terms_html:stock.res_company_1
 msgid "STANDARD TERMS AND CONDITIONS OF SALE"
-msgstr ""
+msgstr "표준 판매 조건"
 
 #. module: stock
 #. odoo-javascript
@@ -7158,7 +7131,7 @@ msgstr "상품 출고 전달 그리고 배송 (2단계)"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__module_delivery_sendcloud
 msgid "Sendcloud Connector"
-msgstr ""
+msgstr "Sendcloud 연결기"
 
 #. module: stock
 #: model:mail.template,description:stock.mail_template_data_delivery_confirmation
@@ -7192,7 +7165,7 @@ msgstr "순서"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_picking_type__sequence_code
 msgid "Sequence Prefix"
-msgstr ""
+msgstr "순서 접두사"
 
 #. module: stock
 #. odoo-python
@@ -7792,7 +7765,7 @@ msgstr "재고 규칙 보고서"
 #. module: stock
 #: model:ir.model,name:stock.model_stock_replenishment_info
 msgid "Stock supplier replenishment information"
-msgstr ""
+msgstr "재고 공급업체 보충 정보"
 
 #. module: stock
 #: model:ir.model,name:stock.model_stock_replenishment_option
@@ -7985,6 +7958,8 @@ msgid ""
 "order to be valid, any derogation must be expressly agreed to in advance in "
 "writing."
 msgstr ""
+"이와 같은 표준 판매 이용약관 이전 건에 대해서도, 고객은 자체 표준 이용약관 적용을 명시적으로 철회하게 됩니다. 내용이 효력을 "
+"가지려면, 모든 예외 사항에 대하여 사전에 명확히 서면 동의를 마쳐야 합니다. "
 
 #. module: stock
 #. odoo-python
@@ -8365,6 +8340,15 @@ msgid ""
 msgstr ""
 
 #. module: stock
+#. odoo-python
+#: code:addons/stock/models/product.py:0
+#, python-format
+msgid ""
+"This product's company cannot be changed as long as there are stock moves of"
+" it belonging to another company."
+msgstr ""
+
+#. module: stock
 #: model:ir.model.fields,help:stock.field_stock_change_product_qty__new_quantity
 msgid ""
 "This quantity is expressed in the Default Unit of Measure of the product."
@@ -8714,7 +8698,7 @@ msgstr "유형"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_partner_stock_warnings_form
 msgid "Type a message..."
-msgstr ""
+msgstr "메시지를 입력하세요."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__picking_code
@@ -8804,6 +8788,11 @@ msgid "Unit of Measure Name"
 msgstr "단위명"
 
 #. module: stock
+#: model:ir.model.fields,field_description:stock.field_product_replenish__product_uom_id
+msgid "Unit of measure"
+msgstr ""
+
+#. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
 msgid "Units Of Measure"
 msgstr "단위"
@@ -8817,11 +8806,6 @@ msgstr "단위"
 #: model:ir.ui.menu,name:stock.product_uom_menu
 msgid "Units of Measures"
 msgstr "단위"
-
-#. module: stock
-#: model:ir.model.fields,field_description:stock.field_product_replenish__product_uom_id
-msgid "Unity of measure"
-msgstr "측정 통일"
 
 #. module: stock
 #. odoo-python
@@ -9228,6 +9212,11 @@ msgstr "무게"
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_package_type__base_weight
 msgid "Weight of the package type"
+msgstr ""
+
+#. module: stock
+#: model:ir.model.fields,field_description:stock.field_stock_storage_category__weight_uom_name
+msgid "Weight unit"
 msgstr ""
 
 #. module: stock
@@ -9741,6 +9730,13 @@ msgstr "한 번에 하나의 선별만 반환할 수 있습니다."
 #. odoo-python
 #: code:addons/stock/models/stock_picking.py:0
 #, python-format
+msgid "You might want to update the locations of this transfer's operations"
+msgstr ""
+
+#. module: stock
+#. odoo-python
+#: code:addons/stock/models/stock_picking.py:0
+#, python-format
 msgid ""
 "You need to activate storage locations to be able to do internal operation "
 "types."
@@ -9774,7 +9770,7 @@ msgstr "품목 %s의 Lot/Serial 번호를 지정해야 합니다."
 #. module: stock
 #: model_terms:res.company,invoice_terms_html:stock.res_company_1
 msgid "You should update this document to reflect your T&amp;C."
-msgstr ""
+msgstr "귀사의 이용약관을 반영하여 이 문서를 업데이트해야 합니다."
 
 #. module: stock
 #. odoo-python
@@ -9902,7 +9898,7 @@ msgstr "예. PO0032"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_location_form
 msgid "e.g. Physical Locations"
-msgstr ""
+msgstr "예: 실제 위치하고 있는 장소"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_type_form

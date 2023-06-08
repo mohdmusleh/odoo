@@ -199,6 +199,14 @@ class AccountPayment(models.Model):
             self.journal_id.outbound_payment_method_line_ids.payment_account_id,
         )
 
+    def _get_aml_default_display_map(self):
+        return {
+            ('outbound', 'customer'): _("Customer Reimbursement"),
+            ('inbound', 'customer'): _("Customer Payment"),
+            ('outbound', 'supplier'): _("Vendor Payment"),
+            ('inbound', 'supplier'): _("Vendor Reimbursement"),
+        }
+
     def _get_aml_default_display_name_list(self):
         """ Hook allowing custom values when constructing the default label to set on the journal items.
 
@@ -212,12 +220,7 @@ class AccountPayment(models.Model):
             ]
         """
         self.ensure_one()
-        display_map = {
-            ('outbound', 'customer'): _("Customer Reimbursement"),
-            ('inbound', 'customer'): _("Customer Payment"),
-            ('outbound', 'supplier'): _("Vendor Payment"),
-            ('inbound', 'supplier'): _("Vendor Reimbursement"),
-        }
+        display_map = self._get_aml_default_display_map()
         values = [
             ('label', _("Internal Transfer") if self.is_internal_transfer else display_map[(self.payment_type, self.partner_type)]),
             ('sep', ' '),
@@ -437,7 +440,7 @@ class AccountPayment(models.Model):
             else:
                 pay.payment_method_line_id = False
 
-    @api.depends('payment_type', 'journal_id')
+    @api.depends('payment_type', 'journal_id', 'currency_id')
     def _compute_payment_method_line_fields(self):
         for pay in self:
             pay.available_payment_method_line_ids = pay.journal_id._get_available_payment_method_lines(pay.payment_type)
@@ -563,9 +566,10 @@ class AccountPayment(models.Model):
             self.reconciled_statement_lines_count = 0
             return
 
-        self.env['account.move'].flush_model()
-        self.env['account.move.line'].flush_model()
-        self.env['account.partial.reconcile'].flush_model()
+        self.env['account.payment'].flush_model(fnames=['move_id', 'outstanding_account_id'])
+        self.env['account.move'].flush_model(fnames=['move_type', 'payment_id', 'statement_line_id'])
+        self.env['account.move.line'].flush_model(fnames=['move_id', 'account_id', 'statement_line_id'])
+        self.env['account.partial.reconcile'].flush_model(fnames=['debit_move_id', 'credit_move_id'])
 
         self._cr.execute('''
             SELECT
@@ -611,7 +615,6 @@ class AccountPayment(models.Model):
                 ARRAY_AGG(DISTINCT counterpart_line.statement_line_id) AS statement_line_ids
             FROM account_payment payment
             JOIN account_move move ON move.id = payment.move_id
-            JOIN account_journal journal ON journal.id = move.journal_id
             JOIN account_move_line line ON line.move_id = move.id
             JOIN account_account account ON account.id = line.account_id
             JOIN account_partial_reconcile part ON
@@ -671,7 +674,7 @@ class AccountPayment(models.Model):
 
     def new(self, values=None, origin=None, ref=None):
         payment = super(AccountPayment, self.with_context(is_payment=True)).new(values, origin, ref)
-        if not payment.journal_id:  # might not be computed because declared by inheritance
+        if not payment.journal_id and not payment.default_get(['journal_id']):  # might not be computed because declared by inheritance
             payment.move_id._compute_journal_id()
         return payment
 
@@ -689,7 +692,7 @@ class AccountPayment(models.Model):
             vals['move_type'] = 'entry'
 
         payments = super(AccountPayment, self.with_context(is_payment=True))\
-            .create(vals_list)\
+            .create([{'name': '/', **vals} for vals in vals_list])\
             .with_context(is_payment=False)
 
         for i, pay in enumerate(payments):
@@ -709,7 +712,10 @@ class AccountPayment(models.Model):
                 to_write['line_ids'] = [(0, 0, line_vals) for line_vals in pay._prepare_move_line_default_vals(write_off_line_vals=write_off_line_vals)]
 
             pay.move_id.write(to_write)
+            self.env.add_to_compute(self.env['account.move']._fields['name'], pay.move_id)
 
+        # We need to reset the cached name, since it was recomputed on the delegate account.move model
+        payments.invalidate_recordset(fnames=['name'])
         return payments
 
     def write(self, vals):
@@ -865,12 +871,14 @@ class AccountPayment(models.Model):
             # Update the existing journal items.
             # If dealing with multiple write-off lines, they are dropped and a new one is generated.
 
-            pay.move_id.write({
-                'partner_id': pay.partner_id.id,
-                'currency_id': pay.currency_id.id,
-                'partner_bank_id': pay.partner_bank_id.id,
-                'line_ids': line_ids_commands,
-            })
+            pay.move_id\
+                .with_context(skip_invoice_sync=True)\
+                .write({
+                    'partner_id': pay.partner_id.id,
+                    'currency_id': pay.currency_id.id,
+                    'partner_bank_id': pay.partner_bank_id.id,
+                    'line_ids': line_ids_commands,
+                })
 
     def _create_paired_internal_transfer_payment(self):
         ''' When an internal transfer is posted, a paired payment is created

@@ -10,6 +10,7 @@ var time = require('web.time');
 var utils = require('web.utils');
 var { Gui } = require('point_of_sale.Gui');
 const { batched, uuidv4 } = require("point_of_sale.utils");
+const { escape } = require("@web/core/utils/strings");
 
 var QWeb = core.qweb;
 var _t = core._t;
@@ -322,7 +323,7 @@ class PosGlobalState extends PosModel {
                 reject();
             };
             this.company_logo.crossOrigin = "anonymous";
-            this.company_logo.src = '/web/binary/company_logo' + '?dbname=' + this.env.session.db + '&company=' + this.company.id + '&_' + Math.random();
+            this.company_logo.src = `/web/image?model=res.company&id=${this.company.id}&field=logo`;
         });
 
     }
@@ -1317,6 +1318,9 @@ class PosGlobalState extends PosModel {
         this.db.update_partners(partnerWithUpdatedTotalDue);
         return partnerWithUpdatedTotalDue;
     }
+    doNotAllowRefundAndSales() {
+        return false;
+    }
 }
 PosGlobalState.prototype.electronic_payment_interfaces = {};
 Registries.Model.add(PosGlobalState);
@@ -1339,6 +1343,15 @@ function register_payment_method(use_payment_terminal, ImplementedPaymentInterfa
 
 
 class Product extends PosModel {
+    constructor(obj) {
+        super(obj);
+        this.parent_category_ids = [];
+        let category = this.categ.parent;
+        while (category) {
+            this.parent_category_ids.push(category.id);
+            category = category.parent;
+        }
+    }
     isAllowOnlyOneLot() {
         const productUnit = this.get_unit();
         return this.tracking === 'lot' || !productUnit || !productUnit.is_pos_groupable;
@@ -1353,6 +1366,13 @@ class Product extends PosModel {
             return undefined;
         }
         return this.pos.units_by_id[unit_id];
+    }
+    isPricelistItemUsable(item, date) {
+        return (
+            (!item.categ_id || _.contains(this.parent_category_ids.concat(this.categ.id), item.categ_id[0])) &&
+            (!item.date_start || moment.utc(item.date_start).isSameOrBefore(date)) &&
+            (!item.date_end || moment.utc(item.date_end).isSameOrAfter(date))
+        );
     }
     // Port of _get_product_price on product.pricelist.
     //
@@ -1377,18 +1397,12 @@ class Product extends PosModel {
             ));
         }
 
-        var category_ids = [];
-        var category = this.categ;
-        while (category) {
-            category_ids.push(category.id);
-            category = category.parent;
-        }
-
-        var pricelist_items = _.filter(self.applicablePricelistItems[pricelist.id], function (item) {
-            return (! item.categ_id || _.contains(category_ids, item.categ_id[0])) &&
-                   (! item.date_start || moment.utc(item.date_start).isSameOrBefore(date)) &&
-                   (! item.date_end || moment.utc(item.date_end).isSameOrAfter(date));
-        });
+        var pricelist_items = _.filter(
+            self.applicablePricelistItems[pricelist.id],
+            function (item) {
+                return self.isPricelistItemUsable(item, date);
+            }
+        );
 
         var price = self.lst_price;
         if (price_extra){
@@ -1466,6 +1480,7 @@ class Orderline extends PosModel {
         this.pos   = options.pos;
         this.order = options.order;
         this.price_manually_set = options.price_manually_set || false;
+        this.price_automatically_set = options.price_automatically_set || false;
         if (options.json) {
             try {
                 this.init_from_JSON(options.json);
@@ -1499,6 +1514,7 @@ class Orderline extends PosModel {
         this.set_product_lot(this.product);
         this.price = json.price_unit;
         this.price_manually_set = json.price_manually_set;
+        this.price_automatically_set = json.price_automatically_set;
         this.set_discount(json.discount);
         this.set_quantity(json.qty, 'do not recompute unit price');
         this.set_description(json.description);
@@ -1531,6 +1547,7 @@ class Orderline extends PosModel {
         orderline.price = this.price;
         orderline.selected = false;
         orderline.price_manually_set = this.price_manually_set;
+        orderline.price_automatically_set = this.price_automatically_set;
         orderline.customerNote = this.customerNote;
         return orderline;
     }
@@ -1674,7 +1691,7 @@ class Orderline extends PosModel {
         }
 
         // just like in sale.order changing the quantity will recompute the unit price
-        if(! keep_price && ! this.price_manually_set){
+        if(! keep_price && ! (this.price_manually_set || this.price_automatically_set)){
             this.set_unit_price(this.product.get_price(this.order.pricelist, this.get_quantity(), this.get_price_extra()));
             this.order.fix_tax_included_price(this);
         }
@@ -1812,7 +1829,8 @@ class Orderline extends PosModel {
             price_extra: this.get_price_extra(),
             customer_note: this.get_customer_note(),
             refunded_orderline_id: this.refunded_orderline_id,
-            price_manually_set: this.price_manually_set
+            price_manually_set: this.price_manually_set,
+            price_automatically_set: this.price_automatically_set,
         };
     }
     //used to create a json of the ticket, to be sent to the printer
@@ -1826,9 +1844,10 @@ class Orderline extends PosModel {
             discount:           this.get_discount(),
             product_name:       this.get_product().display_name,
             product_name_wrapped: this.generate_wrapped_product_name(),
-            price_lst:          this.get_lst_price(),
+            price_lst:          this.get_taxed_lst_unit_price(),
             fixed_lst_price:    this.get_fixed_lst_price(),
             price_manually_set: this.price_manually_set,
+            price_automatically_set: this.price_automatically_set,
             display_discount_policy:    this.display_discount_policy(),
             price_display_one:  this.get_display_price_one(),
             price_display :     this.get_display_price(),
@@ -1840,6 +1859,7 @@ class Orderline extends PosModel {
             product_description_sale: this.get_product().description_sale,
             pack_lot_lines:      this.get_lot_lines(),
             customer_note:      this.get_customer_note(),
+            taxed_lst_unit_price: this.get_taxed_lst_unit_price(),
         };
     }
     generate_wrapped_product_name() {
@@ -1918,14 +1938,15 @@ class Orderline extends PosModel {
         }
     }
     get_taxed_lst_unit_price(){
-        var lst_price = this.get_lst_price();
+        var lst_price = this.compute_fixed_price(this.get_lst_price());
         if (this.pos.config.iface_tax_included === 'total') {
             var product =  this.get_product();
             var taxes_ids = product.taxes_id;
             var product_taxes = this.pos.get_taxes_after_fp(taxes_ids);
             return this.compute_all(product_taxes, lst_price, 1, this.pos.currency.rounding).total_included;
         }
-        return lst_price;
+        var digits = this.pos.dp['Product Price'];
+        return lst_price.toFixed(digits)
     }
     get_price_without_tax(){
         return this.get_all_prices().priceWithoutTax;
@@ -1974,14 +1995,16 @@ class Orderline extends PosModel {
      * @returns {Number} the total amount of price included taxes
      */
     get_total_taxes_included_in_price() {
-        return this.get_taxes()
+        const productTaxes = this._getProductTaxesAfterFiscalPosition();
+        const taxDetails = this.get_tax_details();
+        return productTaxes
             .filter(tax => tax.price_include)
-            .reduce((sum, tax) => sum + this.get_tax_details()[tax.id],
+            .reduce((sum, tax) => sum + taxDetails[tax.id],
             0
         );
     }
-    _map_tax_fiscal_position(tax, order = false) {
-        return this.pos._map_tax_fiscal_position(tax, order);
+    _mapTaxFiscalPosition(tax, order = false) {
+        return this.pos._mapTaxFiscalPosition(tax, order);
     }
     /**
      * Mirror JS method of:
@@ -1998,6 +2021,17 @@ class Orderline extends PosModel {
      */
     compute_all(taxes, price_unit, quantity, currency_rounding, handle_price_include=true) {
         return this.pos.compute_all(taxes, price_unit, quantity, currency_rounding, handle_price_include);
+    }
+    /**
+     * Calculates the taxes for a product, and converts the taxes based on the fiscal position of the order.
+     *
+     * @returns {Object} The calculated product taxes after filtering and fiscal position conversion.
+     */
+    _getProductTaxesAfterFiscalPosition() {
+        const product = this.get_product();
+        let taxesIds = this.tax_ids || product.taxes_id;
+        taxesIds = _.filter(taxesIds, t => t in this.pos.taxes_by_id);
+        return this.pos.get_taxes_after_fp(taxesIds, this.order.fiscal_position);
     }
     get_all_prices(qty = this.get_quantity()){
         var price_unit = this.get_unit_price() * (1.0 - (this.get_discount() / 100.0));
@@ -2060,7 +2094,7 @@ class Orderline extends PosModel {
         return this.compute_fixed_price(this.get_lst_price());
     }
     get_lst_price(){
-        return this.product.lst_price;
+        return this.product.get_price(this.pos.default_pricelist, 1, 0)
     }
     set_lst_price(price){
       this.order.assert_editable();
@@ -2233,11 +2267,12 @@ class Payment extends PosModel {
     }
     //exports as JSON for receipt printing
     export_for_printing(){
+        const ticket = escape(this.ticket).replace(/\n/g, "<br />"); // formatting
         return {
             cid: this.cid,
             amount: this.get_amount(),
             name: this.name,
-            ticket: Markup(this.ticket),
+            ticket: Markup(ticket),
         };
     }
     // If payment status is a non-empty string, then it is an electronic payment.
@@ -2272,7 +2307,6 @@ class Order extends PosModel {
         this.pos_session_id = this.pos.pos_session.id;
         this.cashier        = this.pos.get_cashier();
         this.finalized      = false; // if true, cannot be modified.
-        this.set_pricelist(this.pos.default_pricelist);
 
         this.partner = null;
 
@@ -2293,6 +2327,7 @@ class Order extends PosModel {
         if (options.json) {
             this.init_from_JSON(options.json);
         } else {
+            this.set_pricelist(this.pos.default_pricelist);
             this.sequence_number = this.pos.pos_session.sequence_number++;
             this.access_token = uuidv4();  // unique uuid used to identify the authenticity of the request from the QR code.
             this.uid  = this.generate_unique_id();
@@ -2363,7 +2398,7 @@ class Order extends PosModel {
         } else {
             partner = null;
         }
-        this.set_partner(partner);
+        this.partner = partner;
 
         this.temporary = false;     // FIXME
         this.to_invoice = false;    // FIXME
@@ -2618,7 +2653,7 @@ class Order extends PosModel {
     }
     _get_tax_group_key(line) {
         return line
-            .get_taxes()
+            ._getProductTaxesAfterFiscalPosition()
             .map(tax => tax.id)
             .join(',');
     }
@@ -2678,7 +2713,7 @@ class Order extends PosModel {
                 if (lines[i].get_product() === tip_product) {
                     lines[i].set_unit_price(tip);
                     lines[i].set_lst_price(tip);
-                    lines[i].price_manually_set = true;
+                    lines[i].price_automatically_set = true;
                     lines[i].order.tip_amount = tip;
                     return;
                 }
@@ -2688,7 +2723,7 @@ class Order extends PosModel {
               quantity: 1,
               price: tip,
               lst_price: tip,
-              extras: {price_manually_set: true},
+              extras: {price_automatically_set: true},
             });
         }
     }
@@ -2700,7 +2735,7 @@ class Order extends PosModel {
         this.pricelist = pricelist;
 
         var lines_to_recompute = _.filter(this.get_orderlines(), function (line) {
-            return ! line.price_manually_set;
+            return ! (line.price_manually_set || line.price_automatically_set);
         });
         _.each(lines_to_recompute, function (line) {
             line.set_unit_price(line.product.get_price(self.pricelist, line.get_quantity(), line.get_price_extra()));
@@ -2717,7 +2752,21 @@ class Order extends PosModel {
         line.set_unit_price(line.compute_fixed_price(line.price));
     }
 
+    _isRefundAndSaleOrder() {
+        if (this.orderlines.length && this.orderlines[0].refunded_orderline_id) {
+            return true;
+        }
+        return false;
+    }
+
     add_product(product, options){
+        if(this.pos.doNotAllowRefundAndSales() && this.orderlines[0] && this.orderlines[0].refunded_orderline_id) {
+            Gui.showPopup('ErrorPopup', {
+                title: _t('Refund and Sales not allowed'),
+                body: _t('It is not allowed to mix refunds and sales')
+            });
+            return;
+        }
         if(this._printed){
             // when adding product with a barcode while being in receipt screen
             this.pos.removeOrder(this);
@@ -2927,6 +2976,13 @@ class Order extends PosModel {
     _get_ignored_product_ids_total_discount() {
         return [];
     }
+    _reduce_total_discount_callback(sum, orderLine) {
+        sum += (orderLine.get_unit_price() * (orderLine.get_discount()/100) * orderLine.get_quantity());
+        if (orderLine.display_discount_policy() === 'without_discount'){
+            sum += ((orderLine.get_taxed_lst_unit_price() - orderLine.get_unit_price()) * orderLine.get_quantity());
+        }
+        return sum;
+    }
     get_total_discount() {
         const ignored_product_ids = this._get_ignored_product_ids_total_discount()
         return round_pr(this.orderlines.reduce((sum, orderLine) => {
@@ -3086,8 +3142,8 @@ class Order extends PosModel {
                 var rounding_method = this.pos.cash_rounding[0].rounding_method;
                 var remaining = this.get_total_with_tax() - this.get_total_paid();
                 var sign = this.get_total_with_tax() > 0 ? 1.0 : -1.0;
-                if(this.get_total_with_tax() < 0 && remaining > 0 || this.get_total_with_tax() > 0 && remaining < 0) {
-                    rounding_method = rounding_method.endsWith("UP") ? "DOWN" : "UP";
+                if(rounding_method !== "HALF-UP" && (this.get_total_with_tax() < 0 && remaining > 0 || this.get_total_with_tax() > 0 && remaining < 0)) {
+                    rounding_method = rounding_method === "UP" ? "DOWN" : "UP";
                 }
 
                 remaining *= sign;
@@ -3110,6 +3166,9 @@ class Order extends PosModel {
                     rounding_applied -= this.pos.cash_rounding[0].rounding;
                 }
                 else if(rounding_method === "DOWN" && rounding_applied < 0 && remaining < 0){
+                    rounding_applied += this.pos.cash_rounding[0].rounding;
+                }
+                else if(rounding_method === "HALF-UP" && rounding_applied === this.pos.cash_rounding[0].rounding / -2){
                     rounding_applied += this.pos.cash_rounding[0].rounding;
                 }
                 return sign * rounding_applied;

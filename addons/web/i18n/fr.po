@@ -3,7 +3,6 @@
 # 	* web
 # 
 # Translators:
-# Xavier Belmere <Info@cartmeleon.com>, 2022
 # e2f <projects@e2f.com>, 2022
 # Melanie Bernard <mbe@odoo.com>, 2022
 # Nathan Grognet <ngr@odoo.com>, 2022
@@ -18,7 +17,7 @@ msgstr ""
 "POT-Creation-Date: 2023-02-02 10:35+0000\n"
 "PO-Revision-Date: 2022-09-22 05:55+0000\n"
 "Last-Translator: Jolien De Paepe, 2023\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"Language-Team: French (https://app.transifex.com/odoo/teams/41243/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -889,6 +888,7 @@ msgstr "Êtes-vous sûr de vouloir archiver tous ces enregistrements ?"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/form/form_controller.js:0
 #: code:addons/web/static/src/legacy/js/views/form/form_controller.js:0
 #, python-format
 msgid "Are you sure that you want to archive this record?"
@@ -1670,14 +1670,14 @@ msgstr "Créer %s"
 #: code:addons/web/static/src/legacy/js/fields/relational_fields.js:0
 #, python-format
 msgid "Create and Edit..."
-msgstr "Créer et modifier..."
+msgstr "Créer et éditer..."
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/views/fields/relational_utils.js:0
 #, python-format
 msgid "Create and edit..."
-msgstr "Créer et modifier..."
+msgstr "Créer et éditer..."
 
 #. module: web
 #. odoo-javascript
@@ -1983,7 +1983,7 @@ msgstr "Ignorer l'enregistrement"
 #. module: web
 #: model:ir.model.fields,field_description:web.field_base_document_layout__display_name
 msgid "Display Name"
-msgstr "Afficher le nom"
+msgstr "Nom d'affichage"
 
 #. module: web
 #. odoo-javascript
@@ -2132,21 +2132,21 @@ msgstr "Dupliquer"
 #: code:addons/web/static/src/views/kanban/kanban_record_quick_create.xml:0
 #, python-format
 msgid "Edit"
-msgstr "Modifier"
+msgstr "Éditer"
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/webclient/actions/debug_items.js:0
 #, python-format
 msgid "Edit Action"
-msgstr "Modifier l’action"
+msgstr "Éditer l’action"
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/legacy/js/views/kanban/kanban_column.js:0
 #, python-format
 msgid "Edit Column"
-msgstr "Modifier la colonne"
+msgstr "Éditer la colonne"
 
 #. module: web
 #. odoo-javascript
@@ -2154,14 +2154,14 @@ msgstr "Modifier la colonne"
 #: code:addons/web/static/src/views/fields/domain/domain_field.xml:0
 #, python-format
 msgid "Edit Domain"
-msgstr "Modifier le domaine"
+msgstr "Éditer le domaine"
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/views/debug_items.js:0
 #, python-format
 msgid "Edit SearchView"
-msgstr "Modifier la vue de recherche"
+msgstr "Éditer la vue de recherche"
 
 #. module: web
 #. odoo-javascript
@@ -2169,28 +2169,28 @@ msgstr "Modifier la vue de recherche"
 #: code:addons/web/static/src/views/kanban/kanban_renderer.xml:0
 #, python-format
 msgid "Edit Stage"
-msgstr "Modifier l'étape"
+msgstr "Éditer l'étape"
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/views/debug_items.js:0
 #, python-format
 msgid "Edit View: "
-msgstr "Modifier la vue :"
+msgstr "Éditer la vue :"
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #, python-format
 msgid "Edit record"
-msgstr "Modifier l'enregistrement"
+msgstr "Éditer l'enregistrement"
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/views/kanban/kanban_renderer.js:0
 #, python-format
 msgid "Edit: %s"
-msgstr "Modifier : %s"
+msgstr "Éditer : %s"
 
 #. module: web
 #. odoo-javascript
@@ -2427,7 +2427,7 @@ msgstr "Filtres"
 #: code:addons/web/static/src/views/pivot/pivot_controller.xml:0
 #, python-format
 msgid "Flip axis"
-msgstr "Axe de basculement"
+msgstr "Inverser les axes"
 
 #. module: web
 #. odoo-javascript
@@ -2442,7 +2442,7 @@ msgstr "Flottant"
 #: code:addons/web/static/src/views/kanban/kanban_renderer.xml:0
 #, python-format
 msgid "Fold"
-msgstr "Plier"
+msgstr "Replier"
 
 #. module: web
 #. odoo-javascript
@@ -2493,7 +2493,7 @@ msgid ""
 msgstr ""
 "Pour la compatibilité d'Excel, les données ne peuvent pas être exportées s'il y a plus de 16384 colonnes.\n"
 "\n"
-"Astuce : essayez de basculer les axes, de filtrer ou réduire le nombre de mesures."
+"Astuce : essayez d'inverser les axes, de filtrer ou réduire le nombre de mesures."
 
 #. module: web
 #. odoo-javascript
@@ -3138,7 +3138,7 @@ msgstr "Many2one"
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #, python-format
 msgid "Match"
-msgstr "Associer"
+msgstr "Faire correspondre"
 
 #. module: web
 #. odoo-javascript
@@ -3903,7 +3903,7 @@ msgstr "Bipeur"
 #. module: web
 #: model:ir.model.fields,field_description:web.field_base_document_layout__paperformat_id
 msgid "Paper format"
-msgstr "Format du papier"
+msgstr "Format de papier"
 
 #. module: web
 #: model:ir.model.fields,field_description:web.field_base_document_layout__partner_id
@@ -3927,7 +3927,7 @@ msgstr "Invitations en attente :"
 #: code:addons/web/static/src/views/fields/percent_pie/percent_pie_field.js:0
 #, python-format
 msgid "PercentPie"
-msgstr "Diagramme circulaire"
+msgstr "Graphique circulaire"
 
 #. module: web
 #. odoo-javascript
@@ -3942,7 +3942,7 @@ msgstr "Pourcentage"
 #: code:addons/web/static/src/legacy/js/fields/basic_fields.js:0
 #, python-format
 msgid "Percentage Pie"
-msgstr "Diagramme circulaire"
+msgstr "Graphique circulaire"
 
 #. module: web
 #. odoo-javascript
@@ -3967,7 +3967,7 @@ msgstr "Choisissez une couleur"
 #: code:addons/web/static/src/views/graph/graph_controller.xml:0
 #, python-format
 msgid "Pie Chart"
-msgstr "Diagramme circulaire"
+msgstr "Graphique circulaire"
 
 #. module: web
 #. odoo-javascript
@@ -3977,7 +3977,7 @@ msgid ""
 "Pie chart cannot mix positive and negative numbers. Try to change your "
 "domain to only display positive results"
 msgstr ""
-"Les diagrammes circulaires ne peuvent pas mélanger des valeurs positives et "
+"Les graphiques circulaires ne peuvent pas mélanger des valeurs positives et "
 "négatives. Essayez de modifier vos critères pour n'afficher que des "
 "résultats positifs"
 
@@ -4979,6 +4979,13 @@ msgstr "Partager avec tous les utilisateurs"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/webclient/user_menu/user_menu_items.js:0
+#, python-format
+msgid "Shortcuts"
+msgstr "Raccourcis"
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
@@ -5890,7 +5897,7 @@ msgstr "Avertissement"
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.benchmark_suite
 msgid "Web Benchmarks"
-msgstr "Points de repère sur le web"
+msgstr "Benchmarks sur le web"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.qunit_mobile_suite
@@ -6053,6 +6060,25 @@ msgid ""
 msgstr ""
 "Vous ne le croirez peut-être pas, <br />mais l'application est toujours en "
 "cours de chargement..."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/property_tags.js:0
+#, python-format
+msgid "You need to be able to edit parent first to add property tags"
+msgstr ""
+"Vous devez d'abord pouvoir éditer le parent pour ajouter les étiquettes de "
+"propriété"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/properties_field.js:0
+#: code:addons/web/static/src/views/fields/properties/properties_field.js:0
+#, python-format
+msgid "You need to be able to edit parent first to configure property fields"
+msgstr ""
+"Vous devez pouvoir éditer le parent d'abord pour configurer des champs de "
+"propriété"
 
 #. module: web
 #. odoo-javascript

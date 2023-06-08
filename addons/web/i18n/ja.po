@@ -7,10 +7,11 @@
 # Norimichi Sugimoto <norimichi.sugimoto@tls-ltd.co.jp>, 2022
 # Tim Siu Lai <tl@roomsfor.hk>, 2022
 # Noma Yuki, 2022
-# Martin Trigaux, 2022
 # Yoshi Tashiro (Quartile) <tashiro@roomsfor.hk>, 2022
-# Ryoko Tsuda <ryoko@quartile.co>, 2023
 # Andy Yiu, 2023
+# Ryoko Tsuda <ryoko@quartile.co>, 2023
+# Martin Trigaux, 2023
+# Junko Augias, 2023
 # 
 msgid ""
 msgstr ""
@@ -18,8 +19,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-02 10:35+0000\n"
 "PO-Revision-Date: 2022-09-22 05:55+0000\n"
-"Last-Translator: Andy Yiu, 2023\n"
-"Language-Team: Japanese (https://www.transifex.com/odoo/teams/41243/ja/)\n"
+"Last-Translator: Junko Augias, 2023\n"
+"Language-Team: Japanese (https://app.transifex.com/odoo/teams/41243/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -284,6 +285,8 @@ msgid ""
 "<span class=\"text-nowrap\">$ <span "
 "class=\"oe_currency_value\">11,750.00</span></span>"
 msgstr ""
+"<span class=\"text-nowrap\">$ <span "
+"class=\"oe_currency_value\">11,750.00</span></span>"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
@@ -291,16 +294,18 @@ msgid ""
 "<span class=\"text-nowrap\">$ <span "
 "class=\"oe_currency_value\">7,500.00</span></span>"
 msgstr ""
+"<span class=\"text-nowrap\">$ <span "
+"class=\"oe_currency_value\">7,500.00</span></span>"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
 msgid "<span class=\"text-nowrap\">1,500.00</span>"
-msgstr ""
+msgstr "<span class=\"text-nowrap\">1,500.00</span>"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
 msgid "<span class=\"text-nowrap\">2,350.00</span>"
-msgstr ""
+msgstr "<span class=\"text-nowrap\">2,350.00</span>"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
@@ -317,7 +322,7 @@ msgstr ""
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
 msgid "<span id=\"line_tax_ids\">15.00%</span>"
-msgstr ""
+msgstr "<span id=\"line_tax_ids\">15.00%</span>"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
@@ -327,7 +332,7 @@ msgstr ""
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
 msgid "<span>$ <span class=\"oe_currency_value\">19,250.00</span></span>"
-msgstr ""
+msgstr "<span>$ <span class=\"oe_currency_value\">19,250.00</span></span>"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
@@ -337,7 +342,7 @@ msgstr ""
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
 msgid "<span>Amount</span>"
-msgstr ""
+msgstr "<span>金額</span>"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.report_invoice_wizard_preview
@@ -591,7 +596,7 @@ msgstr "カスタムグループ追加"
 #: code:addons/web/static/src/views/fields/properties/properties_field.xml:0
 #, python-format
 msgid "Add a Property"
-msgstr ""
+msgstr "プロパティを追加"
 
 #. module: web
 #. odoo-javascript
@@ -861,6 +866,7 @@ msgstr ""
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/form/form_controller.js:0
 #: code:addons/web/static/src/legacy/js/views/form/form_controller.js:0
 #, python-format
 msgid "Are you sure that you want to archive this record?"
@@ -1550,7 +1556,7 @@ msgstr "XMLをシリアライズできませんでした"
 msgid ""
 "Could not set the cover image: incorrect field (\"%s\") is provided in the "
 "view."
-msgstr ""
+msgstr "カバー画像を設定できません: 表示に提供されるフィールド (\"%s\")は間違っています。"
 
 #. module: web
 #. odoo-javascript
@@ -1809,7 +1815,7 @@ msgstr "デフォルト値"
 #: code:addons/web/static/src/legacy/js/widgets/model_field_selector_popover.js:0
 #, python-format
 msgid "Default text is used when no values are set"
-msgstr ""
+msgstr "数値が設定されてない場合は、デフォルトテキストが使用されます"
 
 #. module: web
 #. odoo-javascript
@@ -4905,6 +4911,13 @@ msgstr "全ユーザと共有"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/webclient/user_menu/user_menu_items.js:0
+#, python-format
+msgid "Shortcuts"
+msgstr "ショートカット"
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
@@ -5186,7 +5199,7 @@ msgstr ""
 #: code:addons/web/static/src/views/kanban/kanban_cover_image_dialog.xml:0
 #, python-format
 msgid "There is no available image to be set as cover."
-msgstr ""
+msgstr "カバーとして使用できる画像がありません。"
 
 #. module: web
 #. odoo-javascript
@@ -5308,7 +5321,7 @@ msgstr "時間"
 msgid ""
 "Timezone Mismatch : This timezone is different from that of your browser.\n"
 "Please, set the same timezone as your browser's to avoid time discrepancies in your system."
-msgstr ""
+msgstr "時間帯不一致: この時間帯はお使いのブラウザの時間帯と一致してません。"
 
 #. module: web
 #. odoo-javascript
@@ -5945,6 +5958,21 @@ msgstr ""
 msgid ""
 "You may not believe it,<br />but the application is actually loading..."
 msgstr "信じられないかもしれませんが、<br />アプリケーションはロード中です..."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/property_tags.js:0
+#, python-format
+msgid "You need to be able to edit parent first to add property tags"
+msgstr ""
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/properties_field.js:0
+#: code:addons/web/static/src/views/fields/properties/properties_field.js:0
+#, python-format
+msgid "You need to be able to edit parent first to configure property fields"
+msgstr ""
 
 #. module: web
 #. odoo-javascript
@@ -6640,14 +6668,14 @@ msgstr ""
 #: code:addons/web/static/src/core/commands/command_palette.xml:0
 #, python-format
 msgid "to open in new tab"
-msgstr ""
+msgstr "新しいタブで開く"
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/core/commands/command_palette.xml:0
 #, python-format
 msgid "to open,"
-msgstr ""
+msgstr "開く、"
 
 #. module: web
 #. odoo-javascript

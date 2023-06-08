@@ -20,7 +20,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_411_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_401_tag'), ref('tax_report_line_104_411_tag')],
                 }),
                 (0,0, {
                     'factor_percent': 100,
@@ -56,7 +56,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_411_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_401_tag'), ref('tax_report_line_104_411_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -89,7 +89,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_412_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_402_tag'), ref('tax_report_line_104_412_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -122,7 +122,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_415_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_405_tag'), ref('tax_report_line_104_415_tag')],
                 }),
                 (0,0, {
                     'factor_percent': 100,
@@ -155,7 +155,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_415_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_405_tag'), ref('tax_report_line_104_415_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -185,7 +185,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_416_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_406_tag'), ref('tax_report_line_104_416_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -215,7 +215,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_413_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_403_tag'), ref('tax_report_line_104_413_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -245,7 +245,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_414_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_404_tag'), ref('tax_report_line_104_414_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -275,7 +275,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_417_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_407_tag'), ref('tax_report_line_104_417_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -305,7 +305,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_418_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_408_tag'), ref('tax_report_line_104_418_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -335,7 +335,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_441_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_431_tag'), ref('tax_report_line_104_441_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -366,12 +366,12 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_412_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_434_tag'), ref('tax_report_line_104_444_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
                     'account_id': ref('l10n_ec.ec_other_downpayments'),
-                    'plus_report_expression_ids': [ref('tax_report_line_104_422_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_454_tag')],
                 })]"/>
             <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
@@ -381,7 +381,103 @@
                 (0,0, {
                     'repartition_type': 'tax',
                     'account_id': ref('l10n_ec.ec_other_downpayments'),
-                    'minus_report_expression_ids': [ref('tax_report_line_104_421_tag')],
+                    'minus_report_expression_ids': [ref('tax_report_line_104_454_tag')],
+                })]"/>
+        </record>
+        <record id="tax_vat_444_zero_vat" model="account.tax.template">
+            <field name="name">IVA 0% (444, Reembolsos)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">130</field>
+            <field name="amount">0.0</field>
+            <field name="description">IVA 0%</field>
+            <field name="l10n_ec_code_base">444</field>
+            <field name="l10n_ec_code_applied">454</field>
+            <field name="chart_template_id" ref="l10n_ec.l10n_ec_ifrs"/>
+            <field name="tax_group_id" ref="tax_group_vat0"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'plus_report_expression_ids': [ref('tax_report_line_104_434_tag'), ref('tax_report_line_104_444_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'plus_report_expression_ids': [ref('tax_report_line_104_454_tag')],
+                })]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'minus_report_expression_ids': [ref('tax_report_line_104_444_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'minus_report_expression_ids': [ref('tax_report_line_104_454_tag')],
+                })]"/>
+        </record>
+        <record id="tax_vat_444_not_charged_vat" model="account.tax.template">
+            <field name="name">No Objeto IVA 0% (444, Reembolsos)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">140</field>
+            <field name="amount">0.0</field>
+            <field name="description">IVA 0%</field>
+            <field name="l10n_ec_code_base">444</field>
+            <field name="l10n_ec_code_applied">454</field>
+            <field name="chart_template_id" ref="l10n_ec.l10n_ec_ifrs"/>
+            <field name="tax_group_id" ref="tax_group_vat_not_charged"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'plus_report_expression_ids': [ref('tax_report_line_104_434_tag'), ref('tax_report_line_104_444_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'plus_report_expression_ids': [ref('tax_report_line_104_454_tag')],
+                })]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'minus_report_expression_ids': [ref('tax_report_line_104_444_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'minus_report_expression_ids': [ref('tax_report_line_104_454_tag')],
+                })]"/>
+        </record>
+        <record id="tax_vat_444_not_exempt_vat" model="account.tax.template">
+            <field name="name">Exento IVA 0% (444, Reembolsos)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">150</field>
+            <field name="amount">0.0</field>
+            <field name="description">IVA EXENTO</field>
+            <field name="l10n_ec_code_base">444</field>
+            <field name="l10n_ec_code_applied">454</field>
+            <field name="chart_template_id" ref="l10n_ec.l10n_ec_ifrs"/>
+            <field name="tax_group_id" ref="tax_group_vat_exempt"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'plus_report_expression_ids': [ref('tax_report_line_104_434_tag'), ref('tax_report_line_104_444_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'plus_report_expression_ids': [ref('tax_report_line_104_454_tag')],
+                })]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'minus_report_expression_ids': [ref('tax_report_line_104_444_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'minus_report_expression_ids': [ref('tax_report_line_104_454_tag')],
                 })]"/>
         </record>
         <!--        impuestos de compras   -->
@@ -402,7 +498,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_510_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_500_tag'), ref('tax_report_line_104_510_tag')],
                 }),
                 (0,0, {
                     'factor_percent': 100,
@@ -439,7 +535,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_510_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_500_tag'), ref('tax_report_line_104_510_tag')],
                 }),
                 (0,0, {
                     'factor_percent': 100,
@@ -476,7 +572,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_510_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_500_tag'), ref('tax_report_line_104_510_tag')],
                 }),
                 (0,0, {
                     'factor_percent': 100,
@@ -513,7 +609,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_510_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_500_tag'), ref('tax_report_line_104_510_tag')],
                 }),
                 (0,0, {
                     'factor_percent': 100,
@@ -550,7 +646,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_511_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_501_tag'), ref('tax_report_line_104_511_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -583,7 +679,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_512_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_502_tag'), ref('tax_report_line_104_512_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -614,7 +710,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_512_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_502_tag'), ref('tax_report_line_104_512_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -646,7 +742,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_512_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_502_tag'), ref('tax_report_line_104_512_tag')],
                 }),
                 (0,0, {
                     'factor_percent': 100,
@@ -680,7 +776,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_513_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_503_tag'), ref('tax_report_line_104_513_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -713,7 +809,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_514_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_504_tag'), ref('tax_report_line_104_514_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -746,7 +842,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_515_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_505_tag'), ref('tax_report_line_104_515_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -779,7 +875,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_516_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_506_tag'), ref('tax_report_line_104_516_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -809,7 +905,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_517_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_507_tag'), ref('tax_report_line_104_517_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -839,7 +935,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_517_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_507_tag'), ref('tax_report_line_104_517_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -869,7 +965,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_517_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_507_tag'), ref('tax_report_line_104_517_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -900,7 +996,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_517_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_507_tag'), ref('tax_report_line_104_517_tag')],
                 }),
                 (0,0, {
                     'factor_percent': 100,
@@ -933,7 +1029,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_517_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_507_tag'), ref('tax_report_line_104_517_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -964,7 +1060,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_518_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_508_tag'), ref('tax_report_line_104_518_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -985,6 +1081,7 @@
         <record id="tax_vat_541_sup_02" model="account.tax.template">
             <!-- Adquisiciones no objeto de IVA -->
             <field name="name">No Objeto IVA 0% (541, 02 Costo IR)</field>
+            <field name="type_tax_use">purchase</field>
             <field name="amount_type">percent</field>
             <field name="sequence">30</field>
             <field name="amount">0.0</field>
@@ -996,7 +1093,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('l10n_ec.tax_report_line_104_541_tag')],
+                    'plus_report_expression_ids': [ref('l10n_ec.tax_report_line_104_531_tag'), ref('l10n_ec.tax_report_line_104_541_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -1029,7 +1126,7 @@
                 (0,0, {
                     'factor_percent': 100,
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_510_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_500_tag'), ref('tax_report_line_104_510_tag')],
                 }),
                 (0,0, {
                     'factor_percent': 100,
@@ -1064,7 +1161,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_542_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_532_tag'), ref('tax_report_line_104_542_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -1095,7 +1192,106 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_545_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_535_tag'), ref('tax_report_line_104_545_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'plus_report_expression_ids': [ref('tax_report_line_104_555_tag')],
+                })]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'minus_report_expression_ids': [ref('tax_report_line_104_545_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'minus_report_expression_ids': [ref('tax_report_line_104_555_tag')],
+                })]"/>
+        </record>
+        <record id="tax_vat_545_sup_08_vat0" model="account.tax.template">
+            <!-- IVA en compras por reembolso como intermediario para iva cero -->
+            <field name="name">IVA 0% (545, 08 Reembolso)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">20</field>
+            <field name="amount">0.0</field>
+            <field name="description">IVA 0%</field>
+            <field name="l10n_ec_code_base">545</field>
+            <field name="l10n_ec_code_applied">555</field>
+            <field name="chart_template_id" ref="l10n_ec.l10n_ec_ifrs"/>
+            <field name="tax_group_id" ref="tax_group_vat0"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'plus_report_expression_ids': [ref('tax_report_line_104_535_tag'), ref('tax_report_line_104_545_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'plus_report_expression_ids': [ref('tax_report_line_104_555_tag')],
+                })]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'minus_report_expression_ids': [ref('tax_report_line_104_545_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'minus_report_expression_ids': [ref('tax_report_line_104_555_tag')],
+                })]"/>
+        </record>
+        <record id="tax_vat_545_sup_08_vat_exempt" model="account.tax.template">
+            <!-- IVA en compras por reembolso como intermediario exento en iva -->
+            <field name="name">Exento IVA 0% (545, 08 Reembolso)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">30</field>
+            <field name="amount">0.0</field>
+            <field name="description">IVA EXENTO</field>
+            <field name="l10n_ec_code_base">545</field>
+            <field name="l10n_ec_code_applied">555</field>
+            <field name="chart_template_id" ref="l10n_ec.l10n_ec_ifrs"/>
+            <field name="tax_group_id" ref="tax_group_vat_exempt"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'plus_report_expression_ids': [ref('tax_report_line_104_535_tag'), ref('tax_report_line_104_545_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'plus_report_expression_ids': [ref('tax_report_line_104_555_tag')],
+                })]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'minus_report_expression_ids': [ref('tax_report_line_104_545_tag')],
+                }),
+                (0,0, {
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_ec.ec_other_downpayments'),
+                    'minus_report_expression_ids': [ref('tax_report_line_104_555_tag')],
+                })]"/>
+        </record>
+        <record id="tax_vat_545_sup_08_vat_not_charged" model="account.tax.template">
+            <!-- IVA en compras por reembolso como intermediario no objeto iva -->
+            <field name="name">No Objeto IVA 0% (545, 08 Reembolso)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">40</field>
+            <field name="amount">0.0</field>
+            <field name="description">IVA 0%</field>
+            <field name="l10n_ec_code_base">545</field>
+            <field name="l10n_ec_code_applied">555</field>
+            <field name="chart_template_id" ref="l10n_ec.l10n_ec_ifrs"/>
+            <field name="tax_group_id" ref="tax_group_vat_not_charged"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'repartition_type': 'base',
+                    'plus_report_expression_ids': [ref('tax_report_line_104_535_tag'), ref('tax_report_line_104_545_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',
@@ -1128,7 +1324,7 @@
             <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
                 (0,0, {
                     'repartition_type': 'base',
-                    'plus_report_expression_ids': [ref('tax_report_line_104_545_tag')],
+                    'plus_report_expression_ids': [ref('tax_report_line_104_535_tag'), ref('tax_report_line_104_545_tag')],
                 }),
                 (0,0, {
                     'repartition_type': 'tax',

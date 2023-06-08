@@ -476,6 +476,7 @@ class BaseCase(case.TestCase, metaclass=MetaCase):
                 if count != expected:
                     # add some info on caller to allow semi-automatic update of query count
                     frame, filename, linenum, funcname, lines, index = inspect.stack()[2]
+                    filename = filename.replace('\\', '/')
                     if "/odoo/addons/" in filename:
                         filename = filename.rsplit("/odoo/addons/", 1)[1]
                     if count > expected:
@@ -715,6 +716,17 @@ class TransactionCase(BaseCase):
         self.addCleanup(envs.clear)
 
         self.addCleanup(self.registry.clear_caches)
+
+        # This prevents precommit functions and data from piling up
+        # until cr.flush is called in 'assertRaises' clauses
+        # (these are not cleared in self.env.clear or envs.clear)
+        cr = self.env.cr
+
+        def _reset(cb, funcs, data):
+            cb._funcs = funcs
+            cb.data = data
+        for callback in [cr.precommit, cr.postcommit, cr.prerollback, cr.postrollback]:
+            self.addCleanup(_reset, callback, collections.deque(callback._funcs), dict(callback.data))
 
         # flush everything in setUpClass before introducing a savepoint
         self.env.flush_all()
@@ -976,6 +988,7 @@ class ChromeBrowser:
             '--remote-debugging-port': str(self.remote_debugging_port),
             '--no-sandbox': '',
             '--disable-gpu': '',
+            '--remote-allow-origins': '*',
             # '--enable-precise-memory-info': '', # uncomment to debug memory leaks in qunit suite
             # '--js-flags': '--expose-gc', # uncomment to debug memory leaks in qunit suite
         }
@@ -1062,7 +1075,7 @@ class ChromeBrowser:
         raise unittest.SkipTest("Error during Chrome headless connection")
 
     def _open_websocket(self):
-        self.ws = websocket.create_connection(self.ws_url, enable_multithread=True)
+        self.ws = websocket.create_connection(self.ws_url, enable_multithread=True, suppress_origin=True)
         if self.ws.getstatus() != 101:
             raise unittest.SkipTest("Cannot connect to chrome dev tools")
         self.ws.settimeout(0.01)
@@ -2846,7 +2859,12 @@ def tagged(*tags):
     """
     include = {t for t in tags if not t.startswith('-')}
     exclude = {t[1:] for t in tags if t.startswith('-')}
+
     def tags_decorator(obj):
         obj.test_tags = (getattr(obj, 'test_tags', set()) | include) - exclude
+        at_install = 'at_install' in obj.test_tags
+        post_install = 'post_install' in obj.test_tags
+        if not (at_install ^ post_install):
+            _logger.warning('A tests should be either at_install or post_install, which is not the case of %r', obj)
         return obj
     return tags_decorator

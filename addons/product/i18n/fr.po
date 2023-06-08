@@ -16,7 +16,7 @@ msgstr ""
 "POT-Creation-Date: 2022-12-15 12:51+0000\n"
 "PO-Revision-Date: 2022-09-22 05:54+0000\n"
 "Last-Translator: Jolien De Paepe, 2023\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"Language-Team: French (https://app.transifex.com/odoo/teams/41243/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -27,7 +27,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:product.field_product_product__product_variant_count
 #: model:ir.model.fields,field_description:product.field_product_template__product_variant_count
 msgid "# Product Variants"
-msgstr "# Variantes de produits"
+msgstr "# Variantes de produit"
 
 #. module: product
 #: model:ir.model.fields,field_description:product.field_product_category__product_count
@@ -236,8 +236,8 @@ msgid ""
 "Customer Invoice/Credit Note"
 msgstr ""
 "Une description du produit que vous souhaitez communiquer à vos clients. "
-"Cette description sera copiée sur chaque commande, bon de livraison et note "
-"de crédit/facture client"
+"Cette description sera copiée sur chaque commande, bon de livraison et "
+"avoir/facture client"
 
 #. module: product
 #. odoo-python
@@ -312,7 +312,7 @@ msgstr "Activités"
 #: model:ir.model.fields,field_description:product.field_product_product__activity_exception_decoration
 #: model:ir.model.fields,field_description:product.field_product_template__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr "Activité d'exception de décoration"
+msgstr "Activité exception décoration"
 
 #. module: product
 #: model:ir.model.fields,field_description:product.field_product_product__activity_state
@@ -357,7 +357,7 @@ msgstr "Toutes les étiquettes de produit"
 #. module: product
 #: model:ir.model.fields,field_description:product.field_product_tag__product_ids
 msgid "All Product Variants using this Tag"
-msgstr "Toutes les variantes de produits utilisant cette étiquette"
+msgstr "Toutes les variantes de produit utilisant cette étiquette"
 
 #. module: product
 #. odoo-python
@@ -995,7 +995,7 @@ msgstr "Remises"
 #: model:ir.model.fields,field_description:product.field_product_template_attribute_line__display_name
 #: model:ir.model.fields,field_description:product.field_product_template_attribute_value__display_name
 msgid "Display Name"
-msgstr "Afficher le nom"
+msgstr "Nom d'affichage"
 
 #. module: product
 #. odoo-javascript
@@ -1601,7 +1601,7 @@ msgstr "Gérer le conditionnement des produits"
 #. module: product
 #: model:res.groups,name:product.group_product_variant
 msgid "Manage Product Variants"
-msgstr "Gérer des variances de produits"
+msgstr "Gérer des variances de produit"
 
 #. module: product
 #: model_terms:ir.ui.view,arch_db:product.product_pricelist_item_form_view
@@ -1878,7 +1878,7 @@ msgstr ""
 msgid ""
 "Please specify the product variant for which this rule should be applied"
 msgstr ""
-"Veuillez préciser la variante du produit pour laquelle cette règle doit être"
+"Veuillez préciser la variante de produit pour laquelle cette règle doit être"
 " appliquée"
 
 #. module: product
@@ -2535,11 +2535,11 @@ msgstr ""
 #. module: product
 #: model:ir.model.fields,help:product.field_product_pricelist_item__price_surcharge
 msgid ""
-"Specify the fixed amount to add or substract(if negative) to the amount "
+"Specify the fixed amount to add or subtract (if negative) to the amount "
 "calculated with the discount."
 msgstr ""
-"Indiquez le montant fixe à ajouter (ou à soustraire, si négatif) au montant "
-"calculé avec cette remise."
+"Indiquez le montant fixe à ajouter au (ou, si négatif, à soustraire du) "
+"montant calculé avec la remise."
 
 #. module: product
 #: model:ir.model.fields,help:product.field_product_pricelist_item__price_max_margin
@@ -2746,6 +2746,13 @@ msgstr ""
 "La quantité à acheter auprès de ce fournisseur pour bénéficier du prix, "
 "exprimée dans l'unité de mesure du produit du fournisseur, sinon aucune "
 "unité n'est définie, dans l'unité de mesure par défaut du produit."
+
+#. module: product
+#. odoo-python
+#: code:addons/product/models/product_pricelist_item.py:0
+#, python-format
+msgid "The rounding method must be strictly positive."
+msgstr "La méthode d'arrondi doit être strictement positive."
 
 #. module: product
 #: model:ir.model.fields,help:product.field_product_product__lst_price
@@ -3299,10 +3306,12 @@ msgstr ""
 #, python-format
 msgid ""
 "You cannot delete the value %s because it is used on the following products:\n"
-"%s"
+"%s\n"
+" If the value has been associated to a product in the past, you will not be able to delete it."
 msgstr ""
-"Vous ne pouvez pas supprimer la valeur %s car elle est utilisée sur les produits suivants :\n"
-"%s"
+"Vous ne pouvez pas supprimer la valeur %s car elle est utilisée pour les produits suivants :\n"
+"%s\n"
+" Si la valeur a été associée à un produit dans le passé, vous ne pourrez pas la supprimer."
 
 #. module: product
 #. odoo-python
@@ -3328,6 +3337,15 @@ msgstr ""
 "(%s)\n"
 ", car elle est utilisée dans une ou d'autres listes de prix :\n"
 "%s"
+
+#. module: product
+#. odoo-python
+#: code:addons/product/models/product_attribute.py:0
+#, python-format
+msgid "You cannot delete value %s because it was used in some products."
+msgstr ""
+"Vous ne pouvez pas supprimer la valeur %s, parce qu'elle était utilisée pour"
+" certains produits."
 
 #. module: product
 #. odoo-python

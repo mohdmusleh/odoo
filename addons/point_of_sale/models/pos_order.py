@@ -103,6 +103,9 @@ class PosOrder(models.Model):
         })
         # bypass opening_control (necessary when using cash control)
         new_session.action_pos_session_open()
+        if new_session.config_id.cash_control and new_session.rescue:
+            last_session = self.env['pos.session'].search([('config_id', '=', new_session.config_id.id), ('id', '!=', new_session.id)], limit=1)
+            new_session.cash_register_balance_start = last_session.cash_register_balance_end_real
 
         return new_session
 
@@ -190,12 +193,14 @@ class PosOrder(models.Model):
             order.add_payment(return_payment_vals)
 
     def _prepare_invoice_line(self, order_line):
+        display_name = order_line.product_id.get_product_multiline_description_sale()
+        name = order_line.product_id.default_code + " " + display_name if order_line.product_id.default_code else display_name
         return {
             'product_id': order_line.product_id.id,
             'quantity': order_line.qty if self.amount_total >= 0 else -order_line.qty,
             'discount': order_line.discount,
             'price_unit': order_line.price_unit,
-            'name': order_line.product_id.display_name or order_line.full_product_name,
+            'name': name,
             'tax_ids': [(6, 0, order_line.tax_ids_after_fiscal_position.ids)],
             'product_uom_id': order_line.product_uom_id.id,
         }
@@ -522,7 +527,7 @@ class PosOrder(models.Model):
                     account_id = new_move.invoice_cash_rounding_id.profit_account_id.id
                 if rounding_line:
                     if rounding_line_difference:
-                        rounding_line.with_context(check_move_validity=False).write({
+                        rounding_line.with_context(skip_invoice_sync=True, check_move_validity=False).write({
                             'debit': rounding_applied < 0.0 and -rounding_applied or 0.0,
                             'credit': rounding_applied > 0.0 and rounding_applied or 0.0,
                             'account_id': account_id,
@@ -530,19 +535,17 @@ class PosOrder(models.Model):
                         })
 
                 else:
-                    self.env['account.move.line'].with_context(check_move_validity=False).create({
-                        'debit': rounding_applied < 0.0 and -rounding_applied or 0.0,
-                        'credit': rounding_applied > 0.0 and rounding_applied or 0.0,
+                    self.env['account.move.line'].with_context(skip_invoice_sync=True, check_move_validity=False).create({
+                        'balance': -rounding_applied,
                         'quantity': 1.0,
-                        'amount_currency': rounding_applied,
                         'partner_id': new_move.partner_id.id,
                         'move_id': new_move.id,
-                        'currency_id': new_move.currency_id if new_move.currency_id != new_move.company_id.currency_id else False,
+                        'currency_id': new_move.currency_id.id,
                         'company_id': new_move.company_id.id,
                         'company_currency_id': new_move.company_id.currency_id.id,
                         'display_type': 'rounding',
                         'sequence': 9999,
-                        'name': new_move.invoice_cash_rounding_id.name,
+                        'name': self.config_id.rounding_method.name,
                         'account_id': account_id,
                     })
             else:
@@ -617,6 +620,9 @@ class PosOrder(models.Model):
             if self.config_id.cash_rounding and (not self.config_id.only_round_cash_method or any(p.payment_method_id.is_cash_count for p in self.payment_ids))
             else False
         }
+        if self.refunded_order_ids.account_move:
+            vals['ref'] = _('Reversal of: %s', self.refunded_order_ids.account_move.name)
+            vals['reversed_entry_id'] = self.refunded_order_ids.account_move.id
         if self.note:
             vals.update({'narration': self.note})
         return vals
@@ -823,7 +829,7 @@ class PosOrder(models.Model):
             new_move = order._create_invoice(move_vals)
 
             order.write({'account_move': new_move.id, 'state': 'invoiced'})
-            new_move.sudo().with_company(order.company_id)._post()
+            new_move.sudo().with_company(order.company_id).with_context(skip_invoice_sync=True)._post()
             moves += new_move
             payment_moves = order._apply_invoice_payments()
 
@@ -1027,7 +1033,7 @@ class PosOrder(models.Model):
             'partner_id': order.partner_id.id,
             'user_id': order.user_id.id,
             'sequence_number': order.sequence_number,
-            'creation_date': order.date_order.astimezone(timezone),
+            'creation_date': str(order.date_order.astimezone(timezone)),
             'fiscal_position_id': order.fiscal_position_id.id,
             'to_invoice': order.to_invoice,
             'to_ship': order.to_ship,
@@ -1224,6 +1230,8 @@ class PosOrderLine(models.Model):
             'customer_note': orderline.customer_note,
             'refunded_qty': orderline.refunded_qty,
             'price_extra': orderline.price_extra,
+            'refunded_orderline_id': orderline.refunded_orderline_id,
+            'full_product_name': orderline.full_product_name,
         }
 
     def export_for_ui(self):

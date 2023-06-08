@@ -268,6 +268,24 @@
         }
     }
 
+    %o_we_sublevel > we-title::before {
+        content: "└"; // TODO The size and look of this depends on the
+                      // browser default font, we should use a SVG instead.
+        display: inline-block;
+        margin-right: 0.4em;
+    }
+    @for $level from 1 through 3 {
+        .o_we_sublevel_#{$level} {
+            @extend %o_we_sublevel;
+
+            @if $level > 1 {
+                > we-title {
+                    padding-left: ($level - 1) * 0.6em;
+                }
+            }
+        }
+    }
+
     #snippets_menu {
         flex: 0 0 auto;
         display: flex;
@@ -1248,13 +1266,8 @@
                         width: 28px;
                     }
                 }
-                &.o_we_matrix_five_col {
-                    width: auto;
-                    td, th {
-                        input {
-                            width: 43px;
-                        }
-                    }
+                tr:last-child we-button {
+                    overflow: visible;
                 }
             }
         }
@@ -1422,13 +1435,20 @@
                         font-family: $o-we-sidebar-content-field-input-font-family;
                     }
                     tr {
+                        // Since the sortable list's <tr> loses its connection with
+                        // the table when dragged, the <td> with the input no longer
+                        // takes up the full width, causing a visual issue. To solve
+                        // this problem, we added the 'flex' display property.
+                        display: flex;
+                        align-items: center;
                         border: none;
                     }
                     td {
+                        flex-grow: 1;
                         padding-bottom: $o-we-sidebar-content-field-spacing / 2;
 
                         &:not(.o_we_list_record_name) {
-                            width: 1px;
+                            flex-grow: 0;
                         }
 
                         we-button.o_we_checkbox_wrapper {
@@ -1656,24 +1676,6 @@
             }
         }
 
-        %o_we_sublevel > we-title::before {
-            content: "└"; // TODO The size and look of this depends on the
-                          // browser default font, we should use a SVG instead.
-            display: inline-block;
-            margin-right: 0.4em;
-        }
-        @for $level from 1 through 3 {
-            .o_we_sublevel_#{$level} {
-                @extend %o_we_sublevel;
-
-                @if $level > 1 {
-                    > we-title {
-                        padding-left: ($level - 1) * 0.6em;
-                    }
-                }
-            }
-        }
-
         .o_we_image_weight {
             margin-left: $o-we-sidebar-content-field-label-spacing * 2;
         }
@@ -1708,6 +1710,21 @@
                 background-color: $o-we-sidebar-bg;
             }
         }
+
+        div.o_we_invisible_root_parent {
+            padding-bottom: 3px;
+        }
+
+        ul {
+            list-style: none;
+            padding-inline-start: 15px;
+            margin-bottom: $o-we-sidebar-content-field-spacing - 3px;
+
+            div.o_we_invisible_entry {
+                padding-top: 3px;
+                padding-bottom: 3px;
+            }
+        }
     }
 
     &.o_we_backdrop {
@@ -1718,8 +1735,14 @@
 
             &::after {
                 content: "";
-                @include o-position-absolute(0, 0, 0, 0);
+                // We use a "sticky" position because it ensures that the
+                // backdrop covers the entire "customize panel" element, even
+                // when it has a vertical scrollbar and is scrolled to the
+                // bottom.
+                @include o-position-sticky(auto, 0, 0, 0);
                 display: block;
+                height: 100vh;
+                margin-top: -100vh;
                 pointer-events: none;
                 background: $o-we-sidebar-content-backdrop-bg;
             }
@@ -2537,16 +2560,16 @@ we-button:hover .o_we_shape_animated_label > span {
 // GRID LAYOUT
 we-button.o_grid {
     min-width: fit-content;
-    padding-left: 3px !important;
-    padding-right: 3px !important;
+    padding-left: 4.5px !important;
+    padding-right: 4.5px !important;
 }
 
 we-select.o_grid we-toggler {
     width: fit-content !important;
 }
 
-we-button-group.o_grid {
-    min-width: fit-content !important;
+we-button-group.o_grid we-selection-items {
+    width: fit-content !important;
 }
 
 // Background grid.

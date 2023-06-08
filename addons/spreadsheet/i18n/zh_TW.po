@@ -13,7 +13,7 @@ msgstr ""
 "POT-Creation-Date: 2022-12-15 12:44+0000\n"
 "PO-Revision-Date: 2022-09-22 05:55+0000\n"
 "Last-Translator: Tony Ng, 2023\n"
-"Language-Team: Chinese (Taiwan) (https://www.transifex.com/odoo/teams/41243/zh_TW/)\n"
+"Language-Team: Chinese (Taiwan) (https://app.transifex.com/odoo/teams/41243/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -490,6 +490,7 @@ msgstr ""
 #. module: spreadsheet
 #. odoo-javascript
 #: code:addons/spreadsheet/static/src/chart/odoo_chart/odoo_bar_chart.js:0
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Bar"
 msgstr "條"
@@ -723,6 +724,13 @@ msgstr ""
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Clear rows %s - %s"
+msgstr ""
+
+#. module: spreadsheet
+#. odoo-javascript
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
+#, python-format
+msgid "Clip"
 msgstr ""
 
 #. module: spreadsheet
@@ -1485,7 +1493,7 @@ msgstr "檔案"
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.xml:0
 #, python-format
 msgid "Fill Color"
-msgstr ""
+msgstr "填充顏色"
 
 #. module: spreadsheet
 #. odoo-javascript
@@ -1734,6 +1742,13 @@ msgstr ""
 
 #. module: spreadsheet
 #. odoo-javascript
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
+#, python-format
+msgid "Gauge"
+msgstr ""
+
+#. module: spreadsheet
+#. odoo-javascript
 #: code:addons/spreadsheet/static/src/pivot/pivot_functions.js:0
 #, python-format
 msgid "Get the absolute ID of an element in the pivot"
@@ -1969,21 +1984,21 @@ msgstr ""
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Insert %s rows"
-msgstr ""
+msgstr "插入 %s 行"
 
 #. module: spreadsheet
 #. odoo-javascript
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Insert %s rows above"
-msgstr ""
+msgstr "向上插入 %s 行"
 
 #. module: spreadsheet
 #. odoo-javascript
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Insert %s rows below"
-msgstr ""
+msgstr "向下插入 %s 行"
 
 #. module: spreadsheet
 #. odoo-javascript
@@ -1997,14 +2012,14 @@ msgstr ""
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Insert cells and shift down"
-msgstr ""
+msgstr "向下插入新儲存格"
 
 #. module: spreadsheet
 #. odoo-javascript
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Insert cells and shift right"
-msgstr ""
+msgstr "向右插入新儲存格"
 
 #. module: spreadsheet
 #. odoo-javascript
@@ -2039,21 +2054,21 @@ msgstr ""
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Insert row"
-msgstr ""
+msgstr "插入新行"
 
 #. module: spreadsheet
 #. odoo-javascript
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Insert row above"
-msgstr ""
+msgstr "向上插入新行"
 
 #. module: spreadsheet
 #. odoo-javascript
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Insert row below"
-msgstr ""
+msgstr "向下插入新行"
 
 #. module: spreadsheet
 #. odoo-javascript
@@ -2109,13 +2124,6 @@ msgstr ""
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Invalid lower inflection point formula"
-msgstr ""
-
-#. module: spreadsheet
-#. odoo-javascript
-#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
-#, python-format
-msgid "Invalid merge zone"
 msgstr ""
 
 #. module: spreadsheet
@@ -2450,6 +2458,7 @@ msgstr ""
 #. module: spreadsheet
 #. odoo-javascript
 #: code:addons/spreadsheet/static/src/chart/odoo_chart/odoo_line_chart.js:0
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Line"
 msgstr "明細項目"
@@ -2953,7 +2962,7 @@ msgstr ""
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Numbers"
-msgstr ""
+msgstr "數字"
 
 #. module: spreadsheet
 #. odoo-javascript
@@ -2975,6 +2984,13 @@ msgstr ""
 #, python-format
 msgid "October"
 msgstr "十月"
+
+#. module: spreadsheet
+#. odoo-javascript
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
+#, python-format
+msgid "Overflow"
+msgstr ""
 
 #. module: spreadsheet
 #. odoo-javascript
@@ -3080,6 +3096,7 @@ msgstr ""
 #. module: spreadsheet
 #. odoo-javascript
 #: code:addons/spreadsheet/static/src/chart/odoo_chart/odoo_pie_chart.js:0
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Pie"
 msgstr "Pie"
@@ -3429,6 +3446,13 @@ msgstr ""
 #, python-format
 msgid "Save"
 msgstr "儲存"
+
+#. module: spreadsheet
+#. odoo-javascript
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
+#, python-format
+msgid "Scorecard"
+msgstr ""
 
 #. module: spreadsheet
 #. odoo-javascript
@@ -4806,7 +4830,7 @@ msgstr ""
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "The text which will be inserted into the original text."
-msgstr ""
+msgstr "將會插入至原有文本的文字。"
 
 #. module: spreadsheet
 #. odoo-javascript
@@ -5240,6 +5264,20 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
+msgid "Unhide columns"
+msgstr ""
+
+#. module: spreadsheet
+#. odoo-javascript
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
+#, python-format
+msgid "Unhide rows"
+msgstr ""
+
+#. module: spreadsheet
+#. odoo-javascript
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
+#, python-format
 msgid "Unknown function: \"%s\""
 msgstr ""
 
@@ -5504,6 +5542,13 @@ msgstr ""
 #: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
 #, python-format
 msgid "Whether the referenced cell is empty"
+msgstr ""
+
+#. module: spreadsheet
+#. odoo-javascript
+#: code:addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js:0
+#, python-format
+msgid "Wrap"
 msgstr ""
 
 #. module: spreadsheet

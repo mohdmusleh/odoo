@@ -14,7 +14,7 @@ msgstr ""
 "POT-Creation-Date: 2022-09-27 15:12+0000\n"
 "PO-Revision-Date: 2022-09-29 09:44+0000\n"
 "Last-Translator: Jolien De Paepe, 2023\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"Language-Team: French (https://app.transifex.com/odoo/teams/41243/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -47,7 +47,7 @@ msgstr "Inventaire par emplacement"
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/inventory_on_hand_dashboard.json:0
 #, python-format
 msgid "Inventory by Lot/Serial Number"
-msgstr "Inventaire par numéro de série/lot"
+msgstr "Inventaire par lot/numéro de série"
 
 #. module: spreadsheet_dashboard_stock_account
 #. openerp-web
@@ -85,7 +85,7 @@ msgstr "Lot/Série"
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/inventory_on_hand_dashboard.json:0
 #, python-format
 msgid "On Hand"
-msgstr "En stock"
+msgstr "Disponible"
 
 #. module: spreadsheet_dashboard_stock_account
 #. openerp-web

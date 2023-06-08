@@ -7,8 +7,8 @@
 # Seongseok Shin <shinss61@hotmail.com>, 2022
 # Mark Lee <odoos@soti.33mail.com>, 2022
 # JH CHOI <hwangtog@gmail.com>, 2022
-# Martin Trigaux, 2022
 # Sarah Park, 2023
+# Martin Trigaux, 2023
 # 
 msgid ""
 msgstr ""
@@ -16,8 +16,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-02 10:35+0000\n"
 "PO-Revision-Date: 2022-09-22 05:55+0000\n"
-"Last-Translator: Sarah Park, 2023\n"
-"Language-Team: Korean (https://www.transifex.com/odoo/teams/41243/ko/)\n"
+"Last-Translator: Martin Trigaux, 2023\n"
+"Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -880,6 +880,7 @@ msgstr "모든 레코드를 보관하시겠습니까?"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/form/form_controller.js:0
 #: code:addons/web/static/src/legacy/js/views/form/form_controller.js:0
 #, python-format
 msgid "Are you sure that you want to archive this record?"
@@ -1354,7 +1355,7 @@ msgstr "회사"
 #: model:ir.model.fields,field_description:web.field_base_document_layout__company_details
 #: model_terms:ir.ui.view,arch_db:web.view_base_document_layout
 msgid "Company Details"
-msgstr ""
+msgstr "회사 상세 정보"
 
 #. module: web
 #: model:ir.model,name:web.model_base_document_layout
@@ -1950,7 +1951,7 @@ msgstr "작성 취소"
 #: code:addons/web/static/src/views/form/form_status_indicator/form_status_indicator.xml:0
 #, python-format
 msgid "Discard changes"
-msgstr ""
+msgstr "변경 사항 취소"
 
 #. module: web
 #. odoo-javascript
@@ -2063,7 +2064,7 @@ msgstr "다운로드"
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.view_base_document_layout
 msgid "Download PDF Preview"
-msgstr ""
+msgstr "PDF 미리보기 다운로드"
 
 #. module: web
 #. odoo-javascript
@@ -3658,7 +3659,7 @@ msgstr ""
 #: code:addons/web/static/src/views/form/form_error_dialog/form_error_dialog.xml:0
 #, python-format
 msgid "Oh snap!"
-msgstr ""
+msgstr "잠시만요!"
 
 #. module: web
 #. odoo-javascript
@@ -4929,6 +4930,13 @@ msgstr "모든 사용자들과 공유"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/webclient/user_menu/user_menu_items.js:0
+#, python-format
+msgid "Shortcuts"
+msgstr "바로 가기"
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
@@ -5007,7 +5015,7 @@ msgstr "쌓였음"
 #: code:addons/web/static/src/views/fields/relational_utils.js:0
 #, python-format
 msgid "Start typing..."
-msgstr ""
+msgstr "입력하기..."
 
 #. module: web
 #. odoo-javascript
@@ -5149,6 +5157,8 @@ msgid ""
 "country format. You can use '/' to indicate that the partner is not subject "
 "to tax."
 msgstr ""
+"세금 식별 번호. 여기에 해당하는 값은 국가별로 인정되는 형식을 기준으로 확인합니다. '/' 기호를 사용하여 협력업체가 과세 대상이 아닌"
+" 경우 표시할 수 있습니다."
 
 #. module: web
 #. odoo-python
@@ -5411,6 +5421,8 @@ msgid ""
 "Try to add some records, or make sure that there is no\n"
 "                    active filter in the search bar."
 msgstr ""
+"레코드를 추가하시거나, 검색창에 활성화된 필터가 있는지\n"
+"              다시 확인하시기 바랍니다."
 
 #. module: web
 #. odoo-javascript
@@ -5971,6 +5983,21 @@ msgstr ""
 msgid ""
 "You may not believe it,<br />but the application is actually loading..."
 msgstr "믿기시지 않겠지만<br />응용 프로그램을 실제로 불러오는 중입니다..."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/property_tags.js:0
+#, python-format
+msgid "You need to be able to edit parent first to add property tags"
+msgstr ""
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/properties/properties_field.js:0
+#: code:addons/web/static/src/views/fields/properties/properties_field.js:0
+#, python-format
+msgid "You need to be able to edit parent first to configure property fields"
+msgstr ""
 
 #. module: web
 #. odoo-javascript

@@ -334,6 +334,15 @@ class StockQuant(models.Model):
             self = self.sudo()
         return super(StockQuant, self).write(vals)
 
+    @api.ondelete(at_uninstall=False)
+    def _unlink_except_wrong_permission(self):
+        if not self.env.is_superuser():
+            if not self.user_has_groups('stock.group_stock_manager'):
+                raise UserError(_("Quants are auto-deleted when appropriate. If you must manually delete them, please ask a stock manager to do it."))
+            self = self.with_context(inventory_mode=True)
+            self.inventory_quantity = 0
+            self._apply_inventory()
+
     def action_view_stock_moves(self):
         self.ensure_one()
         action = self.env["ir.actions.actions"]._for_xml_id("stock.stock_move_line_action")
@@ -622,7 +631,7 @@ class StockQuant(models.Model):
                 self.product_id, self.location_id, lot_id=self.lot_id,
                 package_id=self.package_id, owner_id=self.owner_id, strict=True)
             if quant:
-                self.quantity = quant.quantity
+                self.quantity = quant.filtered(lambda q: q.lot_id == self.lot_id).quantity
 
             # Special case: directly set the quantity to one for serial numbers,
             # it'll trigger `inventory_quantity` compute.
@@ -833,6 +842,7 @@ class StockQuant(models.Model):
         argument, we’ll create a new quant in order for these transactions to not rollback. This
         method will find and deduplicate these quants.
         """
+        params = []
         query = """WITH
                         dupes AS (
                             SELECT min(id) as to_update_quant_id,
@@ -842,6 +852,15 @@ class StockQuant(models.Model):
                                 SUM(quantity) as quantity,
                                 MIN(in_date) as in_date
                             FROM stock_quant
+        """
+        if self._ids:
+            query += """
+                            WHERE
+                                location_id in %s
+                                AND product_id in %s
+            """
+            params = [tuple(self.location_id.ids), tuple(self.product_id.ids)]
+        query += """
                             GROUP BY product_id, company_id, location_id, lot_id, package_id, owner_id
                             HAVING count(id) > 1
                         ),
@@ -858,7 +877,7 @@ class StockQuant(models.Model):
         """
         try:
             with self.env.cr.savepoint():
-                self.env.cr.execute(query)
+                self.env.cr.execute(query, params)
                 self.env.invalidate_all()
         except Error as e:
             _logger.info('an error occurred while merging quants: %s', e.pgerror)
@@ -1126,6 +1145,7 @@ class QuantPackage(models.Model):
             return [('id', '=', False)]
 
     def unpack(self):
+        unpacked_quants = self.env['stock.quant']
         for package in self:
             move_line_to_modify = self.env['stock.move.line'].search([
                 ('package_id', '=', package.id),
@@ -1133,11 +1153,12 @@ class QuantPackage(models.Model):
                 ('reserved_qty', '!=', 0),
             ])
             move_line_to_modify.write({'package_id': False})
+            unpacked_quants |= package.quant_ids
             package.mapped('quant_ids').sudo().write({'package_id': False})
 
         # Quant clean-up, mostly to avoid multiple quants of the same product. For example, unpack
         # 2 packages of 50, then reserve 100 => a quant of -50 is created at transfer validation.
-        self.env['stock.quant']._quant_tasks()
+        unpacked_quants._quant_tasks()
 
     def action_view_picking(self):
         action = self.env["ir.actions.actions"]._for_xml_id("stock.action_picking_tree_all")

@@ -121,7 +121,7 @@ class PartnerCategory(models.Model):
     child_ids = fields.One2many('res.partner.category', 'parent_id', string='Child Tags')
     active = fields.Boolean(default=True, help="The active field allows you to hide the category without removing it.")
     parent_path = fields.Char(index=True, unaccent=False)
-    partner_ids = fields.Many2many('res.partner', column1='category_id', column2='partner_id', string='Partners')
+    partner_ids = fields.Many2many('res.partner', column1='category_id', column2='partner_id', string='Partners', copy=False)
 
     @api.constrains('parent_id')
     def _check_parent_id(self):
@@ -322,8 +322,13 @@ class Partner(models.Model):
     def _compute_avatar(self, avatar_field, image_field):
         partners_with_internal_user = self.filtered(lambda partner: partner.user_ids - partner.user_ids.filtered('share'))
         super(Partner, partners_with_internal_user)._compute_avatar(avatar_field, image_field)
-        for partner in self - partners_with_internal_user:
-            partner[avatar_field] = partner[image_field] or base64.b64encode(partner._avatar_get_placeholder())
+        partners_without_image = (self - partners_with_internal_user).filtered(lambda p: not p[image_field])
+        for _, group in tools.groupby(partners_without_image, key=lambda p: p._avatar_get_placeholder_path()):
+            group_partners = self.env['res.partner'].concat(*group)
+            group_partners[avatar_field] = base64.b64encode(group_partners[0]._avatar_get_placeholder())
+
+        for partner in self - partners_with_internal_user - partners_without_image:
+            partner[avatar_field] = partner[image_field]
 
     def _avatar_get_placeholder_path(self):
         if self.is_company:
@@ -334,7 +339,7 @@ class Partner(models.Model):
             return "base/static/img/money.png"
         return super()._avatar_get_placeholder_path()
 
-    @api.depends('is_company', 'name', 'parent_id.display_name', 'type', 'company_name')
+    @api.depends('is_company', 'name', 'parent_id.display_name', 'type', 'company_name', 'commercial_company_name')
     def _compute_display_name(self):
         # retrieve name_get() without any fancy feature
         names = dict(self.with_context({}).name_get())
@@ -381,7 +386,9 @@ class Partner(models.Model):
                 domain += [('company_id', 'in', [False, partner.company_id.id])]
             if partner_id:
                 domain += [('id', '!=', partner_id), '!', ('id', 'child_of', partner_id)]
-            partner.same_vat_partner_id = bool(partner.vat) and not partner.parent_id and Partner.search(domain, limit=1)
+            # For VAT number being only one character, we will skip the check just like the regular check_vat
+            should_check_vat = partner.vat and len(partner.vat) != 1
+            partner.same_vat_partner_id = should_check_vat and not partner.parent_id and Partner.search(domain, limit=1)
             # check company_registry
             domain = [
                 ('company_registry', '=', partner.company_registry),
@@ -566,6 +573,7 @@ class Partner(models.Model):
         if commercial_partner != self:
             sync_vals = commercial_partner._update_fields_values(self._commercial_fields())
             self.write(sync_vals)
+            self._commercial_sync_to_children()
 
     def _commercial_sync_to_children(self):
         """ Handle sync of commercial fields to descendants """
@@ -884,7 +892,7 @@ class Partner(models.Model):
             self = self.with_context(context)
         name, email = self._parse_partner_name(name)
         if self._context.get('force_email') and not email:
-            raise UserError(_("Couldn't create contact without email address!"))
+            raise ValidationError(_("Couldn't create contact without email address!"))
 
         create_values = {self._rec_name: name or email}
         if email:  # keep default_email in context

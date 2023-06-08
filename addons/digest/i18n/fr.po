@@ -14,7 +14,7 @@ msgstr ""
 "POT-Creation-Date: 2022-09-20 09:01+0000\n"
 "PO-Revision-Date: 2022-09-22 05:45+0000\n"
 "Last-Translator: Jolien De Paepe, 2023\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"Language-Team: French (https://app.transifex.com/odoo/teams/41243/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -56,8 +56,8 @@ msgstr "Activé"
 #: model_terms:ir.ui.view,arch_db:digest.res_config_settings_view_form
 msgid "Add new users as recipient of a periodic email with key metrics"
 msgstr ""
-"Ajoutez de nouveaux utilisateurs en tant que destinataire d'un email "
-"périodique avec des mesures clés"
+"Ajouter de nouveaux utilisateurs en tant que destinataire d'un email "
+"périodique avec des métriques clés"
 
 #. module: digest
 #: model:ir.model.fields,field_description:digest.field_digest_tip__group_id
@@ -73,7 +73,7 @@ msgstr "Champs disponibles"
 #: code:addons/digest/models/digest.py:0
 #, python-format
 msgid "Choose the metrics you care about"
-msgstr "Choisissez les indicateurs qui vous intéressent"
+msgstr "Choisissez les métriques qui vous intéressent"
 
 #. module: digest
 #: model:ir.model.fields,field_description:digest.field_digest_digest__company_id
@@ -88,7 +88,7 @@ msgstr "Paramètres de configuration"
 #. module: digest
 #: model_terms:ir.ui.view,arch_db:digest.res_config_settings_view_form
 msgid "Configure Digest Emails"
-msgstr "Configurez les digests d'emails"
+msgstr "Configurer les digests d'emails"
 
 #. module: digest
 #: code:addons/digest/models/digest.py:0
@@ -181,7 +181,7 @@ msgstr "Titre du digest"
 #: model:ir.model.fields,field_description:digest.field_digest_digest__display_name
 #: model:ir.model.fields,field_description:digest.field_digest_tip__display_name
 msgid "Display Name"
-msgstr "Afficher le nom"
+msgstr "Nom d'affichage"
 
 #. module: digest
 #: model_terms:ir.ui.view,arch_db:digest.res_config_settings_view_form

@@ -15,10 +15,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 10:33+0000\n"
+"POT-Creation-Date: 2023-05-23 08:22+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
 "Last-Translator: Henning Fyllingsnes, 2023\n"
-"Language-Team: Norwegian Bokmål (https://www.transifex.com/odoo/teams/41243/nb/)\n"
+"Language-Team: Norwegian Bokmål (https://app.transifex.com/odoo/teams/41243/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -681,7 +681,7 @@ msgstr ""
 #: code:addons/mail/models/mail_channel.py:0
 #, python-format
 msgid "<div class=\"o_mail_notification\">joined the channel</div>"
-msgstr ""
+msgstr "<div class=\"o_mail_notification\">har deltatt på kanalen</div>"
 
 #. module: mail
 #. odoo-python
@@ -759,12 +759,12 @@ msgstr ""
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "<span class=\"d-block w-75 py-2\">Button Color</span>"
-msgstr ""
+msgstr "<span class=\"d-block w-75 py-2\">Knapp farge</span>"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "<span class=\"d-block w-75 py-2\">Header Color</span>"
-msgstr ""
+msgstr "<span class=\"d-block w-75 py-2\">Overskrift farge</span>"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
@@ -779,7 +779,7 @@ msgstr ""
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "<span class=\"o_form_label\">Email Templates</span>"
-msgstr ""
+msgstr "<span class=\"o_form_label\">E-post maler</span>"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.email_template_form
@@ -806,6 +806,9 @@ msgid ""
 "'=', False), ('composition_mode', '=', 'mass_mail')]}\">Followers of the "
 "document and</span>"
 msgstr ""
+"<span name=\"document_followers_text\" attrs=\"{'invisible':['|', ('model', "
+"'=', False), ('composition_mode', '=', 'mass_mail')]}\">Følgere av "
+"dokumentet og</span>"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
@@ -1235,7 +1238,7 @@ msgstr "Legg til kontakter som skal varsles..."
 #: code:addons/mail/static/src/models/discuss_sidebar_category.js:0
 #, python-format
 msgid "Add or join a channel"
-msgstr ""
+msgstr "Legg til eller delta på en kanal"
 
 #. module: mail
 #. odoo-javascript
@@ -1402,8 +1405,8 @@ msgid "Animals & Nature"
 msgstr ""
 
 #. module: mail
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/mail/models/mail_channel.py:0
 #: code:addons/mail/static/src/components/message/message.xml:0
 #: code:addons/mail/static/src/models/message.js:0
@@ -1870,7 +1873,7 @@ msgstr ""
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_res_config_settings__secondary_color
 msgid "Button Color"
-msgstr ""
+msgstr "Knapp farge"
 
 #. module: mail
 #. odoo-python
@@ -2349,6 +2352,7 @@ msgstr "Firmaer"
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/js/activity.js:0
+#: code:addons/mail/static/src/models/composer_view.js:0
 #: code:addons/mail/static/src/models/mail_template.js:0
 #: model:ir.actions.act_window,name:mail.action_email_compose_message_wizard
 #: model_terms:ir.ui.view,arch_db:mail.email_compose_message_wizard_form
@@ -2709,7 +2713,7 @@ msgstr ""
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "Customize the look and feel of automated emails"
-msgstr ""
+msgstr "Tilpass utseendet og innhold til automatiserte e-poster"
 
 #. module: mail
 #. odoo-javascript
@@ -2985,6 +2989,7 @@ msgstr ""
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/components/thread_view_topbar/thread_view_topbar.xml:0
+#: code:addons/mail/static/src/models/discuss.js:0
 #: model:ir.actions.client,name:mail.action_discuss
 #: model:ir.ui.menu,name:mail.mail_menu_technical
 #: model:ir.ui.menu,name:mail.menu_root_discuss
@@ -3369,7 +3374,7 @@ msgstr "Forhåndsvisning av e-postmal"
 #: model:ir.model,name:mail.model_mail_template
 #: model:ir.ui.menu,name:mail.menu_email_templates
 msgid "Email Templates"
-msgstr "E-postmaler"
+msgstr "E-post maler"
 
 #. module: mail
 #: model:ir.model,name:mail.model_mail_thread
@@ -3445,7 +3450,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:mail.field_mail_activity__mail_template_ids
 #: model:ir.model.fields,field_description:mail.field_mail_activity_type__mail_template_ids
 msgid "Email templates"
-msgstr ""
+msgstr "E-post maler"
 
 #. module: mail
 #: model:ir.actions.act_window,name:mail.action_view_mail_mail
@@ -3983,13 +3988,6 @@ msgid "Gmail Credentials"
 msgstr ""
 
 #. module: mail
-#. odoo-python
-#: code:addons/mail/models/res_users.py:0
-#, python-format
-msgid "Go to the configuration panel"
-msgstr "Gå til konfigurasjonspanelet"
-
-#. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_channel__channel_type__group
 msgid "Group"
 msgstr "Gruppe"
@@ -4132,7 +4130,7 @@ msgstr ""
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_res_config_settings__primary_color
 msgid "Header Color"
-msgstr "Topptekstfarge"
+msgstr "Overskrift farge"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_mail__headers
@@ -5012,14 +5010,14 @@ msgstr ""
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.mail_channel_view_kanban
 msgid "Join"
-msgstr "Bli med"
+msgstr "Delta"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models/call_action_list_view.js:0
 #, python-format
 msgid "Join Call"
-msgstr ""
+msgstr "Delta på samtalen"
 
 #. module: mail
 #. odoo-javascript
@@ -5034,7 +5032,7 @@ msgstr "Bli med i kanal"
 #: code:addons/mail/static/src/components/call_action_list/call_action_list.xml:0
 #, python-format
 msgid "Join Video Call"
-msgstr ""
+msgstr "Delta på videosamtale"
 
 #. module: mail
 #: model:ir.actions.act_window,name:mail.mail_channel_action_view
@@ -5406,6 +5404,7 @@ msgstr ""
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/components/chatter_topbar/chatter_topbar.xml:0
+#: code:addons/mail/static/src/models/composer_view.js:0
 #, python-format
 msgid "Log note"
 msgstr "Loggfør notat"
@@ -5672,6 +5671,13 @@ msgstr "Marker som gjøremål"
 #, python-format
 msgid "Mark as done"
 msgstr "Marker som fullført"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/models/call_settings_menu.js:0
+#, python-format
+msgid "Media devices unobtainable"
+msgstr ""
 
 #. module: mail
 #: model:mail.activity.type,name:mail.mail_activity_data_meeting
@@ -7775,10 +7781,10 @@ msgstr "Prøv igjen"
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "Review All Templates"
-msgstr ""
+msgstr "Vis alle maler"
 
 #. module: mail
-#: model:ir.model.fields,field_description:mail.field_mail_mail__body_html
+#: model:ir.model.fields,field_description:mail.field_mail_mail__body_content
 msgid "Rich-text Contents"
 msgstr "Rikt tekstformat-innhold"
 
@@ -7842,6 +7848,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:mail.view_email_server_search
 msgid "SSL"
 msgstr "SSL"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/models/call_settings_menu.js:0
+#, python-format
+msgid "SSL might not be set up properly"
+msgstr ""
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_fetchmail_server__is_ssl
@@ -7911,7 +7924,7 @@ msgstr "Planlegg"
 #: code:addons/mail/static/src/models/messaging.js:0
 #, python-format
 msgid "Schedule Activity"
-msgstr ""
+msgstr "Planlegg aktivitet"
 
 #. module: mail
 #. odoo-javascript
@@ -7933,7 +7946,7 @@ msgstr "Planlegg aktivitet"
 #: code:addons/mail/models/mail_activity.py:0
 #, python-format
 msgid "Schedule an Activity"
-msgstr ""
+msgstr "Planlegg en aktivitet"
 
 #. module: mail
 #. odoo-javascript
@@ -8862,6 +8875,11 @@ msgid "Test & Confirm"
 msgstr "Test og bekreft"
 
 #. module: mail
+#: model:ir.model.fields,field_description:mail.field_mail_mail__body_html
+msgid "Text Contents"
+msgstr ""
+
+#. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/components/attachment_viewer/attachment_viewer.xml:0
 #, python-format
@@ -9053,7 +9071,7 @@ msgstr ""
 #: code:addons/mail/static/src/components/message_list/message_list.xml:0
 #, python-format
 msgid "There are no messages in this conversation."
-msgstr ""
+msgstr "Det er ingen meldinger i denne samtalelisten."
 
 #. module: mail
 #: model:ir.model.constraint,message:mail.constraint_mail_channel_rtc_session_channel_member_unique
@@ -9860,7 +9878,7 @@ msgstr ""
 #: code:addons/mail/static/src/components/discuss_sidebar_category/discuss_sidebar_category.xml:0
 #, python-format
 msgid "View or join channels"
-msgstr ""
+msgstr "Vis eller delta på kanalene"
 
 #. module: mail
 #. odoo-javascript
@@ -10126,17 +10144,6 @@ msgstr ""
 #, python-format
 msgid "You can only open the profile of existing users."
 msgstr ""
-
-#. module: mail
-#. odoo-python
-#: code:addons/mail/models/res_users.py:0
-#, python-format
-msgid ""
-"You cannot create a new user from here.\n"
-" To create new user please go to configuration panel."
-msgstr ""
-"Du kan ikke opprette nye brukere herfra.\n"
-"For å opprette ny bruker, gå til konfigurasjonspanelet."
 
 #. module: mail
 #. odoo-python
@@ -13111,7 +13118,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "calendar"
-msgstr ""
+msgstr "Kalender"
 
 #. module: mail
 #. odoo-javascript
@@ -16106,8 +16113,8 @@ msgid "doctor"
 msgstr ""
 
 #. module: mail
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/mail/models/mail_thread.py:0
 #: code:addons/mail/static/src/components/message/message.xml:0
 #: code:addons/mail/static/src/models_data/emoji_data.js:0

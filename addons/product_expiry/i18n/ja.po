@@ -5,6 +5,7 @@
 # Translators:
 # Martin Trigaux, 2022
 # Andy Yiu, 2023
+# Ryoko Tsuda <ryoko@quartile.co>, 2023
 # 
 msgid ""
 msgstr ""
@@ -12,8 +13,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-20 09:02+0000\n"
 "PO-Revision-Date: 2022-09-22 05:54+0000\n"
-"Last-Translator: Andy Yiu, 2023\n"
-"Language-Team: Japanese (https://www.transifex.com/odoo/teams/41243/ja/)\n"
+"Last-Translator: Ryoko Tsuda <ryoko@quartile.co>, 2023\n"
+"Language-Team: Japanese (https://app.transifex.com/odoo/teams/41243/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -47,6 +48,11 @@ msgstr "警告日"
 #. module: product_expiry
 #: model:mail.activity.type,name:product_expiry.mail_activity_type_alert_date_reached
 msgid "Alert Date Reached"
+msgstr ""
+
+#. module: product_expiry
+#: model_terms:ir.ui.view,arch_db:product_expiry.report_lot_label_expiry
+msgid "B.b."
 msgstr ""
 
 #. module: product_expiry
@@ -131,6 +137,11 @@ msgid "Display Name"
 msgstr "表示名"
 
 #. module: product_expiry
+#: model_terms:ir.ui.view,arch_db:product_expiry.report_lot_label_expiry
+msgid "Exp."
+msgstr ""
+
+#. module: product_expiry
 #: model_terms:ir.ui.view,arch_db:product_expiry.quant_search_view_inherit_product_expiry
 #: model_terms:ir.ui.view,arch_db:product_expiry.search_product_lot_filter_inherit_product_expiry
 msgid "Expiration Alerts"
@@ -169,7 +180,7 @@ msgstr "ID"
 #. module: product_expiry
 #: model:res.groups,name:product_expiry.group_expiry_date_on_delivery_slip
 msgid "Include expiration dates on delivery slip"
-msgstr ""
+msgstr "配送伝票に有効期限を記載"
 
 #. module: product_expiry
 #: model:ir.model.fields,field_description:product_expiry.field_expiry_picking_confirmation____last_update
@@ -249,7 +260,7 @@ msgstr "調達グループ"
 #. module: product_expiry
 #: model:ir.model,name:product_expiry.model_product_template
 msgid "Product"
-msgstr "商品"
+msgstr "プロダクト"
 
 #. module: product_expiry
 #: model:ir.model.fields,field_description:product_expiry.field_stock_lot__product_expiry_alert
@@ -265,7 +276,7 @@ msgstr "製品の移動(在庫移動ライン)"
 #. module: product_expiry
 #: model:ir.model,name:product_expiry.model_product_product
 msgid "Product Variant"
-msgstr "商品バリアント"
+msgstr "プロダクトバリアント"
 
 #. module: product_expiry
 #: model:ir.model,name:product_expiry.model_stock_quant

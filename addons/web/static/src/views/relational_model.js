@@ -473,15 +473,21 @@ export class Record extends DataPoint {
     }
 
     get evalContext() {
-        return {
-            // ...
-            ...this.dataContext,
-            ...this.context,
-            active_id: this.resId || false,
-            active_ids: this.resId ? [this.resId] : [],
-            active_model: this.resModel,
-            current_company_id: this.model.company.currentCompany.id,
-        };
+        if (!this.__evalContext) {
+            // store evalContext and reset it after a tick, as all calls during
+            // the same tick will produce the exact same evalContext
+            this.__evalContext = {
+                // ...
+                ...this.dataContext,
+                ...this.context,
+                active_id: this.resId || false,
+                active_ids: this.resId ? [this.resId] : [],
+                active_model: this.resModel,
+                current_company_id: this.model.company.currentCompany.id,
+            };
+            Promise.resolve().then(() => (this.__evalContext = null));
+        }
+        return this.__evalContext;
     }
 
     /**
@@ -725,9 +731,10 @@ export class Record extends DataPoint {
                     : false;
             } else if (fieldType === "reference") {
                 const value = changes[fieldName];
-                changes[fieldName] = value && value.resModel && value.resId
-                    ? `${value.resModel},${value.resId}`
-                    : (value || false);
+                changes[fieldName] =
+                    value && value.resModel && value.resId
+                        ? `${value.resModel},${value.resId}`
+                        : value || false;
             }
         }
 
@@ -975,12 +982,12 @@ export class Record extends DataPoint {
         this.invalidateCache();
     }
 
-    async update(changes) {
+    async update(changes, options) {
         if (this._urgentSave) {
-            return this._update(changes);
+            return this._update(changes, options);
         }
         return this.model.mutex.exec(async () => {
-            await this._update(changes);
+            await this._update(changes, options);
         });
     }
 
@@ -1375,7 +1382,7 @@ export class Record extends DataPoint {
         return true;
     }
 
-    async _update(changes) {
+    async _update(changes, { silent } = {}) {
         await this._applyChanges(changes);
         if (this.selected && this.model.multiEdit) {
             await this.model.root._multiSave(this);
@@ -1411,7 +1418,9 @@ export class Record extends DataPoint {
             proms.push(this.loadPreloadedData());
             await Promise.all(proms);
             this.canBeAbandoned = false;
-            this.model.notify();
+            if (!silent) {
+                this.model.notify();
+            }
         }
     }
 }
@@ -1420,8 +1429,21 @@ class DynamicList extends DataPoint {
     setup(params, state) {
         this.groupBy = params.groupBy || [];
         this.domain = markRaw(params.domain || []);
-        this.orderBy =
-            params.orderBy && params.orderBy.length ? params.orderBy : state.orderBy || []; // rename orderBy
+
+        // restore the previously exported initialOrderBy or initialize it to `params.orderBy`
+        // this is what will be exported as `state.initialOrderBy`
+        this.initialOrderBy = state.initialOrderBy || params.orderBy || [];
+
+        if (
+            params.orderBy &&
+            params.orderBy.length &&
+            JSON.stringify(params.orderBy) !== JSON.stringify(state.initialOrderBy)
+        ) {
+            this.orderBy = params.orderBy;
+        } else {
+            this.orderBy = state.orderBy || [];
+        }
+
         this.offset = state.offset || 0;
         this.count = 0;
         this.initialLimit = state.initialLimit || params.limit || this.constructor.DEFAULT_LIMIT;
@@ -1532,6 +1554,7 @@ class DynamicList extends DataPoint {
             limit: this.limit,
             initialLimit: this.initialLimit,
             orderBy: this.orderBy,
+            initialOrderBy: this.initialOrderBy,
         };
     }
 
@@ -1774,7 +1797,7 @@ class DynamicList extends DataPoint {
             const record = records.find((r) => r.resId === recordData.id);
             const value = { [handleField]: recordData[handleField] };
             if (record instanceof Record) {
-                await record.update(value);
+                await record.update(value, { silent: true });
             } else {
                 Object.assign(record.data, value);
             }
@@ -3470,6 +3493,17 @@ export class RelationalModel extends Model {
             !(params.groupBy && params.groupBy.length)
         ) {
             rootParams.groupBy = [this.defaultGroupBy];
+        }
+
+        if (rootParams.context) {
+            // *_view_ref and search_default_* context keys are not destined to us, rather
+            // they were tyîcally "consumed" by the View.
+            // The default_* context keys are, on the contrary, destined for us.
+            rootParams.context = Object.fromEntries(
+                Object.entries(rootParams.context).filter(
+                    ([key]) => !key.endsWith("_view_ref") && !key.startsWith("search_default_")
+                )
+            );
         }
         rootParams.rawContext = {
             make: () => {
