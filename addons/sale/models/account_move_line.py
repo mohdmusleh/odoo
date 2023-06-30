@@ -6,7 +6,9 @@ from odoo.exceptions import UserError
 from odoo.tools import float_compare, float_is_zero
 
 
-class AccountMoveLine(models.Model):
+class Account
+
+veLine(models.Model):
     _inherit = 'account.move.line'
 
     is_downpayment = fields.Boolean()
@@ -205,3 +207,4 @@ class AccountMoveLine(models.Model):
     def _get_downpayment_lines(self):
         # OVERRIDE
         return self.sale_line_ids.filtered('is_downpayment').invoice_lines.filtered(lambda line: line.move_id._is_downpayment())
+                                                                                               

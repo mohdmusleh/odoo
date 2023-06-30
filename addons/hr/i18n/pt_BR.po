@@ -894,7 +894,7 @@ msgstr "Nome do Contato"
 #: model:ir.model.fields,field_description:hr.field_hr_employee__emergency_phone
 #: model:ir.model.fields,field_description:hr.field_res_users__emergency_phone
 msgid "Contact Phone"
-msgstr ""
+msgstr "Telefone de contato"
 
 #. module: hr
 #: model:ir.model,name:hr.model_hr_contract_type
@@ -1763,7 +1763,7 @@ msgstr "Descritivo da Função"
 #: model_terms:ir.ui.view,arch_db:hr.view_employee_form
 #: model_terms:ir.ui.view,arch_db:hr.view_job_filter
 msgid "Job Position"
-msgstr "Cargo"
+msgstr "Vaga de emprego"
 
 #. module: hr
 #: model:ir.actions.act_window,name:hr.action_hr_job
@@ -1790,7 +1790,7 @@ msgstr "Função"
 #: model:ir.model.fields,field_description:hr.field_hr_department__jobs_ids
 #: model_terms:ir.ui.view,arch_db:hr.view_job_filter
 msgid "Jobs"
-msgstr "Oportunidades de Emprego"
+msgstr "Oportunidades de emprego"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__lang
