@@ -3365,6 +3365,17 @@ msgstr ""
 "القناة\" للدورات %(course_names)s "
 
 #. module: website_slides
+#. odoo-python
+#: code:addons/website_slides/models/slide_slide.py:0
+#, python-format
+msgid ""
+"Impossible to send emails. Select a \"Share Template\" for courses "
+"%(course_names)s first"
+msgstr ""
+"لا يمكن إرسال رسائل البريد الإلكتروني. قم أولاً بتحديد \"قالب المشاركة\" "
+"للدورات %(course_names)s "
+
+#. module: website_slides
 #: model:slide.answer,comment:website_slides.slide_slide_demo_1_4_question_0_1
 #: model:slide.answer,comment:website_slides.slide_slide_demo_2_0_question_0_0
 #: model:slide.answer,comment:website_slides.slide_slide_demo_2_0_question_1_0
@@ -4279,8 +4290,8 @@ msgstr "عدد الأخطاء "
 #. module: website_slides
 #: model:ir.model.fields,help:website_slides.field_slide_channel__message_needaction_counter
 #: model:ir.model.fields,help:website_slides.field_slide_slide__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء "
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: website_slides
 #: model:ir.model.fields,help:website_slides.field_slide_channel__message_has_error_counter

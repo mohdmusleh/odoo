@@ -12,7 +12,6 @@
 # Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com.mx>, 2022
 # Pablo Rojas <rojaspablo88@gmail.com>, 2022
 # Nelson Ramírez <info@konos.cl>, 2022
-# Martin Trigaux, 2022
 # Óscar Fonseca <tecnico@extreme-micro.com>, 2023
 # David Ramia, 2023
 # Antoine Demany, 2023
@@ -22,6 +21,8 @@
 # Fernanda Alvarez, 2023
 # Iran Villalobos López, 2023
 # Jolien De Paepe, 2023
+# Martin Trigaux, 2023
+# Ana Sanjuán, 2023
 # 
 msgid ""
 msgstr ""
@@ -29,7 +30,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-23 08:22+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Jolien De Paepe, 2023\n"
+"Last-Translator: Ana Sanjuán, 2023\n"
 "Language-Team: Spanish (https://app.transifex.com/odoo/teams/41243/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -809,7 +810,7 @@ msgstr "<span class=\"o_form_label\">Lista de servidores ICE personalizada</span
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "<span class=\"o_form_label\">Email Templates</span>"
-msgstr ""
+msgstr "<span class=\"o_form_label\">Plantillas de correo electrónico</span>"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.email_template_form
@@ -1393,6 +1394,13 @@ msgstr ""
 
 #. module: mail
 #. odoo-python
+#: code:addons/mail/models/ir_attachment.py:0
+#, python-format
+msgid "An access token must be provided for each attachment."
+msgstr "Se debe proporcionar un código de acceso para cada archivo adjunto."
+
+#. module: mail
+#. odoo-python
 #: code:addons/mail/models/res_partner.py:0
 #, python-format
 msgid "An email is required for find_or_create to work"
@@ -1504,6 +1512,8 @@ msgid ""
 "Are you sure you want to reset these email templates to their original "
 "configuration? Changes and translations will be lost."
 msgstr ""
+"¿Está seguro que desea restablecer estas plantillas de correo electrónico a "
+"su configuración original? Se perderán los cambios y traducciones."
 
 #. module: mail
 #. odoo-python
@@ -2223,7 +2233,7 @@ msgstr "Canales/Socios"
 #: model:ir.model.fields.selection,name:mail.selection__mail_channel__channel_type__chat
 #, python-format
 msgid "Chat"
-msgstr "Charla"
+msgstr "Chat"
 
 #. module: mail
 #: model:ir.actions.act_window,name:mail.mail_shortcode_action
@@ -4175,12 +4185,12 @@ msgstr ""
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__res_users__notification_type__email
 msgid "Handle by Emails"
-msgstr "Manejar por correos electrónicos"
+msgstr "Gestionar por correo electrónico"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__res_users__notification_type__inbox
 msgid "Handle in Odoo"
-msgstr "Manejar en Odoo"
+msgstr "Gestionar en Odoo"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_ir_model__is_mail_activity
@@ -5670,14 +5680,14 @@ msgstr "Editor de plantillas de correo"
 #. module: mail
 #: model:ir.model,name:mail.model_mail_template_reset
 msgid "Mail Template Reset"
-msgstr ""
+msgstr "Restablecer plantilla de correo"
 
 #. module: mail
 #. odoo-python
 #: code:addons/mail/wizard/mail_template_reset.py:0
 #, python-format
 msgid "Mail Templates have been reset"
-msgstr ""
+msgstr "Se restablecieron las plantillas de correo"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.model_search_view
@@ -6660,7 +6670,7 @@ msgstr "Numero de errores"
 #: model:ir.model.fields,help:mail.field_mail_thread_cc__message_needaction_counter
 #: model:ir.model.fields,help:mail.field_res_partner__message_needaction_counter
 #: model:ir.model.fields,help:mail.field_res_users__message_needaction_counter
-msgid "Number of messages which requires an action"
+msgid "Number of messages requiring action"
 msgstr "Número de mensajes que requieren una acción"
 
 #. module: mail
@@ -7340,8 +7350,8 @@ msgid ""
 "- Handle in Odoo: notifications appear in your Odoo Inbox"
 msgstr ""
 "Política de gestión de las notificaciones:\n"
-"- Manejar por correos electrónicos: las notificaciones son enviadas a su dirección de correo\n"
-"- Manejar en Odoo: las notificaciones aparecen en su bandeja de entrada de Odoo"
+"- Gestionar por correo electrónico: las notificaciones son enviadas a su dirección de correo.\n"
+"- Gestionar en Odoo: las notificaciones aparecen en su bandeja de entrada de Odoo."
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_alias__alias_contact
@@ -9145,6 +9155,23 @@ msgid ""
 msgstr ""
 
 #. module: mail
+#. odoo-python
+#: code:addons/mail/models/ir_attachment.py:0
+#, python-format
+msgid ""
+"The attachment %s does not exist or you do not have the rights to access it."
+msgstr ""
+"El archivo adjunto %s no existe o usted no tiene los permisos para acceder a"
+" él."
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/ir_attachment.py:0
+#, python-format
+msgid "The attachment %s does not exist."
+msgstr ""
+
+#. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models/blur_manager.js:0
 #, python-format
@@ -9222,6 +9249,8 @@ msgid ""
 "The following email templates could not be reset because their related source files could not be found:\n"
 "- %s"
 msgstr ""
+"No se han podido restablecer las siguientes plantillas de correo electrónico porque no se han podido encontrar los archivos de origen relacionados:\n"
+"- %s"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_res_partner__user_id
@@ -10095,6 +10124,14 @@ msgstr ""
 "usar (@mycompany.odoo.com)."
 
 #. module: mail
+#: code:addons/mail/models/mail_alias.py:0
+#, python-format
+msgid ""
+"Value for `mail.catchall.domain.allowed` cannot be validated.\n"
+"It should be a comma separated list of domains e.g. example.com,example.org."
+msgstr ""
+
+#. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
@@ -10674,7 +10711,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "accounting"
-msgstr ""
+msgstr "contabilidad"
 
 #. module: mail
 #. odoo-javascript

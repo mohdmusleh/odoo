@@ -6,6 +6,7 @@
 # Martin Trigaux, 2022
 # JH CHOI <hwangtog@gmail.com>, 2022
 # Sarah Park, 2023
+# Daye Jeong, 2023
 # 
 msgid ""
 msgstr ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-10 10:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:55+0000\n"
-"Last-Translator: Sarah Park, 2023\n"
+"Last-Translator: Daye Jeong, 2023\n"
 "Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -166,12 +167,12 @@ msgstr "크레딧을 구매하십시오."
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_resend__can_cancel
 msgid "Can Cancel"
-msgstr ""
+msgstr "취소 가능"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_resend__can_resend
 msgid "Can Resend"
-msgstr ""
+msgstr "재발송 가능"
 
 #. module: sms
 #: model_terms:ir.ui.view,arch_db:sms.sms_sms_view_tree
@@ -355,7 +356,7 @@ msgstr "삭제된 전화 번호를 저장하는 데 사용되는 필드입니다
 #: model:ir.model.fields,help:sms.field_sms_template__template_fs
 msgid ""
 "File from where the template originates. Used to reset broken template."
-msgstr ""
+msgstr "서식이 만들어진 원래의 파일입니다. 서식이 손상된 경우 다시 제작하는데 사용합니다."
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_res_partner__message_follower_ids
@@ -603,7 +604,7 @@ msgstr "이름"
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_template_preview__no_record
 msgid "No Record"
-msgstr ""
+msgstr "기록 없음"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_resend_recipient__notification_id
@@ -637,8 +638,8 @@ msgstr "오류 횟수"
 
 #. module: sms
 #: model:ir.model.fields,help:sms.field_res_partner__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "조치가 필요한 메시지 수"
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: sms
 #: model:ir.model.fields,help:sms.field_res_partner__message_has_error_counter
@@ -655,7 +656,7 @@ msgstr ""
 #. module: sms
 #: model:ir.model.fields.selection,name:sms.selection__sms_sms__failure_type__sms_optout
 msgid "Opted Out"
-msgstr ""
+msgstr "선택하지 않음"
 
 #. module: sms
 #: model:ir.model.fields,help:sms.field_sms_template__lang
@@ -754,7 +755,7 @@ msgstr "수신인"
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_resend_recipient__partner_name
 msgid "Recipient Name"
-msgstr ""
+msgstr "수신인 이름"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_composer__recipient_single_number_itf
@@ -814,7 +815,7 @@ msgstr ""
 #. module: sms
 #: model_terms:ir.ui.view,arch_db:sms.sms_template_view_form
 msgid "Reset Template"
-msgstr ""
+msgstr "서식 재설정"
 
 #. module: sms
 #: model_terms:ir.ui.view,arch_db:sms.sms_sms_view_tree
@@ -1109,7 +1110,7 @@ msgstr "템플릿"
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_template__template_fs
 msgid "Template Filename"
-msgstr ""
+msgstr "서식 파일명"
 
 #. module: sms
 #: model:ir.actions.act_window,name:sms.sms_template_preview_action
@@ -1159,7 +1160,7 @@ msgstr "이 전화번호는 SMS 마케팅에서 블랙리스트에 올라있습�
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_resend_recipient__resend
 msgid "Try Again"
-msgstr ""
+msgstr "다시 시도하세요"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_mail_mail__message_type
@@ -1285,7 +1286,7 @@ msgstr ""
 #. module: sms
 #: model_terms:ir.ui.view,arch_db:sms.sms_template_view_form
 msgid "e.g. Contact"
-msgstr ""
+msgstr "예. 연락처"
 
 #. module: sms
 #: model_terms:ir.ui.view,arch_db:sms.sms_template_view_form

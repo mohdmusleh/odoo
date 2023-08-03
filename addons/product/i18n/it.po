@@ -201,7 +201,7 @@ msgstr "<strong>Q.tà: </strong>"
 #. module: product
 #: model_terms:ir.ui.view,arch_db:product.report_pricelist_page
 msgid "<strong>Sales Order Line Quantities (price per unit)</strong>"
-msgstr ""
+msgstr "<strong>Quantità righe ordini di vendita (prezzo per unità)</strong>"
 
 #. module: product
 #: model_terms:ir.ui.view,arch_db:product.res_config_settings_view_form
@@ -337,7 +337,7 @@ msgstr "Aggiungi quantità"
 #. module: product
 #: model:ir.model.fields,field_description:product.field_product_product__additional_product_tag_ids
 msgid "Additional Product Tag"
-msgstr "Etichetta prodotto addizionali"
+msgstr "Etichetta prodotto addizionale"
 
 #. module: product
 #: model:ir.model.fields,field_description:product.field_res_config_settings__group_sale_pricelist
@@ -1751,7 +1751,7 @@ msgstr "Numero di errori"
 #. module: product
 #: model:ir.model.fields,help:product.field_product_product__message_needaction_counter
 #: model:ir.model.fields,help:product.field_product_template__message_needaction_counter
-msgid "Number of messages which requires an action"
+msgid "Number of messages requiring action"
 msgstr "Numero di messaggi che richiedono un'azione"
 
 #. module: product

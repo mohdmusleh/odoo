@@ -5,7 +5,6 @@
 # Translators:
 # Braulio D. López Vázquez <bdl@odoo.com>, 2022
 # Martin Trigaux, 2022
-# Lucia Pacheco, 2022
 # Fernanda Alvarez, 2023
 # 
 msgid ""
@@ -34,7 +33,7 @@ msgstr "Agregar modo de producto"
 #: code:addons/sale_product_matrix/static/src/js/sale_product_field.js:0
 #, python-format
 msgid "Choose Product Variants"
-msgstr "Seleccione las variantes de producto"
+msgstr "Seleccione las variantes del producto"
 
 #. module: sale_product_matrix
 #. openerp-web
@@ -51,8 +50,8 @@ msgid ""
 "Configurator: choose attribute values to add the matching product variant to the order.\n"
 "Grid: add several variants at once from the grid of attribute values"
 msgstr ""
-"Configurador: seleccione valores de atributo para añadir la variante de producto correspondiente a la orden.\n"
-"Tabla: añada varias variantes a la vez desde la tabla de valores de atributos."
+"Configurador: seleccione valores de atributo para agregar la variante de producto correspondiente a la orden.\n"
+"Tabla: agregue varias variantes a la vez desde la tabla de valores de atributos."
 
 #. module: sale_product_matrix
 #. openerp-web
@@ -119,7 +118,7 @@ msgid ""
 "If not, represents the matrix to open."
 msgstr ""
 "Almacenamiento técnico local de la tabla.\n"
-"Si grid_update, se cargará en la orden de venta.\n"
+"Si es grid_update, se cargará en la orden de venta.\n"
 "Si no, representa la matriz a abrir."
 
 #. module: sale_product_matrix

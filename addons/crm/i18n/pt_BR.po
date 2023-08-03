@@ -5,12 +5,13 @@
 # Translators:
 # Fernando Colus <fcolus1@gmail.com>, 2022
 # Luiz Carlos de Lima <luiz.carlos@akretion.com.br>, 2022
-# grazziano <gra.negocia@gmail.com>, 2022
+# grazziano <grazziano.do+transifex@gmail.com>, 2022
 # Éder Brito <britoederr@gmail.com>, 2022
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2022
 # Marcel Savegnago <marcel.savegnago@gmail.com>, 2022
 # Martin Trigaux, 2022
 # Kevilyn Rosa, 2023
+# adrianojprado <adrianojprado@gmail.com>, 2023
 # Layna Nascimento, 2023
 # 
 msgid ""
@@ -436,8 +437,8 @@ msgid ""
 "A Python dictionary that will be evaluated to provide default values when "
 "creating new records for this alias."
 msgstr ""
-"Um dicionário python que será avaliado para gerar valores padrão quando "
-"forem criados novos registros para este apelido."
+"Um dicionário python que será avaliado para fornecer valores padrões ao "
+"criar novos registros para este alias."
 
 #. module: crm
 #: model_terms:digest.tip,tip_description:crm.digest_tip_crm_3
@@ -596,12 +597,12 @@ msgstr "Nome do Apelido"
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_team__alias_domain
 msgid "Alias domain"
-msgstr "Apelido do domínio"
+msgstr "Domínio do alias"
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_team__alias_model_id
 msgid "Aliased Model"
-msgstr "Modelo Apelidado"
+msgstr "Modelo de alias"
 
 #. module: crm
 #. odoo-javascript
@@ -1904,7 +1905,7 @@ msgstr "É probabilidade automatizada?"
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead__function
 msgid "Job Position"
-msgstr "Vaga de emprego"
+msgstr "Cargo"
 
 #. module: crm
 #: model_terms:ir.ui.view,arch_db:crm.crm_lead_merge_summary
@@ -2403,7 +2404,7 @@ msgstr "Médio:"
 #: code:addons/crm/models/crm_lead.py:0
 #, python-format
 msgid "Meeting scheduled at '%s'<br> Subject: %s <br> Duration: %s"
-msgstr "Reuniã agenda em '%s'<br> Assunto: %s <br> Duração: %s"
+msgstr "Reunião agendada em '%s'<br> Assunto: %s <br> Duração: %s"
 
 #. module: crm
 #: model:ir.actions.act_window,name:crm.act_crm_opportunity_calendar_event_new
@@ -2741,8 +2742,8 @@ msgstr "Número de leads e oportunidades atribuídos no último mês."
 
 #. module: crm
 #: model:ir.model.fields,help:crm.field_crm_lead__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "Número de mensagens que requer uma ação"
+msgid "Number of messages requiring action"
+msgstr "Número de mensagens que requerem ação"
 
 #. module: crm
 #: model:ir.model.fields,help:crm.field_crm_lead__message_has_error_counter

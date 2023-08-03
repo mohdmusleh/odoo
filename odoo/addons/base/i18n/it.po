@@ -8,8 +8,8 @@
 # Luca Carlo, 2023
 # Sebastiano Picchi, 2023
 # Martin Trigaux, 2023
-# Sergio Zanchetta <primes2h@gmail.com>, 2023
 # Marianna Ciofani, 2023
+# Sergio Zanchetta <primes2h@gmail.com>, 2023
 # 
 msgid ""
 msgstr ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-23 08:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:44+0000\n"
-"Last-Translator: Marianna Ciofani, 2023\n"
+"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>, 2023\n"
 "Language-Team: Italian (https://app.transifex.com/odoo/teams/41243/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -875,7 +875,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"        Questo modulo bridge consente di gestire l'esternalizzazione con il modulo di Spedizione diretta.\n"
+"        Questo modulo bridge consente di gestire l'esternalizzazione con il modulo di dropshipping.\n"
 "    "
 
 #. module: base
@@ -2866,13 +2866,13 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Gestisci gli ordini di spedizione diretta\n"
+"Gestisci gli ordini di dropshipping\n"
 "===========================\n"
 "\n"
-"Questo modulo aggiunge un tipo di spedizione diretta preconfigurato\n"
-"nonché un percorso di approvvigionamento che consente di configurare la spedizione diretta dei prodotti e degli ordini.\n"
+"Questo modulo aggiunge un tipo di dropshipping preconfigurato\n"
+"nonché un percorso di approvvigionamento che consente di configurare il dropshipping dei prodotti e degli ordini.\n"
 "\n"
-"Con la spedizione diretta, i beni sono trasferiti direttamente \n"
+"Con il dropshipping, i beni sono trasferiti direttamente \n"
 "dal fornitore al cliente senza\n"
 "passare nel magazzino del dettagliante. In questo caso, non\n"
 "è necessario alcun documento di trasferimento interno.\n"
@@ -5415,7 +5415,7 @@ msgstr "Scegliamo Point Relais® per il tuo ecommerce"
 #. module: base
 #: model:ir.module.module,summary:base.module_delivery_mondialrelay
 msgid " Let's choose a Point Relais® as shipping address "
-msgstr ""
+msgstr "Scegli un Point Relais® come indirizzo di spedizione"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_hk
@@ -5785,7 +5785,7 @@ msgstr "%p - Equivalenti di AM o PM.\""
 #: code:addons/base/models/ir_mail_server.py:0
 #, python-format
 msgid "%s (Dedicated Outgoing Mail Server):"
-msgstr ""
+msgstr "%s (Server e-mail in uscita dedicato):"
 
 #. module: base
 #. odoo-python
@@ -6306,7 +6306,7 @@ msgstr "<span>Oggetto:</span>"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "<span>Other address for the company (e.g. subsidiary, ...)</span>"
-msgstr ""
+msgstr "<span>Altro indirizzo per l'azienda (ad es. filiale...)</span>"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
@@ -8251,7 +8251,7 @@ msgstr "Autentica con"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_mail_server__smtp_authentication_info
 msgid "Authentication Info"
-msgstr ""
+msgstr "Informazioni di autenticazione"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_auth_ldap
@@ -9008,7 +9008,7 @@ msgstr "CRM Livechat"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_crm_mail_plugin
 msgid "CRM Mail Plugin"
-msgstr "CRM Mail Plugin"
+msgstr "Plugin e-mail CRM"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__base_language_export__format__csv
@@ -9240,6 +9240,7 @@ msgstr "Rubrica degli indirizzi centralizzata"
 #: model:ir.module.module,summary:base.module_knowledge
 msgid "Centralize, manage, share and grow your knowledge library"
 msgstr ""
+"Centralizza, gestisci, condividi e accresci la libreria delle tue conoscenze"
 
 #. module: base
 #: model_terms:res.company,invoice_terms_html:base.main_company
@@ -11028,7 +11029,7 @@ msgstr "Accuratezza decimale"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_currency__decimal_places
 msgid "Decimal Places"
-msgstr "Posizioni decimali"
+msgstr "Cifre decimali"
 
 #. module: base
 #: model:ir.model,name:base.model_decimal_precision
@@ -11048,6 +11049,8 @@ msgid ""
 "Decimal places taken into account for operations on amounts in this "
 "currency. It is determined by the rounding factor."
 msgstr ""
+"Cifre decimali prese in considerazione per le operazioni con importi in "
+"questa valuta. Tutto è determinato dal fattore di arrotondamento."
 
 #. module: base
 #. odoo-python
@@ -11715,7 +11718,7 @@ msgstr "Dott."
 #: model:ir.module.module,shortdesc:base.module_stock_dropshipping
 #: model:ir.module.module,summary:base.module_stock_dropshipping
 msgid "Drop Shipping"
-msgstr "Spedizione diretta"
+msgstr "Dropshipping"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.module_view_kanban
@@ -11725,7 +11728,7 @@ msgstr "Menù a discesa"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mrp_subcontracting_dropshipping
 msgid "Dropship and Subcontracting Management"
-msgstr "Gestione Spedizione diretta e Subappalti"
+msgstr "Gestione dropshipping e subappalti"
 
 #. module: base
 #. odoo-python
@@ -12295,7 +12298,7 @@ msgstr "Executive 4 7.5 x 10 inches, 190.5 x 254 mm"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_fields__group_expand
 msgid "Expand Groups"
-msgstr ""
+msgstr "Espandere gruppi"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_human_resources_expenses
@@ -13389,7 +13392,7 @@ msgstr "Geo longitudine"
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_company__layout_background__geometric
 msgid "Geometric"
-msgstr ""
+msgstr "Geometrico"
 
 #. module: base
 #: model:res.country,name:base.ge
@@ -14932,7 +14935,12 @@ msgid "Invalid 'group by' parameter"
 msgstr "Parametro 'raggruppa per' non valido"
 
 #. module: base
-#. odoo-python
+#: code:addons/base/models/ir_default.py:0
+#, python-format
+msgid "Invalid JSON format in Default Value field."
+msgstr ""
+
+#. module: base
 #: code:addons/models.py:0
 #, python-format
 msgid "Invalid aggregation function %r."
@@ -16206,7 +16214,7 @@ msgstr "Mail Group"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mail_plugin
 msgid "Mail Plugin"
-msgstr "Mail Plugin"
+msgstr "Plugin e-mail"
 
 #. module: base
 #: model:ir.model,name:base.model_ir_mail_server
@@ -19249,7 +19257,7 @@ msgstr "Consegna online dei compiti"
 #. module: base
 #: model:ir.module.module,summary:base.module_appointment
 msgid "Online appointments scheduler"
-msgstr ""
+msgstr "Pianificatore appuntamenti online"
 
 #. module: base
 #. odoo-python
@@ -20404,7 +20412,7 @@ msgstr "Punto vendita"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_loyalty
 msgid "Point of Sale - Coupons & Loyalty"
-msgstr ""
+msgstr "Punto vendita-Buoni sconto e fedeltà"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_daily_sales_reports
@@ -21873,7 +21881,7 @@ msgstr "Certificato SSL"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_mail_server__smtp_ssl_private_key
 msgid "SSL Private Key"
-msgstr ""
+msgstr "Chiave privata SSL"
 
 #. module: base
 #. odoo-python
@@ -21885,7 +21893,7 @@ msgstr "Manca il certificato SSL per %s."
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_mail_server__smtp_ssl_certificate
 msgid "SSL certificate used for authentication"
-msgstr ""
+msgstr "Certificato SSL utilizzato per l'autenticazione"
 
 #. module: base
 #. odoo-python
@@ -23770,6 +23778,10 @@ msgid ""
 " 1,06,500; [1,2,-1] will represent it to be 106,50,0;[3] will represent it "
 "as 106,500. Provided ',' as the thousand separator in each case."
 msgstr ""
+"Il formato separatore dovrebbe essere [,n] dove 0 < n :partendo dalla cifra "
+"unitaria. -1 terminerà la separazione. Ad es. [3,2,-1] farà che 106500 sia "
+"1,06,500; [1,2,-1] rappresenterà 106,50,0;[3] codificherà 106,500. Le ',' "
+"rappresentano i separatori per le centinaia in ogni caso."
 
 #. module: base
 #. odoo-python
@@ -23781,6 +23793,9 @@ msgid ""
 " 1,06,500;[1,2,-1] will represent it to be 106,50,0;[3] will represent it as"
 " 106,500. Provided as the thousand separator in each case."
 msgstr ""
+"Il formato separatore dovrebbe essere [,n] dove 0 < n :partendo dalla cifra "
+"unitaria. -1 terminerà la separazione. Ad es. [3,2,-1] farà che 106500 sia "
+"1,06,500; [1,2,-1] rappresenterà 106,50,0;[3] codificherà 106,500."
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_company__vat
@@ -24274,6 +24289,8 @@ msgid ""
 "The private key or the certificate is not a valid file. \n"
 "%s"
 msgstr ""
+"La chiave privata o il certificato non è un file valido. \n"
+"%s"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_currency_rate__rate
@@ -24539,6 +24556,8 @@ msgstr "Questa colonna contiene dati modulo e non può essere rimossa!"
 #, python-format
 msgid "This currency is set on a company and therefore cannot be deactivated."
 msgstr ""
+"La presente valuta è stata selezionata per un'azienda e non può essere "
+"disattivata."
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_company__favicon
@@ -25224,6 +25243,15 @@ msgid ""
 "- 'Create Next Activity': create an activity (Discuss)\n"
 "- 'Send SMS Text Message': send SMS, log them on documents (SMS)"
 msgstr ""
+"Tipo di azione server. Sono disponibili i seguenti valori:\n"
+"- \"Esegui codice Pyhon\": un blocco di codice Python che verrà eseguito\n"
+"- \"Crea un nuovo record\": crea un nuovo record con nuovi valori\n"
+"- \"Aggiorna record\": aggiorna i valori di un record\n"
+"- \"Esegui più azioni\": definisci un'azione che attiva diverse altre azioni del server\n"
+"- \"Invia e-mail\": invia un messaggio, una nota o un'e-mail (Discuti)\n"
+"- \"Aggiungi follower\": aggiungi follower ad un record (Discuti)\n"
+"- \"Crea prossima attività\": crea un'attività (Discuti)\n"
+"- \"Invia un messaggio di testo SMS\": invia un SMS, annotali nei documenti (SMS)"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_model_constraint__type
@@ -25310,6 +25338,13 @@ msgid "Unable to find Wkhtmltopdf on this system. The PDF can not be created."
 msgstr ""
 "Impossibile trovare wkhtmltopdf nel sistema, il file PDF non può essere "
 "creato."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_fields.py:0
+#, python-format
+msgid "Unable to import field type '%s'  "
+msgstr ""
 
 #. module: base
 #. odoo-python
@@ -25635,6 +25670,8 @@ msgstr "Usa '1' per si e '0' per no"
 #: model:ir.module.module,summary:base.module_pos_loyalty
 msgid "Use Coupons, Gift Cards and Loyalty programs in Point of Sale"
 msgstr ""
+"Utilizza buoni sconto, carte regalo e programmi fedeltà nell'app Punto "
+"Vendita"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_partner__barcode
@@ -26717,6 +26754,15 @@ msgstr ""
 #, python-format
 msgid "You can not create recursive tags."
 msgstr "Impossibile creare etichette ricorsive."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+#, python-format
+msgid ""
+"Deleting the template users is not allowed. Deleting this profile will "
+"compromise critical functionalities."
+msgstr ""
 
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_res_users_login_key

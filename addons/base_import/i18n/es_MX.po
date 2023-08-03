@@ -379,14 +379,14 @@ msgstr "El tamaño del archivo excede el máximo establecido (%s bytes)"
 #. module: base_import
 #: model:ir.model.fields,help:base_import.field_base_import_import__file
 msgid "File to check and/or import, raw binary (not base64)"
-msgstr "Archivo a comprobar y/o importar, binario sin procesar (no base64)"
+msgstr "Archivo a comprobar o importar, binario sin procesar (no base64)"
 
 #. module: base_import
 #. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Finalizing current batch before interrupting..."
-msgstr "Finalice el lote actual antes de interrumpir..."
+msgstr "Finalizando el lote actual antes de interrumpir..."
 
 #. module: base_import
 #. openerp-web
@@ -480,8 +480,8 @@ msgid ""
 "and send notifications during the import, but lead to a slower import."
 msgstr ""
 "Si el modelo usa openchatter, el seguimiento del historial configurará "
-"suscripciones y enviará notificaciones durante la importación, pero hará más"
-" lenta la importación."
+"suscripciones y enviará notificaciones durante la importación, pero la hará "
+"más lenta."
 
 #. module: base_import
 #: code:addons/base_import/models/base_import.py:0
@@ -489,8 +489,8 @@ msgstr ""
 msgid ""
 "Image size excessive, imported images must be smaller than 42 million pixel"
 msgstr ""
-"El tamaño de imagen es muy grande, las imágenes importadas deben ser menores"
-" a 42 millones de pixeles"
+"El tamaño de imagen es muy grande, las imágenes importadas deben tener menos"
+" de 42 millones de pixeles"
 
 #. module: base_import
 #. openerp-web
@@ -517,7 +517,7 @@ msgstr "Importar un archivo"
 #: code:addons/base_import/models/base_import.py:0
 #, python-format
 msgid "Import file has no content or is corrupt"
-msgstr "El archivo importado no tiene contenido o está corrupto"
+msgstr "El archivo importado no tiene contenido o está dañado"
 
 #. module: base_import
 #. openerp-web
@@ -565,7 +565,7 @@ msgstr "Importando"
 #, python-format
 msgid "Invalid cell value at row %(row)s, column %(col)s: %(cell_value)s"
 msgstr ""
-"Valor de celda invalido en la fila%(row)s, columna%(col)s: %(cell_value)s"
+"Valor de celda no válido en la fila%(row)s, columna%(col)s: %(cell_value)s"
 
 #. module: base_import
 #. openerp-web
@@ -718,7 +718,7 @@ msgstr "Otra variable"
 #. module: base_import
 #: model:ir.model.fields,field_description:base_import.field_base_import_tests_models_o2m_child__parent_id
 msgid "Parent"
-msgstr "Padre"
+msgstr "Principal"
 
 #. module: base_import
 #. openerp-web
@@ -981,14 +981,15 @@ msgstr "Delimitador de texto:"
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "The file contains blocking errors (see below)"
-msgstr "El archivo contiene errores de bloqueo (ver a continuación)"
+msgstr "El archivo contiene errores de bloqueo (consulte a continuación)"
 
 #. module: base_import
 #. openerp-web
 #: code:addons/base_import/static/src/legacy/js/import_action.js:0
 #, python-format
 msgid "The file contains non-blocking warnings (see below)"
-msgstr "El archivo contiene advertencias sin bloqueo (ver a continuación)"
+msgstr ""
+"El archivo contiene advertencias sin bloqueo (consulte a continuación)"
 
 #. module: base_import
 #. openerp-web
@@ -1023,7 +1024,7 @@ msgstr "Separador de miles:"
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "To import multiple values, separate them by a comma"
-msgstr "Para importar múltiples archivos, sepárelos con una coma"
+msgstr "Para importar varios archivos, sepárelos con una coma"
 
 #. module: base_import
 #. openerp-web
@@ -1060,8 +1061,8 @@ msgstr ""
 msgid ""
 "Unsupported file format \"{}\", import only supports CSV, ODS, XLS and XLSX"
 msgstr ""
-"Formato no admitido \"{}\", solo es posible importar archivos CSV, OSD, XLS "
-"y XLSX"
+"El formato \"{}\" no es compatible, solo es posible importar archivos CSV, "
+"OSD, XLS y XLSX"
 
 #. module: base_import
 #. openerp-web
@@ -1143,8 +1144,8 @@ msgid ""
 "You can not import images via URL, check with your administrator or support "
 "for the reason."
 msgstr ""
-"No puede importar imágenes a través del URL, consúltelo con su administrador"
-" o soporte técnico."
+"No puede importar imágenes a través de la URL, consúltelo con su "
+"administrador o soporte técnico."
 
 #. module: base_import
 #. openerp-web

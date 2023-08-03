@@ -10,10 +10,10 @@ var Widget = require('web.Widget');
 var options = require('web_editor.snippets.options');
 const {ColorPaletteWidget} = require('web_editor.ColorPalette');
 const SmoothScrollOnDrag = require('web/static/src/js/core/smooth_scroll_on_drag.js');
-const {getCSSVariableValue} = require('web_editor.utils');
+const {getCSSVariableValue, shouldEditableMediaBeEditable} = require('web_editor.utils');
 const gridUtils = require('@web_editor/js/common/grid_layout_utils');
 const QWeb = core.qweb;
-const {closestElement} = require('@web_editor/js/editor/odoo-editor/src/utils/utils');
+const {closestElement, isUnremovable} = require('@web_editor/js/editor/odoo-editor/src/utils/utils');
 
 var _t = core._t;
 
@@ -197,7 +197,7 @@ var SnippetEditor = Widget.extend({
 
         this.isTargetParentEditable = this.$target.parent().is(':o_editable');
         this.isTargetMovable = this.isTargetParentEditable && this.isTargetMovable && !this.$target.hasClass('oe_unmovable');
-        this.isTargetRemovable = this.isTargetParentEditable && !this.$target.parent().is('[data-oe-type="image"]') && !this.$target.hasClass('oe_unremovable');
+        this.isTargetRemovable = this.isTargetParentEditable && !this.$target.parent().is('[data-oe-type="image"]') && !isUnremovable(this.$target[0]);
         this.displayOverlayOptions = this.displayOverlayOptions || this.isTargetMovable || !this.isTargetParentEditable;
 
         // Initialize move/clone/remove buttons
@@ -548,9 +548,10 @@ var SnippetEditor = Widget.extend({
                         // Consider layout-only elements (like bg-shapes) as empty
                         return el.matches(this.layoutElementsSelector);
                     });
-                return isEmpty && !$el.hasClass('oe_structure') && !$el.hasClass('oe_unremovable')
+                return isEmpty && !$el.hasClass('oe_structure')
                     && !$el.parent().hasClass('carousel-item')
-                    && (!editor || editor.isTargetParentEditable);
+                    && (!editor || editor.isTargetParentEditable)
+                    && !isUnremovable($el[0]);
             };
 
             var editor = $parent.data('snippet-editor');
@@ -1896,8 +1897,8 @@ var SnippetsMenu = Widget.extend({
 
         if (this.options.enableTranslation) {
             // Load the sidebar with the style tab only.
-            defs.push(this._updateInvisibleDOM());
             await this._loadSnippetsTemplates();
+            defs.push(this._updateInvisibleDOM());
             this.$el.find('.o_we_website_top_actions').removeClass('d-none');
             this.$('.o_snippet_search_filter').addClass('d-none');
             this.$('#o_scroll').addClass('d-none');
@@ -2830,10 +2831,12 @@ var SnippetsMenu = Widget.extend({
     _computeSelectorFunctions: function (selector, exclude, target, noCheck, isChildren, excludeParent) {
         var self = this;
 
-        // TODO the `:not([contenteditable="true"])` part is designed to make
-        // images with such attribute editable even when they are in an
-        // environment where editing is not normally possible. This should be
-        // reviewed if we are to handle more hierarchy of editable nodes being
+        // The `:not(.o_editable_media)` part is handled outside of the selector
+        // (see filterFunc).
+        // Note: the `:not([contenteditable="true"])` part was there for that
+        // same purpose before the implementation of the o_editable_media class.
+        // It still make sense for potential editable areas though. Although it
+        // should be reviewed if we are to handle more hierarchy of nodes being
         // editable despite their non editable environment.
         // Without the `:not(.s_social_media)`, it is no longer possible to edit
         // icons in the social media snippet. This should be fixed in a more
@@ -2841,7 +2844,13 @@ var SnippetsMenu = Widget.extend({
         exclude += `${exclude && ', '}.o_snippet_not_selectable, .o_not_editable:not(.s_social_media) :not([contenteditable="true"])`;
 
         let filterFunc = function () {
-            return !$(this).is(exclude);
+            if (!$(this).is(exclude)) {
+                return true;
+            }
+            if (this.classList.contains('o_editable_media')) {
+                return shouldEditableMediaBeEditable(this);
+            }
+            return false;
         };
         if (target) {
             const oldFilter = filterFunc;

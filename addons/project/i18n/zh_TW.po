@@ -2473,8 +2473,9 @@ msgstr ""
 #: model:ir.model.fields,help:project.field_project_task_type__fold
 msgid ""
 "If enabled, this stage will be displayed as folded in the Kanban view of "
-"your tasks. Tasks in a folded stage are considered as closed."
-msgstr "若啟用，此階段會在任務看板檢視模式中，顯示為摺疊狀態。摺疊階段內的任務會被視為已結束。"
+"your tasks. Tasks in a folded stage are considered as closed (not applicable"
+" to personal stages)."
+msgstr ""
 
 #. module: project
 #: model:ir.model.fields,help:project.field_project_task_type__rating_template_id
@@ -3523,8 +3524,8 @@ msgstr "錯誤數量"
 #: model:ir.model.fields,help:project.field_project_project__message_needaction_counter
 #: model:ir.model.fields,help:project.field_project_task__message_needaction_counter
 #: model:ir.model.fields,help:project.field_project_update__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "需要處理的消息數量"
+msgid "Number of messages requiring action"
+msgstr "需要採取行動的訊息數目"
 
 #. module: project
 #: model:ir.model.fields,help:project.field_project_milestone__message_has_error_counter

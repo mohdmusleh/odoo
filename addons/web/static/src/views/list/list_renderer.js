@@ -19,6 +19,7 @@ import { ViewButton } from "@web/views/view_button/view_button";
 import { useBounceButton } from "@web/views/view_hook";
 import { Widget } from "@web/views/widgets/widget";
 import { getFormattedValue } from "../utils";
+import { localization } from "@web/core/l10n/localization";
 
 import {
     Component,
@@ -59,7 +60,7 @@ const FIXED_FIELD_COLUMN_WIDTHS = {
 /**
  * @param {HTMLElement} parent
  */
- function containsActiveElement(parent) {
+function containsActiveElement(parent) {
     const { activeElement } = document;
     return parent !== activeElement && parent.contains(activeElement);
 }
@@ -200,6 +201,7 @@ export class ListRenderer extends Component {
             this.columnWidths = null;
             this.freezeColumnWidths();
         });
+        this.isRTL = localization.direction === "rtl";
     }
 
     displaySaveNotification() {
@@ -651,6 +653,10 @@ export class ListRenderer extends Component {
         return ["float", "integer", "monetary"].includes(type);
     }
 
+    shouldReverseHeader(column) {
+        return this.isNumericColumn(column) && (!this.isRTL);
+    }
+
     isSortable(column) {
         const { hasLabel, name } = column;
         const { sortable } = this.fields[name];
@@ -883,8 +889,9 @@ export class ListRenderer extends Component {
 
     getOptionalActiveFields() {
         this.optionalActiveFields = {};
-        const optionalActiveFields = browser.localStorage.getItem(this.keyOptionalFields);
+        let optionalActiveFields = browser.localStorage.getItem(this.keyOptionalFields);
         if (optionalActiveFields) {
+            optionalActiveFields = optionalActiveFields.split(",");
             this.allColumns.forEach((col) => {
                 this.optionalActiveFields[col.name] = optionalActiveFields.includes(col.name);
             });
@@ -932,7 +939,7 @@ export class ListRenderer extends Component {
                 const cell = this.tableRef.el.querySelector(
                     `.o_selected_row td[name='${column.name}']`
                 );
-                if (containsActiveElement(cell)) {
+                if (cell && containsActiveElement(cell)) {
                     this.lastEditedCell = { column, record };
                     // Cell is already focused.
                     return;
@@ -1557,8 +1564,15 @@ export class ListRenderer extends Component {
         group.toggle();
     }
 
+    get canSelectRecord() {
+        return !this.props.list.editedRecord && !this.props.list.model.useSampleModel;
+    }
+
     toggleSelection() {
         const list = this.props.list;
+        if (!this.canSelectRecord) {
+            return;
+        }
         if (list.selection.length === list.records.length) {
             list.records.forEach((record) => {
                 record.toggleSelection(false);
@@ -1572,6 +1586,9 @@ export class ListRenderer extends Component {
     }
 
     toggleRecordSelection(record) {
+        if (!this.canSelectRecord) {
+            return;
+        }
         record.toggleSelection();
         this.props.list.selectDomain(false);
     }

@@ -1378,7 +1378,7 @@ msgstr ""
 #. module: website_slides
 #: model:slide.channel,name:website_slides.slide_channel_demo_0_gard_0
 msgid "Basics of Gardening"
-msgstr ""
+msgstr "ガーデニング基礎"
 
 #. module: website_slides
 #. odoo-javascript
@@ -1848,6 +1848,7 @@ msgid ""
 "Congratulations, your course has been created, but there isn't any content "
 "yet. First, let's add a <b>Section</b> to give your course a structure."
 msgstr ""
+"おめでとうございます。コースは作成されましたが、まだコンテンツはありません。まず、コースを構成する <b>セクション</b>を追加してください。"
 
 #. module: website_slides
 #: model:ir.model,name:website_slides.model_res_partner
@@ -3164,6 +3165,15 @@ msgid ""
 msgstr ""
 
 #. module: website_slides
+#. odoo-python
+#: code:addons/website_slides/models/slide_slide.py:0
+#, python-format
+msgid ""
+"Impossible to send emails. Select a \"Share Template\" for courses "
+"%(course_names)s first"
+msgstr ""
+
+#. module: website_slides
 #: model:slide.answer,comment:website_slides.slide_slide_demo_1_4_question_0_1
 #: model:slide.answer,comment:website_slides.slide_slide_demo_2_0_question_0_0
 #: model:slide.answer,comment:website_slides.slide_slide_demo_2_0_question_1_0
@@ -3512,7 +3522,7 @@ msgstr ""
 #: model_terms:slide.channel,description:website_slides.slide_channel_demo_0_gard_0
 #: model_terms:slide.channel,description_short:website_slides.slide_channel_demo_0_gard_0
 msgid "Learn the basics of gardening !"
-msgstr ""
+msgstr "ガーデニング基礎を学びましょう！"
 
 #. module: website_slides
 #: model_terms:slide.slide,description:website_slides.slide_slide_demo_5_1
@@ -4060,8 +4070,8 @@ msgstr "エラー数"
 #. module: website_slides
 #: model:ir.model.fields,help:website_slides.field_slide_channel__message_needaction_counter
 #: model:ir.model.fields,help:website_slides.field_slide_slide__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "アクションを必要とするメッセージの数"
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: website_slides
 #: model:ir.model.fields,help:website_slides.field_slide_channel__message_has_error_counter
@@ -5608,7 +5618,7 @@ msgstr "木"
 #. module: website_slides
 #: model:slide.channel,name:website_slides.slide_channel_demo_2_gard2
 msgid "Trees, Wood and Gardens"
-msgstr ""
+msgstr "樹木、木材と庭園"
 
 #. module: website_slides
 #: model_terms:ir.ui.view,arch_db:website_slides.view_slide_channel_form

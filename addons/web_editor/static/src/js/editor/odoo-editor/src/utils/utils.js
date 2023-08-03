@@ -262,18 +262,21 @@ export function findNode(domPath, findCallback = () => true, stopCallback = () =
  * the range (so that it is not possible to partially remove them)
  *
  * @param {Node} node
- * @param {Node} parentLimit non-inclusive furthest parent allowed
+ * @param {Node} [parentLimit=undefined] non-inclusive furthest parent allowed
  * @returns {Node} uneditable parent if it exists
  */
 export function getFurthestUneditableParent(node, parentLimit) {
-    if (node === parentLimit || !parentLimit.contains(node)) {
+    if (node === parentLimit || (parentLimit && !parentLimit.contains(node))) {
         return undefined;
     }
     let parent = node && node.parentElement;
     let nonEditableElement;
-    while (parent && parent !== parentLimit) {
+    while (parent && (!parentLimit || parent !== parentLimit)) {
         if (!parent.isContentEditable) {
             nonEditableElement = parent;
+        }
+        if (parent.oid === "root") {
+            break;
         }
         parent = parent.parentElement;
     }
@@ -1016,7 +1019,7 @@ export const formatSelection = (editor, formatName, {applyStyle, formatProps} = 
     }
 
     const selectedTextNodes = getSelectedNodes(editor.editable)
-        .filter(n => n.nodeType === Node.TEXT_NODE && closestElement(n).isContentEditable);
+        .filter(n => n.nodeType === Node.TEXT_NODE && closestElement(n).isContentEditable && isVisibleTextNode(n));
 
     const formatSpec = formatsSpecs[formatName];
     for (const selectedTextNode of selectedTextNodes) {
@@ -1603,6 +1606,9 @@ export function isVisibleTextNode(testedNode) {
     let foundTestedNode;
     const currentNodeParentBlock = closestBlock(testedNode);
     const nodeIterator = document.createNodeIterator(currentNodeParentBlock);
+    if (!currentNodeParentBlock) {
+        return false;
+    }
     for (let node = nodeIterator.nextNode(); node; node = nodeIterator.nextNode()) {
         if (node.nodeType === Node.TEXT_NODE) {
             // If we already found the tested node, the current node is the
@@ -2450,9 +2456,49 @@ export function enforceWhitespace(el, offset, direction, rule) {
     }
 }
 
-export function rgbToHex(rgb = '') {
+/**
+ * Takes a color (rgb, rgba or hex) and returns its hex representation. If the
+ * color is given in rgba, the background color of the node whose color we're
+ * converting is used in conjunction with the alpha to compute the resulting
+ * color (using the formula: `alpha*color + (1 - alpha)*background` for each
+ * channel).
+ *
+ * @param {string} rgb
+ * @param {HTMLElement} [node]
+ * @returns {string} hexadecimal color (#RRGGBB)
+ */
+export function rgbToHex(rgb = '', node = null) {
     if (rgb.startsWith('#')) {
         return rgb;
+    } else if (rgb.startsWith('rgba')) {
+        const values = rgb.match(/[\d\.]{1,5}/g) || [];
+        const alpha = parseFloat(values.pop());
+        // Retrieve the background color.
+        let bgRgbValues = [];
+        if (node) {
+            let bgColor = getComputedStyle(node).backgroundColor;
+            if (bgColor.startsWith('rgba')) {
+                // The background color is itself rgba so we need to compute
+                // the resulting color using the background color of its
+                // parent.
+                bgColor = rgbToHex(bgColor, node.parentElement);
+            }
+            if (bgColor && bgColor.startsWith('#')) {
+                bgRgbValues = (bgColor.match(/[\da-f]{2}/gi) || []).map(val => parseInt(val, 16));
+            } else if (bgColor && bgColor.startsWith('rgb')) {
+                bgRgbValues = (bgColor.match(/[\d\.]{1,5}/g) || []).map(val => parseInt(val));
+            }
+        }
+        bgRgbValues = bgRgbValues.length ? bgRgbValues : [255, 255, 255]; // Default to white.
+
+        return (
+            '#' +
+            values.map((value, index) => {
+                const converted = Math.floor(alpha * parseInt(value) + (1 - alpha) * bgRgbValues[index]);
+                const hex = parseInt(converted).toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            }).join('')
+        );
     } else {
         return (
             '#' +

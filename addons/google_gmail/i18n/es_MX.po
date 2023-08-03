@@ -72,7 +72,7 @@ msgstr "Token de acceso"
 #: model:ir.model.fields,field_description:google_gmail.field_google_gmail_mixin__google_gmail_access_token_expiration
 #: model:ir.model.fields,field_description:google_gmail.field_ir_mail_server__google_gmail_access_token_expiration
 msgid "Access Token Expiration Timestamp"
-msgstr "Tiempo límite de expiración para el token de acceso"
+msgstr "Marca de tiempo de vencimiento del token de acceso"
 
 #. module: google_gmail
 #: code:addons/google_gmail/controllers/main.py:0
@@ -206,8 +206,8 @@ msgid ""
 "Please leave the password field empty for Gmail mail server %r. The OAuth "
 "process does not require it"
 msgstr ""
-"Por favor, deje el campo de contraseña vacío en el servidor de correo de "
-"Gmail %r. El proceso de OAuth no la requiere"
+"Deje el campo de contraseña vacío en el servidor de correo de Gmail %r. El "
+"proceso de OAuth no la requiere."
 
 #. module: google_gmail
 #: model_terms:ir.ui.view,arch_db:google_gmail.ir_mail_server_view_form
@@ -251,7 +251,7 @@ msgstr ""
 #: model:ir.model.fields,help:google_gmail.field_google_gmail_mixin__google_gmail_uri
 #: model:ir.model.fields,help:google_gmail.field_ir_mail_server__google_gmail_uri
 msgid "The URL to generate the authorization code from Google"
-msgstr "El URL para generar el código de autorización de Google"
+msgstr "La URL para generar el código de autorización de Google"
 
 #. module: google_gmail
 #: code:addons/google_gmail/models/ir_mail_server.py:0

@@ -6,12 +6,13 @@
 # JonathanStein <jstein@image.dk>, 2022
 # Morten Schou <ms@msteknik.dk>, 2022
 # Ejner Sønniksen <ejner@vkdata.dk>, 2022
-# Sanne Kristensen <sanne@vkdata.dk>, 2022
 # Pernille Kristensen <pernillekristensen1994@gmail.com>, 2022
 # Kenneth Hansen <kenneth@vkdata.dk>, 2023
-# lhmflexerp <lhm@flexerp.dk>, 2023
 # Martin Trigaux, 2023
 # Mads Søndergaard, 2023
+# Sammi Iversen <sammi@vkdata.dk>, 2023
+# Lærke Hedegaard Mathiasen <lhm@flexerp.dk>, 2023
+# Sanne Kristensen <sanne@vkdata.dk>, 2023
 # Mads Søndergaard, 2023
 # 
 msgid ""
@@ -41,6 +42,12 @@ msgstr "\" alarmér med en"
 
 #. module: website
 #. odoo-python
+#: code:addons/website/models/website_rewrite.py:0
+#, python-format
+msgid "\"URL from\" can not be empty."
+msgstr "\"URL fra\" kan ikke være tom."
+
+#. module: website
 #: code:addons/website/models/website_rewrite.py:0
 #, python-format
 msgid "\"URL to\" can not be empty."
@@ -783,7 +790,7 @@ msgstr ""
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.website_pages_kanban_view
 msgid "<i class=\"fa fa-globe me-1\" title=\"Website\"/>"
-msgstr ""
+msgstr "<i class=\"fa fa-globe me-1\" title=\"Website\"/>"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.page_404
@@ -850,6 +857,8 @@ msgid ""
 "<i class=\"s_mega_menu_little_icons_icon fa fa-eye fa-fw me-2\"/>\n"
 "                            <b>About us</b>"
 msgstr ""
+"<i class=\"s_mega_menu_little_icons_icon fa fa-eye fa-fw me-2\"/>\n"
+"                            <b>Om os</b>"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_mega_menu_little_icons
@@ -7042,6 +7051,13 @@ msgid "No support"
 msgstr "Ingen support"
 
 #. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/systray_items/website_switcher.js:0
+#, python-format
+msgid "No website domain configured for this website."
+msgstr ""
+
+#. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_chart_options
 #: model_terms:ir.ui.view,arch_db:website.s_countdown_options
 #: model_terms:ir.ui.view,arch_db:website.s_image_gallery_options
@@ -7842,7 +7858,7 @@ msgstr "Produkt"
 #: model_terms:ir.ui.view,arch_db:website.template_footer_contact
 #: model_terms:ir.ui.view,arch_db:website.template_footer_minimalist
 msgid "Products"
-msgstr "Varer"
+msgstr "Produkter"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_comparisons
@@ -8304,7 +8320,7 @@ msgstr "SEO"
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.website_pages_kanban_view
 msgid "SEO Optimized"
-msgstr ""
+msgstr "SEO optimeret"
 
 #. module: website
 #: model:ir.model,name:website.model_website_seo_metadata
@@ -9689,6 +9705,15 @@ msgstr ""
 
 #. module: website
 #. odoo-javascript
+#: code:addons/website/static/src/js/editor/snippets.options.js:0
+#, python-format
+msgid ""
+"This font already exists, you can only add it as a local font to replace the"
+" server version."
+msgstr ""
+
+#. module: website
+#. odoo-javascript
 #: code:addons/website/static/src/xml/website.editor.xml:0
 #, python-format
 msgid "This font is hosted and served to your visitors by Google servers"
@@ -9758,6 +9783,22 @@ msgstr ""
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.report_viewhierarchy_children
 msgid "This view arch has been modified"
+msgstr ""
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/systray_items/website_switcher.js:0
+#, python-format
+msgid ""
+"This website does not have a domain configured. To avoid unexpected behaviours during website edition, we recommend closing (or refreshing) other browser tabs.\n"
+"To remove this message please set a domain in your website settings"
+msgstr ""
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/systray_items/website_switcher.xml:0
+#, python-format
+msgid "This website does not have a domain configured."
 msgstr ""
 
 #. module: website
@@ -9957,6 +9998,13 @@ msgstr "Overgang"
 #, python-format
 msgid "Translate Attribute"
 msgstr "Oversæt egenskab"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/components/translator/translator.js:0
+#, python-format
+msgid "Translate Selection Option"
+msgstr ""
 
 #. module: website
 #. odoo-javascript

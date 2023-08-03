@@ -7,6 +7,7 @@
 # Éder Brito <britoederr@gmail.com>, 2022
 # Martin Trigaux, 2022
 # Kevilyn Rosa, 2023
+# adrianojprado <adrianojprado@gmail.com>, 2023
 # Layna Nascimento, 2023
 # 
 msgid ""
@@ -45,7 +46,7 @@ msgstr "# Mensagens"
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel__rating_count
 msgid "# Ratings"
-msgstr "# Classificações"
+msgstr "Nº de avaliações"
 
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_report_operator__nbr_channel
@@ -134,7 +135,7 @@ msgstr ""
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.chatbot_test_script_page
 msgid "<i class=\"fa fa-fw fa-arrow-right\"/>Back to edit mode"
-msgstr ""
+msgstr "<i class=\"fa fa-fw fa-arrow-right\"/>Voltar ao Modo de Edição"
 
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.im_livechat_channel_view_kanban
@@ -279,12 +280,12 @@ msgstr "Avatar"
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel__rating_avg
 #: model:ir.model.fields,field_description:im_livechat.field_mail_channel__rating_avg
 msgid "Average Rating"
-msgstr "Classificação média"
+msgstr "Avaliação média"
 
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel__rating_avg_percentage
 msgid "Average Rating (%)"
-msgstr "Classificação média (%)"
+msgstr "Avaliação média (%)"
 
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_report_channel__duration
@@ -405,6 +406,9 @@ msgid ""
 "Chat is private and unique between 2 persons. Group is private among invited"
 " persons. Channel can be freely joined (depending on its configuration)."
 msgstr ""
+"O chat é privado e exclusivo entre 2 pessoas. O grupo é privado entre as "
+"pessoas convidadas. Usuários podem entrar no canal livremente (dependendo de"
+" sua configuração)."
 
 #. module: im_livechat
 #. odoo-javascript
@@ -1833,7 +1837,7 @@ msgstr ""
 #. module: im_livechat
 #: model:ir.model,name:im_livechat.model_res_users_settings
 msgid "User Settings"
-msgstr ""
+msgstr "Configurações do usuário"
 
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_chatbot_message__user_script_answer_id

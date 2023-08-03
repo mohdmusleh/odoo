@@ -732,6 +732,7 @@ class WebsiteSale(http.Controller):
             'suggested_products': [],
         })
         if order:
+            values.update(order._get_website_sale_extra_values())
             order.order_line.filtered(lambda l: not l.product_id.active).unlink()
             values['suggested_products'] = order._cart_accessories()
             values.update(self._get_express_shop_payment_values(order))
@@ -1126,6 +1127,7 @@ class WebsiteSale(http.Controller):
                 # it returns Forbidden() instead the partner_id
                 if isinstance(partner_id, Forbidden):
                     return partner_id
+                fpos_before = order.fiscal_position_id
                 if mode[1] == 'billing':
                     order.partner_id = partner_id
                     # This is the *only* thing that the front end user will see/edit anyway when choosing billing address
@@ -1139,6 +1141,9 @@ class WebsiteSale(http.Controller):
                         request.website.sale_get_order(update_pricelist=True)
                 elif mode[1] == 'shipping':
                     order.partner_shipping_id = partner_id
+
+                if order.fiscal_position_id != fpos_before:
+                    order._recompute_taxes()
 
                 # TDE FIXME: don't ever do this
                 # -> TDE: you are the guy that did what we should never do in commit e6f038a

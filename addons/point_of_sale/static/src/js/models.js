@@ -633,6 +633,43 @@ class PosGlobalState extends PosModel {
         return this.orders;
     }
 
+    computePriceAfterFp(price, taxes){
+        const order = this.get_order();
+        if(order && order.fiscal_position) {
+            let mapped_included_taxes = [];
+            let new_included_taxes = [];
+            const self = this;
+            _(taxes).each(function(tax) {
+                const line_taxes = self.get_taxes_after_fp([tax.id], order.fiscal_position);
+                if (line_taxes.length && line_taxes[0].price_include){
+                    new_included_taxes = new_included_taxes.concat(line_taxes);
+                }
+                if(tax.price_include && !_.contains(line_taxes, tax)){
+                    mapped_included_taxes.push(tax);
+                }
+            });
+
+            if (mapped_included_taxes.length > 0) {
+                if (new_included_taxes.length > 0) {
+                    const price_without_taxes = this.compute_all(mapped_included_taxes, price, 1, this.currency.rounding, true).total_excluded
+                    return this.compute_all(new_included_taxes, price_without_taxes, 1, this.currency.rounding, false).total_included
+                }
+                else{
+                    return this.compute_all(mapped_included_taxes, price, 1, this.currency.rounding, true).total_excluded;
+                }
+            }
+        }
+        return price;
+    }
+    getTaxesByIds(taxIds) {
+        let taxes = [];
+        for (let i = 0; i < taxIds.length; i++) {
+            if (this.taxes_by_id[taxIds[i]]) {
+                taxes.push(this.taxes_by_id[taxIds[i]]);
+            }
+        }
+        return taxes;
+    }
     _convert_product_img_to_base64 (product, url) {
         return new Promise(function (resolve, reject) {
             var img = new Image();
@@ -1457,13 +1494,15 @@ class Product extends PosModel {
         return price;
     }
     get_display_price(pricelist, quantity) {
+        const order = this.pos.get_order();
+        const taxes = this.pos.get_taxes_after_fp(this.taxes_id, order && order.fiscal_position);
+        const currentTaxes = this.pos.getTaxesByIds(this.taxes_id);
+        const priceAfterFp = this.pos.computePriceAfterFp(this.get_price(pricelist, quantity), currentTaxes);
+        const allPrices = this.pos.compute_all(taxes, priceAfterFp, 1, this.pos.currency.rounding);
         if (this.pos.config.iface_tax_included === 'total') {
-            const order = this.pos.get_order();
-            const taxes = this.pos.get_taxes_after_fp(this.taxes_id, order && order.fiscal_position);
-            const allPrices = this.pos.compute_all(taxes, this.get_price(pricelist, quantity), 1, this.pos.currency.rounding);
             return allPrices.total_included;
         } else {
-            return this.get_price(pricelist, quantity);
+            return allPrices.total_excluded;
         }
     }
 }
@@ -1855,6 +1894,7 @@ class Orderline extends PosModel {
             price_without_tax:  this.get_price_without_tax(),
             price_with_tax_before_discount:  this.get_price_with_tax_before_discount(),
             tax:                this.get_tax(),
+            tax_percentages:    this.get_tax_percentages(),
             product_description:      this.get_product().description,
             product_description_sale: this.get_product().description_sale,
             pack_lot_lines:      this.get_lot_lines(),
@@ -1909,7 +1949,14 @@ class Orderline extends PosModel {
         if (this.pos.config.iface_tax_included === 'total') {
             return this.get_all_prices(1).priceWithTax;
         } else {
-            return this.get_unit_price();
+            return this.get_all_prices(1).priceWithoutTax;
+        }
+    }
+    getUnitDisplayPriceBeforeDiscount(){
+        if (this.pos.config.iface_tax_included === 'total') {
+            return this.get_all_prices(1).priceWithTaxBeforeDiscount;
+        } else {
+            return this.get_all_prices(1).priceWithoutTaxBeforeDiscount;
         }
     }
     get_base_price(){
@@ -1934,19 +1981,20 @@ class Orderline extends PosModel {
         if (this.pos.config.iface_tax_included === 'total') {
             return this.get_price_with_tax();
         } else {
-            return this.get_base_price();
+            return this.get_price_without_tax();
         }
     }
     get_taxed_lst_unit_price(){
-        var lst_price = this.compute_fixed_price(this.get_lst_price());
+        const lstPrice = this.compute_fixed_price(this.get_lst_price());
+        const product =  this.get_product();
+        const taxesIds = product.taxes_id;
+        const productTaxes = this.pos.get_taxes_after_fp(taxesIds, this.order.fiscal_position);
+        const unitPrices =  this.compute_all(productTaxes, lstPrice, 1, this.pos.currency.rounding);
         if (this.pos.config.iface_tax_included === 'total') {
-            var product =  this.get_product();
-            var taxes_ids = product.taxes_id;
-            var product_taxes = this.pos.get_taxes_after_fp(taxes_ids);
-            return this.compute_all(product_taxes, lst_price, 1, this.pos.currency.rounding).total_included;
+            return unitPrices.total_included;
+        } else {
+            return unitPrices.total_excluded;
         }
-        var digits = this.pos.dp['Product Price'];
-        return lst_price.toFixed(digits)
     }
     get_price_without_tax(){
         return this.get_all_prices().priceWithoutTax;
@@ -1959,6 +2007,9 @@ class Orderline extends PosModel {
     }
     get_tax(){
         return this.get_all_prices().tax;
+    }
+    get_tax_percentages() {
+        return this.get_all_prices().tax_percentages;
     }
     get_applicable_taxes(){
         var i;
@@ -1982,13 +2033,7 @@ class Orderline extends PosModel {
     }
     get_taxes(){
         var taxes_ids = this.tax_ids || this.get_product().taxes_id;
-        var taxes = [];
-        for (var i = 0; i < taxes_ids.length; i++) {
-            if (this.pos.taxes_by_id[taxes_ids[i]]) {
-                taxes.push(this.pos.taxes_by_id[taxes_ids[i]]);
-            }
-        }
-        return taxes;
+        return this.pos.getTaxesByIds(taxes_ids);
     }
     /**
      * Calculate the amount of taxes of a specific Orderline, that are included in the price.
@@ -1999,7 +2044,7 @@ class Orderline extends PosModel {
         const taxDetails = this.get_tax_details();
         return productTaxes
             .filter(tax => tax.price_include)
-            .reduce((sum, tax) => sum + taxDetails[tax.id],
+            .reduce((sum, tax) => sum + taxDetails[tax.id].amount,
             0
         );
     }
@@ -2047,48 +2092,27 @@ class Orderline extends PosModel {
         var all_taxes_before_discount = this.compute_all(product_taxes, this.get_unit_price(), qty, this.pos.currency.rounding);
         _(all_taxes.taxes).each(function(tax) {
             taxtotal += tax.amount;
-            taxdetail[tax.id] = tax.amount;
+            taxdetail[tax.id] = {
+                amount: tax.amount,
+                base: tax.base,
+            };
         });
 
         return {
             "priceWithTax": all_taxes.total_included,
             "priceWithoutTax": all_taxes.total_excluded,
             "priceWithTaxBeforeDiscount": all_taxes_before_discount.total_included,
+            "priceWithoutTaxBeforeDiscount": all_taxes_before_discount.total_excluded,
             "tax": taxtotal,
             "taxDetails": taxdetail,
+            "tax_percentages": product_taxes.map((tax) => tax.amount),
         };
     }
     display_discount_policy(){
         return this.order.pricelist.discount_policy;
     }
     compute_fixed_price (price) {
-        var order = this.order;
-        if(order.fiscal_position) {
-            var taxes = this.get_taxes();
-            var mapped_included_taxes = [];
-            var new_included_taxes = [];
-            var self = this;
-            _(taxes).each(function(tax) {
-                var line_taxes = self.pos.get_taxes_after_fp([tax.id], order.fiscal_position);
-                if (line_taxes.length && line_taxes[0].price_include){
-                    new_included_taxes = new_included_taxes.concat(line_taxes);
-                }
-                if(tax.price_include && !_.contains(line_taxes, tax)){
-                    mapped_included_taxes.push(tax);
-                }
-            });
-
-            if (mapped_included_taxes.length > 0) {
-                if (new_included_taxes.length > 0) {
-                    var price_without_taxes = this.compute_all(mapped_included_taxes, price, 1, order.pos.currency.rounding, true).total_excluded
-                    return this.compute_all(new_included_taxes, price_without_taxes, 1, order.pos.currency.rounding, false).total_included
-                }
-                else{
-                    return this.compute_all(mapped_included_taxes, price, 1, order.pos.currency.rounding, true).total_excluded;
-                }
-            }
-        }
-        return price;
+        return this.pos.computePriceAfterFp(price, this.get_taxes());
     }
     get_fixed_lst_price(){
         return this.compute_fixed_price(this.get_lst_price());
@@ -2116,6 +2140,14 @@ class Orderline extends PosModel {
     }
     get_total_cost() {
         return this.product.standard_price * this.quantity;
+    }
+    /**
+     * Checks if the current line is a tip from a customer.
+     * @returns Boolean
+     */
+    isTipLine() {
+        const tipProduct = this.pos.config.tip_product_id;
+        return tipProduct && this.product.id === tipProduct[0];
     }
 }
 Registries.Model.add(Orderline);
@@ -2760,7 +2792,9 @@ class Order extends PosModel {
     }
 
     add_product(product, options){
-        if(this.pos.doNotAllowRefundAndSales() && this.orderlines[0] && this.orderlines[0].refunded_orderline_id) {
+        if(this.pos.doNotAllowRefundAndSales() &&
+        this._isRefundAndSaleOrder() &&
+        (!options.quantity || options.quantity > 0)) {
             Gui.showPopup('ErrorPopup', {
                 title: _t('Refund and Sales not allowed'),
                 body: _t('It is not allowed to mix refunds and sales')
@@ -2976,20 +3010,20 @@ class Order extends PosModel {
     _get_ignored_product_ids_total_discount() {
         return [];
     }
-    _reduce_total_discount_callback(sum, orderLine) {
-        sum += (orderLine.get_unit_price() * (orderLine.get_discount()/100) * orderLine.get_quantity());
+    _reduce_total_discount_callback(sum, orderLine){
+        let discountUnitPrice = orderLine.getUnitDisplayPriceBeforeDiscount() * (orderLine.get_discount()/100);
         if (orderLine.display_discount_policy() === 'without_discount'){
-            sum += ((orderLine.get_taxed_lst_unit_price() - orderLine.get_unit_price()) * orderLine.get_quantity());
+            discountUnitPrice += orderLine.get_taxed_lst_unit_price() - orderLine.getUnitDisplayPriceBeforeDiscount();
         }
-        return sum;
+        return sum + discountUnitPrice * orderLine.get_quantity();
     }
     get_total_discount() {
         const ignored_product_ids = this._get_ignored_product_ids_total_discount()
         return round_pr(this.orderlines.reduce((sum, orderLine) => {
             if (!ignored_product_ids.includes(orderLine.product.id)) {
-                sum += (orderLine.get_unit_price() * (orderLine.get_discount()/100) * orderLine.get_quantity());
+                sum += (orderLine.getUnitDisplayPriceBeforeDiscount() * (orderLine.get_discount()/100) * orderLine.get_quantity());
                 if (orderLine.display_discount_policy() === 'without_discount'){
-                    sum += ((orderLine.get_lst_price() - orderLine.get_unit_price()) * orderLine.get_quantity());
+                    sum += ((orderLine.get_taxed_lst_unit_price() - orderLine.getUnitDisplayPriceBeforeDiscount()) * orderLine.get_quantity());
                 }
             }
             return sum;
@@ -3010,7 +3044,7 @@ class Order extends PosModel {
                     if (!(taxId in groupTaxes)) {
                         groupTaxes[taxId] = 0;
                     }
-                    groupTaxes[taxId] += taxDetails[taxId];
+                    groupTaxes[taxId] += taxDetails[taxId].amount;
                 }
             });
 
@@ -3043,14 +3077,19 @@ class Order extends PosModel {
             var ldetails = line.get_tax_details();
             for(var id in ldetails){
                 if(ldetails.hasOwnProperty(id)){
-                    details[id] = (details[id] || 0) + ldetails[id];
+                    let amount = (details[id] && details[id].amount) ? details[id].amount : 0;
+                    let base = (details[id] && details[id].base) ? details[id].base : 0;
+                    details[id] = {
+                        amount: amount + ldetails[id].amount,
+                        base: base + ldetails[id].base,
+                    };
                 }
             }
         });
 
         for(var id in details){
             if(details.hasOwnProperty(id)){
-                fulldetails.push({amount: details[id], tax: this.pos.taxes_by_id[id], name: this.pos.taxes_by_id[id].name});
+                fulldetails.push({amount: details[id].amount, base: details[id].base, tax: this.pos.taxes_by_id[id], name: this.pos.taxes_by_id[id].name});
             }
         }
 

@@ -431,7 +431,7 @@ class MrpWorkorder(models.Model):
 
     @api.onchange('date_planned_finished')
     def _onchange_date_planned_finished(self):
-        if self.date_planned_start and self.date_planned_finished:
+        if self.date_planned_start and self.date_planned_finished and self.workcenter_id:
             self.duration_expected = self._calculate_duration_expected()
 
     def _calculate_duration_expected(self, date_planned_start=False, date_planned_finished=False):
@@ -611,7 +611,7 @@ class MrpWorkorder(models.Model):
         if self.state in ('done', 'cancel'):
             return True
 
-        if self.product_tracking == 'serial':
+        if self.product_tracking == 'serial' and self.qty_producing == 0:
             self.qty_producing = 1.0
         elif self.qty_producing == 0:
             self.qty_producing = self.qty_remaining
@@ -652,7 +652,7 @@ class MrpWorkorder(models.Model):
             return self.with_context(bypass_duration_calculation=True).write(vals)
 
     def button_finish(self):
-        end_date = datetime.now()
+        end_date = fields.Datetime.now()
         for workorder in self:
             if workorder.state in ('done', 'cancel'):
                 continue
@@ -821,8 +821,8 @@ class MrpWorkorder(models.Model):
             'workcenter_id': self.workcenter_id.id,
             'description': _('Time Tracking: %(user)s', user=self.env.user.name),
             'loss_id': loss_id[0].id,
-            'date_start': date_start,
-            'date_end': date_end,
+            'date_start': date_start.replace(microsecond=0),
+            'date_end': date_end.replace(microsecond=0) if date_end else date_end,
             'user_id': self.env.user.id,  # FIXME sle: can be inconsistent with company_id
             'company_id': self.company_id.id,
         }

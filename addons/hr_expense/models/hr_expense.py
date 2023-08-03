@@ -46,7 +46,7 @@ class HrExpense(models.Model):
             res = [('id', '=', employee.id), '|', ('company_id', '=', False), ('company_id', '=', employee.company_id.id)]
         return res
 
-    name = fields.Char('Description', compute='_compute_from_product_id_company_id', readonly=False, store=True, precompute=True, required=True, copy=True,
+    name = fields.Char('Description', compute='_compute_name', readonly=False, store=True, precompute=True, required=True, copy=True,
         states={'done': [('readonly', True)]})
     date = fields.Date(states={'done': [('readonly', True)]}, default=fields.Date.context_today, string="Expense Date")
     accounting_date = fields.Date(string="Accounting Date", related='sheet_id.accounting_date', store=True, groups='account.group_account_invoice,account.group_account_readonly')
@@ -57,16 +57,16 @@ class HrExpense(models.Model):
     # product_id not required to allow create an expense without product via mail alias, but should be required on the view.
     product_id = fields.Many2one('product.product', string='Category', tracking=True, states={'done': [('readonly', True)]}, domain="[('can_be_expensed', '=', True), '|', ('company_id', '=', False), ('company_id', '=', company_id)]", ondelete='restrict')
     product_description = fields.Html(compute='_compute_product_description')
-    product_uom_id = fields.Many2one('uom.uom', string='Unit of Measure', compute='_compute_from_product_id_company_id',
+    product_uom_id = fields.Many2one('uom.uom', string='Unit of Measure', compute='_compute_product_uom_id',
         store=True, precompute=True, copy=True, readonly=True,
         domain="[('category_id', '=', product_uom_category_id)]")
     product_uom_category_id = fields.Many2one(related='product_id.uom_id.category_id', readonly=True, string="UoM Category")
-    unit_amount = fields.Float("Unit Price", compute='_compute_from_product_id_company_id', readonly=False, store=True, precompute=True, required=True, copy=True,
+    unit_amount = fields.Float("Unit Price", compute='_compute_unit_amount', readonly=False, store=True, precompute=True, required=True, copy=True,
         states={'done': [('readonly', True)]}, digits='Product Price')
     unit_amount_display = fields.Float("Unit Price Display", compute='_compute_unit_amount_display')
     quantity = fields.Float(required=True, states={'done': [('readonly', True)]}, digits='Product Unit of Measure', default=1)
     tax_ids = fields.Many2many('account.tax', 'expense_tax', 'expense_id', 'tax_id',
-        compute='_compute_from_product_id_company_id', store=True, readonly=False, precompute=True,
+        compute='_compute_tax_ids', store=True, readonly=False, precompute=True,
         domain="[('company_id', '=', company_id), ('type_tax_use', '=', 'purchase')]", string='Included taxes',
         help="Both price-included and price-excluded taxes will behave as price-included taxes for expenses.")
     amount_tax = fields.Monetary(string='Tax amount in Currency', help="Tax amount in currency", compute='_compute_amount_tax', store=True, currency_field='currency_id')
@@ -79,7 +79,7 @@ class HrExpense(models.Model):
     company_id = fields.Many2one('res.company', string='Company', required=True, readonly=True, states={'draft': [('readonly', False)], 'refused': [('readonly', False)]}, default=lambda self: self.env.company)
     currency_id = fields.Many2one('res.currency', string='Currency', required=True, readonly=False, store=True, states={'reported': [('readonly', True)], 'approved': [('readonly', True)], 'done': [('readonly', True)]}, compute='_compute_currency_id', default=lambda self: self.env.company.currency_id)
     currency_rate = fields.Float(compute='_compute_currency_rate')
-    account_id = fields.Many2one('account.account', compute='_compute_from_product_id_company_id', store=True, readonly=False, precompute=True, string='Account',
+    account_id = fields.Many2one('account.account', compute='_compute_account_id', store=True, readonly=False, precompute=True, string='Account',
         domain="[('account_type', 'not in', ('asset_receivable','liability_payable','asset_cash','liability_credit_card')), ('company_id', '=', company_id)]", help="An expense account is expected")
     description = fields.Text('Internal Notes', readonly=True, states={'draft': [('readonly', False)], 'reported': [('readonly', False)], 'refused': [('readonly', False)]})
     payment_mode = fields.Selection([
@@ -91,7 +91,7 @@ class HrExpense(models.Model):
         ('draft', 'To Submit'),
         ('reported', 'Submitted'),
         ('approved', 'Approved'),
-        ('done', 'Paid'),
+        ('done', 'Done'),
         ('refused', 'Refused')
     ], compute='_compute_state', string='Status', copy=False, index=True, readonly=True, store=True, default='draft')
     sheet_id = fields.Many2one('hr.expense.sheet', string="Expense Report", domain="[('employee_id', '=', employee_id), ('company_id', '=', company_id)]", readonly=True, copy=False)
@@ -279,19 +279,37 @@ class HrExpense(models.Model):
         for expense in self:
             expense.unit_amount_display = expense.unit_amount if expense.product_has_cost else expense.total_amount_company
 
+    @api.depends('product_id')
+    def _compute_name(self):
+        for expense in self:
+            expense.name = expense.name or expense.product_id.display_name
+
+    @api.depends('product_id')
+    def _compute_product_uom_id(self):
+        for expense in self:
+            expense.product_uom_id = expense.product_id.uom_id
+
+    @api.depends('product_id', 'attachment_number')
+    def _compute_unit_amount(self):
+        for expense in self:
+            # Only change unit_amount if the product has cost defined on it
+            if expense.product_id and expense.product_has_cost and not expense.attachment_number or (expense.attachment_number and not expense.unit_amount):
+                expense.unit_amount = expense.product_id.price_compute('standard_price', currency=expense.currency_id)[expense.product_id.id]
+
     @api.depends('product_id', 'company_id')
-    def _compute_from_product_id_company_id(self):
+    def _compute_tax_ids(self):
+        for expense in self:
+            expense = expense.with_company(expense.company_id)
+            expense.tax_ids = expense.product_id.supplier_taxes_id.filtered(lambda tax: tax.company_id == expense.company_id)  # taxes only from the same company
+
+
+    @api.depends('product_id', 'company_id')
+    def _compute_account_id(self):
         for expense in self:
             if not expense.product_id:
-                expense.account_id = self.env['ir.property']._get('property_account_expense_categ_id', 'product.category')
+                expense.account_id = self.env['ir.property'].with_company(expense.company_id)._get('property_account_expense_categ_id', 'product.category')
                 continue
-            # Only change unit_amount if the product has no cost defined on it
-            if not expense.attachment_number or (expense.attachment_number and not expense.unit_amount):
-                expense.unit_amount = expense.product_id.price_compute('standard_price', currency=expense.currency_id)[expense.product_id.id]
             expense = expense.with_company(expense.company_id)
-            expense.name = expense.name or expense.product_id.display_name
-            expense.product_uom_id = expense.product_id.uom_id
-            expense.tax_ids = expense.product_id.supplier_taxes_id.filtered(lambda tax: tax.company_id == expense.company_id)  # taxes only from the same company
             account = expense.product_id.product_tmpl_id._get_product_accounts()['expense']
             if account:
                 expense.account_id = account
@@ -382,11 +400,14 @@ class HrExpense(models.Model):
 
         for attachment in attachments:
             attachment_name = '.'.join(attachment.name.split('.')[:-1])
-            expense = self.env['hr.expense'].create({
+            vals = {
                 'name': attachment_name,
                 'unit_amount': 0,
                 'product_id': product.id,
-            })
+            }
+            if product.property_account_expense_id:
+                vals['account_id'] = product.property_account_expense_id.id
+            expense = self.env['hr.expense'].create(vals)
             attachment.write({
                 'res_model': 'hr.expense',
                 'res_id': expense.id,
@@ -908,7 +929,11 @@ class HrExpenseSheet(models.Model):
         default=_default_journal_id, help="The journal used when the expense is done.")
     bank_journal_id = fields.Many2one('account.journal', string='Bank Journal', states={'done': [('readonly', True)], 'post': [('readonly', True)]}, check_company=True, domain="[('type', 'in', ['cash', 'bank']), ('company_id', '=', company_id)]",
         default=_default_bank_journal_id, help="The payment method used when the expense is paid by the company.")
-    accounting_date = fields.Date("Accounting Date")
+    accounting_date = fields.Date(
+        string='Accounting Date',
+        compute='_compute_accounting_date',
+        store=True
+    )
     account_move_id = fields.Many2one('account.move', string='Journal Entry', ondelete='restrict', copy=False, readonly=True)
     department_id = fields.Many2one('hr.department', compute='_compute_from_employee_id', store=True, readonly=False, copy=False, string='Department', states={'post': [('readonly', True)], 'done': [('readonly', True)]})
     is_multiple_currency = fields.Boolean("Handle lines with different currencies", compute='_compute_is_multiple_currency')
@@ -974,6 +999,11 @@ class HrExpenseSheet(models.Model):
         result = dict((data['sheet_id'][0], data['sheet_id_count']) for data in read_group_result)
         for sheet in self:
             sheet.expense_number = result.get(sheet.id, 0)
+
+    @api.depends('account_move_id.date')
+    def _compute_accounting_date(self):
+        for sheet in self:
+            sheet.accounting_date = sheet.account_move_id.date
 
     @api.depends('employee_id', 'employee_id.department_id')
     def _compute_from_employee_id(self):
@@ -1121,16 +1151,12 @@ class HrExpenseSheet(models.Model):
 
         moves = self.env['account.move'].create([sheet._prepare_bill_vals() for sheet in own_account_sheets])
         payments = self.env['account.payment'].with_context(**skip_context).create([sheet._prepare_payment_vals() for sheet in company_account_sheets])
-        (moves + payments.move_id).flush_recordset()  # Else moves may be improperly set when posted, causing posting to fail
+        moves |= payments.move_id
         moves.action_post()
-        payments.move_id.with_context(**skip_context).action_post()
 
         self.activity_update()
 
-        for sheet in self.filtered(lambda s: not s.accounting_date):
-            sheet.accounting_date = sheet.account_move_id.date
-
-        return {move.expense_sheet_id.id: move for move in moves}
+        return moves
 
     def _prepare_payment_vals(self):
         self.ensure_one()
@@ -1148,53 +1174,46 @@ class HrExpenseSheet(models.Model):
         else:
             currency = self.expense_line_ids[0].currency_id
             amount = sum(self.expense_line_ids.mapped('total_amount'))
-        rate = amount / self.total_amount if self.total_amount else 0.0
         move_lines = []
         for expense in self.expense_line_ids:
-            # Due to rounding and conversion mismatch between vendor bills and payments, we have to force the computation into company account
-            amount_currency_diff = expense.total_amount_company if currency == expense.company_currency_id else expense.total_amount
-            last_expense_line = None # Used for rounding in currency issues
-            tax_data = self.env['account.tax']._compute_taxes([expense._convert_to_tax_base_line_dict()])
-            for base_line_data, update in tax_data['base_lines_to_update']:  # Add base lines
-                base_line_data.update(update)
-                amount_currency = currency.round(base_line_data['price_subtotal'] * rate)
-                expense_name = expense.name.split("\n")[0][:64]
-                last_expense_line = base_move_line = {
-                    'name': f'{expense.employee_id.name}: {expense_name}',
-                    'account_id':base_line_data['account'].id,
-                    'product_id': base_line_data['product'].id,
-                    'analytic_distribution': base_line_data['analytic_distribution'],
-                    'expense_id': expense.id,
-                    'tax_ids': [Command.set(expense.tax_ids.ids)],
-                    'tax_tag_ids': base_line_data['tax_tag_ids'],
-                    'balance': base_line_data['price_subtotal'],
-                    'amount_currency': amount_currency,
-                    'currency_id': currency.id,
-                }
-                amount_currency_diff -= amount_currency
-                move_lines.append(base_move_line)
+            tax_data = self.env['account.tax']._compute_taxes([expense._convert_to_tax_base_line_dict(price_unit=expense.total_amount, currency=expense.currency_id)])
+            rate = abs(expense.total_amount / expense.total_amount_company)
+            base_line_data, to_update = tax_data['base_lines_to_update'][0]  # Add base lines
+            amount_currency = to_update['price_subtotal']
+            expense_name = expense.name.split("\n")[0][:64]
+            base_move_line = {
+                'name': f'{expense.employee_id.name}: {expense_name}',
+                'account_id': base_line_data['account'].id,
+                'product_id': base_line_data['product'].id,
+                'analytic_distribution': base_line_data['analytic_distribution'],
+                'expense_id': expense.id,
+                'tax_ids': [Command.set(expense.tax_ids.ids)],
+                'tax_tag_ids': to_update['tax_tag_ids'],
+                'amount_currency': amount_currency,
+                'currency_id': currency.id,
+            }
+            move_lines.append(base_move_line)
+            total_tax_line_balance = 0.0
             for tax_line_data in tax_data['tax_lines_to_add']:  # Add tax lines
-                amount_currency = currency.round(tax_line_data['tax_amount'] * rate)
-                last_expense_line = tax_line = {
+                tax_line_balance = expense.currency_id.round(tax_line_data['tax_amount'] / rate)
+                total_tax_line_balance += tax_line_balance
+                tax_line = {
                     'name': self.env['account.tax'].browse(tax_line_data['tax_id']).name,
-                    'display_type': 'tax',
                     'account_id': tax_line_data['account_id'],
                     'analytic_distribution': tax_line_data['analytic_distribution'],
                     'expense_id': expense.id,
                     'tax_tag_ids': tax_line_data['tax_tag_ids'],
-                    'balance': tax_line_data['tax_amount'],
-                    'amount_currency': amount_currency,
+                    'balance': tax_line_balance,
+                    'amount_currency': tax_line_data['tax_amount'],
+                    'tax_base_amount': expense.currency_id.round(tax_line_data['base_amount'] / rate),
                     'currency_id': currency.id,
                     'tax_repartition_line_id': tax_line_data['tax_repartition_line_id'],
                 }
                 move_lines.append(tax_line)
-                amount_currency_diff -= amount_currency
-            if not currency.is_zero(amount_currency_diff) and last_expense_line:
-                last_expense_line['amount_currency'] += amount_currency_diff
+            base_move_line['balance'] = expense.total_amount_company - total_tax_line_balance
         expense_name = self.name.split("\n")[0][:64]
         move_lines.append({  # Add outstanding payment line
             'name': f'{self.employee_id.name}: {expense_name}',
-            'display_type': 'payment_term',
             'account_id': self.expense_line_ids[0]._get_expense_account_destination(),
             'balance': -self.total_amount,
             'amount_currency': currency.round(-amount),
@@ -1229,7 +1248,7 @@ class HrExpenseSheet(models.Model):
         self.ensure_one()
         return {
             'name': '/',
-            'date': self.accounting_date or fields.Date.context_today(self),
+            'date': self.accounting_date or max(self.expense_line_ids.mapped('date')) or fields.Date.context_today(self),
             'invoice_date': self.accounting_date or fields.Date.context_today(self),  # expense payment behave as bills
             'ref': self.name,
             'expense_sheet_id': [Command.set(self.ids)],
