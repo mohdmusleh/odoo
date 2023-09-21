@@ -241,6 +241,9 @@ export class ListRenderer extends Component {
 
         if (!this.columnWidths || !this.columnWidths.length) {
             // no column widths to restore
+
+            table.style.tableLayout = "fixed";
+            const allowedWidth = table.parentNode.getBoundingClientRect().width;
             // Set table layout auto and remove inline style to make sure that css
             // rules apply (e.g. fixed width of record selector)
             table.style.tableLayout = "auto";
@@ -253,7 +256,7 @@ export class ListRenderer extends Component {
 
             // Squeeze the table by applying a max-width on largest columns to
             // ensure that it doesn't overflow
-            this.columnWidths = this.computeColumnWidthsFromContent();
+            this.columnWidths = this.computeColumnWidthsFromContent(allowedWidth);
             table.style.tableLayout = "fixed";
         }
         headers.forEach((th, index) => {
@@ -286,7 +289,7 @@ export class ListRenderer extends Component {
         });
     }
 
-    computeColumnWidthsFromContent() {
+    computeColumnWidthsFromContent(allowedWidth) {
         const table = this.tableRef.el;
 
         // Toggle a className used to remove style that could interfere with the ideal width
@@ -317,7 +320,6 @@ export class ListRenderer extends Component {
         const sortedThs = [...table.querySelectorAll("thead th:not(.o_list_button)")].sort(
             (a, b) => getWidth(b) - getWidth(a)
         );
-        const allowedWidth = table.parentNode.getBoundingClientRect().width;
 
         let totalWidth = getTotalWidth();
         for (let index = 1; totalWidth > allowedWidth; index++) {
@@ -899,6 +901,9 @@ export class ListRenderer extends Component {
             this.allColumns.forEach((col) => {
                 this.optionalActiveFields[col.name] = col.optional === "show";
             });
+        }
+        if (this.props.onOptionalFieldsChanged) {
+            this.props.onOptionalFieldsChanged(this.optionalActiveFields);
         }
     }
 
@@ -1595,6 +1600,9 @@ export class ListRenderer extends Component {
 
     async toggleOptionalField(fieldName) {
         this.optionalActiveFields[fieldName] = !this.optionalActiveFields[fieldName];
+        if (this.props.onOptionalFieldsChanged) {
+            this.props.onOptionalFieldsChanged(this.optionalActiveFields);
+        }
         this.state.columns = this.getActiveColumns(this.props.list);
         this.saveOptionalActiveFields(
             this.allColumns.filter((col) => this.optionalActiveFields[col.name] && col.optional)
@@ -1891,6 +1899,7 @@ ListRenderer.props = [
     "noContentHelp?",
     "nestedKeyOptionalFieldsData?",
     "readonly?",
+    "onOptionalFieldsChanged?",
 ];
 ListRenderer.defaultProps = { hasSelectors: false, cycleOnTab: true };
 

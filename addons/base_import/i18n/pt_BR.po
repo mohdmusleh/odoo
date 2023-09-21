@@ -479,6 +479,8 @@ msgstr ""
 msgid ""
 "Image size excessive, imported images must be smaller than 42 million pixel"
 msgstr ""
+"O tamanho da imagem excede o limite. As imagens importadas devem ser menores"
+" que 42 milhões de pixels."
 
 #. module: base_import
 #. openerp-web
@@ -1193,7 +1195,7 @@ msgstr ""
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "out of"
-msgstr ""
+msgstr "de"
 
 #. module: base_import
 #: code:addons/base_import/models/base_import.py:0

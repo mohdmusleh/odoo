@@ -59,7 +59,15 @@ class ReportSaleDetails(models.AbstractModel):
 
         orders = self.env['pos.order'].search(domain)
 
-        user_currency = self.env.company.currency_id
+        if config_ids:
+            config_currencies = self.env['pos.config'].search([('id', 'in', config_ids)]).mapped('currency_id')
+        else:
+            config_currencies = self.env['pos.session'].search([('id', 'in', session_ids)]).mapped('config_id.currency_id')
+        # If all the pos.config have the same currency, we can use it, else we use the company currency
+        if all(i == config_currencies.ids[0] for i in config_currencies.ids):
+            user_currency = config_currencies[0]
+        else:
+            user_currency = self.env.company.currency_id
 
         total = 0.0
         products_sold = {}
@@ -135,7 +143,8 @@ class ReportSaleDetails(models.AbstractModel):
                                 payment['count'] = True
                                 break
                     else:
-                        payment['final_count'] = payment['total'] + session.cash_register_balance_start + session.cash_real_transaction
+                        previous_session = self.env['pos.session'].search([('id', '<', session.id), ('state', '=', 'closed'), ('config_id', '=', session.config_id.id)], limit=1)
+                        payment['final_count'] = payment['total'] + previous_session.cash_register_balance_end_real + session.cash_real_transaction
                         payment['money_counted'] = cash_counted
                         payment['money_difference'] = payment['money_counted'] - payment['final_count']
                         cash_moves = self.env['account.bank.statement.line'].search([('pos_session_id', '=', session.id)])

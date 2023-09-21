@@ -5,7 +5,7 @@
 # Translators:
 # Mustafa Rawi <mustafa@cubexco.com>, 2022
 # Martin Trigaux, 2022
-# Niyas Raphy, 2022
+# Niyas Raphy, 2023
 # Malaz Abuidris <msea@odoo.com>, 2023
 # 
 msgid ""
@@ -1737,7 +1737,7 @@ msgstr "عدد الاخطاء"
 #: model:ir.model.fields,help:product.field_product_product__message_needaction_counter
 #: model:ir.model.fields,help:product.field_product_template__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
 
 #. module: product
 #: model:ir.model.fields,help:product.field_product_product__message_has_error_counter
@@ -3260,6 +3260,9 @@ msgid ""
 "%s\n"
 " If the value has been associated to a product in the past, you will not be able to delete it."
 msgstr ""
+"لا يمكنك حذف القيمة %s لأنها مستخدَمة في المنتجات التالية: \n"
+"%s\n"
+"إذا كانت القيمة مرتبطة بمنتج في الماضي، لن تكون قادراً على حذفها. "
 
 #. module: product
 #. odoo-python

@@ -6,9 +6,9 @@
 # Éder Brito <britoederr@gmail.com>, 2022
 # Luiz Carareto Alonso <Luiz.cararetoalonso@gmail.com>, 2022
 # Marcel Savegnago <marcel.savegnago@gmail.com>, 2022
+# Martin Trigaux, 2022
 # Bruno Pergher, 2023
 # ff68f1f9b02a0effe4204ba86a8b106e_92c9ca6, 2023
-# Martin Trigaux, 2023
 # Kevilyn Rosa, 2023
 # Layna Nascimento, 2023
 # adrianojprado <adrianojprado@gmail.com>, 2023
@@ -728,7 +728,7 @@ msgid ""
 "<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</span>\n"
 "                                    <span groups=\"account.group_show_line_subtotals_tax_included\">Total Price</span>"
 msgstr ""
-"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Quantidade</span>\n"
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Valor</span>\n"
 "                                    <span groups=\"account.group_show_line_subtotals_tax_included\">Preço Total</span>"
 
 #. module: sale
@@ -737,7 +737,7 @@ msgid ""
 "<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</span>\n"
 "                            <span groups=\"account.group_show_line_subtotals_tax_included\">Total Price</span>"
 msgstr ""
-"Valor\n"
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Valor</span>\n"
 "                            <span groups=\"account.group_show_line_subtotals_tax_included\">Preço Total</span>"
 
 #. module: sale
@@ -4207,8 +4207,8 @@ msgid ""
 "The Sales Order %s linked to the Analytic Account %s is cancelled. You "
 "cannot register an expense on a cancelled Sales Order."
 msgstr ""
-"O pedido de venda %s vinculado à conta analítica %s está cancelado. Você não"
-" pode registrar uma despesa em um Pedido de Vendas cancelado."
+"O pedido de venda %s vinculado à conta analítica %s foi cancelado. Não é "
+"possível registrar uma despesa em um pedido de venda cancelado."
 
 #. module: sale
 #. odoo-python
@@ -4219,9 +4219,9 @@ msgid ""
 "You cannot register an expense on a locked Sales Order. Please create a new "
 "SO linked to this Analytic Account."
 msgstr ""
-"O Pedido de Venda %s está vinculado à Conta Analítica %s está bloqueado "
-"atualmente. Você não pode registrar uma despesa em um pedido de venda "
-"bloqueado. Por favor, crie um novo PV vinculado a esta Conta Analítica."
+"O pedido de venda %s que está vinculado à conta analítica %s está bloqueado "
+"no momento. Não é possível registrar uma despesa em um pedido de venda "
+"bloqueado. Crie um novo PV vinculado a esta conta analítica."
 
 #. module: sale
 #. odoo-python

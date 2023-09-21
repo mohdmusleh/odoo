@@ -328,7 +328,7 @@ class StockQuant(models.Model):
     def write(self, vals):
         """ Override to handle the "inventory mode" and create the inventory move. """
         allowed_fields = self._get_inventory_fields_write()
-        if self._is_inventory_mode() and any(field for field in allowed_fields if field in vals.keys()):
+        if self._is_inventory_mode():
             if any(quant.location_id.usage == 'inventory' for quant in self):
                 # Do nothing when user tries to modify manually a inventory loss
                 return
@@ -526,10 +526,26 @@ class StockQuant(models.Model):
 
     @api.constrains('quantity')
     def check_quantity(self):
-        for quant in self:
-            if quant.location_id.usage != 'inventory' and quant.lot_id and quant.product_id.tracking == 'serial' \
-                    and float_compare(abs(quant.quantity), 1, precision_rounding=quant.product_uom_id.rounding) > 0:
-                raise ValidationError(_('The serial number has already been assigned: \n Product: %s, Serial Number: %s') % (quant.product_id.display_name, quant.lot_id.name))
+        sn_quants = self.filtered(lambda q: q.product_id.tracking == 'serial' and q.location_id.usage != 'inventory' and q.lot_id)
+        if not sn_quants:
+            return
+        domain = expression.OR([
+            [('product_id', '=', q.product_id.id), ('location_id', '=', q.location_id.id), ('lot_id', '=', q.lot_id.id)]
+            for q in sn_quants
+        ])
+        groups = self.read_group(
+            domain,
+            ['quantity'],
+            ['product_id', 'location_id', 'lot_id'],
+            orderby='id',
+            lazy=False,
+        )
+        for group in groups:
+            product = self.env['product.product'].browse(group['product_id'][0])
+            lot = self.env['stock.lot'].browse(group['lot_id'][0])
+            uom = product.uom_id
+            if float_compare(abs(group['quantity']), 1, precision_rounding=uom.rounding) > 0:
+                raise ValidationError(_('The serial number has already been assigned: \n Product: %s, Serial Number: %s') % (product.display_name, lot.name))
 
     @api.constrains('location_id')
     def check_location_id(self):
@@ -558,10 +574,7 @@ class StockQuant(models.Model):
             return 'location_id ASC, id DESC'
         raise UserError(_('Removal strategy %s not implemented.') % (removal_strategy,))
 
-    def _gather(self, product_id, location_id, lot_id=None, package_id=None, owner_id=None, strict=False):
-        removal_strategy = self._get_removal_strategy(product_id, location_id)
-        removal_strategy_order = self._get_removal_strategy_order(removal_strategy)
-
+    def _get_gather_domain(self, product_id, location_id, lot_id=None, package_id=None, owner_id=None, strict=False):
         domain = [('product_id', '=', product_id.id)]
         if not strict:
             if lot_id:
@@ -576,6 +589,12 @@ class StockQuant(models.Model):
             domain = expression.AND([[('package_id', '=', package_id and package_id.id or False)], domain])
             domain = expression.AND([[('owner_id', '=', owner_id and owner_id.id or False)], domain])
             domain = expression.AND([[('location_id', '=', location_id.id)], domain])
+        return domain
+
+    def _gather(self, product_id, location_id, lot_id=None, package_id=None, owner_id=None, strict=False):
+        removal_strategy = self._get_removal_strategy(product_id, location_id)
+        removal_strategy_order = self._get_removal_strategy_order(removal_strategy)
+        domain = self._get_gather_domain(product_id, location_id, lot_id, package_id, owner_id, strict)
 
         return self.search(domain, order=removal_strategy_order).sorted(lambda q: not q.lot_id)
 

@@ -3516,6 +3516,7 @@
     background-color: white;
     border-left: 3px solid red;
     padding: 10px;
+    overflow-wrap: break-word;
   }
 `;
     class ErrorToolTip extends owl.Component {
@@ -5032,6 +5033,13 @@
             elements: rows,
         });
     };
+    const CAN_REMOVE_COLUMNS_ROWS = (dimension, env) => {
+        const sheetId = env.model.getters.getActiveSheetId();
+        const selectedElements = env.model.getters.getElementsFromSelection(dimension);
+        const includesAllVisibleHeaders = env.model.getters.checkElementsIncludeAllVisibleHeaders(sheetId, dimension, selectedElements);
+        const includesAllNonFrozenHeaders = env.model.getters.checkElementsIncludeAllNonFrozenHeaders(sheetId, dimension, selectedElements);
+        return !includesAllVisibleHeaders && !includesAllNonFrozenHeaders;
+    };
     const REMOVE_COLUMNS_NAME = (env) => {
         if (env.model.getters.getSelectedZones().length > 1) {
             return _lt("Delete columns");
@@ -5636,11 +5644,7 @@
         name: REMOVE_COLUMNS_NAME,
         sequence: 90,
         action: REMOVE_COLUMNS_ACTION,
-        isVisible: (env) => {
-            const sheetId = env.model.getters.getActiveSheetId();
-            const selectedCols = env.model.getters.getElementsFromSelection("COL");
-            return env.model.getters.canRemoveHeaders(sheetId, "COL", selectedCols);
-        },
+        isVisible: (env) => CAN_REMOVE_COLUMNS_ROWS("COL", env),
     })
         .add("clear_column", {
         name: DELETE_CONTENT_COLUMNS_NAME,
@@ -5654,7 +5658,7 @@
         isVisible: (env) => {
             const sheetId = env.model.getters.getActiveSheetId();
             const selectedCols = env.model.getters.getElementsFromSelection("COL");
-            return env.model.getters.canRemoveHeaders(sheetId, "COL", selectedCols);
+            return !env.model.getters.checkElementsIncludeAllVisibleHeaders(sheetId, "COL", selectedCols);
         },
         separator: true,
     })
@@ -5728,11 +5732,7 @@
         name: REMOVE_ROWS_NAME,
         sequence: 70,
         action: REMOVE_ROWS_ACTION,
-        isVisible: (env) => {
-            const sheetId = env.model.getters.getActiveSheetId();
-            const selectedRows = env.model.getters.getElementsFromSelection("ROW");
-            return env.model.getters.canRemoveHeaders(sheetId, "ROW", selectedRows);
-        },
+        isVisible: (env) => CAN_REMOVE_COLUMNS_ROWS("ROW", env),
     })
         .add("clear_row", {
         name: DELETE_CONTENT_ROWS_NAME,
@@ -5746,7 +5746,7 @@
         isVisible: (env) => {
             const sheetId = env.model.getters.getActiveSheetId();
             const selectedRows = env.model.getters.getElementsFromSelection("ROW");
-            return env.model.getters.canRemoveHeaders(sheetId, "ROW", selectedRows);
+            return !env.model.getters.checkElementsIncludeAllVisibleHeaders(sheetId, "ROW", selectedRows);
         },
         separator: true,
     })
@@ -6040,11 +6040,13 @@
         name: REMOVE_ROWS_NAME,
         sequence: 80,
         action: REMOVE_ROWS_ACTION,
+        isVisible: (env) => CAN_REMOVE_COLUMNS_ROWS("ROW", env),
     })
         .addChild("edit_delete_column", ["edit"], {
         name: REMOVE_COLUMNS_NAME,
         sequence: 90,
         action: REMOVE_COLUMNS_ACTION,
+        isVisible: (env) => CAN_REMOVE_COLUMNS_ROWS("COL", env),
     })
         .addChild("edit_delete_cell_shift_up", ["edit"], {
         name: _lt("Delete cell and shift up"),
@@ -7811,6 +7813,7 @@
             this.legendPosition = definition.legendPosition;
             this.labelsAsText = definition.labelsAsText;
             this.stacked = definition.stacked;
+            this.cumulative = definition.cumulative;
         }
         static validateChartDefinition(validator, definition) {
             return validator.checkValidations(definition, checkDataset, checkLabelRange);
@@ -7830,6 +7833,7 @@
                 verticalAxisPosition: "left",
                 labelRange: context.auxiliaryRange || undefined,
                 stacked: false,
+                cumulative: false,
             };
         }
         getDefinition() {
@@ -7849,6 +7853,7 @@
                 title: this.title,
                 labelsAsText: this.labelsAsText,
                 stacked: this.stacked,
+                cumulative: this.cumulative,
             };
         }
         getContextCreation() {
@@ -8032,6 +8037,16 @@
             let backgroundRGBA = colorToRGBA(color);
             if (chart.stacked) {
                 backgroundRGBA.a = LINE_FILL_TRANSPARENCY;
+            }
+            if (chart.cumulative) {
+                let accumulator = 0;
+                data = data.map((value) => {
+                    if (!isNaN(value)) {
+                        accumulator += parseFloat(value);
+                        return accumulator;
+                    }
+                    return value;
+                });
             }
             const backgroundColor = rgbaToHex(backgroundRGBA);
             const dataset = {
@@ -8816,6 +8831,11 @@
         onUpdateStacked(ev) {
             this.props.updateChart(this.props.figureId, {
                 stacked: ev.target.checked,
+            });
+        }
+        onUpdateCumulative(ev) {
+            this.props.updateChart(this.props.figureId, {
+                cumulative: ev.target.checked,
             });
         }
     }
@@ -24647,6 +24667,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
             verticalAxisPosition: chartData.verticalAxisPosition,
             legendPosition: chartData.legendPosition,
             stacked: chartData.stacked || false,
+            cumulative: chartData.cumulative || false,
             labelsAsText: false,
         };
     }
@@ -28867,7 +28888,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
             this.sizes = {};
         }
         handle(cmd) {
-            var _a, _b, _c;
+            var _a, _b;
             switch (cmd.type) {
                 case "CREATE_SHEET": {
                     const computedSizes = this.computeSheetSizes(cmd.sheetId);
@@ -28955,7 +28976,8 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                     }
                     break;
                 case "UPDATE_CELL":
-                    if (!((_c = (_b = (_a = this.sizes[cmd.sheetId]) === null || _a === void 0 ? void 0 : _a["ROW"]) === null || _b === void 0 ? void 0 : _b[cmd.row]) === null || _c === void 0 ? void 0 : _c.manualSize)) {
+                    const row = (_b = (_a = this.sizes[cmd.sheetId]) === null || _a === void 0 ? void 0 : _a["ROW"]) === null || _b === void 0 ? void 0 : _b[cmd.row];
+                    if (row && !row.manualSize) {
                         const { sheetId, row } = cmd;
                         this.history.update("sizes", sheetId, "ROW", row, "computedSize", lazy(() => this.getRowTallestCellSize(sheetId, row)));
                     }
@@ -29138,7 +29160,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                     if (!this.getters.tryGetSheet(cmd.sheetId)) {
                         return 27 /* CommandResult.InvalidSheetId */;
                     }
-                    if (!this.canRemoveHeaders(cmd.sheetId, cmd.dimension, cmd.elements)) {
+                    if (this.checkElementsIncludeAllVisibleHeaders(cmd.sheetId, cmd.dimension, cmd.elements)) {
                         return 8 /* CommandResult.NotEnoughElements */;
                     }
                     return 0 /* CommandResult.Success */;
@@ -29188,9 +29210,9 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
             }
             return;
         }
-        canRemoveHeaders(sheetId, dimension, elements) {
+        checkElementsIncludeAllVisibleHeaders(sheetId, dimension, elements) {
             const visibleHeaders = this.getAllVisibleHeaders(sheetId, dimension);
-            return !includesAll(elements, visibleHeaders);
+            return includesAll(elements, visibleHeaders);
         }
         isRowHiddenByUser(sheetId, index) {
             return this.hiddenHeaders[sheetId].ROW[index];
@@ -29286,7 +29308,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
         }
     }
     HeaderVisibilityPlugin.getters = [
-        "canRemoveHeaders",
+        "checkElementsIncludeAllVisibleHeaders",
         "getHiddenColsGroups",
         "getHiddenRowsGroups",
         "isRowHiddenByUser",
@@ -29805,6 +29827,9 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                     if (Math.min(...cmd.elements) < 0 || Math.max(...cmd.elements) > elements) {
                         return 85 /* CommandResult.InvalidHeaderIndex */;
                     }
+                    else if (this.checkElementsIncludeAllNonFrozenHeaders(cmd.sheetId, cmd.dimension, cmd.elements)) {
+                        return 8 /* CommandResult.NotEnoughElements */;
+                    }
                     else {
                         return 0 /* CommandResult.Success */;
                     }
@@ -30103,6 +30128,20 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                 panes.ySplit = base;
             }
             this.history.update("sheets", sheetId, "panes", panes);
+        }
+        /**
+         * Checks if all non-frozen header indices are present in the provided elements of selected rows/columns.
+         * This validation ensures that all rows or columns cannot be deleted when frozen panes exist.
+         */
+        checkElementsIncludeAllNonFrozenHeaders(sheetId, dimension, elements) {
+            const paneDivisions = this.getters.getPaneDivisions(sheetId);
+            const startIndex = dimension === "ROW" ? paneDivisions.ySplit : paneDivisions.xSplit;
+            const endIndex = this.getters.getNumberHeaders(sheetId, dimension);
+            if (!startIndex) {
+                return false;
+            }
+            const indicesToCheck = range(startIndex, endIndex);
+            return includesAll(elements, indicesToCheck);
         }
         // ---------------------------------------------------------------------------
         // Row/Col manipulation
@@ -30638,6 +30677,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
         "getSheetSize",
         "getSheetZone",
         "getPaneDivisions",
+        "checkElementsIncludeAllNonFrozenHeaders",
     ];
 
     /**
@@ -33071,6 +33111,7 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                     this.filterValues[cmd.sheetId] = {};
                     break;
                 case "HIDE_COLUMNS_ROWS":
+                case "UNHIDE_COLUMNS_ROWS":
                     this.updateHiddenRows();
                     break;
                 case "UPDATE_FILTER":
@@ -33322,11 +33363,15 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
                     break;
                 case "EVALUATE_CELLS":
                 case "UPDATE_CELL":
+                case "REMOVE_FILTER_TABLE":
+                case "UPDATE_FILTER":
                     this.isSearchDirty = true;
                     break;
                 case "UNDO":
                 case "REDO":
                 case "REMOVE_COLUMNS_ROWS":
+                case "HIDE_COLUMNS_ROWS":
+                case "UNHIDE_COLUMNS_ROWS":
                 case "ADD_COLUMNS_ROWS":
                 case "ACTIVATE_SHEET":
                     this.refreshSearch();
@@ -36426,6 +36471,9 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
             const sheetId = this.sheetId;
             this.left = this.searchHeaderIndex("COL", this.offsetScrollbarX, this.boundaries.left);
             this.right = Math.min(this.boundaries.right, this.searchHeaderIndex("COL", this.viewportWidth, this.left));
+            if (this.left === -1) {
+                this.left = this.boundaries.left;
+            }
             if (this.right === -1) {
                 this.right = this.getters.getNumberCols(sheetId) - 1;
             }
@@ -36439,6 +36487,9 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
             const sheetId = this.sheetId;
             this.top = this.searchHeaderIndex("ROW", this.offsetScrollbarY, this.boundaries.top);
             this.bottom = Math.min(this.boundaries.bottom, this.searchHeaderIndex("ROW", this.viewportHeight, this.top));
+            if (this.top === -1) {
+                this.top = this.boundaries.top;
+            }
             if (this.bottom === -1) {
                 this.bottom = this.getters.getNumberRows(sheetId) - 1;
             }
@@ -42854,9 +42905,9 @@ day_count_convention (number, default=${DEFAULT_DAY_COUNT_CONVENTION} ) ${_lt("A
     Object.defineProperty(exports, '__esModule', { value: true });
 
 
-    __info__.version = '16.0.15';
-    __info__.date = '2023-07-26T13:03:40.443Z';
-    __info__.hash = '18da14b';
+    __info__.version = '16.0.18';
+    __info__.date = '2023-09-12T12:01:54.298Z';
+    __info__.hash = '41fd4fa';
 
 
 })(this.o_spreadsheet = this.o_spreadsheet || {}, owl);

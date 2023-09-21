@@ -85,6 +85,7 @@ class HrEmployeePrivate(models.Model):
     work_permit_expiration_date = fields.Date('Work Permit Expiration Date', groups="hr.group_hr_user", tracking=True)
     has_work_permit = fields.Binary(string="Work Permit", groups="hr.group_hr_user", tracking=True)
     work_permit_scheduled_activity = fields.Boolean(default=False, groups="hr.group_hr_user")
+    work_permit_name = fields.Char('work_permit_name', compute='_compute_work_permit_name')
     additional_note = fields.Text(string='Additional Note', groups="hr.group_hr_user", tracking=True)
     certificate = fields.Selection([
         ('graduate', 'Graduate'),
@@ -156,6 +157,13 @@ class HrEmployeePrivate(models.Model):
                 else:
                     avatar = base64.b64encode(employee._avatar_get_placeholder())
             employee[avatar_field] = avatar
+
+    @api.depends('name', 'permit_no')
+    def _compute_work_permit_name(self):
+        for employee in self:
+            name = employee.name.replace(' ', '_') + '_' if employee.name else ''
+            permit_no = '_' + employee.permit_no if employee.permit_no else ''
+            employee.work_permit_name = "%swork_permit%s" % (name, permit_no)
 
     def action_create_user(self):
         self.ensure_one()
@@ -356,16 +364,16 @@ class HrEmployeePrivate(models.Model):
 
     def write(self, vals):
         if 'address_home_id' in vals:
-            account_id = vals.get('bank_account_id') or self.bank_account_id.id
-            if account_id:
-                self.env['res.partner.bank'].browse(account_id).partner_id = vals['address_home_id']
+            account_ids = vals.get('bank_account_id') or self.bank_account_id.ids
+            if account_ids:
+                self.env['res.partner.bank'].browse(account_ids).partner_id = vals['address_home_id']
             self.message_unsubscribe(self.address_home_id.ids)
             if vals['address_home_id']:
                 self._message_subscribe([vals['address_home_id']])
         if 'user_id' in vals:
             # Update the profile pictures with user, except if provided 
             vals.update(self._sync_user(self.env['res.users'].browse(vals['user_id']),
-                                        (bool(self.image_1920))))
+                                        (bool(all(emp.image_1920 for emp in self)))))
         if 'work_permit_expiration_date' in vals:
             vals['work_permit_scheduled_activity'] = False
         res = super(HrEmployeePrivate, self).write(vals)

@@ -5002,6 +5002,16 @@ msgstr ""
 
 #. module: mrp
 #. odoo-python
+#: code:addons/mrp/models/mrp_bom.py:0
+#, python-format
+msgid ""
+"The current configuration is incorrect because it would create a cycle "
+"between these products: %s."
+msgstr ""
+"De huidige configuratie is onjuist omdat er dan een cyclus ontstaat tussen "
+"deze producten: %s."
+
+#. module: mrp
 #: code:addons/mrp/models/stock_orderpoint.py:0
 #, python-format
 msgid "The following replenishment order has been generated"
@@ -5682,6 +5692,18 @@ msgstr "Geldig"
 #: model_terms:ir.ui.view,arch_db:mrp.view_mrp_production_backorder_form
 msgid "Validate"
 msgstr "Bevestigen"
+
+#. module: mrp
+#. odoo-python
+#: code:addons/addons/mrp/wizard/mrp_consumption_warning.py:0
+#: code:addons/mrp/wizard/mrp_consumption_warning.py:0
+#, python-format
+msgid ""
+"Values cannot be set and validated because a Lot/Serial Number needs to be specified for a tracked product that is having its consumed amount increased:\n"
+"- "
+msgstr ""
+"Waarden kunnen niet worden ingesteld en gevalideerd omdat een partij/serienummer moet worden opgegeven voor een getraceerd product waarvan de verbruikte hoeveelheid wordt verhoogd:\n"
+"- "
 
 #. module: mrp
 #. odoo-javascript
@@ -6418,13 +6440,6 @@ msgstr ""
 #, python-format
 msgid "You need to provide a lot for the finished product."
 msgstr "Je dient een partijnummer in te voeren voor het eindproduct."
-
-#. module: mrp
-#. odoo-python
-#: code:addons/mrp/wizard/mrp_consumption_warning.py:0
-#, python-format
-msgid "You need to supply Lot/Serial Number"
-msgstr "Je moet een partij/serienummer opgeven"
 
 #. module: mrp
 #. odoo-python

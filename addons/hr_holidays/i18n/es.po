@@ -1422,7 +1422,7 @@ msgstr "Cancelado"
 #. module: hr_holidays
 #: model_terms:ir.ui.view,arch_db:hr_holidays.view_hr_holidays_filter
 msgid "Cancelled Time Off"
-msgstr "Tiempo libre cancelados"
+msgstr "Ausencias canceladas"
 
 #. module: hr_holidays
 #: model:ir.model.fields,help:hr_holidays.field_hr_leave__category_id
@@ -2317,7 +2317,7 @@ msgstr "Junio"
 #: model_terms:ir.actions.act_window,help:hr_holidays.hr_leave_action_my
 #: model_terms:ir.actions.act_window,help:hr_holidays.hr_leave_action_new_request
 msgid "Keep track of your PTOs."
-msgstr "Lleva el registro de tus ausencias pagadas."
+msgstr "Lleva el registro de tus ausencias."
 
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave_type__time_type
@@ -2608,7 +2608,7 @@ msgstr "Mayo"
 #: model_terms:ir.actions.act_window,help:hr_holidays.hr_leave_action_action_approve_department
 #: model_terms:ir.actions.act_window,help:hr_holidays.hr_leave_action_holiday_allocation_id
 msgid "Meet the time off dashboard."
-msgstr "Conoce el tablero de ausencias"
+msgstr "Conozca el tablero de ausencias."
 
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave__meeting_id
@@ -4138,9 +4138,9 @@ msgid ""
 "to create allocation/time off request. Total based on all the time off types"
 " without overriding limit."
 msgstr ""
-"Número total de ausencias pagadas asignadas a este empleado. Cambie este "
-"valor para crear una solicitud de asignación / ausencia. Total basado en "
-"todos los tipos de ausencia sin límite superior."
+"Número total de ausencias asignadas a este empleado. Cambie este valor para "
+"crear una solicitud de asignación / ausencia. Total basado en todos los "
+"tipos de ausencia sin límite superior."
 
 #. module: hr_holidays
 #: model:hr.leave.type,name:hr_holidays.holiday_status_training
@@ -4563,8 +4563,8 @@ msgid ""
 "You must have manager rights to modify/validate a time off that already "
 "begun"
 msgstr ""
-"Debes tener permisos de responsable para modificar / validar una ausencia "
-"que ya comenzó."
+"Debe tener permisos de responsable para modificar / validar una ausencia que"
+" ya comenzó."
 
 #. module: hr_holidays
 #. odoo-python

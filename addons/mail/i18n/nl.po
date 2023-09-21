@@ -43,7 +43,7 @@ msgstr ""
 "                Adressen toevoegen aan de toegestane lijst\n"
 "            </p><p>\n"
 "                Om je te beschermen tegen spam en antwoordlussen, blokkeert Odoo automatisch e-mails\n"
-"                die elke <b>%i</b> minuten naar je gateway komen voorbij een drempel van <b>%i</b> e-mails\n"
+"                die elke <b>%i</b> e-mails naar je gateway komen voorbij een drempel van <b>%i</b> e-minuten\n"
 "                . Als er adressen zijn waarvan je heel vaak updates moet\n"
 "                ontvangen, kan je ze echter hieronder toevoegen en Odoo zal ze doorlaten.\n"
 "            </p>\n"
@@ -7090,7 +7090,7 @@ msgstr "Uitgaand"
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "Outgoing Email Servers"
-msgstr "Servers voor uitgaande e-mail"
+msgstr "Uitgaande e-mailservers"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_template__mail_server_id
@@ -20448,7 +20448,7 @@ msgstr "is gewijzigd vanuit:"
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.message_activity_assigned
 msgid "has just assigned you the following activity:"
-msgstr "heb je zojuist de volgende activiteit toegewezen:"
+msgstr "heeft je zojuist de volgende activiteit toegewezen:"
 
 #. module: mail
 #. odoo-javascript

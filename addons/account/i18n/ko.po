@@ -7,7 +7,9 @@
 # Linkup <link-up@naver.com>, 2022
 # JH CHOI <hwangtog@gmail.com>, 2022
 # Martin Trigaux, 2023
+# Daye Jeong, 2023
 # Sarah Park, 2023
+# Wil Odoo, 2023
 # 
 msgid ""
 msgstr ""
@@ -15,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-02 10:33+0000\n"
 "PO-Revision-Date: 2022-09-22 05:44+0000\n"
-"Last-Translator: Sarah Park, 2023\n"
+"Last-Translator: Wil Odoo, 2023\n"
 "Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -211,6 +213,8 @@ msgid ""
 "%s reached an invalid state regarding its related statement line.\n"
 "To be consistent, the journal entry must always have exactly one suspense line."
 msgstr ""
+"%s가 관련 명세서 내역과 관련하여 유효하지 않습니다.\n"
+"동일하게 일치시키기 위해서는 가계정 내역과 관련된 전표 항목은 반드시 하나만 있어야 합니다."
 
 #. module: account
 #. odoo-python
@@ -3548,6 +3552,15 @@ msgstr ""
 #, python-format
 msgid "Cannot generate an unused account code."
 msgstr "미사용 계정 코드를 생성할 수 없습니다."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_journal.py:0
+#, python-format
+msgid ""
+"Cannot generate an unused journal code. Please change the name for journal "
+"%s."
+msgstr ""
 
 #. module: account
 #. odoo-python
@@ -8780,7 +8793,7 @@ msgstr "선"
 #: code:addons/account/models/account_report.py:0
 #, python-format
 msgid "Line \"%s\" defines itself as its parent."
-msgstr ""
+msgstr "\"%s\" 내역은 상위 항목으로 정의됩니다"
 
 #. module: account
 #. odoo-python
@@ -8789,7 +8802,7 @@ msgstr ""
 msgid ""
 "Line \"%s\" defines line \"%s\" as its parent, but appears before it in the "
 "report. The parent must always come first."
-msgstr ""
+msgstr "\"%s\" 내역은 \"%s\"을 상위 항목으로 정의하지만, 보고서에서는 그 앞에 표기됩니다. 상위 항목은 항상 맨 앞에 나와야 합니다."
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_config_settings__show_line_subtotals_tax_selection
@@ -8838,7 +8851,7 @@ msgstr "최대치 추가"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_automatic_entry_wizard__lock_date_message
 msgid "Lock Date Message"
-msgstr ""
+msgstr "마감일 메시지"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__restrict_mode_hash_table
@@ -9743,7 +9756,7 @@ msgstr "오류 횟수"
 #: model:ir.model.fields,help:account.field_res_company__message_needaction_counter
 #: model:ir.model.fields,help:account.field_res_partner_bank__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "조치가 필요한 메시지 수"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_account__message_has_error_counter
@@ -12884,8 +12897,8 @@ msgstr "가계정"
 
 #. module: account
 #: model:ir.actions.server,name:account.action_move_switch_invoice_to_credit_note
-msgid "Switch into refund/credit note"
-msgstr "환불/대변전표로 전환"
+msgid "Switch into invoice/credit note"
+msgstr "청구서/대변전표로 전환"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_payment_term_line__end_month
@@ -13500,13 +13513,6 @@ msgstr "전표입력 순서가 현재의 형식과 맞지 않습니다. 담당 �
 #. module: account
 #. odoo-python
 #: code:addons/account/models/account_payment_term.py:0
-#, python-format
-msgid "The Months and Days of the Payment Terms lines must be positive."
-msgstr "지급 조건 항목의 월과 일은 양수여야 합니다."
-
-#. module: account
-#. odoo-python
-#: code:addons/account/models/account_payment_term.py:0
 #: model_terms:ir.ui.view,arch_db:account.view_payment_term_form
 #, python-format
 msgid "The Payment Term must have one Balance line."
@@ -13753,6 +13759,8 @@ msgid ""
 "The date is being set prior to the %(lock_type)s lock date %(lock_date)s. "
 "The Journal Entry will be accounted on %(invoice_date)s upon posting."
 msgstr ""
+"%(lock_type)s의 날짜가 마감일인 %(lock_date)s보다 이전으로 설정되어 있습니다. 전표 입력 시 "
+"%(invoice_date)s날짜 기준으로 발행됩니다."
 
 #. module: account
 #. odoo-python
@@ -13980,6 +13988,13 @@ msgstr ""
 "- 항목 시작 부분의 텍스트를 일치시키려면 (라벨이나 메모에서) 텍스트를 입력하기만 하면 됩니다. \n"
 "- 임의의 위치에서 텍스트를 일치시키려면 (라벨이나 메모에서) * 기호로 텍스트를 삽입합니다.*\n"
 "예: .*N°48748 abc123.*"
+
+#. module: account
+#: code:addons/account/models/account_move.py:0
+#, python-format
+msgid ""
+"The move could not be posted for the following reason: %(error_message)s"
+msgstr "이 이동은 다음과 같은 사유로 게시할 수 없습니다: %(error_message)s"
 
 #. module: account
 #. odoo-javascript
@@ -14712,7 +14727,7 @@ msgstr "이 이동 항목은 회계 일자 기준으로 발행됩니다: %(date)
 #: code:addons/account/static/src/components/account_move_list/account_move_list.js:0
 #, python-format
 msgid "This operation will create a gap in the sequence."
-msgstr ""
+msgstr "이 작업은 시퀀스에 공백을 생성합니다."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_invoice_send__auto_delete
@@ -15286,7 +15301,7 @@ msgstr "업로드"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
 msgid "Upload Invoices"
-msgstr ""
+msgstr "청구서 업로드"
 
 #. module: account
 #. odoo-python
@@ -15631,7 +15646,7 @@ msgstr "%s에 대한 경고"
 #: code:addons/account/models/account_move.py:0
 #, python-format
 msgid "Warning for Cash Rounding Method: %s"
-msgstr ""
+msgstr "금액 올림 방법에 대한 경고: %s"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.partner_view_buttons
@@ -16158,6 +16173,7 @@ msgid ""
 "You cannot delete this entry, as it has already consumed a sequence number "
 "and is not the last one in the chain. You should probably revert it instead."
 msgstr ""
+"이 항목은 이미 시퀀스 번호를 사용했으며 체인의 마지막 항목이 아니므로 삭제할 수 없습니다. 대신 변경 사항은 되돌릴 수 있습니다."
 
 #. module: account
 #. odoo-python
@@ -16369,6 +16385,13 @@ msgstr "일부 부분 조정은 아직 보류 중인 경우 조정을 방지하�
 
 #. module: account
 #. odoo-python
+#: code:addons/account/models/account_account.py:0
+#, python-format
+msgid "You cannot switch the type of a posted document."
+msgstr "문서 발행이 완료된 경우에는 유형을 변경할 수 없습니다."
+
+#. module: account
+#. odoo-python
 #: code:addons/account/models/account_move_line.py:0
 #, python-format
 msgid "You cannot use a deprecated account."
@@ -16450,7 +16473,7 @@ msgstr "다음과 같은 문서 유형을 동시에 선택하였습니다:"
 #: code:addons/account/models/account_move.py:0
 #, python-format
 msgid "You must specify the Profit Account (company dependent)"
-msgstr ""
+msgstr "수익 계정을 지정해야 합니다 (회사별로 상이함)"
 
 #. module: account
 #. odoo-python

@@ -56,7 +56,7 @@ msgstr "Absen"
 #. module: hr_presence
 #: model:ir.model,name:hr_presence.model_hr_employee_base
 msgid "Basic Employee"
-msgstr ""
+msgstr "Karyawan Dasar"
 
 #. module: hr_presence
 #: model:ir.model,name:hr_presence.model_res_company
@@ -232,7 +232,7 @@ msgstr ""
 #. module: hr_presence
 #: model:ir.model,name:hr_presence.model_res_users_log
 msgid "Users Log"
-msgstr ""
+msgstr "Log User"
 
 #. module: hr_presence
 #. odoo-python
@@ -246,4 +246,4 @@ msgstr ""
 #. module: hr_presence
 #: model:ir.model,name:hr_presence.model_ir_websocket
 msgid "websocket message handling"
-msgstr ""
+msgstr "penanganan pesan websocket"

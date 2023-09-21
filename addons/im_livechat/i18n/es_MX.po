@@ -58,7 +58,7 @@ msgstr "# de participantes"
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.im_livechat_channel_view_form
 msgid "% Happy"
-msgstr "% Feliz"
+msgstr "% de satisfacción"
 
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_digest_digest__kpi_livechat_rating
@@ -1953,7 +1953,7 @@ msgstr "Widget"
 msgid ""
 "Would you mind leaving your email address so that we can reach you back?"
 msgstr ""
-"¿Le importaría dejar su dirección de correo electrónico para que podamos "
+"¿Podría proporcionarnos su dirección de correo electrónico para que podamos "
 "contactarle?"
 
 #. module: im_livechat

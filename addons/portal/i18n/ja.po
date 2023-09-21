@@ -95,7 +95,7 @@ msgstr "<i class=\"fa fa-pencil\"/> 編集"
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_security
 msgid "<i title=\"Documentation\" class=\"fa fa-fw o_button_icon fa-info-circle\"/>"
-msgstr ""
+msgstr "<i title=\"Documentation\" class=\"fa fa-fw o_button_icon fa-info-circle\"/>"
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_details_fields
@@ -277,7 +277,7 @@ msgstr "メールに表示するコンテンツを追加する"
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_security
 msgid "Added On"
-msgstr ""
+msgstr "以下に追加"
 
 #. module: portal
 #: model:ir.model.fields.selection,name:portal.selection__portal_wizard_user__email_state__exist
@@ -581,7 +581,7 @@ msgstr "パスワードを忘れましたか？"
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.wizard_view
 msgid "Grant Access"
-msgstr ""
+msgstr "アクセス付与"
 
 #. module: portal
 #: model:ir.model,name:portal.model_portal_wizard
@@ -644,7 +644,7 @@ msgstr "内部ユーザ"
 #: code:addons/portal/static/src/xml/portal_chatter.xml:0
 #, python-format
 msgid "Internal notes are only displayed to internal users."
-msgstr ""
+msgstr "内部メモは内部ユーザにのみ表示されます。"
 
 #. module: portal
 #: model:ir.model.fields.selection,name:portal.selection__portal_wizard_user__email_state__ko
@@ -941,7 +941,7 @@ msgstr "宛先"
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_share__resource_ref
 msgid "Related Document"
-msgstr ""
+msgstr "関連ドキュメント"
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_share__res_id

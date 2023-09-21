@@ -569,7 +569,6 @@ class MrpProduction(models.Model):
 
     @api.depends('state', 'move_raw_ids.state')
     def _compute_reservation_state(self):
-        self.reservation_state = False
         for production in self:
             if production.state in ('draft', 'done', 'cancel'):
                 continue
@@ -704,7 +703,7 @@ class MrpProduction(models.Model):
             list_move_raw = [Command.link(move.id) for move in production.move_raw_ids.filtered(lambda m: not m.bom_line_id)]
             if not production.bom_id and not production._origin.product_id:
                 production.move_raw_ids = list_move_raw
-            if production.bom_id != production._origin.bom_id:
+            if any(move.bom_line_id.bom_id != production.bom_id for move in production.move_raw_ids if move.bom_line_id):
                 production.move_raw_ids = [Command.clear()]
             if production.bom_id and production.product_id and production.product_qty > 0:
                 # keep manual entries
@@ -2221,7 +2220,8 @@ class MrpProduction(models.Model):
         ]
         # Check presence of same sn in previous productions
         duplicates = self.env['stock.move.line'].search_count(domain + [
-            ('location_id.usage', '=', 'production')
+            ('location_id.usage', '=', 'production'),
+            ('move_id.unbuild_id', '=', False)
         ])
         if duplicates:
             # Maybe some move lines have been compensated by unbuild

@@ -832,7 +832,7 @@ msgid ""
 "        Define default sales journal on the warehouse"
 msgstr ""
 "\n"
-"        Definieer standaard verkkoopdagboek in het magazijn"
+"        Definieer standaard verkoopdagboek in het magazijn"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_in_sale_stock
@@ -7814,7 +7814,7 @@ msgid ""
 " create and manage appraisals for himself and the people he's manager of."
 msgstr ""
 "Een gebruiker zonder enige rechten op Taxaties kan de applicatie zien, "
-"beoordelingen maken en beheren voor zichzelf en de mensen van wie hij de "
+"evaluaties maken en beheren voor zichzelf en de mensen van wie hij de "
 "manager is."
 
 #. module: base
@@ -9085,12 +9085,12 @@ msgstr "Afspraken"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_appraisal
 msgid "Appraisal"
-msgstr "Beoordeling"
+msgstr "Evaluatie"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_human_resources_appraisals
 msgid "Appraisals"
-msgstr "Beoordelingen"
+msgstr "Evaluaties"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.open_module_tree
@@ -9808,8 +9808,8 @@ msgstr "Voor bedrag"
 msgid ""
 "Before clicking on 'Change Password', you have to write a new password."
 msgstr ""
-"Voordat je klikt op \"Wijzig wachtwoord\" dien je een nieuw wachtwoord in te"
-" voeren."
+"Voordat je klikt op \"Wachtwoord wijzigen\" dien je een nieuw wachtwoord in "
+"te voeren."
 
 #. module: base
 #: model:res.country,name:base.by
@@ -10404,12 +10404,12 @@ msgstr "Wijzig mijn voorkeuren"
 #: model_terms:ir.ui.view,arch_db:base.change_password_own_form
 #: model_terms:ir.ui.view,arch_db:base.change_password_wizard_view
 msgid "Change Password"
-msgstr "Wijzig wachtwoord"
+msgstr "Wachtwoord wijzigen"
 
 #. module: base
 #: model:ir.model,name:base.model_change_password_wizard
 msgid "Change Password Wizard"
-msgstr "Wijzigen wachtwoord wizard"
+msgstr "Wachtwoord wijzigen wizard"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
@@ -13221,6 +13221,19 @@ msgstr "Fout"
 msgid "Error message returned when the constraint is violated."
 msgstr ""
 "Foutmelding die teruggestuurd wordt nadat de beperking niet voldaan is."
+
+#. module: base
+#. odoo-python
+#: code:addons/translate.py:0
+#, python-format
+msgid ""
+"Error while parsing view:\n"
+"\n"
+"%s"
+msgstr ""
+"Fout bij het verwerken van de weergave: \n"
+"\n"
+"%s"
 
 #. module: base
 #. odoo-python
@@ -17257,7 +17270,7 @@ msgstr "Evenement tracks"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_language_install
 msgid "Load a Translation"
-msgstr "Vertaling inladen"
+msgstr "Een vertaling laden"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.demo_force_install_action
@@ -19573,7 +19586,7 @@ msgstr ""
 "Beheer met Odoo <a href=\"https://www.odoo.com/app/employees\">Personeelszaken</a>, het belangrijkste kapitaal in je bedrijf: mensen\n"
 "\n"
 "Beheer al je HR-activiteiten eenvoudig: kennisdeling, werving & selectie,\n"
-"beoordelingen, urenstaten, contracten, aanwezigheden, loonadministratie, enz.\n"
+"evaluaties, urenstaten, contracten, aanwezigheden, loonadministratie, enz.\n"
 "\n"
 "Elke behoefte wordt geleverd door een specifieke app die je op aanvraag activeert.\n"
 "\n"
@@ -19631,10 +19644,10 @@ msgstr ""
 "Volg periodieke evaluaties\n"
 "--------------------------\n"
 "\n"
-"Stel beoordelingsplannen en/of enquêtes op voor je werknemers en bekijk hun\n"
+"Stel evaluatieplannen en/of enquêtes op voor je werknemers en bekijk hun\n"
 "evolutie. Definieer stappen voor interviews en Odoo zal managers of ondergeschikten\n"
 "automatische op de hoogte stellen\n"
-"om beoordelingen voor te bereiden. Blijf periodiek op de hoogte van de voortgang van\n"
+"om evaluaties voor te bereiden. Blijf periodiek op de hoogte van de voortgang van\n"
 "je personeel.\n"
 "\n"
 "Betrokkenheid vergroten met gamificatie\n"
@@ -25172,7 +25185,6 @@ msgstr "Start configuratie"
 #: model_terms:ir.ui.view,arch_db:base.view_company_form
 #: model_terms:ir.ui.view,arch_db:base.view_country_state_form
 #: model_terms:ir.ui.view,arch_db:base.view_country_state_tree
-#: model_terms:ir.ui.view,arch_db:base.view_module_filter
 #: model_terms:ir.ui.view,arch_db:base.view_partner_address_form
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 #: model_terms:ir.ui.view,arch_db:base.view_res_bank_form
@@ -25215,6 +25227,7 @@ msgstr "Staten / Provincies"
 #: model:ir.model.fields,field_description:base.field_ir_module_module__state
 #: model:ir.model.fields,field_description:base.field_ir_module_module_dependency__state
 #: model:ir.model.fields,field_description:base.field_ir_module_module_exclusion__state
+#: model_terms:ir.ui.view,arch_db:base.view_module_filter
 #: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
 msgid "Status"
 msgstr "Status"
@@ -27701,7 +27714,7 @@ msgstr "Bijwerken"
 #. module: base
 #: model:ir.ui.menu,name:base.menu_view_base_module_update
 msgid "Update Apps List"
-msgstr "Modulelijst bijwerken"
+msgstr "Lijst met apps bijwerken"
 
 #. module: base
 #: model:ir.model,name:base.model_base_module_update
@@ -27952,7 +27965,7 @@ msgstr "Gebruikersnaam"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.user_groups_view
 msgid "User Type"
-msgstr "Gebruikerssoort"
+msgstr "Gebruikerstype"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users__log_ids
@@ -27962,7 +27975,7 @@ msgstr "Gebruiker logboek regels"
 #. module: base
 #: model:ir.module.category,name:base.module_category_user_type
 msgid "User types"
-msgstr "Gebruiker types"
+msgstr "Gebruikerstypes"
 
 #. module: base
 #: model:ir.model,name:base.model_change_password_user
@@ -29052,6 +29065,13 @@ msgstr ""
 
 #. module: base
 #. odoo-python
+#: code:addons/base/models/ir_config_parameter.py:0
+#, python-format
+msgid "You cannot delete the %s record."
+msgstr "Je kan het record %s niet verwijderen."
+
+#. module: base
+#. odoo-python
 #: code:addons/base/models/res_lang.py:0
 #, python-format
 msgid ""
@@ -29085,6 +29105,13 @@ msgid ""
 msgstr ""
 "Je kunt het aantal decimalen van een valuta die al in een boeking is "
 "gebruikt, niet verminderen."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_config_parameter.py:0
+#, python-format
+msgid "You cannot rename config parameters with keys %s"
+msgstr "Je kan de configuratieparameters niet hernoemen met sleutels %s"
 
 #. module: base
 #. odoo-python

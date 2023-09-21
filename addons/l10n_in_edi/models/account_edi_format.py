@@ -76,6 +76,8 @@ class AccountEdiFormat(models.Model):
                 if not move._l10n_in_edi_is_managing_invoice_negative_lines_allowed():
                     raise ValidationError(_("Invoice lines having a negative amount are not allowed to generate the IRN. "
                                   "Please create a credit note instead."))
+            if line.display_type == 'product' and line.discount < 0:
+                error_message.append(_("Negative discount is not allowed, set in line %s", line.name))
             if line.product_id:
                 hsn_code = self._l10n_in_edi_extract_digits(line.product_id.l10n_in_hsn_code)
                 if not hsn_code:
@@ -254,10 +256,11 @@ class AccountEdiFormat(models.Model):
             if is_overseas is true then pin is 999999 and GSTIN(vat) is URP and Stcd is .
             if pos_state_id is passed then we use set POS
         """
+        zip_digits = self._l10n_in_edi_extract_digits(partner.zip)
         partner_details = {
             "Addr1": partner.street or "",
             "Loc": partner.city or "",
-            "Pin": int(self._l10n_in_edi_extract_digits(partner.zip)),
+            "Pin": zip_digits and int(zip_digits) or "",
             "Stcd": partner.state_id.l10n_in_tin or "",
         }
         if partner.street2:

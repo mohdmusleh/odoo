@@ -8,9 +8,9 @@
 # Martin Trigaux, 2023
 # Noma Yuki, 2023
 # Ryoko Tsuda <ryoko@quartile.co>, 2023
-# Junko Augias, 2023
-# Yoshi Tashiro (Quartile) <tashiro@roomsfor.hk>, 2023
 # Tatsuki Kanda, 2023
+# Yoshi Tashiro (Quartile) <tashiro@roomsfor.hk>, 2023
+# Junko Augias, 2023
 # 
 msgid ""
 msgstr ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-23 08:23+0000\n"
 "PO-Revision-Date: 2022-09-22 05:44+0000\n"
-"Last-Translator: Tatsuki Kanda, 2023\n"
+"Last-Translator: Junko Augias, 2023\n"
 "Language-Team: Japanese (https://app.transifex.com/odoo/teams/41243/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -247,6 +247,87 @@ msgid ""
 "\n"
 "    "
 msgstr ""
+"\n"
+"\n"
+"デンマーク用ローカライゼーションモジュール\n"
+"===============================\n"
+"\n"
+"デンマークの**会計表**を管理するモジュールです。I/S、IVS、ApS、A/Sだけでなく、ワンマンビジネスもカバーします。\n"
+"\n"
+"**Modulet opsætter:**\n"
+"\n"
+"- **Dansk kontoplan**\n"
+"\n"
+"- Dansk moms\n"
+"        - 25% moms\n"
+"        - Resturationsmoms 6,25%\n"
+"        - Omvendt betalingspligt\n"
+"\n"
+"- Konteringsgrupper\n"
+"        - EU (Virksomhed)\n"
+"        - EU (Privat)\n"
+"        - 3.lande\n"
+"\n"
+"- Finans raporter\n"
+"        - Resulttopgørelse\n"
+"        - Balance\n"
+"        - Momsafregning\n"
+"            - Afregning\n"
+"            - Rubrik A, B og C\n"
+"\n"
+"- **Anglo-Saxon regnskabsmetode**\n"
+"\n"
+".\n"
+"\n"
+"Produkt setup:\n"
+"==============\n"
+"\n"
+"**Vare**\n"
+"\n"
+"**Salgsmoms:**      Salgmoms 25%\n"
+"\n"
+"**Salgskonto:**     1010 Salg af vare, m/moms\n"
+"\n"
+"**Købsmoms:**       Købsmoms 25%\n"
+"\n"
+"**Købskonto:**      2010 Direkte omkostninger vare, m/moms\n"
+"\n"
+".\n"
+"\n"
+"**Ydelse**\n"
+"\n"
+"**Salgsmoms:**      Salgmoms 25%, ydelser\n"
+"\n"
+"**Salgskonto:**     1011 Salg af ydelser, m/moms\n"
+"\n"
+"**Købsmoms:**       Købsmoms 25%, ydelser\n"
+"\n"
+"**Købskonto:**      2011 Direkte omkostninger ydelser, m/moms\n"
+"\n"
+".\n"
+"\n"
+"**Vare med omvendt betalingspligt**\n"
+"\n"
+"**Salgsmoms:**      Salg omvendt betalingspligt\n"
+"\n"
+"**Salgskonto:**     1012 Salg af vare, u/moms\n"
+"\n"
+"**Købsmoms:**       Køb omvendt betalingspligt\n"
+"\n"
+"**Købskonto:**      2012 Direkte omkostninger vare, u/moms\n"
+"\n"
+"\n"
+".\n"
+"\n"
+"**Restauration**\n"
+"\n"
+"**Købsmoms:**       Restaurationsmoms 6,25%, købsmoms\n"
+"\n"
+"**Købskonto:**      4010 Restaurationsbesøg\n"
+"\n"
+".\n"
+"\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_do
@@ -452,6 +533,9 @@ msgid ""
 "\n"
 "This module adds enable you to view the margin of your Point of Sale orders in the Sales Margin report.\n"
 msgstr ""
+"\n"
+"\n"
+"このモジュールを使用すると、売上マージンレポートでPOSオーダのマージンを表示できるようになります。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_pos_restaurant
@@ -526,6 +610,9 @@ msgid ""
 "            Egyptian Tax Authority Invoice Integration\n"
 "        "
 msgstr ""
+"\n"
+"           エジプト税務当局のインボイス統合\n"
+"        "
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_ke_edi_tremol
@@ -534,6 +621,9 @@ msgid ""
 "            Kenya Tremol Device EDI Integration\n"
 "        "
 msgstr ""
+"\n"
+"            ケニア・トレモール・デバイスのEDI統合\n"
+"        "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_hu
@@ -542,6 +632,9 @@ msgid ""
 "        Accounting chart and localization for Hungary\n"
 "    "
 msgstr ""
+"\n"
+"        ハンガリーの会計チャートとローカライズ\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_event_crm_questions
@@ -563,6 +656,9 @@ msgid ""
 "        Arabic/English for GCC + lot/SN numbers\n"
 "    "
 msgstr ""
+"\n"
+"        GCC + ロット/シリアル番号の番号用のアラビア語/英語\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_hr_maintenance
@@ -580,6 +676,9 @@ msgid ""
 "        Bridge module between MRP subcontracting and Repair\n"
 "    "
 msgstr ""
+"\n"
+"        MRP外注と修理の間のブリッジモジュール\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_sale_product_configurator
@@ -627,6 +726,9 @@ msgid ""
 "        Chart accounting and taxes for Bulgaria\n"
 "    "
 msgstr ""
+"\n"
+"        ブルガリア向けの会計表と税\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_lv
@@ -643,6 +745,17 @@ msgid ""
 "        co-author is Chick.Farm (visit for more information https://www.myacc.cloud)\n"
 "    "
 msgstr ""
+"\n"
+"      ラトビア会計の勘定科目表(COA)テンプレート。\n"
+"このモジュールには以下も含まれます：\n"
+"      * 税グループ、\n"
+"       * 最も一般的なラトビア税\n"
+"       * 財政ポジション\n"
+"       * ラトビアの銀行リスト\n"
+"\n"
+"        著者Allegro IT (詳細 https://www.allegro.lv)\n"
+"共著者Chick.Farm (詳細 https://www.myacc.cloud)author is Allegro IT (visit for more information https://www.allegro.lv)\n"
+"            "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_lt
@@ -677,6 +790,9 @@ msgid ""
 "        Chart of accounts and taxes for Slovenia.\n"
 "    "
 msgstr ""
+"\n"
+"        スロベニア向けの勘定科目表と税\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_in_purchase_stock
@@ -783,6 +899,9 @@ msgid ""
 "        Manage your mailing lists from Odoo.\n"
 "    "
 msgstr ""
+"\n"
+"        Odooからメーリングリストを管理します。\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_mz
@@ -791,6 +910,9 @@ msgid ""
 "        Mozambican Accounting localization\n"
 "    "
 msgstr ""
+"\n"
+"        モザンビーク会計ローカリゼーション\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_base_sparse_field
@@ -815,6 +937,9 @@ msgid ""
 "        This bridge module adds some smart buttons between Purchase and Subcontracting\n"
 "    "
 msgstr ""
+"\n"
+"        このブリッジモジュールは、購買と外注の間にスマートボタンをいくつか追加します。\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_mrp_subcontracting_dropshipping
@@ -853,6 +978,9 @@ msgid ""
 "        This is the module to manage the accounting chart for The Philippines.\n"
 "    "
 msgstr ""
+"\n"
+"        フィリピンの会計表を管理するモジュールです。\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_qr_code_sepa
@@ -872,6 +1000,9 @@ msgid ""
 "        This module allow your customer to choose a Point Relais® and use it as shipping address.\n"
 "    "
 msgstr ""
+"\n"
+"        このモジュールにより、顧客はPoint Relais®を選択し、配送先住所として使用することができます。\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_delivery_mondialrelay
@@ -883,6 +1014,12 @@ msgid ""
 "        Delivery price pre-configured is an example, you need to adapt the pricing's rules.\n"
 "    "
 msgstr ""
+"\n"
+"        このモジュールにより、顧客はPoint Relais®を選択し、配送先住所として使用することができます。\n"
+"        このモジュールはWebServiceを実装しません。ウィジェットの統合だけです。\n"
+"\n"
+"        予め設定されている配送価格はその一例で、価格設定の規則を適応させる必要があります。\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_purchase_product_matrix
@@ -1005,6 +1142,10 @@ msgid ""
 "       Special thanks to Plementus <info@plementus.com> for their help in developing this module.\n"
 "    "
 msgstr ""
+"\n"
+"       このモジュールはETAポータルと統合し、請求書に自動的に署名して税務当局に送信します。\n"
+"       このモジュールの開発にご協力頂いた Plementus <info@plementus.com> に感謝致します。\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_ke_edi_tremol
@@ -1013,6 +1154,9 @@ msgid ""
 "       This module integrates with the Kenyan G03 Tremol control unit device to the KRA through TIMS.\n"
 "    "
 msgstr ""
+"\n"
+"       このモジュールは、ケニアのG03トレモール・コントロール・ユニット装置とTIMSを通じてKRAに統合されます。\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_multilang
@@ -1037,6 +1181,8 @@ msgid ""
 "\n"
 "    Arabic/English for GCC\n"
 msgstr ""
+"\n"
+" GCC用アラビア語/英語\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_hr_euro
@@ -1149,6 +1295,14 @@ msgid ""
 "and encourage users to configure their 2FA using an authenticator app.\n"
 "    "
 msgstr ""
+"\n"
+"メールによる2FA\n"
+"===============\n"
+"認証アプリを使用する2FAが設定されていない場合の\n"
+"ユーザのメール受信箱にコードを送信する2要素認証。\n"
+"デフォルトで2要素認証を使用するようユーザに強制し、\n"
+"認証アプリを使用した2FAを設定するようユーザに促します。\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_tax_python
@@ -1338,6 +1492,8 @@ msgid ""
 "\n"
 "Add supports to fill three optional fields used when using Chorus Pro, especially when invoicing public services.\n"
 msgstr ""
+"\n"
+"Chorus Proを使用する際に使用される3つのオプションフィールド(特に公共サービスの請求書作成時)への入力サポートを追加しました。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_product_margin
@@ -1393,6 +1549,10 @@ msgid ""
 "=====================================================\n"
 "    "
 msgstr ""
+"\n"
+"モジュールのインストールを要求する内部ユーザを許可します。\n"
+"=====================================================\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale_wishlist
@@ -1412,6 +1572,9 @@ msgid ""
 "Allow the user to select if he wants to receive email notifications when a product of his wishlist gets back in stock.\n"
 "    "
 msgstr ""
+"\n"
+"ウィッシュリストのプロダクトが再入荷した際にEメール通知を受け取るかどうかをユーザが選択できるようにします。\n"
+"    "
 
 #. module: base
 #: model:ir.module.module,description:base.module_auth_oauth
@@ -1453,6 +1616,8 @@ msgid ""
 "\n"
 "Allows customers to pay for their orders at a shop, instead of paying online.\n"
 msgstr ""
+"\n"
+"顧客がオーダの支払をオンラインの代わりに、店舗で支払うことを可能にします。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_purchase
@@ -1473,6 +1638,9 @@ msgid ""
 "Allows to compute accurate margin for Service sales.\n"
 "======================================================\n"
 msgstr ""
+"\n"
+"サービス売上の正確なマージンを計算できるようにします。\n"
+"======================================================\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_project
@@ -11493,7 +11661,7 @@ msgstr "ドキュメントタイプ:"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_uninstall
 msgid "Documents to Delete"
-msgstr ""
+msgstr "削除するドキュメント"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_filters__domain
@@ -11917,6 +12085,16 @@ msgstr "エラー"
 #: model:ir.model.fields,help:base.field_ir_model_constraint__message
 msgid "Error message returned when the constraint is violated."
 msgstr "制約に違反するとエラーメッセージが返されます。"
+
+#. module: base
+#. odoo-python
+#: code:addons/translate.py:0
+#, python-format
+msgid ""
+"Error while parsing view:\n"
+"\n"
+"%s"
+msgstr ""
 
 #. module: base
 #. odoo-python
@@ -15081,7 +15259,7 @@ msgstr "連絡先に関連付けた仕訳項目"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Json"
-msgstr ""
+msgstr "Json"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_company__base_onboarding_company_state__just_done
@@ -15668,7 +15846,7 @@ msgstr "やってみましょう"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.onboarding_company_step
 msgid "Let's start!"
-msgstr "はじめましょう"
+msgstr "始めましょう！"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__report_paperformat__format__letter
@@ -15942,7 +16120,7 @@ msgstr "メール送信失敗"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mail_group
 msgid "Mail Group"
-msgstr ""
+msgstr "メールグループ"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mail_plugin
@@ -22219,7 +22397,7 @@ msgstr "このドキュメントにアクセスする権限がありません。
 #: code:addons/base/models/ir_attachment.py:0
 #, python-format
 msgid "Sorry, you are not allowed to write on this document"
-msgstr ""
+msgstr "このドキュメントに記入する権限がありません。"
 
 #. module: base
 #. odoo-python
@@ -22457,7 +22635,6 @@ msgstr "設定を開始"
 #: model_terms:ir.ui.view,arch_db:base.view_company_form
 #: model_terms:ir.ui.view,arch_db:base.view_country_state_form
 #: model_terms:ir.ui.view,arch_db:base.view_country_state_tree
-#: model_terms:ir.ui.view,arch_db:base.view_module_filter
 #: model_terms:ir.ui.view,arch_db:base.view_partner_address_form
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 #: model_terms:ir.ui.view,arch_db:base.view_res_bank_form
@@ -22500,6 +22677,7 @@ msgstr "状態"
 #: model:ir.model.fields,field_description:base.field_ir_module_module__state
 #: model:ir.model.fields,field_description:base.field_ir_module_module_dependency__state
 #: model:ir.model.fields,field_description:base.field_ir_module_module_exclusion__state
+#: model_terms:ir.ui.view,arch_db:base.view_module_filter
 #: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
 msgid "Status"
 msgstr "ステータス"
@@ -25570,7 +25748,7 @@ msgstr "Webルーティング"
 #: model_terms:ir.ui.view,arch_db:base.view_partner_address_form
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "Website"
-msgstr "Webサイト"
+msgstr "ウェブサイト"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_payment_authorize
@@ -25592,12 +25770,12 @@ msgstr "ウェブサイトイベントCRMの質問"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_event_crm
 msgid "Website Events CRM"
-msgstr "WebサイトイベントのCRM"
+msgstr "ウェブサイトイベントのCRM"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_jitsi
 msgid "Website Jitsi"
-msgstr "WebサイトJitsl"
+msgstr "ウェブサイトJitsl"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__website
@@ -25639,22 +25817,22 @@ msgstr "ウェブサイト 取引先"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_payment
 msgid "Website Payment"
-msgstr "Webサイト支払い"
+msgstr "ウェブサイト支払い"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_sale_product_configurator
 msgid "Website Sale Product Configurator"
-msgstr "Webサイト販売製品設定者"
+msgstr "ウェブサイト販売プロダクトコンフィギュレータ"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_sale_stock_product_configurator
 msgid "Website Sale Stock Product Configurator"
-msgstr "Webサイト販売在庫製品設定者"
+msgstr "ウェブサイト販売在庫プロダクトコンフィギュレータ"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_website
 msgid "Website Test"
-msgstr "Webサイトテスト"
+msgstr "ウェブサイトテスト"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_test_website
@@ -25664,7 +25842,7 @@ msgstr "主にモジュールのインストール/アンインストールテ�
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_profile
 msgid "Website profile"
-msgstr "Webサイトプロフィール"
+msgstr "ウェブサイトプロフィール"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_lang__week_start__3
@@ -26096,6 +26274,13 @@ msgstr ""
 
 #. module: base
 #. odoo-python
+#: code:addons/base/models/ir_config_parameter.py:0
+#, python-format
+msgid "You cannot delete the %s record."
+msgstr ""
+
+#. module: base
+#. odoo-python
 #: code:addons/base/models/res_lang.py:0
 #, python-format
 msgid ""
@@ -26125,6 +26310,13 @@ msgid ""
 "You cannot reduce the number of decimal places of a currency already used on"
 " an accounting entry."
 msgstr "会計上ですでに使用されている通貨の小数点以下の桁数を減らすことはできません。"
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/ir_config_parameter.py:0
+#, python-format
+msgid "You cannot rename config parameters with keys %s"
+msgstr ""
 
 #. module: base
 #. odoo-python
@@ -26216,7 +26408,7 @@ msgstr ""
 msgid ""
 "Your lunch has been delivered.\n"
 "Enjoy your meal!"
-msgstr ""
+msgstr "ランチが届きました。お食事をお楽しみ下さい！"
 
 #. module: base
 #. odoo-python
@@ -26594,7 +26786,7 @@ msgstr "ir.actions.server"
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_model_fields__ttype__json
 msgid "json"
-msgstr ""
+msgstr "Json"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_it_stock_ddt
@@ -26616,7 +26808,7 @@ msgstr "多2多"
 #: code:addons/base/models/ir_actions.py:0
 #, python-format
 msgid "many2many fields cannot be evaluated by reference"
-msgstr ""
+msgstr "多対多フィールドは参照によって評価できません。"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_model_fields__ttype__many2one

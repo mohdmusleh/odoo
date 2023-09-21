@@ -8,9 +8,9 @@
 # Luiz Carlos de Lima <luiz.carlos@akretion.com.br>, 2022
 # Fernando Colus <fcolus1@gmail.com>, 2022
 # Martin Trigaux, 2022
-# Éder Brito <britoederr@gmail.com>, 2023
 # Kevilyn Rosa, 2023
 # adrianojprado <adrianojprado@gmail.com>, 2023
+# Éder Brito <britoederr@gmail.com>, 2023
 # Layna Nascimento, 2023
 # 
 msgid ""
@@ -4697,7 +4697,7 @@ msgstr "Março"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
 msgid "Mark as Todo"
-msgstr "Marcar como Para Fazer"
+msgstr "Marcar como A Fazer"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_warehouse_orderpoint__product_max_qty
@@ -7473,6 +7473,13 @@ msgid "Sequence return"
 msgstr "Sequence return"
 
 #. module: stock
+#. odoo-python
+#: code:addons/stock/models/stock_picking.py:0
+#, python-format
+msgid "Sequences %s already exist."
+msgstr "As sequências %s já existem."
+
+#. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__lot_ids
 msgid "Serial Numbers"
 msgstr "Números de Série"
@@ -10067,9 +10074,10 @@ msgstr ""
 #. odoo-python
 #: code:addons/stock/models/stock_move.py:0
 #, python-format
-msgid "You cannot split a stock move that has been set to 'Done'."
+msgid "You cannot split a stock move that has been set to 'Done' or 'Cancel'."
 msgstr ""
-"Você não pode dividir um movimento de estoque definido como 'Concluído'."
+"Não é possível dividir uma movimentação de estoque que tenha sido definida "
+"como 'Concluída' ou 'Cancelada'."
 
 #. module: stock
 #. odoo-python

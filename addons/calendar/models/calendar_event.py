@@ -636,10 +636,6 @@ class Meeting(models.Model):
         if not self.env.su and private_fields:
             # display public and confidential events
             domain = AND([domain, ['|', ('privacy', '!=', 'private'), ('user_id', '=', self.env.user.id)]])
-            self.env['bus.bus']._sendone(self.env.user.partner_id, 'simple_notification', {
-                'title': _('Private Event Excluded'),
-                'message': _('Grouping by %s is not allowed on private events.', ', '.join([self._fields[field_name].string for field_name in private_fields]))
-            })
             return super(Meeting, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy)
         return super(Meeting, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy)
 
@@ -823,7 +819,7 @@ class Meeting(models.Model):
         self.ensure_one()
         if recurrence_update_setting == 'all_events':
             self.recurrence_id.calendar_event_ids.write({'active': False})
-        elif recurrence_update_setting == 'future_events':
+        elif recurrence_update_setting == 'future_events' and self.recurrence_id:
             detached_events = self.recurrence_id._stop_at(self)
             detached_events.write({'active': False})
         elif recurrence_update_setting == 'self_only':

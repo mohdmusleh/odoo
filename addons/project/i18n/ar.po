@@ -7,9 +7,9 @@
 # Mohamed Abuelmagd <mabuelmagd12@gmail.com>, 2022
 # Mustafa Rawi <mustafa@cubexco.com>, 2022
 # Mustafa J. Kadhem <safi2266@gmail.com>, 2022
-# Niyas Raphy, 2022
 # Mehjabin Farsana, 2022
 # Martin Trigaux, 2023
+# Niyas Raphy, 2023
 # Malaz Abuidris <msea@odoo.com>, 2023
 # 
 msgid ""
@@ -1515,7 +1515,7 @@ msgid ""
 "      designers to the workers who print the t-shirt. Organize priorities amongst orders using the"
 msgstr ""
 "تواصل مع العملاء حول المهمة باستخدام بوابة العملاء. قم بإرفاق تصاميم الشعار بالمهمة حتى تنتقل المعلومات من\n"
-"      من المصممين إلى العمال طابعي القمصان. قم بتنظيم الأولويات من بين الأوامر باستخدام "
+"      المصممين إلى العمال طابعي القمصان. قم بتنظيم الأولويات من بين الأوامر باستخدام "
 
 #. module: project
 #: model:ir.model,name:project.model_res_company
@@ -2650,6 +2650,8 @@ msgid ""
 "your tasks. Tasks in a folded stage are considered as closed (not applicable"
 " to personal stages)."
 msgstr ""
+"إذا كان مفعلاً، سيتم عرض هذه المرحلة كمطوية في عرض كانبان لمشاريعك. تعد "
+"المهام في المرحلة المطوية مغلقة. (لا ينطبق على المراحل الشخصية). "
 
 #. module: project
 #: model:ir.model.fields,help:project.field_project_task_type__rating_template_id
@@ -3126,6 +3128,13 @@ msgstr "اترك تعليقًا"
 #. module: project
 #. odoo-javascript
 #: code:addons/project/static/src/js/tours/project.js:0
+#, python-format
+msgid "Let's create your first <b>stage</b>."
+msgstr "فلنقم بإنشاء <b>مرحلتك</b> الأولى. "
+
+#. module: project
+#. odoo-javascript
+#: code:addons/project/static/src/js/tours/project.js:0
 #: code:addons/project/static/src/js/tours/project.js:0
 #, python-format
 msgid "Let's create your first <b>project</b>."
@@ -3137,6 +3146,13 @@ msgstr "فلنقم بإنشاء <b>مشروعك</b> الأول. "
 #, python-format
 msgid "Let's create your first <b>task</b>."
 msgstr "فلنقم بإنشاء <b>مهمتك</b> الأولى. "
+
+#. module: project
+#. odoo-javascript
+#: code:addons/project/static/src/js/tours/project.js:0
+#, python-format
+msgid "Let's create your second <b>stage</b>."
+msgstr "فلنقم بإنشاء <b>مرحلتك</b> الثانية. "
 
 #. module: project
 #. odoo-javascript
@@ -3727,7 +3743,7 @@ msgstr "عدد الأخطاء "
 #: model:ir.model.fields,help:project.field_project_task__message_needaction_counter
 #: model:ir.model.fields,help:project.field_project_update__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
 
 #. module: project
 #: model:ir.model.fields,help:project.field_project_milestone__message_has_error_counter
