@@ -8,6 +8,7 @@
 # fanha99 <fanha99@hotmail.com>, 2023
 # Nancy Momoland <thanh.np2502@gmail.com>, 2023
 # Martin Trigaux, 2023
+# Trịnh Ngọc Hưng, 2023
 # Thi Huong Nguyen, 2023
 # 
 msgid ""
@@ -16110,6 +16111,12 @@ msgid "Invalid 'group by' parameter"
 msgstr "Tham số 'nhóm theo' không hợp lệ"
 
 #. module: base
+#: code:addons/template_inheritance.py:0
+#, python-format
+msgid "Invalid Expression while parsing xpath %r"
+msgstr ""
+
+#. module: base
 #: code:addons/base/models/ir_default.py:0
 #, python-format
 msgid "Invalid JSON format in Default Value field."
@@ -25149,7 +25156,7 @@ msgstr "Bắt đầu cấu hình"
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 #: model_terms:ir.ui.view,arch_db:base.view_res_bank_form
 msgid "State"
-msgstr "Trạng thái"
+msgstr "Tỉnh/TP"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_country_state__code
@@ -25835,6 +25842,8 @@ msgid ""
 "country format. You can use '/' to indicate that the partner is not subject "
 "to tax."
 msgstr ""
+"Mã số thuế. Các giá trị ở đây sẽ được xác thực dựa trên định dạng quốc gia. "
+"Bạn có thể sử dụng dấu '/' để chỉ một đối tác không phải chịu thuế."
 
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_res_lang_url_code_uniq

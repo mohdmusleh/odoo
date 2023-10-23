@@ -282,7 +282,7 @@ msgstr "คะแนนเฉลี่ย"
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel__rating_avg_percentage
 msgid "Average Rating (%)"
-msgstr ""
+msgstr "คะแนนเฉลี่ย (%)"
 
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_report_channel__duration
@@ -1333,7 +1333,7 @@ msgstr ""
 #: code:addons/im_livechat/static/src/legacy/widgets/public_livechat_view/public_livechat_view.xml:0
 #, python-format
 msgid "Please wait"
-msgstr ""
+msgstr "กรุณารอสักครู่"
 
 #. module: im_livechat
 #. odoo-javascript
@@ -1497,7 +1497,7 @@ msgstr "พูดอะไรซักอย่าง"
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.chatbot_script_view_form
 msgid "Script"
-msgstr ""
+msgstr "สคริปต์"
 
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel__script_external
@@ -1751,7 +1751,7 @@ msgstr ""
 #: code:addons/im_livechat/static/src/legacy/widgets/feedback/feedback.xml:0
 #, python-format
 msgid "Try again"
-msgstr ""
+msgstr "ลองอีกครั้ง"
 
 #. module: im_livechat
 #. odoo-python
