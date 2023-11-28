@@ -219,9 +219,10 @@ class StockMoveLine(models.Model):
 
     @api.onchange('result_package_id', 'product_id', 'product_uom_id', 'qty_done')
     def _onchange_putaway_location(self):
-        if not self.id and self.user_has_groups('stock.group_stock_multi_locations') and self.product_id and self.qty_done:
+        default_dest_location = self._get_default_dest_location()
+        if not self.id and self.user_has_groups('stock.group_stock_multi_locations') and self.product_id and self.qty_done \
+                and self.location_dest_id == default_dest_location:
             qty_done = self.product_uom_id._compute_quantity(self.qty_done, self.product_id.uom_id)
-            default_dest_location = self._get_default_dest_location()
             self.location_dest_id = default_dest_location.with_context(exclude_sml_ids=self.ids)._get_putaway_strategy(
                 self.product_id, quantity=qty_done, package=self.result_package_id,
                 packaging=self.move_id.product_packaging_id)
@@ -474,7 +475,8 @@ class StockMoveLine(models.Model):
         # this is what move's `action_done` will do. So, we replicate the behavior here.
         if updates or 'qty_done' in vals:
             moves = self.filtered(lambda ml: ml.move_id.state == 'done').mapped('move_id')
-            moves |= self.filtered(lambda ml: ml.move_id.state not in ('done', 'cancel') and ml.move_id.picking_id.immediate_transfer).mapped('move_id')
+            moves |= self.filtered(lambda ml: not ml.move_id.origin_returned_move_id and ml.move_id.state not in ('done', 'cancel')\
+                and ml.move_id.picking_id.immediate_transfer).mapped('move_id')
             for move in moves:
                 move.product_uom_qty = move.quantity_done
             next_moves._do_unreserve()

@@ -19,8 +19,8 @@
 # Nuno Silva <nuno.silva@arxi.pt>, 2022
 # Reinaldo Ramos <reinaldo.ramos@arxi.pt>, 2023
 # 00b3b9e1ff4d86aa7ff38bfe2d3464e6_0137803, 2023
-# Arxi, 2023
 # Manuela Silva <mmsrs@sky.com>, 2023
+# Arxi, 2023
 # Layna Nascimento, 2023
 # 
 msgid ""
@@ -357,6 +357,24 @@ msgid ""
 "</div>\n"
 "            "
 msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        <t t-set=\"doc_name\" t-value=\"object.type_name\"></t>\n"
+"        Caro <t t-out=\"object.partner_id.name or ''\">utilizador</t>,\n"
+"        <br><br>\n"
+"        Informamos que o seu\n"
+"        <t t-out=\"doc_name or ''\">orçamento</t> <strong t-out=\"object.name or ''\">S00052</strong>\n"
+"        <t t-if=\"object.origin\">\n"
+"            (com referência: <t t-out=\"object.origin or ''\">S00052</t> )\n"
+"        </t>\n"
+"        foi anulada. Por conseguinte, esta encomenda não lhe deverá ser cobrada.\n"
+"       Se for necessário efetuar algum reembolso, este será executado da melhor forma possível.\n"
+"        <br><br>\n"
+"        Não hesite em contactar-nos se tiver alguma dúvida.\n"
+"        <br>\n"
+"    </p>\n"
+"</div>\n"
+"            "
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_template
@@ -3445,7 +3463,7 @@ msgstr "Preço de vendas"
 #. module: sale
 #: model:mail.template,name:sale.mail_template_sale_cancellation
 msgid "Sales: Order Cancellation"
-msgstr ""
+msgstr "Vendas: cancelamento de pedido"
 
 #. module: sale
 #: model:mail.template,name:sale.mail_template_sale_confirmation

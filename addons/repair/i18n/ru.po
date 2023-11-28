@@ -855,7 +855,7 @@ msgstr "Количество продукта"
 #: model:ir.model.fields,field_description:repair.field_repair_line__tracking
 #: model:ir.model.fields,field_description:repair.field_repair_order__tracking
 msgid "Product Tracking"
-msgstr ""
+msgstr "Отслеживание продукта"
 
 #. module: repair
 #: model:ir.model.fields,field_description:repair.field_repair_fee__product_uom
@@ -1477,7 +1477,7 @@ msgstr "из места"
 #. module: repair
 #: model:mail.template,report_name:repair.mail_template_repair_quotation
 msgid "{{ (object.name or '').replace('/','_') }}"
-msgstr ""
+msgstr "{{ (object.name or '').replace('/','_') }}"
 
 #. module: repair
 #: model:mail.template,subject:repair.mail_template_repair_quotation

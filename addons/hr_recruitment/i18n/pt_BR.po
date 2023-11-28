@@ -6,8 +6,8 @@
 # Marcel Savegnago <marcel.savegnago@gmail.com>, 2022
 # Kevilyn Rosa, 2023
 # Martin Trigaux, 2023
-# Adriano Prado <adrianojprado@gmail.com>, 2023
 # Maitê Dietze, 2023
+# Adriano Prado <adrianojprado@gmail.com>, 2023
 # Layna Nascimento, 2023
 # 
 msgid ""
@@ -675,7 +675,7 @@ msgstr "Atividades"
 #. module: hr_recruitment
 #: model:ir.model.fields,field_description:hr_recruitment.field_hr_job__activities_overdue
 msgid "Activities Overdue"
-msgstr "Atividades atrasadas"
+msgstr "Atividades Atrasadas"
 
 #. module: hr_recruitment
 #: model:ir.model.fields,field_description:hr_recruitment.field_hr_job__activities_today
@@ -953,7 +953,7 @@ msgstr "Disponibilidade"
 #. module: hr_recruitment
 #: model:hr.recruitment.degree,name:hr_recruitment.degree_bachelor
 msgid "Bachelor Degree"
-msgstr "Bacharel"
+msgstr "Bacharelado"
 
 #. module: hr_recruitment
 #. odoo-python

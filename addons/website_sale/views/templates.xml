@@ -175,7 +175,7 @@
                     <t t-set="bg_color" t-value="td_product['ribbon']['bg_color'] or ''"/>
                     <t t-set="text_color" t-value="td_product['ribbon']['text_color']"/>
                     <t t-set="bg_class" t-value="td_product['ribbon']['html_class']"/>
-                    <span t-attf-class="o_ribbon #{bg_class}" t-attf-style="#{text_color and ('color: %s; ' % text_color)}#{bg_color and 'background-color:' + bg_color}" t-field="product.website_ribbon_id.html"/>
+                    <span t-attf-class="o_ribbon o_not_editable #{bg_class}" t-attf-style="#{text_color and ('color: %s; ' % text_color)}#{bg_color and 'background-color:' + bg_color}" t-field="product.website_ribbon_id.html"/>
                 </a>
             </div>
             <div class="o_wsale_product_information position-relative d-flex flex-column flex-grow-1 flex-shrink-1">
@@ -191,7 +191,7 @@
                     <t t-set="template_price_vals" t-value="get_product_prices(product)"/>
                     <div class="o_wsale_product_btn"/>
                     <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
-                        <t t-if="'base_price' in template_price_vals and (template_price_vals['base_price'] &gt; template_price_vals['price_reduce'])">
+                        <t t-if="'base_price' in template_price_vals and (template_price_vals['base_price'] &gt; template_price_vals['price_reduce']) and (template_price_vals['price_reduce'] or not website.prevent_zero_price_sale)">
                             <del t-attf-class="text-muted me-1 h6 mb-0" style="white-space: nowrap;">
                                 <em class="small" t-esc="template_price_vals['base_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
                             </del>
@@ -384,10 +384,10 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div t-else="" class="text-center text-muted mt128 mb256">
+                            <div t-nocache="get the actual search" t-else="" class="text-center text-muted mt128 mb256">
                                 <t t-if="not search">
                                     <h3 class="mt8">No product defined</h3>
-                                    <p t-if="category">No product defined in category "<strong t-esc="category.display_name"/>".</p>
+                                    <p t-if="category">No product defined in this category.</p>
                                 </t>
                                 <t t-else="">
                                     <h3 class="mt8">No results</h3>
