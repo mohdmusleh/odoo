@@ -520,7 +520,7 @@ msgstr "<b>Tilføj</b> det valgte billede."
 #: code:addons/website/static/src/js/tours/tour_utils.js:0
 #, python-format
 msgid "<b>Click Edit</b> to start designing your homepage."
-msgstr "<b>Klik rediger</b> for at starte med at designe din hjemmeside."
+msgstr "<b>Klik rediger</b> for at starte med at designe din startside."
 
 #. module: website
 #. odoo-javascript
@@ -6395,7 +6395,7 @@ msgstr "Billede Menu"
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_media_list_options
 msgid "Image Size"
-msgstr "Billege Størrelse"
+msgstr "Billede Størrelse"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_masonry_block_options
@@ -9431,7 +9431,7 @@ msgstr "Sporing af fremskridt"
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_progress_bar
 msgid "Progress bar"
-msgstr ""
+msgstr "Statuslinje"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_mega_menu_odoo_menu
@@ -13378,6 +13378,14 @@ msgstr ""
 #, python-format
 msgid "You cannot duplicate this field."
 msgstr "Du kan ikke duplikere dette felt."
+
+#. module: website
+#: code:addons/website/models/website_menu.py:0
+#, python-format
+msgid ""
+"You cannot delete this website menu as this serves as the default parent "
+"menu for new websites (e.g., /shop, /event, ...)."
+msgstr ""
 
 #. module: website
 #. odoo-python

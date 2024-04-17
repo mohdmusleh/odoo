@@ -1361,7 +1361,7 @@ msgid ""
 "Accounting reports for Dominican Republic\n"
 msgstr ""
 "\n"
-"Reportes contables para la República Dominicana\n"
+"Reportes contables para República Dominicana\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_ec_reports
@@ -2819,7 +2819,7 @@ msgid ""
 "Base module for Bulgarian reports\n"
 msgstr ""
 "\n"
-"Módulo base para reportes de Bulgaria\n"
+"Módulo base para los reportes de Bulgaria\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_mz_reports
@@ -3326,9 +3326,9 @@ msgid ""
 "- extended address fields\n"
 msgstr ""
 "\n"
-"Módulo de enlace para ampliar la guía de entrega (Complemento XML carta de porte)\n"
-"- bienes exportados (COMEX)\n"
-"- campos de dirección ampliados\n"
+"Módulo de enlace para la guía de entrega (Complemento XML carta de porte)\n"
+"- Bienes exportados (COMEX)\n"
+"- Campos de dirección ampliados\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_project_timesheet_holidays
@@ -3341,10 +3341,10 @@ msgid ""
 "on leaves. Project and task can be configured company-wide.\n"
 msgstr ""
 "\n"
-"Módulo de enlace para integrar las vacaciones en Hojas de horas\n"
+"Módulo de enlace para integrar los permisos en Hojas de horas\n"
 "================================================\n"
 "\n"
-"Este módulo permite registrar automáticamente los\n"
+"Este módulo permite registrar de forma automática los\n"
 "momentos en los que los empleados\n"
 "están ausentes. Los proyectos y las tareas pueden configurarse en toda la empresa.\n"
 
@@ -16906,7 +16906,7 @@ msgstr "ID de la empresa"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__logo
 msgid "Company Logo"
-msgstr "Logo de la empresa"
+msgstr "Logotipo de la empresa"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_company__name
@@ -20707,7 +20707,7 @@ msgid ""
 "                                                          Useful to (hard) reset broken views or to read arch from file in dev-xml mode."
 msgstr ""
 "Archivo desde el que se origina la vista.\n"
-"                                                          Útil para reestablecer (por completo) vistas dañadas o para leer la arquitectura de los archivos en el modo dev-xml."
+"                                                          Útil para restablecer (por completo) vistas dañadas o para leer la arquitectura del archivo en modo dev-xml."
 
 #. module: base
 #: model:ir.model,name:base.model_ir_binary
@@ -22688,7 +22688,7 @@ msgstr "Importar estado de cuenta bancario QIF"
 #: code:addons/base/models/res_partner.py:0
 #, python-format
 msgid "Import Template for Customers"
-msgstr "Importar plantilla para clientes"
+msgstr "Plantilla de importación para clientes"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.action_view_base_import_language
@@ -30388,7 +30388,7 @@ msgstr "Privacidad"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_partner_view_form_private
 msgid "Private Address Form"
-msgstr "Formulario de dirección privada"
+msgstr "Formulario de dirección particular"
 
 #. module: base
 #. odoo-python
@@ -32487,6 +32487,12 @@ msgstr "Acciones planeadas"
 #: model:ir.ui.menu,name:base.ir_cron_trigger_menu
 msgid "Scheduled Actions Triggers"
 msgstr "Activación de acciones planeadas "
+
+#. module: base
+#: code:addons/base/models/ir_cron.py:0
+#, python-format
+msgid "Scheduled action disabled"
+msgstr "Acción programada deshabilitada"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_cron__user_id
@@ -36164,6 +36170,16 @@ msgid "Those modules cannot be uninstalled: %s"
 msgstr "Esos módulos no se pueden desinstalar: %s"
 
 #. module: base
+#: code:addons/base/models/ir_cron.py:0
+#, python-format
+msgid ""
+"This scheduled action has been disabled because its interval number is not a"
+" strictly positive value."
+msgstr ""
+"Esta acción programada se deshabilitó porque el número de interval no es un "
+"valor estrcitamente positivo."
+
+#. module: base
 #: model:ir.model.fields,field_description:base.field_res_lang__thousands_sep
 msgid "Thousands Separator"
 msgstr "Separador de millares"
@@ -38725,6 +38741,17 @@ msgstr ""
 #, python-format
 msgid "You cannot delete the %s record."
 msgstr "No puede eliminar el registro %s."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+#, python-format
+msgid ""
+"You cannot delete the admin user because it is utilized in various places "
+"(such as security configurations,...). Instead, archive it."
+msgstr ""
+"No puede eliminar al usuario administrador, pues se usa en muchos lugares "
+"(como en configuraciones de seguridad). Mejor archívelo."
 
 #. module: base
 #. odoo-python

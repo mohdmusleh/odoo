@@ -3877,7 +3877,7 @@ msgstr "默认访问权限"
 #: code:addons/website/static/src/snippets/s_searchbar/options.js:0
 #, python-format
 msgid "Default Input Style"
-msgstr ""
+msgstr "默认输入样式"
 
 #. module: website
 #: model:ir.model.fields,field_description:website.field_website__default_lang_id
@@ -13003,6 +13003,14 @@ msgstr "无法删除默认网站%s。尝试更改默认网站的设置"
 #, python-format
 msgid "You cannot duplicate this field."
 msgstr "该字段不可重复。"
+
+#. module: website
+#: code:addons/website/models/website_menu.py:0
+#, python-format
+msgid ""
+"You cannot delete this website menu as this serves as the default parent "
+"menu for new websites (e.g., /shop, /event, ...)."
+msgstr ""
 
 #. module: website
 #. odoo-python

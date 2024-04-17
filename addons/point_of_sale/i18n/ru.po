@@ -9,7 +9,6 @@
 # Андрей Гусев <gaussgss@gmail.com>, 2023
 # alenafairy, 2023
 # Sergey Vilizhanin, 2023
-# Collex100, 2023
 # Vasiliy Korobatov <korobatov@gmail.com>, 2023
 # sergeiruzkiicode <sergei.ruzki@icode.by>, 2023
 # Alena Vlasova, 2023
@@ -22,14 +21,15 @@
 # Сергей Шебанин <sergey@shebanin.ru>, 2024
 # Wil Odoo, 2024
 # Martin Trigaux, 2024
+# Collex100, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-28 07:10+0000\n"
+"POT-Creation-Date: 2024-03-21 08:38+0000\n"
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
-"Last-Translator: Martin Trigaux, 2024\n"
+"Last-Translator: Collex100, 2024\n"
 "Language-Team: Russian (https://app.transifex.com/odoo/teams/41243/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,9 +70,10 @@ msgstr " Используйте принтер, подключенный к IoT 
 #. module: point_of_sale
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/screens/product_screen/product_screen.js:0
+#: code:addons/point_of_sale/static/src/app/screens/ticket_screen/ticket_screen.js:0
 #, python-format
 msgid "% Disc"
-msgstr ""
+msgstr "Disc.%"
 
 #. module: point_of_sale
 #. odoo-python
@@ -470,7 +471,7 @@ msgstr "Уникальный порядковый номер сеанса для
 msgid "A short text that will be inserted as a footer in the printed receipt."
 msgstr ""
 "Краткий текст, который будет вставлен в качестве нижнего колонтитула в "
-"распечатанной квитанции"
+"распечатанной квитанции.."
 
 #. module: point_of_sale
 #: model:ir.model.fields,help:point_of_sale.field_pos_config__receipt_header
@@ -2977,6 +2978,20 @@ msgid "Header"
 msgstr "Заголовок"
 
 #. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/navbar/navbar.xml:0
+#, python-format
+msgid "Hide Category Images"
+msgstr "Скрыть изображения категории"
+
+#. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/navbar/navbar.xml:0
+#, python-format
+msgid "Hide Product Images"
+msgstr "Скрыть изображения продуктов"
+
+#. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_payment_method__hide_use_payment_terminal
 msgid "Hide Use Payment Terminal"
 msgstr "Скрыть Использовать платежный терминал"
@@ -3783,6 +3798,13 @@ msgid "Multi Employees per Session"
 msgstr "Несколько сотрудников за одну сессию"
 
 #. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/screens/ticket_screen/ticket_screen.js:0
+#, python-format
+msgid "Multiple Invoiced Orders Selected"
+msgstr "Выбрано несколько счетов-фактур"
+
+#. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_session__my_activity_date_deadline
 msgid "My Activity Deadline"
 msgstr "Крайний срок моей активности"
@@ -3885,11 +3907,6 @@ msgstr "Новая сумма"
 #: model:product.template,name:point_of_sale.newspaper_rack_product_template
 msgid "Newspaper Rack"
 msgstr "Стойка для газет"
-
-#. module: point_of_sale
-#: model:ir.model.fields,field_description:point_of_sale.field_pos_session__activity_calendar_event_id
-msgid "Next Activity Calendar Event"
-msgstr "Следующее событие календаря активности"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_session__activity_date_deadline
@@ -4178,6 +4195,8 @@ msgstr ""
 #, python-format
 msgid "Only administrators can edit receipt headers and footers"
 msgstr ""
+"Только администраторы могут редактировать заголовки и нижние колонтитулы "
+"квитанций"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_config__only_round_cash_method
@@ -4524,7 +4543,7 @@ msgstr "POS-заказ"
 #: code:addons/point_of_sale/models/pos_config.py:0
 #, python-format
 msgid "POS Order %s"
-msgstr "Заказ POS %s "
+msgstr "Заказ POS %s"
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_order_line_form
@@ -5325,7 +5344,6 @@ msgstr "Работает на"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_res_config_settings__module_pos_preparation_display
-#: model:ir.ui.menu,name:point_of_sale.menu_pos_preparation_display
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
 msgid "Preparation Display"
 msgstr "Подготовительный дисплей"
@@ -5350,6 +5368,7 @@ msgstr "Предыдущий список заказов"
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/customer_display/customer_display_template.xml:0
 #: code:addons/point_of_sale/static/src/app/screens/product_screen/product_screen.js:0
+#: code:addons/point_of_sale/static/src/app/screens/ticket_screen/ticket_screen.js:0
 #, python-format
 msgid "Price"
 msgstr "Цена"
@@ -5376,7 +5395,7 @@ msgstr "Скидка на цену от %s -> %s"
 #: code:addons/point_of_sale/static/src/app/screens/product_screen/product_info_popup/product_info_popup.xml:0
 #, python-format
 msgid "Price excl. Tax:"
-msgstr ""
+msgstr "Цена без учета налогов:"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order_line__price_extra
@@ -5714,6 +5733,7 @@ msgstr "Предупреждение о прокси-сервере"
 #. module: point_of_sale
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/screens/product_screen/product_screen.js:0
+#: code:addons/point_of_sale/static/src/app/screens/ticket_screen/ticket_screen.js:0
 #, python-format
 msgid "Qty"
 msgstr "Количество"
@@ -5740,11 +5760,6 @@ msgstr "ПРИЧИНА"
 #, python-format
 msgid "REFUNDED:"
 msgstr "ВОЗВРАЩЕНО:"
-
-#. module: point_of_sale
-#: model:ir.model.fields,field_description:point_of_sale.field_pos_session__rating_ids
-msgid "Ratings"
-msgstr "Рейтинги"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -6552,6 +6567,20 @@ msgid "Shopping cart"
 msgstr "Корзина"
 
 #. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/navbar/navbar.xml:0
+#, python-format
+msgid "Show Category Images"
+msgstr "Показать изображения категорий"
+
+#. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/navbar/navbar.xml:0
+#, python-format
+msgid "Show Product Images"
+msgstr "Показать изображения продуктов"
+
+#. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
 msgid "Show checkout to customers through a second display"
 msgstr "Показывайте клиентам оформление заказа через второй дисплей"
@@ -6874,7 +6903,7 @@ msgstr "Ошибка синхронизации"
 #: code:addons/point_of_sale/static/src/app/screens/receipt_screen/receipt/order_receipt.xml:0
 #, python-format
 msgid "TAX%"
-msgstr ""
+msgstr "НАЛОГ%"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -7178,7 +7207,7 @@ msgstr "Количество пунктов заказов клиента, св�
 #: code:addons/point_of_sale/static/src/app/utils/hooks.js:0
 #, python-format
 msgid "The order could not be sent to the server due to an unknown error"
-msgstr "Не удалось отправить заказ на сервер из-за неизвестной ошибки."
+msgstr "Не удалось отправить заказ на сервер из-за неизвестной ошибки"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -7196,7 +7225,7 @@ msgid ""
 "backend for the order: "
 msgstr ""
 "Заказ был синхронизирован ранее. Пожалуйста, сделайте счет из бэкенда для "
-"этого заказа:"
+"этого заказа: "
 
 #. module: point_of_sale
 #. odoo-python
@@ -7790,7 +7819,7 @@ msgstr "Всего"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.report_saledetails
 msgid "Total (Tax excluded)"
-msgstr ""
+msgstr "Итого (без учета налогов)"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_session__cash_register_total_entry_encoding
@@ -7843,7 +7872,7 @@ msgstr "Итоговая цена"
 #: code:addons/point_of_sale/static/src/app/screens/product_screen/product_info_popup/product_info_popup.xml:0
 #, python-format
 msgid "Total Price excl. Tax:"
-msgstr ""
+msgstr "Общая цена без учета налогов:"
 
 #. module: point_of_sale
 #: model:ir.model.fields,help:point_of_sale.field_pos_payment__amount
@@ -8043,7 +8072,7 @@ msgstr "Неотправленный заказ"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_pos_form
 msgid "UoM"
-msgstr "Ед. изм."
+msgstr "UoM"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_res_company__point_of_sale_update_stock_quantities
@@ -8387,6 +8416,17 @@ msgstr ""
 
 #. module: point_of_sale
 #. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/screens/ticket_screen/ticket_screen.js:0
+#, python-format
+msgid ""
+"You have selected orderlines from multiple invoiced orders. To proceed "
+"refund, please select orderlines from the same invoiced order."
+msgstr ""
+"Вы выбрали строки заказа из нескольких выставленных счетов. Чтобы продолжить"
+" возврат, пожалуйста, выберите строки заказа из одного выставленного счета."
+
+#. module: point_of_sale
+#. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/screens/payment_screen/payment_screen.js:0
 #, python-format
 msgid "You have to round your payments lines. is not rounded."
@@ -8472,6 +8512,13 @@ msgid ""
 msgstr ""
 "Ваш адрес отсутствует или заполнен не полностью. <br/>\n"
 "                                Пожалуйста, убедитесь, что"
+
+#. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/screens/partner_list/partner_editor/partner_editor.js:0
+#, python-format
+msgid "Zip"
+msgstr "Индекс"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -8683,10 +8730,3 @@ msgstr "используя"
 #, python-format
 msgid "were duplicates of existing orders"
 msgstr "были дубликаты существующих заказов"
-
-#. module: point_of_sale
-#. odoo-javascript
-#: code:addons/point_of_sale/static/src/app/screens/partner_list/partner_editor/partner_editor.js:0
-#, python-format
-msgid "Zip"
-msgstr "Индекс"

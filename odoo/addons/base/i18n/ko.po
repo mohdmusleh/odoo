@@ -32019,6 +32019,12 @@ msgid "Scheduled Actions Triggers"
 msgstr "예약된 작업 작동"
 
 #. module: base
+#: code:addons/base/models/ir_cron.py:0
+#, python-format
+msgid "Scheduled action disabled"
+msgstr ""
+
+#. module: base
 #: model:ir.model.fields,field_description:base.field_ir_cron__user_id
 msgid "Scheduler User"
 msgstr "일정표 사용자"
@@ -35554,6 +35560,14 @@ msgid "Those modules cannot be uninstalled: %s"
 msgstr "해당 모듈을 삭제할 수 없습니다: %s"
 
 #. module: base
+#: code:addons/base/models/ir_cron.py:0
+#, python-format
+msgid ""
+"This scheduled action has been disabled because its interval number is not a"
+" strictly positive value."
+msgstr ""
+
+#. module: base
 #: model:ir.model.fields,field_description:base.field_res_lang__thousands_sep
 msgid "Thousands Separator"
 msgstr "천 단위 구분 기호"
@@ -38028,6 +38042,15 @@ msgstr ""
 #, python-format
 msgid "You cannot delete the %s record."
 msgstr "%s 레코드를 삭제할 수 없습니다."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+#, python-format
+msgid ""
+"You cannot delete the admin user because it is utilized in various places "
+"(such as security configurations,...). Instead, archive it."
+msgstr ""
 
 #. module: base
 #. odoo-python

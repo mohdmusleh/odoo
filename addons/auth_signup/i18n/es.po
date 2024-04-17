@@ -5,8 +5,8 @@
 # Translators:
 # Wil Odoo, 2023
 # Pedro M. Baeza <pedro.baeza@tecnativa.com>, 2023
-# Larissa Manderfeld, 2024
 # Fernanda Alvarez, 2024
+# Larissa Manderfeld, 2024
 # 
 msgid ""
 msgstr ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-26 21:55+0000\n"
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
-"Last-Translator: Fernanda Alvarez, 2024\n"
+"Last-Translator: Larissa Manderfeld, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/odoo/teams/41243/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -187,7 +187,7 @@ msgstr ""
 "                <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
 "                    <div>\n"
 "                        Estimado/a <t t-out=\"object.name or ''\">Mitchell Admin</t>,<br> <br>\n"
-"                        Agregó a el/los siguiente/s usuarios/s a su base de datos, pero no se han registrado aún:\n"
+"                        Agregó a el/los siguientes usuario/s a su base de datos, pero no se han registrado aún:\n"
 "                        <ul>\n"
 "                            <t t-foreach=\"invited_users\" t-as=\"invited_user\">\n"
 "                                <li t-out=\"invited_user or ''\">demo@example.com</li>\n"
@@ -633,21 +633,21 @@ msgid ""
 "configuration"
 msgstr ""
 "No se pudo contactar con el servidor de correo. Revise la configuración de "
-"su servidor de correo saliente."
+"su servidor de correo de salida."
 
 #. module: auth_signup
 #. odoo-python
 #: code:addons/auth_signup/controllers/main.py:0
 #, python-format
 msgid "Could not create a new account."
-msgstr "No se ha podido crear una cuenta nueva."
+msgstr "No se pudo crear una cuenta nueva."
 
 #. module: auth_signup
 #. odoo-python
 #: code:addons/auth_signup/controllers/main.py:0
 #, python-format
 msgid "Could not reset your password"
-msgstr "No se puede restablecer tu contraseña"
+msgstr "No se pudo restablecer su contraseña"
 
 #. module: auth_signup
 #: model:ir.model.fields,field_description:auth_signup.field_res_config_settings__auth_signup_uninvited
@@ -754,7 +754,7 @@ msgstr "Cerca de %(region)s, %(country)s"
 #. module: auth_signup
 #: model:ir.model.fields.selection,name:auth_signup.selection__res_users__state__new
 msgid "Never Connected"
-msgstr "Nunca se conecta"
+msgstr "No conectado hasta ahora"
 
 #. module: auth_signup
 #. odoo-python
@@ -992,7 +992,7 @@ msgstr ""
 #: code:addons/auth_signup/controllers/main.py:0
 #, python-format
 msgid "The form was not properly filled in."
-msgstr "No se llenó el formulario de forma correcta. "
+msgstr "El formulario no se rellenó correctamente."
 
 #. module: auth_signup
 #. odoo-python
@@ -1029,7 +1029,7 @@ msgstr "Usuarios: notificar usuarios no registrados"
 #. module: auth_signup
 #: model:mail.template,subject:auth_signup.mail_template_user_signup_account_created
 msgid "Welcome to {{ object.company_id.name }}!"
-msgstr "¡Bienvenido {{ object.company_id.name }}!"
+msgstr "¡Le damos la bienvenida a {{ object.company_id.name }}!"
 
 #. module: auth_signup
 #. odoo-python
