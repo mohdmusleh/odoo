@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="data_report_wizard_views_form">
+            <field name="name">data_report_wizard_views form</field>
+            <field name="model">data.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="report_type" />
+                            <field name="hide_date" invisible="1" />
+                            <field name="start_date" invisible="hide_date == True" />
+                            <field name="end_date" invisible="hide_date == True" />
+                            <field name="user_name" />
+                            <field name="hide_product" invisible="1" />
+                            <field
+                name="product_list"
+                invisible="hide_product == True"
+              />
+                            <field name="ssh_key_path" />
+                            <field name="txt_file" filename="file_name" />
+                            <field name="file_name" invisible="1" />
+                        </group>
+                    </group>
+                    <footer>
+                        <button
+              name="get_report"
+              string="Get report"
+              type="object"
+              class="btn btn-primary"
+            />
+                        <button
+              string="Cancel"
+              special="cancel"
+              class="btn btn-secondary"
+            />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="data_report_action_window">
+            <field name="name">Data Report Window</field>
+            <field name="res_model">data.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+      name="Data Report"
+      id="data_report_menu"
+      parent="stock.menu_warehouse_report"
+      action="data_report_action_window"
+      groups="stock.group_stock_manager"
+    />
+    </data>
+</odoo>
