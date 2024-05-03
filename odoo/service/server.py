@@ -1313,7 +1313,7 @@ def preload_registries(dbnames):
                     load_test_file_py(registry, test_file)
 
             # run post-install tests
-            if config['test_enable'] and False:
+            if config['test_enable']:
                 t0 = time.time()
                 t0_sql = odoo.sql_db.sql_counter
                 module_names = (registry.updated_modules if update_module else
