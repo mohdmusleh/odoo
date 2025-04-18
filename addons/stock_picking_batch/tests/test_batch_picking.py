@@ -727,6 +727,33 @@ class TestBatchPicking02(TransactionCase):
         ])
         self.assertEqual(pickings.move_line_ids.result_package_id, package)
 
+    def test_add_batch_move_line(self):
+        """
+        Adding a stock move line in a batch form triggers a calculation of the
+        default dest location. This test checks if that calculation doesn't
+        raise any exceptions for a new, empty StockMoveLine object.
+        """
+        loc1, loc2 = self.stock_location.child_ids
+        picking = self.env['stock.picking'].create({
+            'location_id': loc1.id,
+            'location_dest_id': loc2.id,
+            'picking_type_id': self.picking_type_internal.id,
+        })
+        batch_form = Form(self.env['stock.picking.batch'])
+        batch_form.picking_ids.add(picking)
+        batch = batch_form.save()
+        batch.action_confirm()
+        confirmed_form = Form(batch)
+        # Adding a new line should not raise an error
+        confirmed_form.move_line_ids.new()
+        # Adding a line should work also for users in storage categories group
+        self.env.user.groups_id += self.env.ref('stock.group_stock_storage_categories')
+        batch_form = Form(self.env['stock.picking.batch'])
+        batch_form.picking_ids.add(picking)
+        batch = batch_form.save()
+        batch.action_confirm()
+        confirmed_form = Form(batch)
+        confirmed_form.move_line_ids.new()
 
     def test_batch_validation_without_backorder(self):
         loc1, loc2 = self.stock_location.child_ids
@@ -773,6 +800,13 @@ class TestBatchPicking02(TransactionCase):
             'picking_ids': [(4, picking_1.id), (4, picking_2.id)]
         })
         batch.action_confirm()
+        # assign a responsible to the batch should assign it to the pickings
+        self.assertFalse((picking_1 | picking_2).user_id.id)
+        batch.user_id = self.env.user
+        self.assertEqual((picking_1 | picking_2).user_id, self.env.user)
+        # remove the responsible from the batch should remove it from the pickings
+        batch.user_id = False
+        self.assertFalse((picking_1 | picking_2).user_id.id)
         action = batch.action_done()
         Form(self.env[action['res_model']].with_context(action['context'])).save().process_cancel_backorder()
         self.assertEqual(batch.state, 'done')

@@ -5,9 +5,10 @@
 # Translators:
 # Benson <Benson.Dr@Gmail.com>, 2023
 # Martin Trigaux, 2023
-# 敬雲 林 <chingyun@yuanchih-consult.com>, 2023
 # Alvin Wu <Alvin.Wu.work@gmail.com>, 2024
-# Tony Ng, 2024
+# 敬雲 林 <chingyun@yuanchih-consult.com>, 2024
+# Wil Odoo, 2025
+# Tony Ng, 2025
 # 
 msgid ""
 msgstr ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-06 13:31+0000\n"
 "PO-Revision-Date: 2022-09-22 05:53+0000\n"
-"Last-Translator: Tony Ng, 2024\n"
+"Last-Translator: Tony Ng, 2025\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/odoo/teams/41243/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +67,7 @@ msgstr "“%s”需要麥克風存取權限"
 #: code:addons/mail/static/src/models/channel_member_list_category_view.js:0
 #, python-format
 msgid "%(categoryText)s - %(memberCount)s"
-msgstr ""
+msgstr "%(categoryText)s - %(memberCount)s"
 
 #. module: mail
 #. odoo-python
@@ -82,7 +83,7 @@ msgstr "%(email)s 未能辨識為有效電郵。這是建立新客戶所必需�
 #: code:addons/mail/static/src/models/notification_request_view.js:0
 #, python-format
 msgid "%(odoobotName)s has a request"
-msgstr ""
+msgstr "%(odoobotName)s 有一個請求"
 
 #. module: mail
 #. odoo-python
@@ -980,7 +981,7 @@ msgstr "存取組"
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_guest__access_token
 msgid "Access Token"
-msgstr "存取代碼(token)"
+msgstr "存取權杖(token)"
 
 #. module: mail
 #. odoo-javascript
@@ -1295,53 +1296,9 @@ msgid "Africa"
 msgstr "非洲"
 
 #. module: mail
-#: model:ir.model.fields.selection,name:mail.selection__account_journal__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__account_move__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__account_payment__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__crm_lead__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__event_booth__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__event_event__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__event_registration__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__event_sponsor__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__event_track__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_contract__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_services__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__hr_applicant__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__hr_contract__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__hr_employee__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense_sheet__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave_allocation__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__lunch_supplier__activity_exception_decoration__warning
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_mixin__activity_exception_decoration__warning
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__decoration_type__warning
-#: model:ir.model.fields.selection,name:mail.selection__mailing_mailing__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_equipment__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_request__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__mrp_production__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__mrp_unbuild__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__note_note__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__pos_session__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__product_product__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__product_template__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__project_project__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__project_task__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__project_update__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__purchase_order__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__purchase_requisition__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__repair_order__activity_exception_decoration__warning
 #: model:ir.model.fields.selection,name:mail.selection__res_partner__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__res_partner_bank__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__sale_order__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__slide_channel__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__stock_landed_cost__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__stock_lot__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking_batch__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__survey_survey__activity_exception_decoration__warning
-#: model:ir.model.fields.selection,name:mail.selection__survey_user_input__activity_exception_decoration__warning
 msgid "Alert"
 msgstr "警示"
 
@@ -1414,7 +1371,7 @@ msgstr ""
 #: code:addons/mail/models/ir_attachment.py:0
 #, python-format
 msgid "An access token must be provided for each attachment."
-msgstr "必須為每個附件提供存取代碼(token)。"
+msgstr "必須為每個附件提供存取權杖(token)。"
 
 #. module: mail
 #. odoo-python
@@ -1623,7 +1580,7 @@ msgstr "附件"
 #: model:ir.model.fields,field_description:mail.field_res_partner__message_attachment_count
 #: model:ir.model.fields,field_description:mail.field_res_users__message_attachment_count
 msgid "Attachment Count"
-msgstr "附件數"
+msgstr "附件數目"
 
 #. module: mail
 #. odoo-javascript
@@ -1631,7 +1588,7 @@ msgstr "附件數"
 #: code:addons/mail/static/src/components/chatter_topbar/chatter_topbar.xml:0
 #, python-format
 msgid "Attachment counter loading..."
-msgstr "附件計數器加載中..."
+msgstr "正在載入附件計數器⋯"
 
 #. module: mail
 #. odoo-javascript
@@ -1675,7 +1632,7 @@ msgstr "作者"
 msgid ""
 "Author of the message. If not set, email_from may hold an email address that"
 " did not match any partner."
-msgstr "訊息的作者。如果沒設定，email_from 可能儲存一個不匹配任何合作夥伴的 email地址."
+msgstr "訊息的作者。如果未設定，email_from 可能儲存一個不符合任何合作夥伴記錄的電郵地址。"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_mail__author_avatar
@@ -1710,9 +1667,22 @@ msgid "Auto subscription"
 msgstr "自動訂閱"
 
 #. module: mail
+#: model:ir.model.fields.selection,name:mail.selection__mail_compose_message__message_type__auto_comment
+#: model:ir.model.fields.selection,name:mail.selection__mail_message__message_type__auto_comment
+msgid "Automated Targeted Notification"
+msgstr "自動化針對通知"
+
+#. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_activity__automated
 msgid "Automated activity"
 msgstr "自動活動"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/models/message.js:0
+#, python-format
+msgid "Automated message"
+msgstr "自動化訊息"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_activity_type__triggered_next_type_id
@@ -1933,14 +1903,14 @@ msgstr "佛教"
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_res_config_settings__secondary_color
 msgid "Button Color"
-msgstr ""
+msgstr "按鈕顏色"
 
 #. module: mail
 #. odoo-python
 #: code:addons/mail/models/mail_thread_cc.py:0
 #, python-format
 msgid "CC Email"
-msgstr "CC Email"
+msgstr "副本抄送電郵"
 
 #. module: mail
 #. odoo-javascript
@@ -2040,7 +2010,7 @@ msgstr "取消"
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.view_mail_tree
 msgid "Cancel Email"
-msgstr "取消電子信件"
+msgstr "取消電郵"
 
 #. module: mail
 #. odoo-javascript
@@ -2414,9 +2384,11 @@ msgstr "公司"
 
 #. module: mail
 #. odoo-javascript
+#. odoo-python
 #: code:addons/mail/static/src/js/activity.js:0
 #: code:addons/mail/static/src/models/composer_view.js:0
 #: code:addons/mail/static/src/models/mail_template.js:0
+#: code:addons/mail/wizard/mail_compose_message.py:0
 #: model:ir.actions.act_window,name:mail.action_email_compose_message_wizard
 #: model_terms:ir.ui.view,arch_db:mail.email_compose_message_wizard_form
 #, python-format
@@ -2769,7 +2741,7 @@ msgstr "自訂通道名稱"
 #. module: mail
 #: model:ir.model.constraint,message:mail.constraint_mail_notification_notification_partner_required
 msgid "Customer is required for inbox / email notification"
-msgstr "客戶需要收件箱/電子信件通知"
+msgstr "如要使用收件箱/電郵通知，需要有客戶資料"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
@@ -2807,12 +2779,12 @@ msgstr "應發送通知的日期時間。"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "David"
-msgstr ""
+msgstr "大衛"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__ir_actions_server__activity_date_deadline_range_type__days
 msgid "Days"
-msgstr "天內"
+msgstr "天"
 
 #. module: mail
 #. odoo-javascript
@@ -2911,9 +2883,9 @@ msgid ""
 "- partner (using id on a partner or the partner_id field) OR\n"
 "- email (using email_from or email field)"
 msgstr ""
-"記錄的預設收件人： \n"
-"- 合作夥伴（使用合作夥伴的Id或partner_id欄位）或\n"
-"- 電子信件(使用發件人或電郵欄位)"
+"記錄的預設收件人：\n"
+"- 合作夥伴（使用合作夥伴的 id 或 partner_id 欄位）或\n"
+"- 電子郵件（使用 email_from 或 email 欄位）"
 
 #. module: mail
 #: model_terms:ir.actions.act_window,help:mail.mail_shortcode_action
@@ -3023,7 +2995,7 @@ msgstr "私信"
 #: model_terms:ir.ui.view,arch_db:mail.mail_blacklist_remove_view_form
 #, python-format
 msgid "Discard"
-msgstr "取消"
+msgstr "捨棄"
 
 #. module: mail
 #. odoo-javascript
@@ -3038,14 +3010,14 @@ msgstr "丟棄消息傳遞失敗"
 #: model_terms:ir.ui.view,arch_db:mail.mail_channel_rtc_session_view_tree
 #, python-format
 msgid "Disconnect"
-msgstr "中斷連線"
+msgstr "終止連線"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models/messaging_notification_handler.js:0
 #, python-format
 msgid "Disconnected from the RTC call by the server"
-msgstr "伺服器與 RTC 調用斷開連接"
+msgstr "已被伺服器終止與 RTC 召用的連線"
 
 #. module: mail
 #. odoo-javascript
@@ -3121,7 +3093,7 @@ msgstr "顯示一個關聯單據的選項 ，用該模板打開撰寫嚮導"
 msgid ""
 "Do not keep a copy of the email in the document communication history (mass "
 "mailing only)"
-msgstr "不要在文件通信歷史中保留電子信件副本（僅限群發信件）"
+msgstr "不要在文件通信歷史中保留電子郵件備份(僅限群發郵件)"
 
 #. module: mail
 #. odoo-javascript
@@ -3219,7 +3191,7 @@ msgstr "下載日誌"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Dracula"
-msgstr ""
+msgstr "德古拉"
 
 #. module: mail
 #. odoo-javascript
@@ -3367,7 +3339,7 @@ msgstr "電子郵件及簽署"
 #: model:ir.model.fields,field_description:mail.field_mail_resend_partner__email
 #: model_terms:ir.ui.view,arch_db:mail.mail_blacklist_remove_view_form
 msgid "Email Address"
-msgstr "Email地址"
+msgstr "電郵地址"
 
 #. module: mail
 #: model:ir.model,name:mail.model_mail_alias
@@ -3383,7 +3355,7 @@ msgstr "電郵別名"
 #: model:ir.ui.menu,name:mail.mail_blacklist_menu
 #: model_terms:ir.ui.view,arch_db:mail.mail_blacklist_view_tree
 msgid "Email Blacklist"
-msgstr "Email黑名單"
+msgstr "電郵黑名單"
 
 #. module: mail
 #: model:ir.model,name:mail.model_mail_thread_cc
@@ -3419,7 +3391,7 @@ msgstr "電郵搜尋"
 #: model:ir.model.fields,field_description:mail.field_ir_actions_server__template_id
 #: model:ir.model.fields,field_description:mail.field_ir_cron__template_id
 msgid "Email Template"
-msgstr "Email範本"
+msgstr "電郵範本"
 
 #. module: mail
 #: model:ir.model,name:mail.model_mail_template_preview
@@ -3431,7 +3403,7 @@ msgstr "信件範本預覽"
 #: model:ir.model,name:mail.model_mail_template
 #: model:ir.ui.menu,name:mail.menu_email_templates
 msgid "Email Templates"
-msgstr "電子信件範本"
+msgstr "電郵範本"
 
 #. module: mail
 #: model:ir.model,name:mail.model_mail_thread
@@ -3490,7 +3462,7 @@ msgstr "副本寄送"
 #. module: mail
 #: model:ir.model,name:mail.model_mail_compose_message
 msgid "Email composition wizard"
-msgstr "信件撰寫嚮導"
+msgstr "電郵撰寫精靈"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.view_mail_form
@@ -3507,7 +3479,7 @@ msgstr "電子郵件重發嚮導"
 #: model:ir.model.fields,field_description:mail.field_mail_activity__mail_template_ids
 #: model:ir.model.fields,field_description:mail.field_mail_activity_type__mail_template_ids
 msgid "Email templates"
-msgstr "電子信件範本"
+msgstr "電郵範本"
 
 #. module: mail
 #: model:ir.actions.act_window,name:mail.action_view_mail_mail
@@ -3515,7 +3487,7 @@ msgstr "電子信件範本"
 #: model_terms:ir.ui.view,arch_db:mail.mail_message_schedule_view_tree
 #: model_terms:ir.ui.view,arch_db:mail.view_mail_tree
 msgid "Emails"
-msgstr "電子信件"
+msgstr "電郵"
 
 #. module: mail
 #. odoo-javascript
@@ -3554,53 +3526,9 @@ msgstr "啟用桌面通知進行聊天。"
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models/notification.js:0
-#: model:ir.model.fields.selection,name:mail.selection__account_journal__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__account_move__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__account_payment__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__crm_lead__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__event_booth__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__event_event__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__event_registration__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__event_sponsor__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__event_track__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_contract__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_services__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__hr_applicant__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__hr_contract__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__hr_employee__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense_sheet__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave_allocation__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__lunch_supplier__activity_exception_decoration__danger
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_mixin__activity_exception_decoration__danger
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__decoration_type__danger
-#: model:ir.model.fields.selection,name:mail.selection__mailing_mailing__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_equipment__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_request__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__mrp_production__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__mrp_unbuild__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__note_note__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__pos_session__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__product_product__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__product_template__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__project_project__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__project_task__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__project_update__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__purchase_order__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__purchase_requisition__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__repair_order__activity_exception_decoration__danger
 #: model:ir.model.fields.selection,name:mail.selection__res_partner__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__res_partner_bank__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__sale_order__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__slide_channel__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__stock_landed_cost__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__stock_lot__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking_batch__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__survey_survey__activity_exception_decoration__danger
-#: model:ir.model.fields.selection,name:mail.selection__survey_user_input__activity_exception_decoration__danger
 #, python-format
 msgid "Error"
 msgstr "錯誤"
@@ -3730,7 +3658,7 @@ msgstr "無法呈現 inline_template 模板：%s)"
 #: code:addons/mail/models/mail_render_mixin.py:0
 #, python-format
 msgid "Failed to render template : %s"
-msgstr ""
+msgstr "範本繪製失敗：%s"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_mail__failure_reason
@@ -3748,7 +3676,7 @@ msgstr "失敗原因"
 msgid ""
 "Failure reason. This is usually the exception thrown by the email server, "
 "stored to ease the debugging of mailing issues."
-msgstr "失效原因。這通常是通過電子信件伺服器拋出的異常，存儲以緩解信件問題的偵錯。"
+msgstr "失敗原因。通常是電郵伺服器提供的異常情況，儲存此資料是方便對郵件問題進行除錯。"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_mail__failure_type
@@ -3788,7 +3716,7 @@ msgstr "回饋"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Ferris"
-msgstr ""
+msgstr "摩天輪"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.view_email_server_form
@@ -3819,7 +3747,7 @@ msgstr "「信件黑名單」欄位不能更改為「False」。"
 #: code:addons/mail/models/ir_model.py:0
 #, python-format
 msgid "Field \"Mail Thread\" cannot be changed to \"False\"."
-msgstr "欄位「電子信件線程」不能更改為「False」。"
+msgstr "欄位「郵件對話串」不可更改為 False（假）。"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_tracking_value__field_desc
@@ -4080,17 +4008,17 @@ msgstr "記錄顯示為一般用戶"
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "Get Gmail API credentials"
-msgstr ""
+msgstr "取得 Gmail API 憑證"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "Get Outlook API credentials"
-msgstr ""
+msgstr "取得 Outlook API 憑證"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "Gmail Credentials"
-msgstr ""
+msgstr "Gmail 憑證"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_channel__channel_type__group
@@ -4440,7 +4368,7 @@ msgstr "用於指示異常活動的圖示。"
 #: model:ir.model.fields,help:mail.field_mail_followers__res_id
 #: model:ir.model.fields,help:mail.field_mail_wizard_invite__res_id
 msgid "Id of the followed resource"
-msgstr "被關注資源的ID"
+msgstr "已關注的資料來源識別碼"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.mail_channel_rtc_session_view_form
@@ -4529,7 +4457,7 @@ msgstr "設置後，此內容將自動發送給未經授權的用戶，而不是
 msgid ""
 "If the email address is on the blacklist, the contact won't receive mass "
 "mailing anymore, from any list"
-msgstr "存在於黑名單的電子信件表示收件者不會再收到任何列表的群發信件。"
+msgstr "若電郵地址在黑名單中，相關聯絡人不會再收到任何清單的群發郵件"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_mail__reply_to_force_new
@@ -4546,7 +4474,7 @@ msgstr ""
 msgid ""
 "If you have setup a catch-all email domain redirected to the Odoo server, "
 "enter the domain name here."
-msgstr "如果您設定了電子信件域名重導向到Odoo伺服器，請在這裡輸入域名。"
+msgstr "若有設置一個重新導向至 Odoo 伺服器、接收所有郵件的電郵網域，請在此處輸入域名。"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_res_config_settings__use_twilio_rtc_servers
@@ -4698,7 +4626,7 @@ msgstr "無效的電子郵件地址"
 #: code:addons/mail/models/mail_blacklist.py:0
 #, python-format
 msgid "Invalid email address %r"
-msgstr "無效的EMail地址 %r"
+msgstr "無效電郵地址 %r"
 
 #. module: mail
 #. odoo-python
@@ -4857,7 +4785,7 @@ msgstr "麥克風是否靜音"
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_channel_member__is_pinned
 msgid "Is pinned on the interface"
-msgstr "已置於界面"
+msgstr "已在介面置頂"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_channel_rtc_session__is_camera_on
@@ -4977,7 +4905,7 @@ msgstr "日語「可接受」按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Japanese “application” button"
-msgstr "日語「應用程式」按鈕"
+msgstr "日文「申請」按鈕"
 
 #. module: mail
 #. odoo-javascript
@@ -4985,7 +4913,7 @@ msgstr "日語「應用程式」按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Japanese “bargain” button"
-msgstr "日語「減價品」按鈕"
+msgstr "日文「划算/優惠/抵買/得」按鈕"
 
 #. module: mail
 #. odoo-javascript
@@ -5001,7 +4929,7 @@ msgstr "日語「祝賀」按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Japanese “discount” button"
-msgstr "日語「折扣」按鈕"
+msgstr "日文「折扣/優惠/割引」按鈕"
 
 #. module: mail
 #. odoo-javascript
@@ -5009,7 +4937,7 @@ msgstr "日語「折扣」按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Japanese “free of charge” button"
-msgstr "日語「免費」按鈕"
+msgstr "日文「免費/無料」按鈕"
 
 #. module: mail
 #. odoo-javascript
@@ -5033,7 +4961,7 @@ msgstr "日語「每月量」按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Japanese “no vacancy” button"
-msgstr "日語「無空房」按鈕"
+msgstr "日文「滿座/滿額」按鈕"
 
 #. module: mail
 #. odoo-javascript
@@ -5041,7 +4969,7 @@ msgstr "日語「無空房」按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Japanese “not free of charge” button"
-msgstr "日語「非免費」按鈕"
+msgstr "日文「收費/非免費/有料」按鈕"
 
 #. module: mail
 #. odoo-javascript
@@ -5073,7 +5001,7 @@ msgstr "日語「禁止」按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Japanese “reserved” button"
-msgstr "日語「已預留」按鈕"
+msgstr "日文「已預留/指定」按鈕"
 
 #. module: mail
 #. odoo-javascript
@@ -5081,7 +5009,7 @@ msgstr "日語「已預留」按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Japanese “secret” button"
-msgstr "日語「保密」按鈕"
+msgstr "日文「秘密/保密」按鈕"
 
 #. module: mail
 #. odoo-javascript
@@ -5445,7 +5373,7 @@ msgstr "頻道的收聽者"
 #: code:addons/mail/static/src/components/message_list/message_list.xml:0
 #, python-format
 msgid "Load more"
-msgstr "加載更多"
+msgstr "載入更多"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.email_compose_message_wizard_form
@@ -5919,7 +5847,7 @@ msgstr "在“%s”上發布的訊息"
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_mail__email_to
 msgid "Message recipients (emails)"
-msgstr "訊息收件人(電子信件)"
+msgstr "訊息收件人（電郵）"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_mail__references
@@ -5931,7 +5859,7 @@ msgstr "訊息引用，例如前一訊息的標識符"
 #: code:addons/mail/models/mail_thread.py:0
 #, python-format
 msgid "Message should be a valid EmailMessage instance"
-msgstr "Message 應該是一個有效的 EmailMessage 實例"
+msgstr "訊息應該是有效的電子郵件訊息個體"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_message_subtype__name
@@ -5963,7 +5891,7 @@ msgstr "子類型訊息被關注，意味著子類型將被推送進使用者的
 msgid ""
 "Message type: email for email message, notification for system message, "
 "comment for other messages such as user replies"
-msgstr "訊息類型：電子信件用於 信件訊息， 通知使用者系統訊息，評論用於其他訊息，例如使用者回覆"
+msgstr "訊息類型：電郵訊息為「電郵」，系統訊息為「通知」，使用者回覆等其他訊息為「留言」"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_mail__message_id
@@ -6164,7 +6092,7 @@ msgstr "聖誕老人太太"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Munch"
-msgstr ""
+msgstr "蒙克"
 
 #. module: mail
 #. odoo-javascript
@@ -6683,7 +6611,7 @@ msgstr "ON! 箭嘴"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Oberon"
-msgstr ""
+msgstr "奧伯隆"
 
 #. module: mail
 #. odoo-javascript
@@ -6863,6 +6791,14 @@ msgid "Open Document"
 msgstr "開啟文件"
 
 #. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/components/attachment_card/attachment_card.xml:0
+#: code:addons/mail/static/src/components/attachment_card/attachment_card.xml:0
+#, python-format
+msgid "Open Link"
+msgstr "開啟連結"
+
+#. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.view_mail_alias_form
 msgid "Open Parent Document"
 msgstr "打開上級單據"
@@ -7018,53 +6954,9 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/mail/static/src/backend_components/activity_list_view/activity_list_view.xml:0
 #: code:addons/mail/static/src/js/views/activity/activity_renderer.js:0
-#: model:ir.model.fields.selection,name:mail.selection__account_journal__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__account_move__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__account_payment__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__crm_lead__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__event_booth__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__event_event__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__event_registration__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__event_sponsor__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__event_track__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_contract__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_services__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__hr_applicant__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__hr_contract__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__hr_employee__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense_sheet__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave_allocation__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__lunch_supplier__activity_state__overdue
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity__state__overdue
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_mixin__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__mailing_mailing__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_equipment__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_request__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__mrp_production__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__mrp_unbuild__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__note_note__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__pos_session__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__product_product__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__product_template__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__project_project__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__project_task__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__project_update__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__purchase_order__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__purchase_requisition__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__repair_order__activity_state__overdue
 #: model:ir.model.fields.selection,name:mail.selection__res_partner__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__res_partner_bank__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__sale_order__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__slide_channel__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__stock_landed_cost__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__stock_lot__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking_batch__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__survey_survey__activity_state__overdue
-#: model:ir.model.fields.selection,name:mail.selection__survey_user_input__activity_state__overdue
 #, python-format
 msgid "Overdue"
 msgstr "逾期"
@@ -7072,7 +6964,7 @@ msgstr "逾期"
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.email_template_form
 msgid "Override author's email"
-msgstr "覆蓋作者電子信件"
+msgstr "覆蓋作者電郵"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_alias__alias_user_id
@@ -7242,53 +7134,9 @@ msgstr "雙魚座"
 #. odoo-javascript
 #: code:addons/mail/static/src/backend_components/activity_list_view/activity_list_view.xml:0
 #: code:addons/mail/static/src/js/views/activity/activity_renderer.js:0
-#: model:ir.model.fields.selection,name:mail.selection__account_journal__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__account_move__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__account_payment__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__crm_lead__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__event_booth__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__event_event__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__event_registration__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__event_sponsor__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__event_track__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_contract__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_services__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__hr_applicant__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__hr_contract__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__hr_employee__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense_sheet__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave_allocation__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__lunch_supplier__activity_state__planned
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity__state__planned
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_mixin__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__mailing_mailing__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_equipment__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_request__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__mrp_production__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__mrp_unbuild__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__note_note__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__pos_session__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__product_product__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__product_template__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__project_project__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__project_task__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__project_update__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__purchase_order__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__purchase_requisition__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__repair_order__activity_state__planned
 #: model:ir.model.fields.selection,name:mail.selection__res_partner__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__res_partner_bank__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__sale_order__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__slide_channel__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__stock_landed_cost__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__stock_lot__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking_batch__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__survey_survey__activity_state__planned
-#: model:ir.model.fields.selection,name:mail.selection__survey_user_input__activity_state__planned
 #, python-format
 msgid "Planned"
 msgstr "已安排"
@@ -7322,7 +7170,7 @@ msgstr "不要使用，請聯繫我們"
 #: code:addons/mail/static/src/models/composer_view.js:0
 #, python-format
 msgid "Please wait while the file is uploading."
-msgstr "正在上傳文件，請稍候。"
+msgstr "檔案正在上載，請稍等。"
 
 #. module: mail
 #. odoo-javascript
@@ -7342,9 +7190,9 @@ msgid ""
 "- Handle by Emails: notifications are sent to your email address\n"
 "- Handle in Odoo: notifications appear in your Odoo Inbox"
 msgstr ""
-"處理聊天通知的規則:\n"
-"- 通過EMail處理: 通知會發送至您的EMail地址\n"
-"- 系統內部處理: 通知會出現在Odoo收件箱"
+"聊天視窗通知的處理方式：\n"
+"- 透過電子郵件處理：通知將發送至你的電郵地址\n"
+"- 在 Odoo 中處理：通知會在 Odoo 收件箱中顯示"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_alias__alias_contact
@@ -7531,7 +7379,7 @@ msgstr "發佈者: 更新通知"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Puck"
-msgstr "冰球"
+msgstr "曲棍球/冰球/冰上曲棍球"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_res_users_settings__push_to_talk_key
@@ -8252,7 +8100,7 @@ msgstr "搜尋使用者⋯"
 #: code:addons/mail/static/src/models/messaging_menu.js:0
 #, python-format
 msgid "Search user..."
-msgstr "搜索用戶..."
+msgstr "搜尋使用者⋯"
 
 #. module: mail
 #. odoo-javascript
@@ -8309,7 +8157,7 @@ msgstr "選擇語言"
 #: code:addons/mail/static/src/views/fields/assign_user_command_hook.js:0
 #, python-format
 msgid "Select a user..."
-msgstr "選擇一個用户..."
+msgstr "選擇一名使用者⋯"
 
 #. module: mail
 #. odoo-javascript
@@ -8335,7 +8183,7 @@ msgstr "傳送並關閉"
 #: model:ir.model.fields,field_description:mail.field_mail_wizard_invite__send_mail
 #: model:ir.model.fields.selection,name:mail.selection__ir_actions_server__state__mail_post
 msgid "Send Email"
-msgstr "發送電子信件"
+msgstr "傳送電郵"
 
 #. module: mail
 #. odoo-python
@@ -8498,7 +8346,7 @@ msgstr "設定"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Shaka"
-msgstr ""
+msgstr "沙卡"
 
 #. module: mail
 #. odoo-javascript
@@ -8520,7 +8368,7 @@ msgstr "新幹線"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "Shinto"
-msgstr "神道教"
+msgstr "神社/鳥居"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_mail__description
@@ -8687,7 +8535,7 @@ msgstr "開始通話"
 #: code:addons/mail/static/src/components/thread_view_topbar/thread_view_topbar.xml:0
 #, python-format
 msgid "Start a Video Call"
-msgstr "發起視訊通話"
+msgstr "開始視訊通話"
 
 #. module: mail
 #. odoo-javascript
@@ -9183,7 +9031,7 @@ msgstr ""
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.mail_bounce_catchall
 msgid "The email sent to"
-msgstr "EMail發到"
+msgstr "電郵已傳送至"
 
 #. module: mail
 #. odoo-python
@@ -9228,7 +9076,7 @@ msgstr ""
 msgid ""
 "The name of the email alias, e.g. 'jobs' if you want to catch emails for "
 "<jobs@example.odoo.com>"
-msgstr "信件別名的名稱，例如，如果您要收取 <jobs@example.odoo.com> 的電子信件,別名就要被設為：\"jobs\""
+msgstr "郵箱別名，例如填寫 jobs 表示你想捕捉寄往 jobs@example.com 的電郵。"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_alias__alias_user_id
@@ -9322,7 +9170,7 @@ msgstr "在瞬態模型上，不可執行此操作。"
 #: code:addons/mail/static/src/xml/activity_view.xml:0
 #, python-format
 msgid "This action will send an email."
-msgstr "此操作將發出EMail。"
+msgstr "此操作會發送電郵。"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_partner_view_form_inherit_mail
@@ -9484,53 +9332,9 @@ msgstr "致："
 #: code:addons/mail/static/src/models/activity_list_view_item.js:0
 #: code:addons/mail/static/src/models/message.js:0
 #: code:addons/mail/static/src/models/message.js:0
-#: model:ir.model.fields.selection,name:mail.selection__account_journal__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__account_move__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__account_payment__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__crm_lead__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__event_booth__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__event_event__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__event_registration__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__event_sponsor__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__event_track__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_contract__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__fleet_vehicle_log_services__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__hr_applicant__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__hr_contract__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__hr_employee__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__hr_expense_sheet__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__hr_leave_allocation__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__lunch_supplier__activity_state__today
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity__state__today
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_mixin__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__mailing_mailing__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_equipment__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__maintenance_request__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__mrp_production__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__mrp_unbuild__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__note_note__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__pos_session__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__product_product__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__product_template__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__project_project__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__project_task__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__project_update__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__purchase_order__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__purchase_requisition__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__repair_order__activity_state__today
 #: model:ir.model.fields.selection,name:mail.selection__res_partner__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__res_partner_bank__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__sale_order__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__slide_channel__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__stock_landed_cost__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__stock_lot__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__stock_picking_batch__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__survey_survey__activity_state__today
-#: model:ir.model.fields.selection,name:mail.selection__survey_user_input__activity_state__today
 #, python-format
 msgid "Today"
 msgstr "今天"
@@ -9705,15 +9509,15 @@ msgid ""
 "- 'Create Next Activity': create an activity (Discuss)\n"
 "- 'Send SMS Text Message': send SMS, log them on documents (SMS)"
 msgstr ""
-"伺服器操作類型。可使用以下的值：\n"
-"- 「執行 Python 程式碼」：將執行的一段 Python 程式碼\n"
-"- 「建立新記錄」：使用新的值建立新記錄\n"
-"- 「更新記錄」：更新記錄的值\n"
-"- 「執行多個操作」：定義一個操作以觸發多個其他伺服器操作\n"
-"- 「發送電郵」：張貼訊息、備註或發送電子郵件（聊天應用程式）\n"
-"- 「加入關注者」：將關注者加至記錄（聊天應用程式）\n"
-"- 「建立下一活動」：建立一個活動（聊天應用程式）\n"
-"- 「發送 SMS 簡訊」：發送 SMS 文字短訊，將其記錄在文件上（短訊應用程式）"
+"伺服器操作類型。 可使用以下的值：\n"
+"- 執行 Python 程式碼：將會執行的 Python 程式碼段落\n"
+"- 建立新記錄：使用新的值去建立新記錄\n"
+"- 更新記錄：更新某項記錄的值\n"
+"- 執行數項操作：設定一項操作，用以觸發多項其他伺服器操作\n"
+"- 傳送電郵：發佈訊息、備註或傳送電子郵件（聊天應用程式）\n"
+"- 加入關注者：將關注者加入記錄中（聊天應用程式）\n"
+"- 建立下一活動：建立一項活動（聊天應用程式）\n"
+"- 傳送 SMS 文字訊息：傳送 SMS 電話短訊，並在文件中建立相關記錄（短訊應用程式）"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_activity_mixin__activity_exception_decoration
@@ -9831,7 +9635,7 @@ msgstr "取消訂閱"
 #: model:ir.model.constraint,message:mail.constraint_mail_alias_alias_unique
 msgid ""
 "Unfortunately this email alias is already used, please choose a unique one"
-msgstr "可惜此電子信件別名已經被使用，請選擇一個獨特的"
+msgstr ""
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_activity_type__delay_unit
@@ -10064,7 +9868,7 @@ msgstr "使用者:"
 #: model:ir.model.fields,field_description:mail.field_fetchmail_server__user
 #: model:ir.model.fields,field_description:mail.field_mail_ice_server__username
 msgid "Username"
-msgstr "使用者名"
+msgstr "使用者名稱"
 
 #. module: mail
 #. odoo-python
@@ -10089,8 +9893,7 @@ msgid ""
 "and Enterprise versions. Online users already benefit from a ready-to-use "
 "email server (@mycompany.odoo.com)."
 msgstr ""
-"在社區和企業版本中，發送/接收電子信件需要使用自己的電子信件伺服器。線上使用者已受益於隨時可用的電子信件伺服器 "
-"(@mycompany.odoo.com)。"
+"需要使用你自己的電郵伺服器，才可使用社群版或企業版軟件發送/接收電子郵件。雲端版使用者已可直接使用預設的電郵伺服器（@mycompany.odoo.com）。"
 
 #. module: mail
 #. odoo-javascript
@@ -11772,7 +11575,7 @@ msgstr "銀行"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "banknote"
-msgstr "鈔票"
+msgstr "鈔票/紙幣"
 
 #. module: mail
 #. odoo-javascript
@@ -13614,7 +13417,7 @@ msgstr "卡片索引分隔"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "cardinal"
-msgstr "紅衣主教"
+msgstr "基本方位"
 
 #. module: mail
 #. odoo-javascript
@@ -14184,14 +13987,14 @@ msgstr "炸薯條"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "chocolate"
-msgstr "巧克力"
+msgstr "朱古力"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "chocolate bar"
-msgstr "巧克力棒"
+msgstr "朱古力棒"
 
 #. module: mail
 #. odoo-javascript
@@ -14575,7 +14378,7 @@ msgstr "郵政信箱關上，標識旗升起"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "closed umbrella"
-msgstr "合上的傘"
+msgstr "合上的雨傘"
 
 #. module: mail
 #. odoo-javascript
@@ -14694,7 +14497,7 @@ msgstr "小丑臉"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "club suit"
-msgstr "俱樂部服"
+msgstr "梅花花色"
 
 #. module: mail
 #. odoo-javascript
@@ -15315,7 +15118,7 @@ msgstr "新月"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "crescent moon"
-msgstr "弦月"
+msgstr "新月"
 
 #. module: mail
 #. odoo-javascript
@@ -16155,7 +15958,7 @@ msgstr "鑽石"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "diamond suit"
-msgstr "階磚花色"
+msgstr "階磚/方塊花色"
 
 #. module: mail
 #. odoo-javascript
@@ -16348,7 +16151,7 @@ msgstr "潛水面罩"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "division"
-msgstr "除法"
+msgstr "除"
 
 #. module: mail
 #. odoo-javascript
@@ -17237,7 +17040,7 @@ msgstr "歐元"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "euro banknote"
-msgstr "歐元貨幣"
+msgstr "歐元鈔票"
 
 #. module: mail
 #. odoo-javascript
@@ -20048,7 +19851,7 @@ msgstr "導盲犬"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "guitar"
-msgstr "吉他"
+msgstr "吉他/結他"
 
 #. module: mail
 #. odoo-javascript
@@ -20236,7 +20039,7 @@ msgstr "錘子和鎬"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "hammer and spanner"
-msgstr "錘子和扳手"
+msgstr "錘子和士巴拿/扳手"
 
 #. module: mail
 #. odoo-javascript
@@ -20900,14 +20703,14 @@ msgstr "萬歲"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "horizontal traffic light"
-msgstr "橫向交通燈"
+msgstr "橫向交通燈/紅綠燈"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "horizontal traffic lights"
-msgstr "橫向交通燈"
+msgstr "橫向交通燈/紅綠燈"
 
 #. module: mail
 #. odoo-javascript
@@ -21211,7 +21014,7 @@ msgstr "冰塊"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "ice hockey"
-msgstr "冰球"
+msgstr "冰球/冰上曲棍球"
 
 #. module: mail
 #. odoo-javascript
@@ -21583,7 +21386,7 @@ msgstr "智能"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "intercardinal"
-msgstr ""
+msgstr "中間方位"
 
 #. module: mail
 #. odoo-javascript
@@ -21729,7 +21532,7 @@ msgstr "騎師"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "joey"
-msgstr ""
+msgstr "幼袋鼠"
 
 #. module: mail
 #. odoo-javascript
@@ -24254,7 +24057,7 @@ msgstr "月經"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "men’s"
-msgstr "男人的"
+msgstr "男洗手間"
 
 #. module: mail
 #. odoo-javascript
@@ -24904,7 +24707,7 @@ msgstr "電影攝影機"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "moyai"
-msgstr ""
+msgstr "摩艾"
 
 #. module: mail
 #. odoo-javascript
@@ -25493,7 +25296,7 @@ msgstr "筆記本"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "notebook with decorative cover"
-msgstr ""
+msgstr "筆記簿有裝飾封面"
 
 #. module: mail
 #. odoo-javascript
@@ -25547,14 +25350,14 @@ msgstr "堅果"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "nut and bolt"
-msgstr ""
+msgstr "螺帽及螺栓"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "nuts"
-msgstr ""
+msgstr "螺帽"
 
 #. module: mail
 #. odoo-javascript
@@ -25584,7 +25387,7 @@ msgstr "章魚/八爪魚"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "oden"
-msgstr ""
+msgstr "關東煮串"
 
 #. module: mail
 #. odoo-javascript
@@ -25631,7 +25434,7 @@ msgstr "警員/官員"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "ogre"
-msgstr ""
+msgstr "食人惡魔"
 
 #. module: mail
 #. odoo-javascript
@@ -25700,7 +25503,7 @@ msgstr "老人"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "om"
-msgstr ""
+msgstr "唵"
 
 #. module: mail
 #. odoo-javascript
@@ -26840,7 +26643,7 @@ msgstr "皺眉頭的人"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person gesturing NO"
-msgstr ""
+msgstr "做否定手勢的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26848,7 +26651,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person gesturing OK"
-msgstr ""
+msgstr "做OK手勢的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26856,7 +26659,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person getting haircut"
-msgstr ""
+msgstr "接受剪髮的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26864,7 +26667,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person getting massage"
-msgstr ""
+msgstr "接受按摩的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26872,7 +26675,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person golfing"
-msgstr ""
+msgstr "打高爾夫球的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26880,7 +26683,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person in bed"
-msgstr ""
+msgstr "躺在床上的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26888,7 +26691,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person in lotus position"
-msgstr ""
+msgstr "打坐的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26896,7 +26699,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person in steamy room"
-msgstr ""
+msgstr "蒸汽房內的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26904,14 +26707,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person in suit levitating"
-msgstr ""
+msgstr "穿西裝漂浮的人"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person in tux"
-msgstr ""
+msgstr "穿燕尾服的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26919,7 +26722,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person in tuxedo"
-msgstr ""
+msgstr "穿燕尾服的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26927,7 +26730,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person juggling"
-msgstr ""
+msgstr "玩雜耍的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26935,7 +26738,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person kneeling"
-msgstr ""
+msgstr "下跪的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26943,7 +26746,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person lifting weights"
-msgstr ""
+msgstr "舉重的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26951,7 +26754,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person mountain biking"
-msgstr ""
+msgstr "山地騎單車的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26959,7 +26762,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person playing handball"
-msgstr ""
+msgstr "玩手球的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26967,7 +26770,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person playing water polo"
-msgstr ""
+msgstr "玩水球的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26975,7 +26778,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person pouting"
-msgstr ""
+msgstr "撅嘴的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26983,14 +26786,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person raising hand"
-msgstr ""
+msgstr "舉手的人"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person riding a bike"
-msgstr ""
+msgstr "騎單車的人"
 
 #. module: mail
 #. odoo-javascript
@@ -26998,7 +26801,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person rowing boat"
-msgstr ""
+msgstr "划船的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27006,7 +26809,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person running"
-msgstr ""
+msgstr "奔跑的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27014,7 +26817,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person shrugging"
-msgstr ""
+msgstr "聳肩的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27022,7 +26825,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person standing"
-msgstr ""
+msgstr "站立的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27038,7 +26841,7 @@ msgstr "衝浪/滑浪"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person swimming"
-msgstr ""
+msgstr "游泳的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27046,7 +26849,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person taking bath"
-msgstr ""
+msgstr "洗澡的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27054,7 +26857,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person tipping hand"
-msgstr ""
+msgstr "遞起手的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27062,7 +26865,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person walking"
-msgstr ""
+msgstr "步行的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27078,7 +26881,7 @@ msgstr "戴頭巾的人"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person with skullcap"
-msgstr ""
+msgstr "戴瓜皮帽的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27086,7 +26889,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "person with veil"
-msgstr ""
+msgstr "戴面紗的人"
 
 #. module: mail
 #. odoo-javascript
@@ -27123,7 +26926,7 @@ msgstr "害蟲"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pester"
-msgstr ""
+msgstr "煩擾/糾纏"
 
 #. module: mail
 #. odoo-javascript
@@ -27200,7 +27003,7 @@ msgstr "十字鎬"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pickle"
-msgstr ""
+msgstr "酸黃瓜/醃菜"
 
 #. module: mail
 #. odoo-javascript
@@ -27236,7 +27039,7 @@ msgstr "片"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pierogi"
-msgstr ""
+msgstr "波蘭餃子"
 
 #. module: mail
 #. odoo-javascript
@@ -27293,7 +27096,7 @@ msgstr "飛機師"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pin"
-msgstr ""
+msgstr "別針"
 
 #. module: mail
 #. odoo-javascript
@@ -27339,7 +27142,7 @@ msgstr "乒乓球"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pinocchio"
-msgstr ""
+msgstr "皮諾曹"
 
 #. module: mail
 #. odoo-javascript
@@ -27369,14 +27172,14 @@ msgstr "手槍"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pita"
-msgstr ""
+msgstr "皮塔餅"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pita roll"
-msgstr ""
+msgstr "皮塔卷"
 
 #. module: mail
 #. odoo-javascript
@@ -27391,7 +27194,7 @@ msgstr "薄餅/披薩"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "piña colada"
-msgstr ""
+msgstr "鳳梨椰子雞尾酒"
 
 #. module: mail
 #. odoo-javascript
@@ -27424,7 +27227,7 @@ msgstr "植物"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "plaster"
-msgstr ""
+msgstr "膏藥/藥水膠布"
 
 #. module: mail
 #. odoo-javascript
@@ -27462,7 +27265,7 @@ msgstr "播放或暫停按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "playful"
-msgstr ""
+msgstr "俏皮/愛玩耍"
 
 #. module: mail
 #. odoo-javascript
@@ -27513,7 +27316,7 @@ msgstr "喉管工/渠工"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "plunder"
-msgstr ""
+msgstr "掠奪"
 
 #. module: mail
 #. odoo-javascript
@@ -27528,7 +27331,7 @@ msgstr "加"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "plush"
-msgstr ""
+msgstr "絨毛玩具/布偶/毛公仔"
 
 #. module: mail
 #. odoo-javascript
@@ -27546,14 +27349,14 @@ msgstr "點"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pokie"
-msgstr ""
+msgstr "老虎機/角子機"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pokies"
-msgstr ""
+msgstr "老虎機/角子機"
 
 #. module: mail
 #. odoo-javascript
@@ -27601,14 +27404,14 @@ msgstr "警察/警員"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "polish"
-msgstr ""
+msgstr "指甲油"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "polo"
-msgstr ""
+msgstr "馬球"
 
 #. module: mail
 #. odoo-javascript
@@ -27623,7 +27426,7 @@ msgstr "糞便/屎"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "poodle"
-msgstr ""
+msgstr "貴婦狗"
 
 #. module: mail
 #. odoo-javascript
@@ -27631,21 +27434,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pool 8 ball"
-msgstr ""
+msgstr "8 號桌球"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "poop"
-msgstr ""
+msgstr "大便"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "poorly"
-msgstr ""
+msgstr "糟糕地"
 
 #. module: mail
 #. odoo-javascript
@@ -27653,7 +27456,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "popcorn"
-msgstr ""
+msgstr "爆米花/爆谷"
 
 #. module: mail
 #. odoo-javascript
@@ -27661,14 +27464,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "popper"
-msgstr ""
+msgstr "禮花/彩紙炮"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "popping"
-msgstr ""
+msgstr "彈出"
 
 #. module: mail
 #. odoo-javascript
@@ -27689,21 +27492,21 @@ msgstr "豬排/豬扒"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "porous"
-msgstr ""
+msgstr "多孔的"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "porpoise"
-msgstr ""
+msgstr "鈍吻海豚"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "porter"
-msgstr ""
+msgstr "行李員/門衛"
 
 #. module: mail
 #. odoo-javascript
@@ -27809,14 +27612,14 @@ msgstr "馬鈴薯"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "potsticker"
-msgstr ""
+msgstr "鍋貼"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pouch"
-msgstr ""
+msgstr "袋"
 
 #. module: mail
 #. odoo-javascript
@@ -27825,14 +27628,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "poultry"
-msgstr ""
+msgstr "家禽"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "poultry leg"
-msgstr ""
+msgstr "家禽腿/髀"
 
 #. module: mail
 #. odoo-javascript
@@ -27846,7 +27649,7 @@ msgstr "英鎊"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pound banknote"
-msgstr "英鎊鈔票/紙幣"
+msgstr "英鎊鈔票"
 
 #. module: mail
 #. odoo-javascript
@@ -27901,7 +27704,7 @@ msgstr "祈禱文"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "prayer beads"
-msgstr ""
+msgstr "念珠/祈禱珠"
 
 #. module: mail
 #. odoo-javascript
@@ -27937,7 +27740,7 @@ msgstr "美麗"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pretzel"
-msgstr ""
+msgstr "鹽味脆餅"
 
 #. module: mail
 #. odoo-javascript
@@ -28079,7 +27882,7 @@ msgstr "公開演講"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "puck"
-msgstr ""
+msgstr "曲棍球/冰球/冰上曲棍球"
 
 #. module: mail
 #. odoo-javascript
@@ -28100,7 +27903,7 @@ msgstr "嘔吐"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pulsating"
-msgstr ""
+msgstr "脈動/心跳"
 
 #. module: mail
 #. odoo-javascript
@@ -28144,14 +27947,14 @@ msgstr "標點符號"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "punk rock"
-msgstr ""
+msgstr "朋克搖滾"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "puppy eyes"
-msgstr ""
+msgstr "楚楚可憐的眼神"
 
 #. module: mail
 #. odoo-javascript
@@ -28200,7 +28003,7 @@ msgstr "錢包"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "pushpin"
-msgstr ""
+msgstr "圖釘"
 
 #. module: mail
 #. odoo-javascript
@@ -28282,7 +28085,7 @@ msgstr "兔臉"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "raccoon"
-msgstr ""
+msgstr "浣熊"
 
 #. module: mail
 #. odoo-javascript
@@ -28801,7 +28604,7 @@ msgstr "重複播放單曲按鈕"
 msgid ""
 "reply to missing document (%(model)s,%(thread)s), fall back on document "
 "creation"
-msgstr "處理遺失的檔案 (%(model)s,%(thread)s)，退回到檔案建立"
+msgstr "回覆的目標文件缺漏（%(model)s，%(thread)s），正嘗試使用後備的文件建立功能。"
 
 #. module: mail
 #. odoo-python
@@ -28810,7 +28613,7 @@ msgstr "處理遺失的檔案 (%(model)s,%(thread)s)，退回到檔案建立"
 msgid ""
 "reply to model %s that does not accept document update, fall back on "
 "document creation"
-msgstr "回覆模型 %s 不接受文件更新文件建立"
+msgstr "回覆的目標模型 %s 不接受文件更新，正嘗試使用後備的文件建立功能。"
 
 #. module: mail
 #. odoo-javascript
@@ -29130,7 +28933,7 @@ msgstr "杆"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "rodent"
-msgstr ""
+msgstr "齧齒動物"
 
 #. module: mail
 #. odoo-javascript
@@ -29235,21 +29038,21 @@ msgstr "玫瑰"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "rosette"
-msgstr ""
+msgstr "玫瑰形飾物"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "rotfl"
-msgstr ""
+msgstr "笑得在地上翻滾"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "round drawing-pin"
-msgstr ""
+msgstr "圓形繪圖釘"
 
 #. module: mail
 #. odoo-javascript
@@ -29257,7 +29060,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "round pushpin"
-msgstr ""
+msgstr "圓形圖釘"
 
 #. module: mail
 #. odoo-javascript
@@ -29273,7 +29076,7 @@ msgstr "划艇"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "rucksack"
-msgstr ""
+msgstr "背包"
 
 #. module: mail
 #. odoo-javascript
@@ -29316,14 +29119,14 @@ msgstr "十五人欖球"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "ruler"
-msgstr ""
+msgstr "間尺"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "runners"
-msgstr ""
+msgstr "跑步的人"
 
 #. module: mail
 #. odoo-javascript
@@ -29334,14 +29137,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "running"
-msgstr ""
+msgstr "奔跑"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "running shirt"
-msgstr ""
+msgstr "跑步衫"
 
 #. module: mail
 #. odoo-javascript
@@ -29356,7 +29159,7 @@ msgstr "跑步鞋"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "rushed"
-msgstr ""
+msgstr "倉促/急忙"
 
 #. module: mail
 #. odoo-javascript
@@ -29365,7 +29168,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sad"
-msgstr ""
+msgstr "悲傷"
 
 #. module: mail
 #. odoo-javascript
@@ -29373,14 +29176,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sad but relieved face"
-msgstr ""
+msgstr "悲傷但釋然表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "safety"
-msgstr ""
+msgstr "安全"
 
 #. module: mail
 #. odoo-javascript
@@ -29395,7 +29198,7 @@ msgstr "安全別針"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "safety vest"
-msgstr ""
+msgstr "安全背心"
 
 #. module: mail
 #. odoo-javascript
@@ -29403,7 +29206,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sailboat"
-msgstr ""
+msgstr "帆船"
 
 #. module: mail
 #. odoo-javascript
@@ -29432,7 +29235,7 @@ msgstr "沙拉/沙律"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "salon"
-msgstr ""
+msgstr "沙龍/髮廊"
 
 #. module: mail
 #. odoo-javascript
@@ -29447,7 +29250,7 @@ msgstr "鹽"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "samosa"
-msgstr ""
+msgstr "薩莫薩三角炸餃"
 
 #. module: mail
 #. odoo-javascript
@@ -29486,14 +29289,14 @@ msgstr "聖誕老人"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sari"
-msgstr ""
+msgstr "紗麗服"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sash"
-msgstr ""
+msgstr "綬帶"
 
 #. module: mail
 #. odoo-javascript
@@ -29502,14 +29305,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sassy"
-msgstr ""
+msgstr "高傲無禮"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "satchel"
-msgstr ""
+msgstr "斜背包"
 
 #. module: mail
 #. odoo-javascript
@@ -29546,7 +29349,7 @@ msgstr "土星"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "saturnine"
-msgstr ""
+msgstr "土星"
 
 #. module: mail
 #. odoo-javascript
@@ -29563,7 +29366,7 @@ msgstr "桑拿"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sauropod"
-msgstr ""
+msgstr "蜥腳類恐龍"
 
 #. module: mail
 #. odoo-javascript
@@ -29645,7 +29448,7 @@ msgstr "圍巾/頸巾"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "schmear"
-msgstr ""
+msgstr "塗抹"
 
 #. module: mail
 #. odoo-javascript
@@ -29812,7 +29615,7 @@ msgstr "看見"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "see-no-evil monkey"
-msgstr ""
+msgstr "猴子捂眼"
 
 #. module: mail
 #. odoo-javascript
@@ -29820,7 +29623,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "seedling"
-msgstr ""
+msgstr "幼苗"
 
 #. module: mail
 #. odoo-javascript
@@ -29878,7 +29681,7 @@ msgstr "設定"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "set square"
-msgstr ""
+msgstr "三角尺"
 
 #. module: mail
 #. odoo-javascript
@@ -29908,14 +29711,14 @@ msgstr "七點半"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sewing"
-msgstr ""
+msgstr "縫紉"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shaka"
-msgstr ""
+msgstr "沙卡手勢"
 
 #. module: mail
 #. odoo-javascript
@@ -29929,7 +29732,7 @@ msgstr "搖晃"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shaker"
-msgstr ""
+msgstr "搖瓶"
 
 #. module: mail
 #. odoo-javascript
@@ -29959,7 +29762,7 @@ msgstr "洗頭水/洗髮水"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shamrock"
-msgstr ""
+msgstr "三葉草/幸運草"
 
 #. module: mail
 #. odoo-javascript
@@ -30002,7 +29805,7 @@ msgstr "刨冰"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sheaf"
-msgstr ""
+msgstr "束/綑/紮"
 
 #. module: mail
 #. odoo-javascript
@@ -30010,14 +29813,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sheaf of rice"
-msgstr ""
+msgstr "一束稻米"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shedding"
-msgstr ""
+msgstr "脫落"
 
 #. module: mail
 #. odoo-javascript
@@ -30064,21 +29867,21 @@ msgstr "發光"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shinkansen"
-msgstr ""
+msgstr "新幹線"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shinto"
-msgstr ""
+msgstr "神社/鳥居"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shinto shrine"
-msgstr ""
+msgstr "神社/鳥居"
 
 #. module: mail
 #. odoo-javascript
@@ -30168,7 +29971,7 @@ msgstr "購物車"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shortcake"
-msgstr ""
+msgstr "蛋糕"
 
 #. module: mail
 #. odoo-javascript
@@ -30184,7 +29987,7 @@ msgstr "短褲"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shot"
-msgstr ""
+msgstr "射擊"
 
 #. module: mail
 #. odoo-javascript
@@ -30208,7 +30011,7 @@ msgstr "蝦"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shrine"
-msgstr ""
+msgstr "神社"
 
 #. module: mail
 #. odoo-javascript
@@ -30232,7 +30035,7 @@ msgstr "隨機播放按鈕"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "shul"
-msgstr ""
+msgstr "猶太教堂"
 
 #. module: mail
 #. odoo-javascript
@@ -30286,7 +30089,7 @@ msgstr "sign"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sign of the horns"
-msgstr ""
+msgstr "搖滾手勢"
 
 #. module: mail
 #. odoo-javascript
@@ -30312,7 +30115,7 @@ msgstr "安靜"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "silhouette"
-msgstr ""
+msgstr "剪影"
 
 #. module: mail
 #. odoo-javascript
@@ -30394,7 +30197,7 @@ msgstr "懷疑"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "skewer"
-msgstr ""
+msgstr "串燒/串物"
 
 #. module: mail
 #. odoo-javascript
@@ -30457,7 +30260,7 @@ msgstr "骷髏圖/骷髏交叉骨"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "skullcap"
-msgstr ""
+msgstr "瓜皮帽"
 
 #. module: mail
 #. odoo-javascript
@@ -30465,7 +30268,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "skunk"
-msgstr ""
+msgstr "臭鼬"
 
 #. module: mail
 #. odoo-javascript
@@ -30480,14 +30283,14 @@ msgstr "跳傘"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sled"
-msgstr ""
+msgstr "雪橇"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sledge"
-msgstr ""
+msgstr "雪橇"
 
 #. module: mail
 #. odoo-javascript
@@ -30528,14 +30331,14 @@ msgstr "疲倦表情"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sleigh"
-msgstr ""
+msgstr "雪橇"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sleuth"
-msgstr ""
+msgstr "偵探"
 
 #. module: mail
 #. odoo-javascript
@@ -30573,7 +30376,7 @@ msgstr "微微淺笑表情"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "slip-on"
-msgstr ""
+msgstr "無帶便鞋"
 
 #. module: mail
 #. odoo-javascript
@@ -30587,7 +30390,7 @@ msgstr "拖鞋"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "slot"
-msgstr ""
+msgstr "角子機"
 
 #. module: mail
 #. odoo-javascript
@@ -30617,7 +30420,7 @@ msgstr "慢"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sly"
-msgstr ""
+msgstr "狡猾"
 
 #. module: mail
 #. odoo-javascript
@@ -30677,7 +30480,7 @@ msgstr "橙色小鑽石"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smile"
-msgstr ""
+msgstr "微笑"
 
 #. module: mail
 #. odoo-javascript
@@ -30699,14 +30502,14 @@ msgstr "微笑、心形眼睛的貓臉"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smiling cat with heart-eyes"
-msgstr ""
+msgstr "微笑、心形眼睛的貓"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smiling face"
-msgstr ""
+msgstr "微笑表情"
 
 #. module: mail
 #. odoo-javascript
@@ -30714,7 +30517,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smiling face with halo"
-msgstr ""
+msgstr "微笑、帶光環的臉"
 
 #. module: mail
 #. odoo-javascript
@@ -30729,7 +30532,7 @@ msgstr "微笑、心形眼睛的臉"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smiling face with heart-eyes"
-msgstr ""
+msgstr "微笑、心形眼睛的臉"
 
 #. module: mail
 #. odoo-javascript
@@ -30737,7 +30540,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smiling face with hearts"
-msgstr ""
+msgstr "微笑、帶心形的臉"
 
 #. module: mail
 #. odoo-javascript
@@ -30745,7 +30548,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smiling face with horns"
-msgstr ""
+msgstr "微笑、長角的臉"
 
 #. module: mail
 #. odoo-javascript
@@ -30769,14 +30572,14 @@ msgstr "微笑的臉和微笑的眼睛"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smiling face with sunglasses"
-msgstr ""
+msgstr "微笑、戴太陽眼鏡的臉"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smirk"
-msgstr ""
+msgstr "奸笑"
 
 #. module: mail
 #. odoo-javascript
@@ -30784,7 +30587,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smirking face"
-msgstr ""
+msgstr "奸笑表情"
 
 #. module: mail
 #. odoo-javascript
@@ -30792,7 +30595,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "smoking"
-msgstr ""
+msgstr "吸煙"
 
 #. module: mail
 #. odoo-javascript
@@ -30800,7 +30603,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snail"
-msgstr ""
+msgstr "蝸牛"
 
 #. module: mail
 #. odoo-javascript
@@ -30809,21 +30612,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snake"
-msgstr ""
+msgstr "蛇"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sneaker"
-msgstr ""
+msgstr "運動鞋/球鞋"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sneeze"
-msgstr ""
+msgstr "打噴嚏"
 
 #. module: mail
 #. odoo-javascript
@@ -30831,21 +30634,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sneezing face"
-msgstr ""
+msgstr "打噴嚏的臉"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snorkeling"
-msgstr ""
+msgstr "浮潛"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snorkelling"
-msgstr ""
+msgstr "浮潛"
 
 #. module: mail
 #. odoo-javascript
@@ -30859,7 +30662,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snow"
-msgstr ""
+msgstr "雪"
 
 #. module: mail
 #. odoo-javascript
@@ -30867,14 +30670,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snow-capped mountain"
-msgstr ""
+msgstr "雪山"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snowboard"
-msgstr ""
+msgstr "滑雪板"
 
 #. module: mail
 #. odoo-javascript
@@ -30882,7 +30685,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snowboarder"
-msgstr ""
+msgstr "玩滑雪板的人"
 
 #. module: mail
 #. odoo-javascript
@@ -30890,7 +30693,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snowflake"
-msgstr ""
+msgstr "雪花"
 
 #. module: mail
 #. odoo-javascript
@@ -30899,7 +30702,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snowman"
-msgstr ""
+msgstr "雪人"
 
 #. module: mail
 #. odoo-javascript
@@ -30907,7 +30710,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "snowman without snow"
-msgstr ""
+msgstr "雪人"
 
 #. module: mail
 #. odoo-javascript
@@ -30915,42 +30718,42 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "soap"
-msgstr ""
+msgstr "肥皂"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "soapdish"
-msgstr ""
+msgstr "肥皂碟"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "soar"
-msgstr ""
+msgstr "飛翔"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sob"
-msgstr ""
+msgstr "啜泣"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "soccer"
-msgstr ""
+msgstr "足球"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "soccer ball"
-msgstr ""
+msgstr "足球"
 
 #. module: mail
 #. odoo-javascript
@@ -30958,28 +30761,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "socks"
-msgstr ""
+msgstr "襪"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "soda"
-msgstr ""
+msgstr "汽水/梳打水"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sofa"
-msgstr ""
+msgstr "沙發/梳化"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sofa and lamp"
-msgstr ""
+msgstr "沙發及燈"
 
 #. module: mail
 #. odoo-javascript
@@ -30987,21 +30790,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "soft"
-msgstr ""
+msgstr "柔軟"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "soft ice cream"
-msgstr ""
+msgstr "軟雪糕"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "soft serve"
-msgstr ""
+msgstr "霜淇淋/軟雪糕"
 
 #. module: mail
 #. odoo-javascript
@@ -31009,7 +30812,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "softball"
-msgstr ""
+msgstr "壘球"
 
 #. module: mail
 #. odoo-javascript
@@ -31017,7 +30820,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "software"
-msgstr ""
+msgstr "軟件"
 
 #. module: mail
 #. odoo-python
@@ -31032,7 +30835,7 @@ msgstr "一些具體地址"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sorcerer"
-msgstr ""
+msgstr "巫師/魔法師"
 
 #. module: mail
 #. odoo-javascript
@@ -31040,7 +30843,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sorceress"
-msgstr ""
+msgstr "女巫/女魔法師/女術士"
 
 #. module: mail
 #. odoo-javascript
@@ -31077,7 +30880,7 @@ msgstr "西南方"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sow"
-msgstr ""
+msgstr "母豬/播種"
 
 #. module: mail
 #. odoo-javascript
@@ -31087,7 +30890,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "space"
-msgstr ""
+msgstr "太空/空間"
 
 #. module: mail
 #. odoo-javascript
@@ -31095,7 +30898,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spade suit"
-msgstr ""
+msgstr "葵扇/黑桃花色"
 
 #. module: mail
 #. odoo-javascript
@@ -31103,7 +30906,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spaghetti"
-msgstr ""
+msgstr "意粉/意大利麵"
 
 #. module: mail
 #. odoo-javascript
@@ -31111,7 +30914,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spanner"
-msgstr ""
+msgstr "士巴拿/扳手"
 
 #. module: mail
 #. odoo-javascript
@@ -31123,7 +30926,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sparkle"
-msgstr ""
+msgstr "閃爍"
 
 #. module: mail
 #. odoo-javascript
@@ -31131,7 +30934,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sparkler"
-msgstr ""
+msgstr "煙花"
 
 #. module: mail
 #. odoo-javascript
@@ -31139,7 +30942,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sparkles"
-msgstr ""
+msgstr "閃爍"
 
 #. module: mail
 #. odoo-javascript
@@ -31147,7 +30950,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sparkling heart"
-msgstr ""
+msgstr "心形閃閃發光"
 
 #. module: mail
 #. odoo-javascript
@@ -31155,7 +30958,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speak"
-msgstr ""
+msgstr "說話"
 
 #. module: mail
 #. odoo-javascript
@@ -31163,7 +30966,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speak-no-evil monkey"
-msgstr ""
+msgstr "猴子捂嘴"
 
 #. module: mail
 #. odoo-javascript
@@ -31171,7 +30974,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speaker"
-msgstr ""
+msgstr "喇叭"
 
 #. module: mail
 #. odoo-javascript
@@ -31179,7 +30982,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speaker high volume"
-msgstr ""
+msgstr "喇叭高音量"
 
 #. module: mail
 #. odoo-javascript
@@ -31187,7 +30990,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speaker low volume"
-msgstr ""
+msgstr "喇叭低音量"
 
 #. module: mail
 #. odoo-javascript
@@ -31195,21 +30998,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speaker medium volume"
-msgstr ""
+msgstr "喇叭中音量"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speaking"
-msgstr ""
+msgstr "說話"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speaking head"
-msgstr ""
+msgstr "說話的人"
 
 #. module: mail
 #. odoo-javascript
@@ -31217,14 +31020,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speech"
-msgstr ""
+msgstr "演講"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speech balloon"
-msgstr ""
+msgstr "說話氣球"
 
 #. module: mail
 #. odoo-javascript
@@ -31232,7 +31035,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speed"
-msgstr ""
+msgstr "速度"
 
 #. module: mail
 #. odoo-javascript
@@ -31240,14 +31043,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speedboat"
-msgstr ""
+msgstr "快艇"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "speedos"
-msgstr ""
+msgstr "游泳短褲"
 
 #. module: mail
 #. odoo-javascript
@@ -31256,14 +31059,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spider"
-msgstr ""
+msgstr "蜘蛛"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spider web"
-msgstr ""
+msgstr "蜘蛛網"
 
 #. module: mail
 #. odoo-javascript
@@ -31279,14 +31082,14 @@ msgstr "有刺"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spiral"
-msgstr ""
+msgstr "螺旋形"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spiral calendar"
-msgstr ""
+msgstr "揭頁式日曆/螺旋裝訂日曆"
 
 #. module: mail
 #. odoo-javascript
@@ -31294,28 +31097,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spiral notepad"
-msgstr ""
+msgstr "螺旋裝訂筆記簿"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spiral shell"
-msgstr ""
+msgstr "螺旋形貝殼/捲貝"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "splashing"
-msgstr ""
+msgstr "潑灑"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "splayed"
-msgstr ""
+msgstr "張開"
 
 #. module: mail
 #. odoo-javascript
@@ -31329,7 +31132,7 @@ msgstr "拆分"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spock"
-msgstr ""
+msgstr "史巴克/冼樸/史波克"
 
 #. module: mail
 #. odoo-javascript
@@ -31337,14 +31140,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sponge"
-msgstr ""
+msgstr "海綿"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spool"
-msgstr ""
+msgstr "線軸"
 
 #. module: mail
 #. odoo-javascript
@@ -31352,14 +31155,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spoon"
-msgstr ""
+msgstr "匙/羹"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sport utility"
-msgstr ""
+msgstr "運動型多用途"
 
 #. module: mail
 #. odoo-javascript
@@ -31367,14 +31170,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sport utility vehicle"
-msgstr ""
+msgstr "運動型多用途車"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sports"
-msgstr ""
+msgstr "體育/運動"
 
 #. module: mail
 #. odoo-javascript
@@ -31382,42 +31185,42 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sports medal"
-msgstr ""
+msgstr "運動獎牌"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spots"
-msgstr ""
+msgstr "斑點"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spouting"
-msgstr ""
+msgstr "噴出"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spouting whale"
-msgstr ""
+msgstr "鯨魚噴水/噴氣"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "springs"
-msgstr ""
+msgstr "溫泉"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "spy"
-msgstr ""
+msgstr "間諜"
 
 #. module: mail
 #. odoo-javascript
@@ -31450,7 +31253,7 @@ msgstr "正方形"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "squid"
-msgstr ""
+msgstr "魷魚"
 
 #. module: mail
 #. odoo-javascript
@@ -31458,14 +31261,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "squinting face with tongue"
-msgstr ""
+msgstr "瞇眼伸舌頭表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "squirrel"
-msgstr ""
+msgstr "松鼠"
 
 #. module: mail
 #. odoo-javascript
@@ -31473,28 +31276,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stadium"
-msgstr ""
+msgstr "體育館/運動場"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "staff"
-msgstr ""
+msgstr "員工/權杖/樂譜"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stag"
-msgstr ""
+msgstr "雄鹿"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stand"
-msgstr ""
+msgstr "站立"
 
 #. module: mail
 #. odoo-javascript
@@ -31503,7 +31306,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "standing"
-msgstr ""
+msgstr "站立"
 
 #. module: mail
 #. odoo-javascript
@@ -31522,7 +31325,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "star"
-msgstr ""
+msgstr "星星"
 
 #. module: mail
 #. odoo-javascript
@@ -31530,7 +31333,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "star and crescent"
-msgstr ""
+msgstr "星星和新月"
 
 #. module: mail
 #. odoo-javascript
@@ -31538,7 +31341,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "star of David"
-msgstr ""
+msgstr "大衛之星"
 
 #. module: mail
 #. odoo-javascript
@@ -31546,7 +31349,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "star-struck"
-msgstr ""
+msgstr "星星眼"
 
 #. module: mail
 #. odoo-javascript
@@ -31555,7 +31358,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "station"
-msgstr ""
+msgstr "車站"
 
 #. module: mail
 #. odoo-javascript
@@ -31563,21 +31366,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "statue"
-msgstr ""
+msgstr "雕像"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "steak"
-msgstr ""
+msgstr "牛排/牛扒"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "steam"
-msgstr ""
+msgstr "蒸汽"
 
 #. module: mail
 #. odoo-javascript
@@ -31586,7 +31389,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "steam room"
-msgstr ""
+msgstr "蒸汽室"
 
 #. module: mail
 #. odoo-javascript
@@ -31595,7 +31398,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "steaming"
-msgstr ""
+msgstr "冒蒸汽"
 
 #. module: mail
 #. odoo-javascript
@@ -31609,7 +31412,7 @@ msgstr "蒸碗"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sterling"
-msgstr ""
+msgstr "英鎊"
 
 #. module: mail
 #. odoo-javascript
@@ -31617,14 +31420,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stethoscope"
-msgstr ""
+msgstr "聽診器/醫護聽筒"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stew"
-msgstr ""
+msgstr "燜燉菜式"
 
 #. module: mail
 #. odoo-javascript
@@ -31635,42 +31438,42 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stick"
-msgstr ""
+msgstr "黏貼/杆/棍"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sticking plaster"
-msgstr ""
+msgstr "自貼藥水膠布"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stink"
-msgstr ""
+msgstr "惡臭"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stocking"
-msgstr ""
+msgstr "長襪"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stomp"
-msgstr ""
+msgstr "跺腳/𨂽腳"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stone"
-msgstr ""
+msgstr "石頭"
 
 #. module: mail
 #. odoo-javascript
@@ -31679,7 +31482,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stop"
-msgstr ""
+msgstr "停止"
 
 #. module: mail
 #. odoo-javascript
@@ -31687,14 +31490,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stop button"
-msgstr ""
+msgstr "停止按鈕"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stop sign"
-msgstr ""
+msgstr "停車標誌"
 
 #. module: mail
 #. odoo-javascript
@@ -31702,7 +31505,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stopwatch"
-msgstr ""
+msgstr "秒錶"
 
 #. module: mail
 #. odoo-javascript
@@ -31710,14 +31513,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "store"
-msgstr ""
+msgstr "商店"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "straight edge"
-msgstr ""
+msgstr "直尺"
 
 #. module: mail
 #. odoo-javascript
@@ -31725,14 +31528,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "straight ruler"
-msgstr ""
+msgstr "直尺"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "straw"
-msgstr ""
+msgstr "飲管"
 
 #. module: mail
 #. odoo-javascript
@@ -31740,14 +31543,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "strawberry"
-msgstr ""
+msgstr "草莓/士多啤梨"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "streamer"
-msgstr ""
+msgstr "飄帶/鯉魚旗"
 
 #. module: mail
 #. odoo-javascript
@@ -31756,28 +31559,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "streetcar"
-msgstr ""
+msgstr "有軌電車"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "string"
-msgstr ""
+msgstr "線/弦"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stringed"
-msgstr ""
+msgstr "弦樂器"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stripe"
-msgstr ""
+msgstr "斑紋"
 
 #. module: mail
 #. odoo-javascript
@@ -31785,21 +31588,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "student"
-msgstr ""
+msgstr "學生"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "studio"
-msgstr ""
+msgstr "工作室"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "studio microphone"
-msgstr ""
+msgstr "錄音室麥克風/咪高峰"
 
 #. module: mail
 #. odoo-javascript
@@ -31807,21 +31610,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stuffed"
-msgstr ""
+msgstr "填充/填滿"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stuffed flatbread"
-msgstr ""
+msgstr "有餡薄捲餅"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stuffy"
-msgstr ""
+msgstr "悶熱"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_ice_server__server_type__stun
@@ -31833,28 +31636,28 @@ msgstr "stun:"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "stunned"
-msgstr ""
+msgstr "震驚"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "subtraction"
-msgstr ""
+msgstr "減"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "subway"
-msgstr ""
+msgstr "地鐵"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "suit"
-msgstr ""
+msgstr "西裝/花色"
 
 #. module: mail
 #. odoo-javascript
@@ -31873,7 +31676,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sun"
-msgstr ""
+msgstr "太陽"
 
 #. module: mail
 #. odoo-javascript
@@ -31881,7 +31684,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sun behind cloud"
-msgstr ""
+msgstr "太陽在雲層後"
 
 #. module: mail
 #. odoo-javascript
@@ -31889,7 +31692,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sun behind large cloud"
-msgstr ""
+msgstr "太陽在大片雲層後"
 
 #. module: mail
 #. odoo-javascript
@@ -31897,7 +31700,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sun behind rain cloud"
-msgstr ""
+msgstr "太陽在雨雲後"
 
 #. module: mail
 #. odoo-javascript
@@ -31905,7 +31708,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sun behind small cloud"
-msgstr ""
+msgstr "太陽在小雲後"
 
 #. module: mail
 #. odoo-javascript
@@ -31913,7 +31716,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sun with face"
-msgstr ""
+msgstr "太陽臉"
 
 #. module: mail
 #. odoo-javascript
@@ -31921,7 +31724,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sunflower"
-msgstr ""
+msgstr "向日葵/太陽花"
 
 #. module: mail
 #. odoo-javascript
@@ -31930,21 +31733,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sunglasses"
-msgstr ""
+msgstr "太陽眼鏡"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sunnies"
-msgstr ""
+msgstr "太陽眼鏡"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sunny"
-msgstr ""
+msgstr "晴天/陽光普照"
 
 #. module: mail
 #. odoo-javascript
@@ -31953,7 +31756,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sunrise"
-msgstr ""
+msgstr "日出"
 
 #. module: mail
 #. odoo-javascript
@@ -31961,14 +31764,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sunrise over mountains"
-msgstr ""
+msgstr "山間日出"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sunscreen"
-msgstr ""
+msgstr "防曬霜"
 
 #. module: mail
 #. odoo-javascript
@@ -31977,7 +31780,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sunset"
-msgstr ""
+msgstr "日落"
 
 #. module: mail
 #. odoo-javascript
@@ -31985,7 +31788,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "superhero"
-msgstr ""
+msgstr "超級英雄"
 
 #. module: mail
 #. odoo-javascript
@@ -31997,7 +31800,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "superpower"
-msgstr ""
+msgstr "超能力"
 
 #. module: mail
 #. odoo-javascript
@@ -32005,7 +31808,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "supervillain"
-msgstr ""
+msgstr "超級惡棍"
 
 #. module: mail
 #. odoo-javascript
@@ -32031,14 +31834,14 @@ msgstr "衝浪/滑浪"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "surprised"
-msgstr ""
+msgstr "驚訝"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "surrender"
-msgstr ""
+msgstr "投降"
 
 #. module: mail
 #. odoo-javascript
@@ -32046,21 +31849,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sushi"
-msgstr ""
+msgstr "壽司"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "suspension"
-msgstr ""
+msgstr "懸吊"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "suspension railway"
-msgstr ""
+msgstr "懸吊式鐵路"
 
 #. module: mail
 #. odoo-javascript
@@ -32068,14 +31871,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swan"
-msgstr ""
+msgstr "天鵝"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swearing"
-msgstr ""
+msgstr "說髒話/講粗口"
 
 #. module: mail
 #. odoo-javascript
@@ -32086,7 +31889,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sweat"
-msgstr ""
+msgstr "汗"
 
 #. module: mail
 #. odoo-javascript
@@ -32094,14 +31897,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sweat droplets"
-msgstr ""
+msgstr "汗滴"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sweating"
-msgstr ""
+msgstr "流汗"
 
 #. module: mail
 #. odoo-javascript
@@ -32130,21 +31933,21 @@ msgstr "清掃"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sweet"
-msgstr ""
+msgstr "甜"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sweetcorn"
-msgstr ""
+msgstr "甜玉米/甜粟"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sweets"
-msgstr ""
+msgstr "糖果"
 
 #. module: mail
 #. odoo-javascript
@@ -32154,21 +31957,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swim"
-msgstr ""
+msgstr "游泳"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swim shorts"
-msgstr ""
+msgstr "游泳短褲"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swim suit"
-msgstr ""
+msgstr "泳衣"
 
 #. module: mail
 #. odoo-javascript
@@ -32177,56 +31980,56 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swimmer"
-msgstr ""
+msgstr "游泳的人"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swimming"
-msgstr ""
+msgstr "游泳"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swimming costume"
-msgstr ""
+msgstr "泳裝"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swimsuit"
-msgstr ""
+msgstr "泳衣"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swirl"
-msgstr ""
+msgstr "旋轉"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sword"
-msgstr ""
+msgstr "劍"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "swords"
-msgstr ""
+msgstr "劍"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "sympathy"
-msgstr ""
+msgstr "同情"
 
 #. module: mail
 #. odoo-javascript
@@ -32234,7 +32037,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "synagogue"
-msgstr ""
+msgstr "猶太教堂"
 
 #. module: mail
 #. odoo-javascript
@@ -32242,7 +32045,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "syringe"
-msgstr ""
+msgstr "注射器/針筒"
 
 #. module: mail
 #. odoo-javascript
@@ -32250,14 +32053,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "t-shirt"
-msgstr ""
+msgstr "T恤"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "ta-da"
-msgstr ""
+msgstr "嗒噠/哇/嘩"
 
 #. module: mail
 #. odoo-javascript
@@ -32271,14 +32074,14 @@ msgstr "乒乓球"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tableware"
-msgstr ""
+msgstr "餐具"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tabs"
-msgstr ""
+msgstr "標籤/分頁"
 
 #. module: mail
 #. odoo-javascript
@@ -32286,49 +32089,49 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "taco"
-msgstr ""
+msgstr "塔可餅/墨西哥夾餅"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tada"
-msgstr ""
+msgstr "嗒噠/哇/嘩"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "taekwondo"
-msgstr ""
+msgstr "跆拳道"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "take-off"
-msgstr ""
+msgstr "起飛"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "takeaway box"
-msgstr ""
+msgstr "外賣餐盒"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "takeaway container"
-msgstr ""
+msgstr "外賣容器"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "takeout"
-msgstr ""
+msgstr "外賣食品"
 
 #. module: mail
 #. odoo-javascript
@@ -32336,21 +32139,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "takeout box"
-msgstr ""
+msgstr "外賣餐盒"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "talisman"
-msgstr ""
+msgstr "護符"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "talk"
-msgstr ""
+msgstr "談話"
 
 #. module: mail
 #. odoo-javascript
@@ -32358,7 +32161,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tanabata tree"
-msgstr ""
+msgstr "七夕樹"
 
 #. module: mail
 #. odoo-javascript
@@ -32366,35 +32169,35 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tangerine"
-msgstr ""
+msgstr "柑橘/橙"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tao"
-msgstr ""
+msgstr "道教"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "taoist"
-msgstr ""
+msgstr "道士/道教信徒"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tape"
-msgstr ""
+msgstr "錄影帶/錄音帶/磁帶"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "target"
-msgstr ""
+msgstr "目標"
 
 #. module: mail
 #. odoo-python
@@ -32408,7 +32211,7 @@ msgstr "目標模型未指定"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "taste"
-msgstr ""
+msgstr "品嚐"
 
 #. module: mail
 #. odoo-javascript
@@ -32417,7 +32220,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "taxi"
-msgstr ""
+msgstr "計程車/出租車/的士"
 
 #. module: mail
 #. odoo-javascript
@@ -32425,7 +32228,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tea"
-msgstr ""
+msgstr "茶"
 
 #. module: mail
 #. odoo-javascript
@@ -32433,14 +32236,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "teacher"
-msgstr ""
+msgstr "教師"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "teacup"
-msgstr ""
+msgstr "茶杯"
 
 #. module: mail
 #. odoo-javascript
@@ -32448,7 +32251,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "teacup without handle"
-msgstr ""
+msgstr "無柄茶杯"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.mail_bounce_catchall
@@ -32464,7 +32267,7 @@ msgstr "團隊."
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tear"
-msgstr ""
+msgstr "眼淚"
 
 #. module: mail
 #. odoo-javascript
@@ -32472,7 +32275,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tear-off calendar"
-msgstr ""
+msgstr "撕頁日曆"
 
 #. module: mail
 #. odoo-javascript
@@ -32480,7 +32283,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "technologist"
-msgstr ""
+msgstr "科技人員"
 
 #. module: mail
 #. odoo-javascript
@@ -32488,21 +32291,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "teddy bear"
-msgstr ""
+msgstr "玩具熊"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tee"
-msgstr ""
+msgstr "發球"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tee-shirt"
-msgstr ""
+msgstr "T恤"
 
 #. module: mail
 #. odoo-javascript
@@ -32514,14 +32317,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "telephone"
-msgstr ""
+msgstr "電話"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "telephone receiver"
-msgstr ""
+msgstr "電話聽筒"
 
 #. module: mail
 #. odoo-javascript
@@ -32529,7 +32332,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "telescope"
-msgstr ""
+msgstr "望遠鏡"
 
 #. module: mail
 #. odoo-javascript
@@ -32544,7 +32347,7 @@ msgstr "電視機"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "teller"
-msgstr ""
+msgstr "出納員/櫃員"
 
 #. module: mail
 #. odoo-javascript
@@ -32552,14 +32355,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "temple"
-msgstr ""
+msgstr "廟宇"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tempura"
-msgstr ""
+msgstr "天婦羅"
 
 #. module: mail
 #. odoo-javascript
@@ -32606,14 +32409,14 @@ msgstr "十瓶制/十樽保齡球"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tent"
-msgstr ""
+msgstr "帳幕/帳篷/露營"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "terrapin"
-msgstr ""
+msgstr "水龜"
 
 #. module: mail
 #. odoo-javascript
@@ -32621,7 +32424,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "test tube"
-msgstr ""
+msgstr "試管"
 
 #. module: mail
 #. odoo-javascript
@@ -32635,21 +32438,21 @@ msgstr "謝謝"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "theater"
-msgstr ""
+msgstr "劇院"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "theatre"
-msgstr ""
+msgstr "劇院"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "theme park"
-msgstr ""
+msgstr "主題樂園/主題公園"
 
 #. module: mail
 #. odoo-javascript
@@ -32657,7 +32460,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "therapist"
-msgstr ""
+msgstr "治療師"
 
 #. module: mail
 #. odoo-javascript
@@ -32666,28 +32469,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thermometer"
-msgstr ""
+msgstr "溫度計"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thinking"
-msgstr ""
+msgstr "思考"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thinking face"
-msgstr ""
+msgstr "思考表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "third"
-msgstr ""
+msgstr "第三"
 
 #. module: mail
 #. odoo-javascript
@@ -32719,14 +32522,14 @@ msgstr "此單據"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thought"
-msgstr ""
+msgstr "想法"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thought balloon"
-msgstr ""
+msgstr "思想氣球"
 
 #. module: mail
 #. odoo-javascript
@@ -32734,7 +32537,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thread"
-msgstr ""
+msgstr "線"
 
 #. module: mail
 #. odoo-javascript
@@ -32765,7 +32568,7 @@ msgstr "三點半"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thumb"
-msgstr ""
+msgstr "拇指"
 
 #. module: mail
 #. odoo-javascript
@@ -32773,7 +32576,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thumbs down"
-msgstr ""
+msgstr "倒豎拇指"
 
 #. module: mail
 #. odoo-javascript
@@ -32781,21 +32584,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thumbs up"
-msgstr ""
+msgstr "豎拇指/讚"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "thunder"
-msgstr ""
+msgstr "雷"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tichel"
-msgstr ""
+msgstr "婦女髮套/頭巾"
 
 #. module: mail
 #. odoo-javascript
@@ -32804,14 +32607,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tick"
-msgstr ""
+msgstr "剔/勾號"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tick box with tick"
-msgstr ""
+msgstr "打剔/打勾方格"
 
 #. module: mail
 #. odoo-javascript
@@ -32820,14 +32623,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "ticket"
-msgstr ""
+msgstr "門票/票券"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tie"
-msgstr ""
+msgstr "領帶/領呔"
 
 #. module: mail
 #. odoo-javascript
@@ -32836,14 +32639,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tiger"
-msgstr ""
+msgstr "老虎"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tiger face"
-msgstr ""
+msgstr "老虎臉"
 
 #. module: mail
 #. odoo-javascript
@@ -32852,7 +32655,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "timer"
-msgstr ""
+msgstr "計時器"
 
 #. module: mail
 #. odoo-javascript
@@ -32890,21 +32693,21 @@ msgstr "微醉"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tired"
-msgstr ""
+msgstr "疲累/疲倦"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tired face"
-msgstr ""
+msgstr "疲累/疲倦表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "toadstool"
-msgstr ""
+msgstr "傘菌/菇菌"
 
 #. module: mail
 #. odoo-javascript
@@ -32925,21 +32728,21 @@ msgstr "切換一鍵通話"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "toilet"
-msgstr ""
+msgstr "廁所"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "toilet paper"
-msgstr ""
+msgstr "衛生紙/廁紙"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "toilet roll"
-msgstr ""
+msgstr "一卷衛生紙/廁紙"
 
 #. module: mail
 #. odoo-javascript
@@ -32947,7 +32750,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tomato"
-msgstr ""
+msgstr "番茄"
 
 #. module: mail
 #. odoo-javascript
@@ -32958,7 +32761,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tongue"
-msgstr ""
+msgstr "舌"
 
 #. module: mail
 #. odoo-javascript
@@ -32986,7 +32789,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tool"
-msgstr ""
+msgstr "工具"
 
 #. module: mail
 #. odoo-javascript
@@ -32994,7 +32797,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "toolbox"
-msgstr ""
+msgstr "工具箱"
 
 #. module: mail
 #. odoo-javascript
@@ -33002,7 +32805,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tooth"
-msgstr ""
+msgstr "牙齒"
 
 #. module: mail
 #. odoo-javascript
@@ -33017,21 +32820,21 @@ msgstr "頂"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "top hat"
-msgstr ""
+msgstr "高頂禮帽"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tophat"
-msgstr ""
+msgstr "高頂禮帽"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "torch"
-msgstr ""
+msgstr "電筒"
 
 #. module: mail
 #. odoo-javascript
@@ -33039,35 +32842,35 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tornado"
-msgstr ""
+msgstr "龍捲風"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tortoise"
-msgstr ""
+msgstr "龜"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "totally"
-msgstr ""
+msgstr "完全/總共"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tote"
-msgstr ""
+msgstr "大型手提袋"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tower"
-msgstr ""
+msgstr "塔"
 
 #. module: mail
 #. odoo-javascript
@@ -33076,7 +32879,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "toy"
-msgstr ""
+msgstr "玩具"
 
 #. module: mail
 #. odoo-javascript
@@ -33084,7 +32887,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trackball"
-msgstr ""
+msgstr "軌跡球"
 
 #. module: mail
 #. odoo-javascript
@@ -33092,7 +32895,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tractor"
-msgstr ""
+msgstr "拖拉機/牽引機"
 
 #. module: mail
 #. odoo-javascript
@@ -33116,7 +32919,7 @@ msgstr "商標"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tradesperson"
-msgstr ""
+msgstr "技工/工匠/商人"
 
 #. module: mail
 #. odoo-javascript
@@ -33126,7 +32929,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "traffic"
-msgstr ""
+msgstr "交通"
 
 #. module: mail
 #. odoo-javascript
@@ -33140,14 +32943,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "train"
-msgstr ""
+msgstr "火車/列車"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trainer"
-msgstr ""
+msgstr "教練/導師/訓練員"
 
 #. module: mail
 #. odoo-javascript
@@ -33158,14 +32961,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tram"
-msgstr ""
+msgstr "有軌電車"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tram car"
-msgstr ""
+msgstr "有軌電車"
 
 #. module: mail
 #. odoo-javascript
@@ -33173,28 +32976,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tramcar"
-msgstr ""
+msgstr "有軌電車"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tramway"
-msgstr ""
+msgstr "電車軌"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trash"
-msgstr ""
+msgstr "垃圾"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "travel"
-msgstr ""
+msgstr "旅行"
 
 #. module: mail
 #. odoo-javascript
@@ -33202,14 +33005,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tray"
-msgstr ""
+msgstr "托盤"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "treasure"
-msgstr ""
+msgstr "寶藏"
 
 #. module: mail
 #. odoo-javascript
@@ -33228,7 +33031,7 @@ msgstr "樹"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trend"
-msgstr ""
+msgstr "趨勢"
 
 #. module: mail
 #. odoo-javascript
@@ -33263,21 +33066,21 @@ msgstr "三角尺"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trident"
-msgstr ""
+msgstr "三叉戟"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trident emblem"
-msgstr ""
+msgstr "三叉戟徽章"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "triumph"
-msgstr ""
+msgstr "勝利"
 
 #. module: mail
 #. odoo-javascript
@@ -33287,7 +33090,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trolley"
-msgstr ""
+msgstr "手推車"
 
 #. module: mail
 #. odoo-javascript
@@ -33296,7 +33099,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trolley bus"
-msgstr ""
+msgstr "無軌電車"
 
 #. module: mail
 #. odoo-javascript
@@ -33307,7 +33110,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trolleybus"
-msgstr ""
+msgstr "無軌電車"
 
 #. module: mail
 #. odoo-javascript
@@ -33315,7 +33118,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trophy"
-msgstr ""
+msgstr "獎盃"
 
 #. module: mail
 #. odoo-javascript
@@ -33325,28 +33128,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tropical"
-msgstr ""
+msgstr "熱帶"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tropical drink"
-msgstr ""
+msgstr "熱帶飲品"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tropical fish"
-msgstr ""
+msgstr "熱帶魚"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trousers"
-msgstr ""
+msgstr "褲"
 
 #. module: mail
 #. odoo-javascript
@@ -33364,42 +33167,42 @@ msgstr "貨車"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "trumpet"
-msgstr ""
+msgstr "小號/喇叭"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tshirt"
-msgstr ""
+msgstr "T恤"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tub"
-msgstr ""
+msgstr "浴盆/浴缸/浴桶"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tuk tuk"
-msgstr ""
+msgstr "篤篤車/嘟嘟車"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tuk-tuk"
-msgstr ""
+msgstr "篤篤車/嘟嘟車"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tuktuk"
-msgstr ""
+msgstr "篤篤車/嘟嘟車"
 
 #. module: mail
 #. odoo-javascript
@@ -33407,21 +33210,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tulip"
-msgstr ""
+msgstr "鬱金香"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tumbler"
-msgstr ""
+msgstr "無腳酒杯/滾筒乾衣機"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tumbler glass"
-msgstr ""
+msgstr "無腳玻璃酒杯"
 
 #. module: mail
 #. odoo-javascript
@@ -33438,7 +33241,7 @@ msgstr "頭巾"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "turkey"
-msgstr ""
+msgstr "火雞"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_ice_server__server_type__turn
@@ -33451,21 +33254,21 @@ msgstr "turn:"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "turtle"
-msgstr ""
+msgstr "龜"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tuxedo"
-msgstr ""
+msgstr "燕尾服"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "tv"
-msgstr ""
+msgstr "電視"
 
 #. module: mail
 #. odoo-javascript
@@ -33496,21 +33299,21 @@ msgstr "十二點半"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "twins"
-msgstr ""
+msgstr "雙胞胎"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "twisted"
-msgstr ""
+msgstr "扭曲"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "twister"
-msgstr ""
+msgstr "旋風"
 
 #. module: mail
 #. odoo-javascript
@@ -33526,7 +33329,7 @@ msgstr "二/兩"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "two hearts"
-msgstr ""
+msgstr "兩顆心"
 
 #. module: mail
 #. odoo-javascript
@@ -33555,14 +33358,14 @@ msgstr "兩女牽手"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "two-hump camel"
-msgstr ""
+msgstr "雙峰駱駝"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "two-piece"
-msgstr ""
+msgstr "兩件式"
 
 #. module: mail
 #. odoo-javascript
@@ -33577,7 +33380,7 @@ msgstr "兩點半"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "typhoon"
-msgstr ""
+msgstr "颱風"
 
 #. module: mail
 #. odoo-javascript
@@ -33585,21 +33388,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "ufo"
-msgstr ""
+msgstr "不明飛行物體/UFO"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "ugly duckling"
-msgstr ""
+msgstr "醜小鴨"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "ultimate"
-msgstr ""
+msgstr "終極"
 
 #. module: mail
 #. odoo-javascript
@@ -33611,7 +33414,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "umbrella"
-msgstr ""
+msgstr "雨傘"
 
 #. module: mail
 #. odoo-javascript
@@ -33619,7 +33422,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "umbrella on ground"
-msgstr ""
+msgstr "放地上的雨傘"
 
 #. module: mail
 #. odoo-javascript
@@ -33627,42 +33430,42 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "umbrella with rain drops"
-msgstr ""
+msgstr "有雨滴的雨傘"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unamused"
-msgstr ""
+msgstr "不高興/不屑"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unamused face"
-msgstr ""
+msgstr "不高興/不屑表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unbound"
-msgstr ""
+msgstr "無邊際/無界限/無限制"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unbounded"
-msgstr ""
+msgstr "無邊際/無界限/無限制"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unclear"
-msgstr ""
+msgstr "不清晰/朦朧"
 
 #. module: mail
 #. odoo-javascript
@@ -33674,21 +33477,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "undead"
-msgstr ""
+msgstr "喪屍/行屍/活死人"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "underage"
-msgstr ""
+msgstr "未成年/未足規定年齡"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "underarm"
-msgstr ""
+msgstr "腋窩/腋下"
 
 #. module: mail
 #. odoo-javascript
@@ -33696,28 +33499,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "underwear"
-msgstr ""
+msgstr "內衣"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "uneven eyes"
-msgstr ""
+msgstr "眼睛不對稱/大小眼"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unexpressive"
-msgstr ""
+msgstr "無表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unhappy"
-msgstr ""
+msgstr "不開心"
 
 #. module: mail
 #. odoo-javascript
@@ -33725,21 +33528,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unicorn"
-msgstr ""
+msgstr "獨角獸"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "uniform"
-msgstr ""
+msgstr "制服"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "universal"
-msgstr ""
+msgstr "環球/全世界"
 
 #. module: mail
 #. odoo-python
@@ -33760,7 +33563,7 @@ msgstr "未知目標模型 %s"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unlock"
-msgstr ""
+msgstr "解鎖"
 
 #. module: mail
 #. odoo-javascript
@@ -33768,7 +33571,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unlocked"
-msgstr ""
+msgstr "已解鎖"
 
 #. module: mail
 #. odoo-javascript
@@ -33777,7 +33580,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "unspecified gender"
-msgstr ""
+msgstr "未指明性別"
 
 #. module: mail
 #. odoo-javascript
@@ -33788,7 +33591,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "up"
-msgstr ""
+msgstr "向上"
 
 #. module: mail
 #. odoo-javascript
@@ -33796,7 +33599,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "up arrow"
-msgstr ""
+msgstr "向上箭嘴"
 
 #. module: mail
 #. odoo-javascript
@@ -33804,7 +33607,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "up-down arrow"
-msgstr ""
+msgstr "上下箭嘴"
 
 #. module: mail
 #. odoo-javascript
@@ -33812,7 +33615,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "up-left arrow"
-msgstr ""
+msgstr "向左上箭嘴"
 
 #. module: mail
 #. odoo-javascript
@@ -33820,28 +33623,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "up-right arrow"
-msgstr ""
+msgstr "向右上箭嘴"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "uppercase"
-msgstr ""
+msgstr "大寫/大草/正楷字母"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "upside down"
-msgstr ""
+msgstr "上下倒轉/上下顛倒"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "upside-down"
-msgstr ""
+msgstr "上下倒轉/上下顛倒"
 
 #. module: mail
 #. odoo-javascript
@@ -33849,21 +33652,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "upside-down face"
-msgstr ""
+msgstr "上下倒轉/上下顛倒表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "upward"
-msgstr ""
+msgstr "向上"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "upward button"
-msgstr ""
+msgstr "向上按鈕"
 
 #. module: mail
 #. odoo-javascript
@@ -33871,14 +33674,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "upwards button"
-msgstr ""
+msgstr "向上按鈕"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "urn"
-msgstr ""
+msgstr "骨灰罈/甕/罌/缸"
 
 #. module: mail
 #. odoo-javascript
@@ -33892,14 +33695,14 @@ msgstr "使用者"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vague"
-msgstr ""
+msgstr "模糊/含糊"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "valentine"
-msgstr ""
+msgstr "情人"
 
 #. module: mail
 #. odoo-javascript
@@ -33908,7 +33711,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vampire"
-msgstr ""
+msgstr "吸血鬼"
 
 #. module: mail
 #. odoo-javascript
@@ -33920,7 +33723,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vegetable"
-msgstr ""
+msgstr "蔬菜"
 
 #. module: mail
 #. odoo-javascript
@@ -33932,28 +33735,28 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vehicle"
-msgstr ""
+msgstr "車"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "veil"
-msgstr ""
+msgstr "面紗"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "versus"
-msgstr ""
+msgstr "對賽"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vertical"
-msgstr ""
+msgstr "垂直"
 
 #. module: mail
 #. odoo-javascript
@@ -33961,77 +33764,77 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vertical traffic light"
-msgstr ""
+msgstr "直向交通燈/紅綠燈"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vertical traffic lights"
-msgstr ""
+msgstr "直向交通燈/紅綠燈"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vest"
-msgstr ""
+msgstr "背心"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vhs"
-msgstr ""
+msgstr "錄影帶/磁帶"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vibrate"
-msgstr ""
+msgstr "震動"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vibration"
-msgstr ""
+msgstr "震動"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vibration mode"
-msgstr ""
+msgstr "震動模式"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vice"
-msgstr ""
+msgstr "虎鉗/虎頭鉗"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "victory"
-msgstr ""
+msgstr "勝利"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "victory hand"
-msgstr ""
+msgstr "勝利手勢"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vicuña"
-msgstr ""
+msgstr "小羊駝"
 
 #. module: mail
 #. odoo-javascript
@@ -34044,14 +33847,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "video"
-msgstr ""
+msgstr "影片/視頻"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "video camera"
-msgstr ""
+msgstr "攝錄機/攝影機"
 
 #. module: mail
 #. odoo-javascript
@@ -34060,7 +33863,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "video game"
-msgstr ""
+msgstr "電子遊戲"
 
 #. module: mail
 #. odoo-javascript
@@ -34068,7 +33871,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "videocassette"
-msgstr ""
+msgstr "錄影帶"
 
 #. module: mail
 #. odoo-javascript
@@ -34077,7 +33880,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "villain"
-msgstr ""
+msgstr "惡棍/反派"
 
 #. module: mail
 #. odoo-javascript
@@ -34085,14 +33888,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "violin"
-msgstr ""
+msgstr "小提琴"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "virgin"
-msgstr ""
+msgstr "處女"
 
 #. module: mail
 #. odoo-javascript
@@ -34100,7 +33903,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "virus"
-msgstr ""
+msgstr "病毒"
 
 #. module: mail
 #. odoo-javascript
@@ -34108,7 +33911,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "volcano"
-msgstr ""
+msgstr "火山"
 
 #. module: mail
 #. odoo-javascript
@@ -34116,21 +33919,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "volleyball"
-msgstr ""
+msgstr "排球"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "voltage"
-msgstr ""
+msgstr "電壓/伏特"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "volume"
-msgstr ""
+msgstr "音量"
 
 #. module: mail
 #. odoo-javascript
@@ -34138,14 +33941,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vomit"
-msgstr ""
+msgstr "嘔吐"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vulcan"
-msgstr ""
+msgstr "瓦肯"
 
 #. module: mail
 #. odoo-javascript
@@ -34153,7 +33956,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "vulcan salute"
-msgstr ""
+msgstr "瓦肯舉手禮/你好"
 
 #. module: mail
 #. odoo-javascript
@@ -34161,14 +33964,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waffle"
-msgstr ""
+msgstr "窩夫/格仔餅"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waffle with butter"
-msgstr ""
+msgstr "窩夫/格仔餅連牛油"
 
 #. module: mail
 #. odoo-javascript
@@ -34177,14 +33980,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "walk"
-msgstr ""
+msgstr "步行/走路"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "walking"
-msgstr ""
+msgstr "步行/走路"
 
 #. module: mail
 #. odoo-javascript
@@ -34193,14 +33996,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "walking dead"
-msgstr ""
+msgstr "行屍走肉"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wall"
-msgstr ""
+msgstr "牆壁"
 
 #. module: mail
 #. odoo-javascript
@@ -34208,21 +34011,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waning"
-msgstr ""
+msgstr "虧月"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waning crescent moon"
-msgstr ""
+msgstr "殘月"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waning gibbous moon"
-msgstr ""
+msgstr "虧凸月"
 
 #. module: mail
 #. odoo-javascript
@@ -34239,7 +34042,7 @@ msgstr "警告"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "washroom"
-msgstr ""
+msgstr "洗手間/廁所"
 
 #. module: mail
 #. odoo-javascript
@@ -34247,7 +34050,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wastebasket"
-msgstr ""
+msgstr "垃圾桶/廢紙簍"
 
 #. module: mail
 #. odoo-javascript
@@ -34255,7 +34058,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "watch"
-msgstr ""
+msgstr "手錶"
 
 #. module: mail
 #. odoo-javascript
@@ -34270,21 +34073,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "water"
-msgstr ""
+msgstr "水"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "water bearer"
-msgstr ""
+msgstr "水瓶座/寶瓶座"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "water buffalo"
-msgstr ""
+msgstr "水牛"
 
 #. module: mail
 #. odoo-javascript
@@ -34292,7 +34095,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "water closet"
-msgstr ""
+msgstr "廁所"
 
 #. module: mail
 #. odoo-javascript
@@ -34300,7 +34103,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "water pistol"
-msgstr ""
+msgstr "玩具噴水槍"
 
 #. module: mail
 #. odoo-javascript
@@ -34308,14 +34111,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "water polo"
-msgstr ""
+msgstr "水球"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "water wave"
-msgstr ""
+msgstr "波浪"
 
 #. module: mail
 #. odoo-javascript
@@ -34323,7 +34126,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "watermelon"
-msgstr ""
+msgstr "西瓜"
 
 #. module: mail
 #. odoo-javascript
@@ -34331,7 +34134,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wave"
-msgstr ""
+msgstr "浪"
 
 #. module: mail
 #. odoo-javascript
@@ -34340,35 +34143,35 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waving"
-msgstr ""
+msgstr "揮手"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waving hand"
-msgstr ""
+msgstr "揮手"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wavy"
-msgstr ""
+msgstr "波浪形/波浪紋"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wavy dash"
-msgstr ""
+msgstr "波浪線"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wavy mouth"
-msgstr ""
+msgstr "波浪形嘴巴"
 
 #. module: mail
 #. odoo-javascript
@@ -34376,21 +34179,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waxing"
-msgstr ""
+msgstr "盈月"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waxing crescent moon"
-msgstr ""
+msgstr "眉月"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "waxing gibbous moon"
-msgstr ""
+msgstr "盈凸月"
 
 #. module: mail
 #. odoo-javascript
@@ -34399,7 +34202,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wc"
-msgstr ""
+msgstr "廁所/衛生間/WC"
 
 #. module: mail
 #. odoo-javascript
@@ -34410,7 +34213,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "weapon"
-msgstr ""
+msgstr "武器"
 
 #. module: mail
 #. odoo-javascript
@@ -34418,21 +34221,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "weary"
-msgstr ""
+msgstr "厭倦"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "weary cat"
-msgstr ""
+msgstr "厭倦的貓"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "weary face"
-msgstr ""
+msgstr "厭倦表情"
 
 #. module: mail
 #. odoo-javascript
@@ -34440,14 +34243,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "weather"
-msgstr ""
+msgstr "天氣"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "web"
-msgstr ""
+msgstr "網絡"
 
 #. module: mail
 #: model:ir.model,name:mail.model_ir_websocket
@@ -34461,7 +34264,7 @@ msgstr "WebSocket 訊息處理"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wedding"
-msgstr ""
+msgstr "婚禮"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__delay_unit__weeks
@@ -34473,7 +34276,7 @@ msgstr "星期"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "weight"
-msgstr ""
+msgstr "重量"
 
 #. module: mail
 #. odoo-javascript
@@ -34487,7 +34290,7 @@ msgstr "舉重運動員"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "welding"
-msgstr ""
+msgstr "焊接"
 
 #. module: mail
 #. odoo-javascript
@@ -34503,7 +34306,7 @@ msgstr "西"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "whale"
-msgstr ""
+msgstr "鯨魚"
 
 #. module: mail
 #. odoo-javascript
@@ -34519,7 +34322,7 @@ msgstr "車輪"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wheel of dharma"
-msgstr ""
+msgstr "佛教法輪"
 
 #. module: mail
 #. odoo-javascript
@@ -34544,21 +34347,21 @@ msgstr "輪椅標誌"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "whew"
-msgstr ""
+msgstr "唷/喲/唉"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "whirlwind"
-msgstr ""
+msgstr "旋風/氣旋"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "whisky"
-msgstr ""
+msgstr "威士忌"
 
 #. module: mail
 #. odoo-javascript
@@ -34691,42 +34494,42 @@ msgstr "白領"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "whoops"
-msgstr ""
+msgstr "哎唷/哎喲/哎吔"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wicked"
-msgstr ""
+msgstr "壞蛋/奸人/邪惡"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wild cabbage"
-msgstr ""
+msgstr "野生甘藍"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wildcard"
-msgstr ""
+msgstr "萬用字元/任意鍵"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wilted"
-msgstr ""
+msgstr "枯萎/凋謝"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wilted flower"
-msgstr ""
+msgstr "枯萎/凋謝的花"
 
 #. module: mail
 #. odoo-javascript
@@ -34735,42 +34538,42 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wind"
-msgstr ""
+msgstr "風"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wind chime"
-msgstr ""
+msgstr "風鈴"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wind face"
-msgstr ""
+msgstr "吹風的臉"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wine"
-msgstr ""
+msgstr "葡萄酒"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wine glass"
-msgstr ""
+msgstr "葡萄酒杯"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wings"
-msgstr ""
+msgstr "翅膀/翼"
 
 #. module: mail
 #. odoo-javascript
@@ -34778,7 +34581,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wink"
-msgstr ""
+msgstr "眨眼"
 
 #. module: mail
 #. odoo-javascript
@@ -34786,7 +34589,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "winking face"
-msgstr ""
+msgstr "眨眼表情"
 
 #. module: mail
 #. odoo-javascript
@@ -34794,21 +34597,21 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "winking face with tongue"
-msgstr ""
+msgstr "眨眼、吐舌表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wireless"
-msgstr ""
+msgstr "無線"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wise"
-msgstr ""
+msgstr "智慧"
 
 #. module: mail
 #. odoo-javascript
@@ -34817,14 +34620,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "witch"
-msgstr ""
+msgstr "女巫/巫婆"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "withershins"
-msgstr ""
+msgstr "逆時針方向轉動"
 
 #. module: mail
 #. odoo-javascript
@@ -34832,7 +34635,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wizard"
-msgstr ""
+msgstr "男巫/精靈"
 
 #. module: mail
 #. odoo-javascript
@@ -34840,7 +34643,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wolf"
-msgstr ""
+msgstr "狼"
 
 #. module: mail
 #. odoo-javascript
@@ -35441,7 +35244,7 @@ msgstr "女子持盲人杖"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "woman with headscarf"
-msgstr ""
+msgstr "戴頭巾女子"
 
 #. module: mail
 #. odoo-javascript
@@ -35501,7 +35304,7 @@ msgstr "女子：白髮"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "woman’s boot"
-msgstr ""
+msgstr "女裝靴"
 
 #. module: mail
 #. odoo-javascript
@@ -35510,7 +35313,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "woman’s clothes"
-msgstr ""
+msgstr "女裝"
 
 #. module: mail
 #. odoo-javascript
@@ -35518,7 +35321,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "woman’s hat"
-msgstr ""
+msgstr "女裝帽"
 
 #. module: mail
 #. odoo-javascript
@@ -35526,7 +35329,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "woman’s sandal"
-msgstr ""
+msgstr "女裝涼鞋"
 
 #. module: mail
 #. odoo-javascript
@@ -35535,7 +35338,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "women"
-msgstr ""
+msgstr "女人"
 
 #. module: mail
 #. odoo-javascript
@@ -35566,7 +35369,7 @@ msgstr "女人摔跤"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "women’s"
-msgstr ""
+msgstr "女洗手間"
 
 #. module: mail
 #. odoo-javascript
@@ -35574,42 +35377,42 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "women’s room"
-msgstr ""
+msgstr "女洗手間"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "women’s toilet"
-msgstr ""
+msgstr "女洗手間"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "won"
-msgstr ""
+msgstr "勝利/贏得"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "woo hoo"
-msgstr ""
+msgstr "嗚/哇/嘩"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wood"
-msgstr ""
+msgstr "木頭"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wool"
-msgstr ""
+msgstr "羊毛"
 
 #. module: mail
 #. odoo-javascript
@@ -35617,7 +35420,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "woozy face"
-msgstr ""
+msgstr "頭昏腦脹/糊塗表情"
 
 #. module: mail
 #. odoo-javascript
@@ -35628,7 +35431,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "worker"
-msgstr ""
+msgstr "工人"
 
 #. module: mail
 #. odoo-javascript
@@ -35639,7 +35442,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "world"
-msgstr ""
+msgstr "世界"
 
 #. module: mail
 #. odoo-javascript
@@ -35653,49 +35456,49 @@ msgstr "世界地圖"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "worm"
-msgstr ""
+msgstr "蠕蟲/蚯蚓"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "worried"
-msgstr ""
+msgstr "擔憂"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "worried face"
-msgstr ""
+msgstr "擔憂表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "worship"
-msgstr ""
+msgstr "崇拜/朝拜/敬拜/供奉"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wrap"
-msgstr ""
+msgstr "卷/捲"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wrapped"
-msgstr ""
+msgstr "包裝好的"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wrapped gift"
-msgstr ""
+msgstr "包裝好的禮物"
 
 #. module: mail
 #. odoo-javascript
@@ -35704,7 +35507,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wrench"
-msgstr ""
+msgstr "扳手"
 
 #. module: mail
 #. odoo-javascript
@@ -35713,14 +35516,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wrestle"
-msgstr ""
+msgstr "摔跤"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wrestler"
-msgstr ""
+msgstr "摔跤手"
 
 #. module: mail
 #. odoo-javascript
@@ -35735,28 +35538,28 @@ msgstr "寫入"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "writing hand"
-msgstr ""
+msgstr "寫字的手"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "wry"
-msgstr ""
+msgstr "不屑/面容扭曲/苦笑"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yacht"
-msgstr ""
+msgstr "遊艇"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yang"
-msgstr ""
+msgstr "陽"
 
 #. module: mail
 #. odoo-javascript
@@ -35764,14 +35567,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yarn"
-msgstr ""
+msgstr "冷線/紗線"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yawn"
-msgstr ""
+msgstr "打呵欠/打喊露/打哈欠"
 
 #. module: mail
 #. odoo-javascript
@@ -35779,14 +35582,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yawning face"
-msgstr ""
+msgstr "打呵欠/打喊露表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yay"
-msgstr ""
+msgstr "好棒"
 
 #. module: mail
 #. odoo-javascript
@@ -35825,28 +35628,28 @@ msgstr "黃色正方形"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yen"
-msgstr ""
+msgstr "日圓/日元"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yen banknote"
-msgstr ""
+msgstr "日圓/日元鈔票"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yin"
-msgstr ""
+msgstr "陰"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yin yang"
-msgstr ""
+msgstr "陰陽"
 
 #. module: mail
 #. odoo-javascript
@@ -35854,7 +35657,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yo-yo"
-msgstr ""
+msgstr "溜溜球/搖搖"
 
 #. module: mail
 #. odoo-javascript
@@ -35863,7 +35666,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yoga"
-msgstr ""
+msgstr "瑜伽"
 
 #. module: mail
 #. odoo-javascript
@@ -35874,7 +35677,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "young"
-msgstr ""
+msgstr "年輕"
 
 #. module: mail
 #. odoo-javascript
@@ -35889,14 +35692,14 @@ msgstr "年輕人"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yum"
-msgstr ""
+msgstr "好吃"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "yuèbǐng"
-msgstr ""
+msgstr "月餅"
 
 #. module: mail
 #. odoo-javascript
@@ -35904,14 +35707,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "zany face"
-msgstr ""
+msgstr "滑稽表情"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "zap"
-msgstr ""
+msgstr "電擊"
 
 #. module: mail
 #. odoo-javascript
@@ -35919,14 +35722,14 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "zebra"
-msgstr ""
+msgstr "斑馬"
 
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "zipper"
-msgstr ""
+msgstr "拉鏈"
 
 #. module: mail
 #. odoo-javascript
@@ -35934,7 +35737,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "zipper-mouth face"
-msgstr ""
+msgstr "閉嘴/住口/收聲"
 
 #. module: mail
 #. odoo-javascript
@@ -35966,7 +35769,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "zodiac"
-msgstr ""
+msgstr "星座"
 
 #. module: mail
 #. odoo-javascript
@@ -35974,7 +35777,7 @@ msgstr ""
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "zombie"
-msgstr ""
+msgstr "殭屍/喪屍"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.email_template_form
@@ -36084,7 +35887,7 @@ msgstr "已預留"
 #: code:addons/mail/static/src/models_data/emoji_data.js:0
 #, python-format
 msgid "“secret”"
-msgstr "“secret”"
+msgstr "秘密"
 
 #. module: mail
 #. odoo-javascript

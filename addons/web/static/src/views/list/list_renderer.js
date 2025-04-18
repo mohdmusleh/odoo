@@ -240,9 +240,6 @@ export class ListRenderer extends Component {
 
         if (!this.columnWidths || !this.columnWidths.length) {
             // no column widths to restore
-
-            table.style.tableLayout = "fixed";
-            const allowedWidth = table.parentNode.getBoundingClientRect().width;
             // Set table layout auto and remove inline style to make sure that css
             // rules apply (e.g. fixed width of record selector)
             table.style.tableLayout = "auto";
@@ -255,7 +252,7 @@ export class ListRenderer extends Component {
 
             // Squeeze the table by applying a max-width on largest columns to
             // ensure that it doesn't overflow
-            this.columnWidths = this.computeColumnWidthsFromContent(allowedWidth);
+            this.columnWidths = this.computeColumnWidthsFromContent();
             table.style.tableLayout = "fixed";
         }
         headers.forEach((th, index) => {
@@ -288,7 +285,7 @@ export class ListRenderer extends Component {
         });
     }
 
-    computeColumnWidthsFromContent(allowedWidth) {
+    computeColumnWidthsFromContent() {
         const table = this.tableRef.el;
 
         // Toggle a className used to remove style that could interfere with the ideal width
@@ -319,6 +316,7 @@ export class ListRenderer extends Component {
         const sortedThs = [...table.querySelectorAll("thead th:not(.o_list_button)")].sort(
             (a, b) => getWidth(b) - getWidth(a)
         );
+        const allowedWidth = table.parentNode.getBoundingClientRect().width;
 
         let totalWidth = getTotalWidth();
         for (let index = 1; totalWidth > allowedWidth; index++) {
@@ -539,6 +537,11 @@ export class ListRenderer extends Component {
                 continue;
             }
             const { rawAttrs, widget } = this.props.list.activeFields[fieldName];
+            const func =
+                (rawAttrs.sum && "sum") ||
+                (rawAttrs.avg && "avg") ||
+                (rawAttrs.max && "max") ||
+                (rawAttrs.min && "min");
             let currencyId;
             if (type === "monetary" || widget === "monetary") {
                 const currencyField =
@@ -549,7 +552,7 @@ export class ListRenderer extends Component {
                     currencyField in this.props.list.activeFields &&
                     values[0][currencyField] &&
                     values[0][currencyField][0];
-                if (currencyId) {
+                if (currencyId && func) {
                     const sameCurrency = values.every(
                         (value) => currencyId === value[currencyField][0]
                     );
@@ -562,11 +565,6 @@ export class ListRenderer extends Component {
                     }
                 }
             }
-            const func =
-                (rawAttrs.sum && "sum") ||
-                (rawAttrs.avg && "avg") ||
-                (rawAttrs.max && "max") ||
-                (rawAttrs.min && "min");
             if (func) {
                 let aggregateValue = 0;
                 if (func === "max") {
@@ -1257,7 +1255,7 @@ export class ListRenderer extends Component {
             case "tab": {
                 const index = list.records.indexOf(record);
                 const lastIndex = topReCreate ? 0 : list.records.length - 1;
-                if (index === lastIndex) {
+                if (index === lastIndex || index === list.records.length - 1) {
                     if (this.displayRowCreates) {
                         if (record.isNew && !record.isDirty) {
                             list.unselectRecord(true);
@@ -1619,7 +1617,7 @@ export class ListRenderer extends Component {
             return;
         }
         // Legacy DatePicker
-        if (target.closest(".daterangepicker")) {
+        if (target.closest(".daterangepicker") || ev.isFromDateRangePicker) {
             return;
         }
         // Legacy autocomplete

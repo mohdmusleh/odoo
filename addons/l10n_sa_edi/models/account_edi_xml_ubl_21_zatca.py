@@ -97,7 +97,7 @@ class AccountEdiXmlUBL21Zatca(models.AbstractModel):
     def _get_partner_contact_vals(self, partner):
         res = super()._get_partner_contact_vals(partner)
         if res.get('telephone'):
-            res['telephone'] = res['telephone'].replace(' ', '')
+            res['telephone'] = re.sub(r"[^+\d]", '', res['telephone'])
         return res
 
     def _get_partner_party_identification_vals_list(self, partner):
@@ -110,6 +110,15 @@ class AccountEdiXmlUBL21Zatca(models.AbstractModel):
                 else partner.vat
             ),
         }]
+
+    def _get_partner_party_legal_entity_vals_list(self, partner):
+        # EXTEND 'account.edi.xml.ubl_20'
+        partners_party_legal = super()._get_partner_party_legal_entity_vals_list(partner)
+        for partner_party_legal in partners_party_legal:
+            if partner_party_legal['commercial_partner'].country_code != 'SA':
+                partner_party_legal['company_id'] = False
+
+        return partners_party_legal
 
     def _l10n_sa_get_payment_means_code(self, invoice):
         """ Return payment means code to be used to set the value on the XML file """
@@ -138,9 +147,13 @@ class AccountEdiXmlUBL21Zatca(models.AbstractModel):
             Seller Vat Number (BT-31), Date (BT-2), Time (KSA-25), Invoice Number (BT-1)
         """
         vat = invoice.company_id.partner_id.commercial_partner_id.vat
-        invoice_number = re.sub("[^a-zA-Z0-9 -]", "-", invoice.name)
+        invoice_number = re.sub(r'[^a-zA-Z0-9 -]+', '-', invoice.name)
         invoice_date = fields.Datetime.context_timestamp(self.with_context(tz='Asia/Riyadh'), invoice.l10n_sa_confirmation_datetime)
-        return '%s_%s_%s.xml' % (vat, invoice_date.strftime('%Y%m%dT%H%M%S'), invoice_number)
+        file_name = f"{vat}_{invoice_date.strftime('%Y%m%dT%H%M%S')}_{invoice_number}"
+        file_format = self.env.context.get('l10n_sa_file_format', 'xml')
+        if file_format:
+            file_name = f'{file_name}.{file_format}'
+        return file_name
 
     def _l10n_sa_get_invoice_transaction_code(self, invoice):
         """
@@ -235,13 +248,8 @@ class AccountEdiXmlUBL21Zatca(models.AbstractModel):
         allowance_charge_vals = vals['vals']['allowance_charge_vals']
         allowance_total_amount = sum(a['amount'] for a in allowance_charge_vals if a['charge_indicator'] == 'false')
         if downpayment_vals:
-            # - BR-KSA-80: To calculate prepaid, we need to sum up the amounts of standard lines (neither a down-payments, nor a discount)
-            #   then we add the total amount of the down-payment.
-            # - BR-CO-16: To calculate payable amount, we substract the calculated prepaid amount from the total tax inclusive amount of the invoice
-            regular_line_vals = invoice._prepare_edi_tax_details(
-                filter_invl_to_apply=lambda line: (line.price_subtotal > 0 and not line._get_downpayment_lines())
-            )
-            prepaid_amount = abs(regular_line_vals['base_amount_currency'] + regular_line_vals['tax_amount_currency']) + downpayment_vals['total_amount']
+            # - BR-KSA-80: To calculate payable amount, we deduct prepaid amount from total tax inclusive amount
+            prepaid_amount = downpayment_vals['total_amount']
             payable_amount = tax_inclusive_amount - prepaid_amount
         return {
             'line_extension_amount': line_extension_amount - allowance_total_amount,
@@ -399,6 +407,11 @@ class AccountEdiXmlUBL21Zatca(models.AbstractModel):
             line_vals['price_vals']['price_amount'] = 0
             line_vals['tax_total_vals'][0]['tax_amount'] = 0
             line_vals['prepayment_vals'] = self._l10n_sa_get_line_prepayment_vals(line, taxes_vals)
+        else:
+            # - BR-KSA-80: only down-payment lines should have a tax subtotal breakdown, as that is
+            # used during computation of prepaid amount as ZATCA sums up tax amount/taxable amount of all lines
+            # irrespective of whether they are down-payment lines.
+            line_vals['tax_total_vals'][0].pop('tax_subtotal_vals', None)
         line_vals['tax_total_vals'][0]['total_amount_sa'] = total_amount_sa
         line_vals['invoiced_quantity'] = abs(line_vals['invoiced_quantity'])
         line_vals['line_extension_amount'] = extension_amount
@@ -431,8 +444,11 @@ class AccountEdiXmlUBL21Zatca(models.AbstractModel):
         def _exemption_reason(code, reason):
             return {
                 'tax_category_code': code,
-                'tax_exemption_reason_code': reason,
-                'tax_exemption_reason': exemption_codes[reason].split(reason)[1].lstrip(),
+                'tax_exemption_reason_code': reason or "VATEX-SA-OOS",
+                'tax_exemption_reason': (
+                    exemption_codes[reason].split(reason)[1].lstrip()
+                    if reason else "Not subject to VAT"
+                )
             }
 
         supplier = invoice.company_id.partner_id.commercial_partner_id
@@ -444,11 +460,7 @@ class AccountEdiXmlUBL21Zatca(models.AbstractModel):
                 elif tax.l10n_sa_exemption_reason_code in TAX_ZERO_RATE_CODES:
                     return _exemption_reason('Z', tax.l10n_sa_exemption_reason_code)
                 else:
-                    return {
-                        'tax_category_code': 'O',
-                        'tax_exemption_reason_code': 'Not subject to VAT',
-                        'tax_exemption_reason': 'Not subject to VAT',
-                    }
+                    return _exemption_reason('O', tax.l10n_sa_exemption_reason_code)
             else:
                 return {
                     'tax_category_code': 'S',

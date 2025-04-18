@@ -1,30 +1,12 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, api, models, SUPERUSER_ID
+from odoo import _, models, SUPERUSER_ID
 from odoo.exceptions import AccessError, MissingError, UserError
-from odoo.http import request
 from odoo.tools import consteq
 
 
 class IrAttachment(models.Model):
     _inherit = 'ir.attachment'
-
-    @api.model
-    def check(self, mode, values=None):
-        super().check(mode, values=values)
-        if mode == 'write' and not {'datas', 'db_datas', 'raw'} & (values or {}).keys():
-            return True
-        if mode not in ('unlink', 'write') or not self or self.env.is_admin():
-            return True
-        if self.create_uid == self.env.user:
-            return True
-        linked_messages = self.env['mail.message'].sudo().search([('attachment_ids', 'in', self.ids)])
-        if not linked_messages:
-            return True
-        authors = linked_messages.author_id
-        if len(authors) > 1 or authors != self.env.user.partner_id:
-            raise AccessError(_("You may not unlink or modify the content of attachments from other people's messages"))
 
     def _check_attachments_access(self, attachment_tokens):
         """This method relies on access rules/rights and therefore it should not be called from a sudo env."""
@@ -87,7 +69,6 @@ class IrAttachment(models.Model):
         self.unlink()
 
     def _attachment_format(self, legacy=False):
-        safari = request and request.httprequest.user_agent and request.httprequest.user_agent.browser == 'safari'
         res_list = []
         for attachment in self:
             res = {
@@ -95,7 +76,9 @@ class IrAttachment(models.Model):
                 'id': attachment.id,
                 'filename': attachment.name,
                 'name': attachment.name,
-                'mimetype': 'application/octet-stream' if safari and attachment.mimetype and 'video' in attachment.mimetype else attachment.mimetype,
+                'mimetype': attachment.mimetype,
+                'type': attachment.type,
+                'url': attachment.url,
             }
             if not legacy:
                 res['originThread'] = [('insert', {

@@ -3,10 +3,8 @@ import {
     closestBlock,
     closestElement,
     endPos,
-    fillEmpty,
     getListMode,
     isBlock,
-    getAdjacentNextSiblings,
     isVisibleEmpty,
     moveNodes,
     preserveCursor,
@@ -23,6 +21,7 @@ import {
     getTraversedNodes,
     ZERO_WIDTH_CHARS_REGEX,
     setSelection,
+    isVisible,
 } from './utils.js';
 
 const NOT_A_NUMBER = /[^\d]/g;
@@ -98,6 +97,10 @@ export function areSimilarElements(node, node2) {
  * @returns {String|null}
  */
 function deduceURLfromLabel(link) {
+    // Skip modifying the href for Bootstrap tabs.
+    if (link && link.getAttribute("role") === "tab") {
+        return;
+    }
     const label = link.innerText.trim().replace(ZERO_WIDTH_CHARS_REGEX, '');
     // Check first for e-mail.
     let match = label.match(EMAIL_REGEX);
@@ -225,9 +228,10 @@ class Sanitize {
                 ) &&
                 !isBlock(node.parentElement)
             ) {
+                const { anchorNode, focusNode, anchorOffset, focusOffset } = selection;
                 const restoreCursor = shouldPreserveCursor(node, this.root) && preserveCursor(this.root.ownerDocument);
-                const shouldAdaptAnchor = anchor === node && selection.anchorOffset > node.textContent.indexOf('\u200B');
-                const shouldAdaptFocus = selection.focusNode === node && selection.focusOffset > node.textContent.indexOf('\u200B');
+                const shouldAdaptAnchor = anchorNode === node && anchorOffset > node.textContent.indexOf('\u200B');
+                const shouldAdaptFocus = focusNode === node && focusOffset > node.textContent.indexOf('\u200B');
                 node.textContent = node.textContent.replace('\u200B', '');
                 node.parentElement.removeAttribute("data-oe-zws-empty-inline");
                 if (restoreCursor) {
@@ -235,8 +239,8 @@ class Sanitize {
                 }
                 if (shouldAdaptAnchor || shouldAdaptFocus) {
                     setSelection(
-                        selection.anchorNode, shouldAdaptAnchor ? selection.anchorOffset - 1 : selection.anchorOffset,
-                        selection.focusNode, shouldAdaptFocus ? selection.focusOffset - 1 : selection.focusOffset,
+                        anchorNode, shouldAdaptAnchor ? anchorOffset - 1 : anchorOffset,
+                        focusNode, shouldAdaptFocus ? focusOffset - 1 : focusOffset,
                     );
                 }
             }
@@ -248,34 +252,31 @@ class Sanitize {
                 !node.parentElement.classList.contains('nav-item')
             ) {
                 const previous = node.previousSibling;
-                const nextSiblings = getAdjacentNextSiblings(node);
-                const classes = node.classList;
+                const attributes = node.attributes;
                 const parent = node.parentElement;
                 const restoreCursor = shouldPreserveCursor(node, this.root) && preserveCursor(this.root.ownerDocument);
-                if (previous) {
-                    const newLi = document.createElement('li');
-                    newLi.classList.add('oe-nested');
-                    parent.after(newLi);
-                    newLi.append(node, ...nextSiblings);
-                    if (classes.length) {
-                        const spanEl = document.createElement('span');
-                        spanEl.setAttribute('class', classes);
-                        spanEl.append(...node.childNodes);
-                        node.replaceWith(spanEl);
-                    } else {
-                        unwrapContents(node);
+                if (attributes.length) {
+                    const spanEl = document.createElement('span');
+                    for (const attribute of attributes) {
+                        spanEl.setAttribute(attribute.name, attribute.value);
                     }
+                    if (spanEl.style.textAlign) {
+                        // This is a tradeoff. Ideally, the state of the html
+                        // after this function should be reachable by standard
+                        // edition means and a span with display block is not.
+                        // However, this is required in order to not break the
+                        // design of already existing snippets.
+                        spanEl.style.display = 'block';
+                    }
+                    spanEl.append(...node.childNodes);
+                    node.replaceWith(spanEl);
                 } else {
-                    if (classes.length) {
-                        const spanEl = document.createElement('span');
-                        spanEl.setAttribute('class', classes);
-                        spanEl.append(...node.childNodes);
-                        node.replaceWith(spanEl);
-                    } else {
-                        unwrapContents(node);
-                    }
+                    unwrapContents(node);
                 }
-                fillEmpty(parent);
+                if (previous && isVisible(previous) && !isBlock(previous) && previous.nodeName !== 'BR') {
+                    const br = document.createElement('br');
+                    previous.after(br);
+                }
                 if (restoreCursor) {
                     restoreCursor(new Map([[node, parent]]));
                 }
@@ -288,6 +289,23 @@ class Sanitize {
                 paragraph.replaceChildren(...node.childNodes);
                 node.replaceWith(paragraph);
                 node = paragraph;
+            }
+
+            // If node is UL or OL and its parent is UL or OL, nest it in an LI
+            // with class 'oe-nested'.
+            if (
+                ['UL', 'OL'].includes(node.nodeName) &&
+                ['UL', 'OL'].includes(node.parentNode.nodeName)
+            ) {
+                const restoreCursor = shouldPreserveCursor(node, this.root) && preserveCursor(this.root.ownerDocument);
+                const li = document.createElement('li');
+                node.parentNode.insertBefore(li, node);
+                li.appendChild(node);
+                li.classList.add('oe-nested');
+                node = li;
+                if (restoreCursor) {
+                    restoreCursor();
+                }
             }
 
             // Ensure a zero width space is present inside the FA element.

@@ -5,19 +5,20 @@
 # Translators:
 # Jinjiu Liu, 2022
 # Cécile Collart <cco@odoo.com>, 2022
-# Mustafa Rawi <mustafa@cubexco.com>, 2022
+# Mustafa Rawi <mustafa@mrawi.com>, 2022
 # Martin Trigaux, 2022
 # Niyas Raphy, 2023
-# Wil Odoo, 2024
+# Mohammad Abdulmoneim, 2024
 # Malaz Abuidris <msea@odoo.com>, 2024
+# Wil Odoo, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 13:31+0000\n"
+"POT-Creation-Date: 2025-02-10 08:26+0000\n"
 "PO-Revision-Date: 2022-09-22 05:55+0000\n"
-"Last-Translator: Malaz Abuidris <msea@odoo.com>, 2024\n"
+"Last-Translator: Wil Odoo, 2025\n"
 "Language-Team: Arabic (https://app.transifex.com/odoo/teams/41243/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3257,7 +3258,7 @@ msgstr "يعرض ترتيب التسلسل عند عرض المستودعات. "
 #: code:addons/stock/models/stock_rule.py:0
 #, python-format
 msgid "Global Visibility Days"
-msgstr "أيام الظهور العالمي "
+msgstr "أيام الظهور العامة "
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.search_product_lot_filter
@@ -4472,7 +4473,7 @@ msgstr "المواقع "
 #: code:addons/stock/models/stock_picking.py:0
 #, python-format
 msgid "Locations to update"
-msgstr ""
+msgstr "المواقع التي سيتم تحديثها"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
@@ -4489,6 +4490,11 @@ msgstr "اللوجستيات"
 #: model:ir.model.fields.selection,name:stock.selection__barcode_rule__type__lot
 msgid "Lot"
 msgstr "المجموعة "
+
+#. module: stock
+#: model:ir.model,name:stock.model_report_stock_label_lot_template_view
+msgid "Lot Label Report"
+msgstr "تقرير عنوان المجموعة "
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__picking_label_type__label_type__lots
@@ -9792,6 +9798,14 @@ msgstr "لا يمكنك تغيير نوع منتج قد تم استخدامه ب
 
 #. module: stock
 #. odoo-python
+#: code:addons/stock/models/stock_orderpoint.py:0
+#, python-format
+msgid ""
+"You can not create a snoozed orderpoint that is not manually triggered."
+msgstr "لا يمكنك إنشاء نقطة طلب خاملة لا يتم تشغيلها يدوياً. "
+
+#. module: stock
+#. odoo-python
 #: code:addons/stock/models/stock_move_line.py:0
 #, python-format
 msgid ""
@@ -9828,6 +9842,17 @@ msgstr "يمكنك إدخال كميات موجبة فقط. "
 #, python-format
 msgid "You can only process 1.0 %s of products with unique serial number."
 msgstr "يمكنك معالجة 1.0 %s فقط من المنتجات برقم تسلسلي فريد. "
+
+#. module: stock
+#. odoo-python
+#: code:addons/stock/models/stock_orderpoint.py:0
+#, python-format
+msgid ""
+"You can only snooze manual orderpoints. You should rather archive 'auto-"
+"trigger' orderpoints if you do not want them to be triggered."
+msgstr ""
+"يمكنك فقط جعل نقاط الطلب اليدوية خاملة. من الأفضل أرشفة نقاط الطلب ذات "
+"'التشغيل الآلي' إذا كنت ترغب في ألا يتم تشغيلها. "
 
 #. module: stock
 #. odoo-python
