@@ -154,7 +154,7 @@ odoo.define('pos_restaurant.TicketScreen', function (require) {
                 if(order && this.env.pos.config.iface_floorplan && !this.env.pos.table) {
                     this.env.pos.setTable(order.table ? order.table : Object.values(this.env.pos.tables_by_id)[0]);
                 }
-                super._onDoRefund();
+                await super._onDoRefund();
             }
             isDefaultOrderEmpty(order) {
                 if (this.env.pos.config.iface_floorplan) {
